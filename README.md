@@ -1,6 +1,10 @@
 # FASCO E-commerce Platform
 
+![FASCO Banner](./docs/preview.png)
+
 A modern, high-performance e-commerce storefront based on the FASCO design system. This project is built to demonstrate professional frontend architecture, secure state management, and scalable coding patterns.
+
+[🚀 Live Preview Link](https://fasco-shop-fsd.vercel.app/) | [🎨 Design Reference (Figma)](https://www.figma.com/design/dM9Uuam4Qyxm70eHZzHPwE/Online-Shopping-Website-Design---eCommerce-Store-Website---UI-Kit--Community-?node-id=114-231&t=CKebb5B5ZkBcr9st-0)
 
 ## 🚀 Tech Steck
 
@@ -13,7 +17,7 @@ A modern, high-performance e-commerce storefront based on the FASCO design syste
 - **Forms**: React Hook Form + Zod Resolvers
 - **API**: FakeStoreAPI / Axios
 
-## Architecture Highlights (FSD)
+## 🛠️ Architecture Highlights (FSD)
 
 This project strictly follows the Feature-Sliced Design methodology to ensure high maintainability:
 
@@ -24,13 +28,13 @@ This project strictly follows the Feature-Sliced Design methodology to ensure hi
 - **Entities**: Business logic and data models (Product, User, Cart).
 - **Shared**: Reusable UI components, API clients, and utility functions.
 
-## Security Features
+## 🛡️ Security Features
 
 - **Runtime Validation**: All data from external APIs is validated via Zod schemas before entering the Redux store to prevent state corruption.
 - **Safe CRUD**: Immutable state updates and protected data flow.
 - **Input Sanitization**: Built-in protection against common web vulnerabilities.
 
-## Roadmap
+## 📈 Roadmap
 
 - Stage 1: Project setup & FSD structure (Current)
 - Stage 2: Product Entity & Catalog Thunks
