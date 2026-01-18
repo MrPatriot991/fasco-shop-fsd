@@ -1,7 +1,8 @@
 import { createSlice, createEntityAdapter, createAsyncThunk } from "@reduxjs/toolkit";
 import { z } from "zod";
 import { baseApi } from "@/shared/api";
-import { productSchema, type Product } from "./schema";
+import { mapProduct } from "../lib/mapProduct";
+import { productSchema, type Product, type RawProduct } from "./schema";
 import type { ProductStatus } from "./types";
 
 export const productAdapter = createEntityAdapter<Product>({});
@@ -10,14 +11,16 @@ export const fetchProducts = createAsyncThunk<Product[], void, { rejectValue: st
   "products/fetchProducts",
   async (_, { rejectWithValue }) => {
     try {
-      const response = await baseApi.get<Product[]>("/products");
+      const response = await baseApi.get<RawProduct[]>("/products");
 
-      const validated = response.data
-        .map((item) => productSchema.safeParse(item))
-        .filter((result) => result.success)
-        .map((result) => (result as z.ZodSafeParseSuccess<Product>).data);
+      const validated = response.data.map((item) => {
+        const enhancedItem = mapProduct(item);
+        return productSchema.safeParse(enhancedItem);
+      });
 
-      return validated;
+      return validated
+        .filter((result): result is z.ZodSafeParseSuccess<Product> => result.success)
+        .map((result) => result.data);
     } catch {
       return rejectWithValue("Network or Server error");
     }
@@ -29,7 +32,7 @@ const initialState = productAdapter.getInitialState<ProductStatus>({
   error: null,
 });
 
-export type ProductState = typeof initialState; 
+export type ProductState = typeof initialState;
 
 export const productSlice = createSlice({
   name: "products",
