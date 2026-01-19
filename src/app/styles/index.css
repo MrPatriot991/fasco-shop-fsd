@@ -9,15 +9,17 @@
   --color-brand-gray: #8a8a8a;
   --color-brand-white: #ffffff;
   --color-accent-red: #ff4646;
-
-  --color-main-bg: #f5f5f5;
+  --color-brand-blue: #5b86e5;
+  --color-brand-secondary: #fafafa;
+  --color-brand-surface: #f5f5f5;
 }
 
 body {
   min-height: 100vh;
   min-height: 100dvh;
-  background-color: var(--color-main-bg);
+  background-color: var(--color-brand-white);
   font-family: var(--font-poppins);
+  line-height: var(--text-base);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

@@ -9,6 +9,7 @@ import {
 } from "@/entities/product";
 import { ProductCard } from "@/entities/product/ui/ProductCard";
 import { MOCK_PRODUCTS } from "@/entities/product";
+import { Button } from "@/shared/ui/Button";
 
 export const ProductList = () => {
   const dispatch = useAppDispatch();
@@ -36,7 +37,7 @@ export const ProductList = () => {
   }, [dispatch, status]);
 
   return (
-    <section className="py-12">
+    <section className="flex flex-col items-center py-12 space-y-12">
       <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {displayProducts.map((product) => (
           <li key={`mock-${product.id}`}>
@@ -54,9 +55,9 @@ export const ProductList = () => {
       </ul>
 
       {visibleCount < allAvalibleProducts.length && (
-        <button onClick={handleShowMore}>
+        <Button onClick={handleShowMore}>
           {status === "loading" ? "Loading..." : "View more"}
-        </button>
+        </Button>
       )}
     </section>
   );
