@@ -37,7 +37,7 @@ export const Button = ({
 
   const variantClasses = {
     primary: `bg-brand-black text-brand-white border border-brand-black
-    before:bg-brand-secondary hover:text-brand-gray`,
+    before:bg-brand-secondary hover:text-brand-black`,
     secondary: `bg-brand-secondary text-brand-gray hover:text-brand-white
     before:bg-brand-black `,
     outline: `border border-brand-blue text-brand-blue before:bg-brand-blue hover:text-brand-white`,
