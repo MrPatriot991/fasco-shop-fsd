@@ -1,5 +1,6 @@
 import { Container } from "@/shared/ui";
 import { Header } from "@/widgets/header";
+import { Hero } from "@/widgets/hero";
 import { ProductList } from "@/widgets/product-list";
 
 export const HomePage = () => {
@@ -8,6 +9,7 @@ export const HomePage = () => {
       <Header />
       <Container>
         <main>
+          <Hero />
           <ProductList />
         </main>
       </Container>
