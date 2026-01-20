@@ -37,7 +37,7 @@ export const ProductList = () => {
   }, [dispatch, status]);
 
   return (
-    <section className="flex flex-col items-center py-12 space-y-12">
+    <section className="flex flex-col items-center py-6 sm:py-8 lg:py-12 space-y-12">
       <ul className="grid grid-cols-1 w-full sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {displayProducts.map((product) => (
           <li key={`mock-${product.id}`}>

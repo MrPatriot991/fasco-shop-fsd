@@ -4,16 +4,11 @@ import heroImgLeft from "@/shared/assets/images/ban-left.avif";
 import heroImgRight from "@/shared/assets/images/ban-right.avif";
 import heroImgTop from "@/shared/assets/images/ban-top.avif";
 import heroImgBottom from "@/shared/assets/images/ban-bottom.avif";
+import { BrandMarquee } from "./BrandMarquee";
 
 export const Hero = () => {
   return (
-    <section
-      className="grid 
-      grid-cols-1 md:grid-cols-[1fr_auto_1fr] 
-      items-center 
-      gap-4 lg:gap-8 
-      py-12"
-    >
+    <section className="grid grid-cols-1 md:grid-cols-[1fr_auto_1fr] items-center gap-4 py-6 sm:py-8 lg:py-12">
       <div className="hidden md:block w-full h-full">
         <img
           src={heroImgLeft}
@@ -61,6 +56,9 @@ export const Hero = () => {
           loading="eager"
           fetchPriority="high"
         />
+      </div>
+      <div className="col-span-full">
+        <BrandMarquee />
       </div>
     </section>
   );
