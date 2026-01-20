@@ -55,7 +55,7 @@ export const Header = () => {
 
           {/* Mobile/Tablet Controls: Burger Button */}
           <button
-            className="lg:hidden p-2 text-brand-dark"
+            className="lg:hidden p-2 text-brand-dark cursor-pointer"
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle menu"
           >
