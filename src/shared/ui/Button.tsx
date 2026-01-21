@@ -9,6 +9,7 @@ interface ButtonProps {
   variant?: ButtonVariant;
   leftIcon?: ReactNode;
   children?: ReactNode;
+  className?: string;
   onClick?: () => void;
 }
 
@@ -16,6 +17,7 @@ export const Button = ({
   variant = "primary",
   size = "lg-1",
   leftIcon,
+  className,
   onClick,
   children,
   ...props
@@ -43,7 +45,7 @@ export const Button = ({
     outline: `border border-brand-blue text-brand-blue before:bg-brand-blue hover:text-brand-white`,
   };
 
-  const buttonClasses = clsx(baseStyles, sizeClasses[size], variantClasses[variant]);
+  const buttonClasses = clsx(baseStyles, sizeClasses[size], variantClasses[variant], className);
 
   return (
     <button className={buttonClasses} onClick={onClick} {...props}>
