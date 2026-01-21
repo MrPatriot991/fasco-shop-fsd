@@ -19,12 +19,8 @@ export const DealsSlider = (props: PropType) => {
   const [emblaRef, emblaApi] = useEmblaCarousel(options);
   const tweenNodes = useRef<HTMLElement[]>([]);
 
-  const {
-    prevBtnDisabled,
-    nextBtnDisabled,
-    onPrevButtonClick,
-    onNextButtonClick,
-  } = usePrevNextButtons(emblaApi);
+  const { prevBtnDisabled, nextBtnDisabled, onPrevButtonClick, onNextButtonClick } =
+    usePrevNextButtons(emblaApi);
 
   const setTweenNodes = useCallback((emblaApi: EmblaCarouselType) => {
     tweenNodes.current = emblaApi
@@ -106,8 +102,8 @@ export const DealsSlider = (props: PropType) => {
       {/* Controls */}
       <div className="">
         <div className="absolute inset-y-0 left-4 right-4 flex items-center justify-between pointer-events-none z-20">
-          <PrevButton onClick={onPrevButtonClick} disabled={prevBtnDisabled}/>
-          <NextButton onClick={onNextButtonClick} disabled={nextBtnDisabled}/>
+          <PrevButton onClick={onPrevButtonClick} disabled={prevBtnDisabled} />
+          <NextButton onClick={onNextButtonClick} disabled={nextBtnDisabled} />
         </div>
 
         <div className="embla__dots"></div>

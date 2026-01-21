@@ -12,15 +12,15 @@ export const PrevButton = ({ disabled, className, ...restProps }: PropType) => (
       "flex items-center justify-center w-14 h-14 rounded-full transition-all duration-300",
       "bg-brand-black/20 backdrop-blur-md border border-brand-white/10 text-brand-white",
       "hover:bg-brand-black/40 hover:scale-110 active:scale-95",
-      "disabled:opacity-0 disabled:pointer-events-none", 
-      "pointer-events-auto", 
+      "disabled:opacity-0 disabled:pointer-events-none",
+      "pointer-events-auto",
       className
     )}
     {...restProps}
   >
     <ChevronLeft size={28} strokeWidth={1.2} />
   </button>
-)
+);
 
 export const NextButton = ({ disabled, children, className, ...restProps }: PropType) => {
   return (
@@ -31,8 +31,8 @@ export const NextButton = ({ disabled, children, className, ...restProps }: Prop
         "flex items-center justify-center w-14 h-14 rounded-full transition-all duration-300",
         "bg-brand-black/20 backdrop-blur-md border border-brand-white/10 text-brand-white",
         "hover:bg-brand-black/40 hover:scale-110 active:scale-95",
-        "disabled:opacity-0 disabled:pointer-events-none", 
-        "pointer-events-auto", 
+        "disabled:opacity-0 disabled:pointer-events-none",
+        "pointer-events-auto",
         className
       )}
       {...restProps}

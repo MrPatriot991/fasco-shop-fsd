@@ -10,6 +10,7 @@ import {
 import { ProductCard } from "@/entities/product/ui/ProductCard";
 import { MOCK_PRODUCTS } from "@/entities/product";
 import { Button } from "@/shared/ui/Button";
+import { Container } from "@/shared/ui";
 
 export const ProductList = () => {
   const dispatch = useAppDispatch();
@@ -37,28 +38,32 @@ export const ProductList = () => {
   }, [dispatch, status]);
 
   return (
-    <section className="flex flex-col items-center py-6 sm:py-8 lg:py-12 space-y-12">
-      <ul className="grid grid-cols-1 w-full sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {displayProducts.map((product) => (
-          <li key={`mock-${product.id}`}>
-            <ProductCard product={product} />
-          </li>
-        ))}
+    <section className="bg-brand-white py-6 sm:py-8 lg:py-12">
+      <Container>
+        <div className="flex flex-col items-center space-y-12">
+          <ul className="grid grid-cols-1 w-full sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {displayProducts.map((product) => (
+              <li key={`mock-${product.id}`}>
+                <ProductCard product={product} />
+              </li>
+            ))}
 
-        {status === "loading" &&
-          apiProducts.length === 0 &&
-          Array.from({ length: 3 }).map((_, i) => (
-            <li key={`skeleton-${i}`}>
-              <ProductCardSkeleton />
-            </li>
-          ))}
-      </ul>
+            {status === "loading" &&
+              apiProducts.length === 0 &&
+              Array.from({ length: 3 }).map((_, i) => (
+                <li key={`skeleton-${i}`}>
+                  <ProductCardSkeleton />
+                </li>
+              ))}
+          </ul>
 
-      {visibleCount < allAvalibleProducts.length && (
-        <Button onClick={handleShowMore}>
-          {status === "loading" ? "Loading..." : "View more"}
-        </Button>
-      )}
+          {visibleCount < allAvalibleProducts.length && (
+            <Button onClick={handleShowMore}>
+              {status === "loading" ? "Loading..." : "View more"}
+            </Button>
+          )}
+        </div>
+      </Container>
     </section>
   );
 };
