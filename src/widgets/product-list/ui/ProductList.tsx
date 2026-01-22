@@ -51,7 +51,7 @@ export const ProductList = () => {
   }, [dispatch, status]);
 
   return (
-    <section className="bg-brand-white py-6 sm:py-8 lg:py-12">
+    <section className="bg-brand-white pt-16 lg:pt-36">
       <Container>
         <div className="flex flex-col items-center space-y-12">
           <h2 className="text-section-titel font-volkhov text-brand-dark">New Arrivals</h2>

@@ -2,6 +2,7 @@ import { Deals } from "@/widgets/deals";
 import { Hero } from "@/widgets/hero";
 import { ProductList } from "@/widgets/product-list";
 import { Packages } from "@/widgets/packages";
+import { Benefits } from "@/widgets/benefits";
 
 export const HomePage = () => {
   return (
@@ -10,6 +11,7 @@ export const HomePage = () => {
       <Deals />
       <ProductList />
       <Packages />
+      <Benefits />
     </>
   );
 };

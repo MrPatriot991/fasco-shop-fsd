@@ -54,7 +54,7 @@ const TimerDisplay = ({ targetData }: TimerDisplayProp) => {
 
 export const Deals = () => {
   return (
-    <section className="bg-deals py-6 sm:py-8 lg:py-12">
+    <section className="bg-brand-secondary py-16 lg:py-36">
       <Container>
         <div className="flex flex-col lg:flex-row gap-20 overflow-hidden">
           <div className="flex flex-col items-center gap-12 lg:w-2/5">

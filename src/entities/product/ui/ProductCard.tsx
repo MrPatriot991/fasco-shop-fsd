@@ -5,7 +5,7 @@ export const ProductCard = ({ product }: { product: Product }) => {
   const { title, brand, price, image, rating } = product;
 
   return (
-    <article className="flex space-y-5 flex-col p-4 h-full bg-white w-full  md:min-w-1/2 rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.06)] overflow-hidden hover:shadow-lg cursor-pointer transition-shadow duration-200">
+    <article className="flex space-y-5 flex-col p-4 h-full bg-brand-white w-full  md:min-w-1/2 rounded-2xl shadow-subtle overflow-hidden hover:shadow-lg cursor-pointer transition-shadow duration-200">
       <figure>
         <img src={image} alt={brand} className="h-72 w-full object-cover rounded-lg" />
       </figure>
