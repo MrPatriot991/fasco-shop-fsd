@@ -30,7 +30,7 @@ const OPTIONS_AUTO_SCROLL = { speed: 0.4, stopOnInteraction: false, stopOnMouseE
 
 export const InstagramFeed = () => {
   return (
-    <section className="bg-brand-secondary py-16 lg:py-36">
+    <section className="bg-brand-secondary py-14 lg:py-36">
       <Container>
         <div className="flex flex-col items-center gap-10 lg:gap-14">
           <div className="flex flex-col items-center gap-4 md:max-w-3xl">
