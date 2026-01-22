@@ -1,11 +1,7 @@
 import { Button, Container } from "@/shared/ui";
 import { useTimer } from "@/shared/lib/hooks";
-import { DealsSlider } from "./DealsSlider";
+import { AppSlider } from "@/shared/ui";
 import type { EmblaOptionsType } from "embla-carousel";
-
-interface TimerDisplayProp {
-  targetData: string;
-}
 
 import imgSale1 from "@/shared/assets/images/sl-sale-1.webp";
 import imgSale2 from "@/shared/assets/images/sl-sale-2.webp";
@@ -13,7 +9,21 @@ import imgSale3 from "@/shared/assets/images/sl-sale-3.webp";
 import imgSale4 from "@/shared/assets/images/sl-sale-4.webp";
 import imgSale5 from "@/shared/assets/images/sl-sale-5.webp";
 
-const slides = [
+interface TimerDisplayProp {
+  targetData: string;
+}
+
+interface Slides {
+  src: string;
+  alt: string;
+}
+
+interface Items {
+  label: string;
+  value: number;
+}
+
+const slides: Slides[] = [
   { src: imgSale1, alt: "Deal sale 1" },
   { src: imgSale2, alt: "Deal sale 2" },
   { src: imgSale3, alt: "Deal sale 3" },
@@ -28,7 +38,7 @@ const TimerDisplay = ({ targetData }: TimerDisplayProp) => {
 
   const pad = (n: number) => String(n).padStart(2, "0");
 
-  const items = [
+  const items: Items[] = [
     { label: "Days", value: days },
     { label: "Hr", value: hours },
     { label: "Mins", value: minutes },
@@ -70,10 +80,17 @@ export const Deals = () => {
               <p className="font-medium text-2xl text-center lg:text-start text-brand-dark">
                 Hurry, Before It’s Too Late!
               </p>
-              <TimerDisplay targetData="2026-03-31" />
+              <TimerDisplay targetData="2026-02-31" />
             </div>
           </div>
-          <DealsSlider slides={slides} options={OPTIONS} />
+          <AppSlider
+            slides={slides}
+            options={OPTIONS}
+            showButtons
+            height="36rem"
+            maxWidth="lg"
+            sliderSize="55%"
+          />
         </div>
       </Container>
     </section>
