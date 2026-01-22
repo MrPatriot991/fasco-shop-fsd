@@ -54,7 +54,7 @@ export const ProductList = () => {
     <section className="bg-brand-white py-6 sm:py-8 lg:py-12">
       <Container>
         <div className="flex flex-col items-center space-y-12">
-          <h2 className="text-[44px] font-volkhov text-brand-dark">New Arrivals</h2>
+          <h2 className="text-section-titel font-volkhov text-brand-dark">New Arrivals</h2>
           <p className="text-center text-brand-gray lg:w-2/3 w-full">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Scelerisque duis ultrices
             sollicitudin aliquam sem. Scelerisque duis ultrices sollicitudin{" "}

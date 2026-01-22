@@ -27,6 +27,7 @@ export const Hero = () => {
                 src={heroImgTop}
                 alt="Fasco fashion look top"
                 className="object-cover w-full h-full"
+                fetchPriority="high"
               />
             </div>
 
@@ -50,6 +51,7 @@ export const Hero = () => {
                 src={heroImgBottom}
                 alt="Fasco fashion look bottom"
                 className="object-cover w-full h-full"
+                fetchPriority="high"
               />
             </div>
           </div>
