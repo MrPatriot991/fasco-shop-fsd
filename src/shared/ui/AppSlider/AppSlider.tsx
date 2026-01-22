@@ -1,8 +1,13 @@
-import { useEffect, useCallback, useRef } from "react";
+import { useEffect, useCallback, useRef, useMemo, type CSSProperties } from "react";
+import AutoScroll from "embla-carousel-auto-scroll";
 import useEmblaCarousel from "embla-carousel-react";
-import { usePrevNextButtons } from "@/widgets/deals/ui/usePrevNextButtons";
+import { cn } from "@/shared/lib/utils/cn";
+import { usePrevNextButtons } from "./lib/usePrevNextButtons";
 import { NextButton, PrevButton } from "./SliderButtons";
 import type { EmblaOptionsType, EmblaCarouselType } from "embla-carousel";
+
+type SlideSize = "sm" | "md" | "lg" | "xl" | "full";
+type Direction = "forward" | "backward";
 
 interface Slide {
   src: string;
@@ -12,11 +17,52 @@ interface Slide {
 type PropType = {
   slides: Slide[];
   options?: EmblaOptionsType;
+  autoScroll?: {
+    speed?: number;
+    direction?: Direction;
+    stopOnInteraction?: boolean;
+    stopOnMouseEnter?: boolean;
+  };
+  height?: string;
+  sliderSize?: string | { mobile: string; desktop: string };
+  spacing?: string;
+  maxWidth?: SlideSize | string;
+  showButtons?: boolean;
+  className?: string;
+  imageClassName?: string;
 };
 
-export const DealsSlider = (props: PropType) => {
-  const { slides, options } = props;
-  const [emblaRef, emblaApi] = useEmblaCarousel(options);
+const maxWidthMap: Record<string, string> = {
+  sm: "max-w-xl",
+  md: "max-w-3xl",
+  lg: "max-w-5xl",
+  xl: "max-w-7xl",
+  full: "max-w-full",
+};
+
+export const AppSlider = ({
+  slides,
+  options,
+  autoScroll,
+  height = "300px",
+  sliderSize = "60%",
+  spacing = "1rem",
+  maxWidth = "lg",
+  showButtons = false,
+  imageClassName,
+  className,
+}: PropType) => {
+  const plugins = useMemo(() => {
+    if (!autoScroll) return [];
+    return [
+      AutoScroll({
+        playOnInit: true,
+        ...autoScroll,
+      }),
+    ];
+  }, [autoScroll]);
+
+  const [emblaRef, emblaApi] = useEmblaCarousel(options, plugins);
   const tweenNodes = useRef<HTMLElement[]>([]);
 
   const { prevBtnDisabled, nextBtnDisabled, onPrevButtonClick, onNextButtonClick } =
@@ -71,28 +117,32 @@ export const DealsSlider = (props: PropType) => {
     emblaApi.on("reInit", setTweenNodes).on("reInit", tweenScale).on("scroll", tweenScale);
   }, [emblaApi, tweenScale, setTweenNodes]);
 
+  const sliderStyle = {
+    "--slide-height": height,
+    "--slide-spacing": spacing,
+    "--slide-size-mob": typeof sliderSize === "object" ? sliderSize.mobile : "55%",
+    "--slide-size-desk": typeof sliderSize === "object" ? sliderSize.desktop : sliderSize,
+  } as CSSProperties;
+
+  const maxWidthClass = maxWidthMap[maxWidth] || maxWidth;
+
   return (
-    <div
-      className="
-        relative group
-        space-y-4
-        max-w-3xl
-        mx-auto
-        [--slide-height:36rem] 
-        [--slide-spacing:1rem] 
-        [--slide-size:55%]
-      "
-    >
+    <div className={cn("relative group mx-auto", maxWidthClass, className)} style={sliderStyle}>
       <div className="overflow-hidden" ref={emblaRef}>
         <div className="flex touch-[pan-y_pin-zoom] ml-[calc(var(--slide-spacing)*-1)]">
           {slides.map((slide, index) => (
-            <div key={index} className="shrink-0 basis-(--slide-size) min-w-0 pl-(--slide-spacing)">
+            <div
+              key={index}
+              className="shrink-0 basis-(--slide-size-mob) md:basis-(--slide-size-desk) min-w-0 pl-(--slide-spacing)"
+            >
               <img
                 src={slide.src}
                 alt={slide.alt}
-                className="embla__slide-img h-(--slide-height) w-full object-cover rounded-xl select-none"
+                className={cn(
+                  "embla__slide-img w-full h-(--slide-height) object-cover select-none",
+                  imageClassName
+                )}
                 loading="lazy"
-                decoding="async"
               />
             </div>
           ))}
@@ -100,14 +150,14 @@ export const DealsSlider = (props: PropType) => {
       </div>
 
       {/* Controls */}
-      <div className="">
-        <div className="absolute inset-y-0 left-4 right-4 flex items-center justify-between pointer-events-none z-20">
-          <PrevButton onClick={onPrevButtonClick} disabled={prevBtnDisabled} />
-          <NextButton onClick={onNextButtonClick} disabled={nextBtnDisabled} />
+      {showButtons && (
+        <div className="">
+          <div className="absolute inset-y-0 left-4 right-4 flex items-center justify-between pointer-events-none z-20">
+            <PrevButton onClick={onPrevButtonClick} disabled={prevBtnDisabled} />
+            <NextButton onClick={onNextButtonClick} disabled={nextBtnDisabled} />
+          </div>
         </div>
-
-        <div className="embla__dots"></div>
-      </div>
+      )}
     </div>
   );
 };
