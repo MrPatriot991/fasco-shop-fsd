@@ -34,7 +34,7 @@ export const InstagramFeed = () => {
       <Container>
         <div className="flex flex-col items-center gap-10 lg:gap-14">
           <div className="flex flex-col items-center gap-4 md:max-w-3xl">
-            <h2 className="text-center tracking-tight leading-12 text-section-titel font-volkhov text-brand-dark">
+            <h2 className="text-center tracking-tight leading-12 text-section-title font-volkhov text-brand-dark">
               Follow Us On Instagram
             </h2>
             <p className="text-brand-gray text-center">

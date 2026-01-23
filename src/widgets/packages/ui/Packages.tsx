@@ -27,7 +27,7 @@ export const Packages = () => {
           <div className="p-10  lg:px-20 space-y-5 max-w-[550px]">
             <div className="space-y-5">
               <p className="text-brand-gray tracking-widest text-sm uppercase">Women Collection</p>
-              <h2 className="text-section-titel  font-volkhov text-brand-dark leading-tight">
+              <h2 className="text-section-title  font-volkhov text-brand-dark leading-tight">
                 Peaky Blinders
               </h2>
               <p className="text-brand-black underline">DESCRIPTION</p>

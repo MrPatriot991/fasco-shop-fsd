@@ -4,7 +4,7 @@
   --font-poppins: "Poppins", ui-sans-serif, system-ui, sans-serif;
   --font-volkhov: "Volkhov", ui-serif, Georgia, serif;
 
-  --text-section-titel: 2.875rem;
+  --text-section-title: 2.875rem;
 
   --color-brand-black: #000000;
   --color-brand-dark: #484848;
@@ -21,7 +21,7 @@
 
   --shadow-around: 0 0 25px 0 rgba(0, 0, 0, 0.1);
   --shadow-subtle: 0 4px 20px rgba(0, 0, 0, 0.06);
-  --shadow-section-float: 0 15px 30px -10px rgba(0, 0, 0, 0.08);
+  --shadow-section-float: 0 75px 60px -10px rgba(0, 0, 0, 0.1);
 }
 
 @keyframes marquee {

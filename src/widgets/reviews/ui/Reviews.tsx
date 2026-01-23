@@ -57,7 +57,7 @@ export const Reviews = () => {
       <Container maxWidth="xxxl">
         <div className="flex flex-col gap-16">
           <div className="flex flex-col gap-5">
-            <h2 className="text-center tracking-tight leading-12 text-section-titel font-volkhov text-brand-dark">
+            <h2 className="text-center tracking-tight leading-12 text-section-title font-volkhov text-brand-dark">
               This Is What Our Customers Say
             </h2>
             <p className="text-brand-gray text-center">
