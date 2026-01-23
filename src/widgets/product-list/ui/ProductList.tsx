@@ -7,10 +7,10 @@ import {
   selectProductStatus,
   type Product,
 } from "@/entities/product";
-import { ProductCard } from "@/entities/product/ui/ProductCard";
-import { MOCK_PRODUCTS } from "@/entities/product";
-import { Button } from "@/shared/ui/Button";
 import { Container } from "@/shared/ui";
+import { ProductCard } from "@/entities/product";
+import { Button } from "@/shared/ui";
+import { MOCK_PRODUCTS } from "@/entities/product";
 
 interface Buttons {
   id: number;

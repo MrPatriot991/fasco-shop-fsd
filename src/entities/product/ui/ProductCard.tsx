@@ -1,5 +1,6 @@
 import { formatCurrency } from "@/shared/lib/format";
-import type { Product } from "../model/schema";
+import { StarRating } from "@/shared/ui";
+import type { Product } from "@/entities/product/model/schema";
 
 export const ProductCard = ({ product }: { product: Product }) => {
   const { title, brand, price, image, rating } = product;
@@ -15,7 +16,7 @@ export const ProductCard = ({ product }: { product: Product }) => {
             <h3 className="text-xl text-brand-dark font-medium line-clamp-1">{title}</h3>
             <p className="text-xs text-brand-gray font-medium">{brand}</p>
           </div>
-          <span className="text-yellow-400">{"★".repeat(Math.round(rating.rate))}</span>
+          <StarRating rate={rating.rate} />
         </header>
         <span className="text-xs text-brand-dark font-medium">
           ({rating.count}k) Customer Reviews
