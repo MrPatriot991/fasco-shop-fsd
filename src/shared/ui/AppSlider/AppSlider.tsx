@@ -10,8 +10,14 @@ type SlideSize = "sm" | "md" | "lg" | "xl" | "full";
 type Direction = "forward" | "backward";
 
 interface Slide {
-  src: string;
-  alt: string;
+  id?: number;
+  src?: string;
+  alt?: string;
+  userName?: string;
+  userRole?: string;
+  comment?: string;
+  rating?: number;
+  avatar?: string;
 }
 
 type PropType = {
@@ -30,6 +36,7 @@ type PropType = {
   showButtons?: boolean;
   className?: string;
   imageClassName?: string;
+  children?: (slide: Slide, index: number) => React.ReactNode;
 };
 
 const maxWidthMap: Record<string, string> = {
@@ -51,6 +58,7 @@ export const AppSlider = ({
   showButtons = false,
   imageClassName,
   className,
+  children,
 }: PropType) => {
   const plugins = useMemo(() => {
     if (!autoScroll) return [];
@@ -61,7 +69,6 @@ export const AppSlider = ({
       }),
     ];
   }, [autoScroll]);
-
   const [emblaRef, emblaApi] = useEmblaCarousel(options, plugins);
   const tweenNodes = useRef<HTMLElement[]>([]);
 
@@ -129,21 +136,25 @@ export const AppSlider = ({
   return (
     <div className={cn("relative group mx-auto", maxWidthClass, className)} style={sliderStyle}>
       <div className="overflow-hidden" ref={emblaRef}>
-        <div className="flex touch-[pan-y_pin-zoom] ml-[calc(var(--slide-spacing)*-1)]">
+        <div className="flex py-5 touch-[pan-y_pin-zoom] ml-[calc(var(--slide-spacing)*-1)]">
           {slides.map((slide, index) => (
             <div
               key={index}
               className="shrink-0 basis-(--slide-size-mob) md:basis-(--slide-size-desk) min-w-0 pl-(--slide-spacing)"
             >
-              <img
-                src={slide.src}
-                alt={slide.alt}
-                className={cn(
-                  "embla__slide-img w-full h-(--slide-height) object-cover select-none",
-                  imageClassName
-                )}
-                loading="lazy"
-              />
+              {children ? (
+                children(slide, index)
+              ) : (
+                <img
+                  src={slide.src}
+                  alt={slide.alt}
+                  className={cn(
+                    "embla__slide-img w-full h-(--slide-height) object-cover select-none",
+                    imageClassName
+                  )}
+                  loading="lazy"
+                />
+              )}
             </div>
           ))}
         </div>
@@ -152,7 +163,7 @@ export const AppSlider = ({
       {/* Controls */}
       {showButtons && (
         <div className="">
-          <div className="absolute inset-y-0 left-4 right-4 flex items-center justify-between pointer-events-none z-20">
+          <div className="absolute inset-y-0 left-0 right-0 flex items-center justify-between pointer-events-none z-20">
             <PrevButton onClick={onPrevButtonClick} disabled={prevBtnDisabled} />
             <NextButton onClick={onNextButtonClick} disabled={nextBtnDisabled} />
           </div>

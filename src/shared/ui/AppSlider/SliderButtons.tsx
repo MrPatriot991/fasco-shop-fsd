@@ -9,7 +9,7 @@ export const PrevButton = ({ disabled, className, ...restProps }: PropType) => (
     type="button"
     disabled={disabled}
     className={clsx(
-      "flex items-center justify-center w-14 h-14 rounded-full transition-all duration-300",
+      "flex items-center justify-center w-14 h-14 rounded-full transition duration-300",
       "bg-brand-black/20 backdrop-blur-md border border-brand-white/10 text-brand-white",
       "hover:bg-brand-black/40 hover:scale-110 active:scale-95",
       "disabled:opacity-0 disabled:pointer-events-none",
@@ -28,7 +28,7 @@ export const NextButton = ({ disabled, children, className, ...restProps }: Prop
       type="button"
       disabled={disabled}
       className={clsx(
-        "flex items-center justify-center w-14 h-14 rounded-full transition-all duration-300",
+        "flex items-center justify-center w-14 h-14 rounded-full transition duration-300",
         "bg-brand-black/20 backdrop-blur-md border border-brand-white/10 text-brand-white",
         "hover:bg-brand-black/40 hover:scale-110 active:scale-95",
         "disabled:opacity-0 disabled:pointer-events-none",
