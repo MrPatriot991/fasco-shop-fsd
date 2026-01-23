@@ -4,6 +4,7 @@ import { ProductList } from "@/widgets/product-list";
 import { Packages } from "@/widgets/packages";
 import { Benefits } from "@/widgets/benefits";
 import { InstagramFeed } from "@/widgets/instagram-feed";
+import { Reviews } from "@/widgets/reviews";
 
 export const HomePage = () => {
   return (
@@ -14,6 +15,7 @@ export const HomePage = () => {
       <Packages />
       <Benefits />
       <InstagramFeed />
+      <Reviews />
     </>
   );
 };
