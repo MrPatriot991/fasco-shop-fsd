@@ -16,7 +16,7 @@ export const MOCK_PRODUCTS: Product[] = [
     image: img1,
     rating: { rate: 5, count: 244.1 },
     size: ["s", "m", "l"],
-    category: "Women’s Fashion",
+    category: "women's clothing",
     description: "Original design from FASCO layout",
   },
   {
@@ -27,7 +27,7 @@ export const MOCK_PRODUCTS: Product[] = [
     image: img2,
     rating: { rate: 4, count: 4.1 },
     size: ["s", "m", "l", "xl"],
-    category: "Women’s Fashion",
+    category: "women's clothing",
     description: "Original design from FASCO layout",
   },
   {
@@ -38,7 +38,7 @@ export const MOCK_PRODUCTS: Product[] = [
     image: img3,
     rating: { rate: 5, count: 250.1 },
     size: ["s", "m", "l", "xl"],
-    category: "Women’s Fashion",
+    category: "women's clothing",
     description: "Original design from FASCO layout",
   },
   {
@@ -49,7 +49,7 @@ export const MOCK_PRODUCTS: Product[] = [
     image: img4,
     rating: { rate: 4, count: 5.1 },
     size: ["s", "m", "l", "xl"],
-    category: "Women’s Fashion",
+    category: "women's clothing",
     description: "Original design from FASCO layout",
   },
   {
@@ -60,7 +60,7 @@ export const MOCK_PRODUCTS: Product[] = [
     image: img5,
     rating: { rate: 3, count: 300.1 },
     size: ["s", "m", "l", "xl"],
-    category: "Women’s Fashion",
+    category: "women's clothing",
     description: "Original design from FASCO layout",
   },
   {
@@ -71,7 +71,7 @@ export const MOCK_PRODUCTS: Product[] = [
     image: img6,
     rating: { rate: 4, count: 6.1 },
     size: ["s", "m", "l", "xl"],
-    category: "Women’s Fashion",
+    category: "women's clothing",
     description: "Original design from FASCO layout",
   },
 ];

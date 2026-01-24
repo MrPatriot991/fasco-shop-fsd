@@ -14,22 +14,14 @@ export const MobileMenu = ({ onClose }: MobileMenuProps) => {
           {LANDING_NAV.map((item) => (
             <li key={item.path} className="py-1 text-brand-dark">
               {item.type === "route" ? (
-                    <NavLink
-                      to={item.path}
-                      className="p-1"
-                      onClick={onClose}
-                    >
-                      {item.label}
-                    </NavLink>
-                  ) : (
-                    <a
-                      href={item.path}
-                      className="p-1"
-                      onClick={onClose}
-                    >
-                      {item.label}
-                    </a>
-                  )}
+                <NavLink to={item.path} className="p-1" onClick={onClose}>
+                  {item.label}
+                </NavLink>
+              ) : (
+                <a href={item.path} className="p-1" onClick={onClose}>
+                  {item.label}
+                </a>
+              )}
             </li>
           ))}
         </ul>

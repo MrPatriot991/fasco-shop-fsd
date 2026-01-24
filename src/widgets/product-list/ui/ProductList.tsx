@@ -1,48 +1,49 @@
 import { useEffect, useState, useMemo } from "react";
 import { useAppDispatch, useAppSelector } from "@/shared/lib/hooks";
+import { setCategory } from "@/entities/product";
+import { Container, Button } from "@/shared/ui";
 import {
   fetchProducts,
+  ProductCard,
   ProductCardSkeleton,
-  selectAllProducts,
+  selectFilteredProducts,
   selectProductStatus,
+  type Category,
   type Product,
 } from "@/entities/product";
-import { Container } from "@/shared/ui";
-import { ProductCard } from "@/entities/product";
-import { Button } from "@/shared/ui";
-import { MOCK_PRODUCTS } from "@/entities/product";
 
 interface Buttons {
   id: number;
   label: string;
+  category: Category;
 }
 
 const buttons: Buttons[] = [
-  { id: 1, label: "Women’s Fashion" },
-  { id: 2, label: "Men’s Fashion" },
-  { id: 3, label: "Women Accessories" },
-  { id: 4, label: "Men Accessories" },
-  { id: 5, label: "Discount Deals" },
+  { id: 1, label: "Women’s Fashion", category: "women's clothing" },
+  { id: 2, label: "Men’s Fashion", category: "men's clothing" },
+  { id: 3, label: "Women Accessories", category: "jewelery" },
+  { id: 4, label: "Men Accessories", category: "electronics" },
+  { id: 5, label: "Discount Deals", category: "all" },
 ];
 
 export const ProductList = () => {
   const dispatch = useAppDispatch();
-  const apiProducts = useAppSelector<Product[]>(selectAllProducts);
+  const apiProducts = useAppSelector<Product[]>(selectFilteredProducts);
   const status = useAppSelector(selectProductStatus);
 
   const [visibleCount, setVisibleCount] = useState(6);
 
-  const allAvalibleProducts = useMemo(() => {
-    return [...MOCK_PRODUCTS, ...apiProducts];
-  }, [apiProducts]);
-
   const displayProducts = useMemo(() => {
-    return allAvalibleProducts.slice(0, visibleCount);
-  }, [allAvalibleProducts, visibleCount]);
+    return apiProducts.slice(0, visibleCount);
+  }, [apiProducts, visibleCount]);
 
   const handleShowMore = () => {
     setVisibleCount((prev) => prev + 6);
   };
+
+  const handleCategoryClick= (category: Category) => {
+    dispatch(setCategory(category))
+  }
 
   useEffect(() => {
     if (status === "idle") {
@@ -62,7 +63,12 @@ export const ProductList = () => {
           <div className="w-full overflow-hidden">
             <div className="flex overflow-x-auto md:justify-between gap-3 md:gap-7 scrollbar-hide">
               {buttons.map((button) => (
-                <Button key={button.id} variant="secondary" className="whitespace-nowrap shrink-0">
+                <Button 
+                  key={button.id} 
+                  variant="secondary" 
+                  className="whitespace-nowrap shrink-0"
+                  onClick={() => handleCategoryClick(button.category)}
+                  >
                   {button.label}
                 </Button>
               ))}
@@ -84,7 +90,7 @@ export const ProductList = () => {
               ))}
           </ul>
 
-          {visibleCount < allAvalibleProducts.length && (
+          {visibleCount < apiProducts.length && (
             <Button onClick={handleShowMore}>
               {status === "loading" ? "Loading..." : "View more"}
             </Button>

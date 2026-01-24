@@ -72,7 +72,7 @@ export const Header = () => {
         </div>
 
         {/* Mobile Menu Overlay */}
-        {isOpen && <MobileMenu onClose={handleClose}/>}
+        {isOpen && <MobileMenu onClose={handleClose} />}
       </Container>
     </header>
   );
