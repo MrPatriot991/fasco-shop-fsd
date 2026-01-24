@@ -2,7 +2,7 @@ import { createSlice, createEntityAdapter, createAsyncThunk } from "@reduxjs/too
 import { z } from "zod";
 import { baseApi } from "@/shared/api";
 import { mapProduct } from "../lib/mapProduct";
-import { productSchema, type Product, type RawProduct } from "./schema";
+import { categorySchema, productSchema, type Product, type RawProduct } from "./schema";
 import type { ProductStatus } from "./types";
 
 export const productAdapter = createEntityAdapter<Product>({});
@@ -40,7 +40,9 @@ export const productSlice = createSlice({
   initialState,
   reducers: {
     setCategory: (state, action) => {
-      state.currentCategory = action.payload;
+      const result = categorySchema.safeParse(action.payload)
+
+      state.currentCategory = result.success ? result.data : "all";
     },
   },
   extraReducers: (builder) => {

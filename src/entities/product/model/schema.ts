@@ -24,5 +24,14 @@ export const productSchema = rawProductSchema.extend({
   brand: z.string().catch("Generic Brand"),
 });
 
+export const categorySchema = z.enum([
+  "all",
+  "men's clothing",
+  "women's clothing",
+  "jewelery",
+  "electronics",
+]);
+
 export type RawProduct = z.infer<typeof rawProductSchema>;
 export type Product = z.infer<typeof productSchema>;
+export type Category = z.infer<typeof categorySchema>;
