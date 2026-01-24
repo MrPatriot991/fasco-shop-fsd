@@ -1,30 +1,25 @@
 import { useEffect, useState } from "react";
+import { NavLink } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { Button, Container } from "@/shared/ui";
-import { navigation } from "@/shared/config";
+import { LANDING_NAV } from "@/shared/config";
+import { MobileMenu } from "./MobileMenu";
 
 export const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
-    if (!isOpen) return;
-
-    const scrollY = window.scrollY;
-
-    document.documentElement.style.overflow = "hidden";
-    document.body.style.position = "fixed";
-    document.body.style.top = `-${scrollY}px`;
-    document.body.style.width = "100%";
-
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
     return () => {
-      document.documentElement.style.overflow = "";
-      document.body.style.position = "";
-      document.body.style.top = "";
-      document.body.style.width = "";
-
-      window.scrollTo(0, scrollY);
+      document.body.style.overflow = "";
     };
   }, [isOpen]);
+
+  const handleClose = () => setIsOpen(false);
 
   return (
     <header className="sticky top-0 z-50 w-full bg-brand-white/80 backdrop-blur-md border-b border-brand-surface">
@@ -35,11 +30,24 @@ export const Header = () => {
           {/* Desctop Navigation */}
           <nav className="hidden lg:flex ml-auto mr-10">
             <ul className="flex gap-6 lg:gap-12 ">
-              {navigation.map((item) => (
-                <li key={item.path}>
-                  <a href="" className="hover:text-brand-dark duration-300 transition-colors p-1">
-                    {item.label}
-                  </a>
+              {LANDING_NAV.map((item) => (
+                <li key={item.path} className="relative group">
+                  {item.type === "route" ? (
+                    <NavLink
+                      to={item.path}
+                      className="hover:text-brand-dark duration-300 transition-colors p-1"
+                    >
+                      {item.label}
+                    </NavLink>
+                  ) : (
+                    <a
+                      href={item.path}
+                      className="hover:text-brand-dark duration-300 transition-colors p-1"
+                    >
+                      {item.label}
+                    </a>
+                  )}
+                  <span className="absolute left-0 border-b-2 border-brand-gray block w-full h-1 -translate-y-1/2 -translate-x-full opacity-0 transition duration-300 group-hover:translate-x-0 group-hover:opacity-100"></span>
                 </li>
               ))}
             </ul>
@@ -64,26 +72,7 @@ export const Header = () => {
         </div>
 
         {/* Mobile Menu Overlay */}
-        {isOpen && (
-          <div className="fixed inset-x-0 top-[97px] h-[calc(100dvh-97px)] lg:hidden bg-brand-white flex flex-col">
-            <nav className="flex flex-col flex-1 overflow-y-auto p-4 gap-6 ">
-              <ul className="flex flex-col gap-6">
-                {navigation.map((item) => (
-                  <li key={item.path}>
-                    <a href={item.path} className="text-2xl font-semibold">
-                      {item.label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-              {/* <hr className="border-brand-surface" /> */}
-              <div className="flex flex-col gap-4 mt-auto">
-                <Button variant="outline">Sign In</Button>
-                <Button>Sign Up</Button>
-              </div>
-            </nav>
-          </div>
-        )}
+        {isOpen && <MobileMenu onClose={handleClose}/>}
       </Container>
     </header>
   );
