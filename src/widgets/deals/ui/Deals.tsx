@@ -10,7 +10,7 @@ import imgSale4 from "@/shared/assets/images/sl-sale-4.webp";
 import imgSale5 from "@/shared/assets/images/sl-sale-5.webp";
 
 interface TimerDisplayProp {
-  targetData: string;
+  targetDate: string;
 }
 
 interface Slides {
@@ -33,8 +33,8 @@ const slides: Slides[] = [
 
 const OPTIONS: EmblaOptionsType = { loop: true, align: "center" };
 
-const TimerDisplay = ({ targetData }: TimerDisplayProp) => {
-  const { days, hours, minutes, seconds } = useTimer(targetData);
+const TimerDisplay = ({ targetDate }: TimerDisplayProp) => {
+  const { days, hours, minutes, seconds } = useTimer(targetDate);
 
   const pad = (n: number) => String(n).padStart(2, "0");
 
@@ -80,7 +80,7 @@ export const Deals = () => {
               <p className="font-medium text-2xl text-center lg:text-start text-brand-dark">
                 Hurry, Before It’s Too Late!
               </p>
-              <TimerDisplay targetData="2026-02-31" />
+              <TimerDisplay targetDate="2026-02-28" />
             </div>
           </div>
           <AppSlider
