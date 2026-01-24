@@ -4,5 +4,6 @@ export * from "./model/schema";
 export * from "./model/types";
 export * from "./model/moks";
 
-export { ProductCard } from "./ui/ProductCard";
-export { ProductCardSkeleton } from "./ui/ProductCardSkeleton";
+export { ProductCard } from "./ui/ProductCard/ProductCard";
+export { ProductCardSkeleton } from "./ui/ProductCardSkeleton/ProductCardSkeleton";
+export { ProductList } from "./ui/ProductList/ProductList";
