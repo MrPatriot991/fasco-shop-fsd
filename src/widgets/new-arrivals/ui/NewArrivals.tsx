@@ -1,0 +1,24 @@
+import { Container } from "@/shared/ui";
+import { ErrorBoundary } from "@/shared/ui";
+import { ProductList } from "@/entities/product";
+import { CategoryTabs } from "@/features/filter-by-category";
+
+export const NewArrivals = () => {
+  return (
+    <section id="new-arrivals" className="bg-brand-white pt-16 lg:pt-36">
+      <Container>
+        <div className="flex flex-col items-center space-y-12">
+          <h2 className="text-section-title font-volkhov text-brand-dark">New Arrivals</h2>
+          <p className="text-center text-brand-gray lg:w-2/3 w-full">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Scelerisque duis ultrices
+            sollicitudin aliquam sem. Scelerisque duis ultrices sollicitudin{" "}
+          </p>
+          <CategoryTabs />
+          <ErrorBoundary>
+            <ProductList />
+          </ErrorBoundary>
+        </div>
+      </Container>
+    </section>
+  );
+};

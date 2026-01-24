@@ -29,10 +29,6 @@ export const ProductList = () => {
     }
   }, [dispatch, status]);
 
-  if (status === "success") {
-    throw new Error("Error Products")
-  }
-
   return (
     <>
       <ul className="grid grid-cols-1 w-full sm:grid-cols-2 lg:grid-cols-3 gap-6">
