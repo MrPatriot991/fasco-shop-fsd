@@ -22,33 +22,33 @@
   --shadow-around: 0 0 25px 0 rgba(0, 0, 0, 0.1);
   --shadow-subtle: 0 4px 20px rgba(0, 0, 0, 0.06);
   --shadow-section-float: 0 75px 60px -10px rgba(0, 0, 0, 0.1);
-}
 
-@keyframes marquee {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
+  --animate-marquee: marquee 25s linear infinite;
 
-@layer utilities {
-  .animate-marquee {
-    animation: marquee 25s linear infinite;
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
   }
 }
 
-html,
-body {
-  min-height: 100vh;
-  min-height: 100dvh;
-  font-family: var(--font-poppins);
-  font-size: 1rem;
-  line-height: 1.5;
-  background-color: var(--color-brand-white);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 100px;
+  }
+
+  body {
+    min-height: 100dvh;
+    font-family: var(--font-poppins);
+    font-size: 1rem;
+    line-height: 1.5;
+    background-color: var(--color-brand-white);
+    -webkit-font-smoothing: antialiased;
+  }
 }
 
 @utility scrollbar-hide {
