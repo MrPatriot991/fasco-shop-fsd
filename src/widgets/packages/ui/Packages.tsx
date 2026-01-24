@@ -5,7 +5,7 @@ import peakyBlindersImg from "@/shared/assets/images/bg-packages.png";
 
 export const Packages = () => {
   return (
-    <section className="overflow-hidden pt-16 lg:pt-36">
+    <section id="packages" className="overflow-hidden pt-16 lg:pt-36">
       <div className="relative z-10 bg-surface-muted flex inset-0 lg:min-h-[570px]">
         <div
           className="hidden absolute lg:flex inset-0 bg-surface-neutral"

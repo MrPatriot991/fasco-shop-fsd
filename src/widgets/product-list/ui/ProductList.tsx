@@ -18,8 +18,8 @@ interface Buttons {
 }
 
 const buttons: Buttons[] = [
-  { id: 1, label: "Men’s Fashion" },
-  { id: 2, label: "Women’s Fashion" },
+  { id: 1, label: "Women’s Fashion" },
+  { id: 2, label: "Men’s Fashion" },
   { id: 3, label: "Women Accessories" },
   { id: 4, label: "Men Accessories" },
   { id: 5, label: "Discount Deals" },
@@ -51,7 +51,7 @@ export const ProductList = () => {
   }, [dispatch, status]);
 
   return (
-    <section className="bg-brand-white pt-16 lg:pt-36">
+    <section id="new-arrivals" className="bg-brand-white pt-16 lg:pt-36">
       <Container>
         <div className="flex flex-col items-center space-y-12">
           <h2 className="text-section-title font-volkhov text-brand-dark">New Arrivals</h2>

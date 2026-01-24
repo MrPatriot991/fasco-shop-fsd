@@ -1,4 +1,6 @@
 import { Container } from "@/shared/ui";
+import { FOOTER_NAV } from "@/shared/config";
+import { NavLink } from "react-router-dom";
 
 export const Footer = () => {
   return (
@@ -8,36 +10,14 @@ export const Footer = () => {
           <div className="flex flex-col items-center gap-8 lg:flex-row lg:justify-between">
             <div className="font-volkhov text-4xl text-brand-dark">FASCO</div>
             <ul className="mt-4 grid grid-cols-2 gap-x-8 gap-y-4 text-center text-sm sm:grid-cols-3 lg:mt-0 lg:ml-auto lg:flex">
-              <li>
-                <a href="#" className="text-brand-dark">
-                  Support Center
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-brand-dark">
-                  Invoicing
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-brand-dark">
-                  Contract
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-brand-dark">
-                  Careers
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-brand-dark">
-                  Blog
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-brand-dark">
-                  FAQ,s
-                </a>
-              </li>
+              {FOOTER_NAV.map(({ label, path }, i) => (
+                <li key={i} className="relative group">
+                  <NavLink to={path} className="text-brand-dark">
+                    {label}
+                  </NavLink>
+                  <span className="absolute left-0 border-b-2 border-brand-gray block w-full h-1 -translate-y-1/2 -translate-x-full opacity-0 transition duration-300 group-hover:translate-x-0 group-hover:opacity-100"></span>
+                </li>
+              ))}
             </ul>
           </div>
           <div className=" pt-6 text-center text-sm text-brand-dark">

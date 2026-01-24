@@ -64,7 +64,7 @@ const TimerDisplay = ({ targetDate }: TimerDisplayProp) => {
 
 export const Deals = () => {
   return (
-    <section className="bg-brand-secondary py-16 lg:py-36">
+    <section id="deals" className="bg-brand-secondary py-16 lg:py-36">
       <Container>
         <div className="flex flex-col lg:flex-row gap-20 overflow-hidden">
           <div className="flex flex-col items-center gap-12 lg:w-2/5">
