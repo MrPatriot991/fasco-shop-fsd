@@ -41,9 +41,9 @@ export const ProductList = () => {
     setVisibleCount((prev) => prev + 6);
   };
 
-  const handleCategoryClick= (category: Category) => {
-    dispatch(setCategory(category))
-  }
+  const handleCategoryClick = (category: Category) => {
+    dispatch(setCategory(category));
+  };
 
   useEffect(() => {
     if (status === "idle") {
@@ -63,12 +63,12 @@ export const ProductList = () => {
           <div className="w-full overflow-hidden">
             <div className="flex overflow-x-auto md:justify-between gap-3 md:gap-7 scrollbar-hide">
               {buttons.map((button) => (
-                <Button 
-                  key={button.id} 
-                  variant="secondary" 
+                <Button
+                  key={button.id}
+                  variant="secondary"
                   className="whitespace-nowrap shrink-0"
                   onClick={() => handleCategoryClick(button.category)}
-                  >
+                >
                   {button.label}
                 </Button>
               ))}

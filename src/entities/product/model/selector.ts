@@ -7,7 +7,7 @@ export const selectProductStatus = (state: { products: ProductState }) => state.
 export const selectCurrentCategory = createSelector(
   [selectProductState],
   (state) => state.currentCategory
-)
+);
 
 export const productSelectors = productAdapter.getSelectors(selectProductState);
 
@@ -20,10 +20,9 @@ export const {
 export const selectFilteredProducts = createSelector(
   [selectAllProducts, selectCurrentCategory],
   (products, currentCategory) => {
-
     const all = [...MOCK_PRODUCTS, ...products];
-    
-    if (currentCategory === 'all') return all;
-    return all.filter(p => p.category === currentCategory);
-    }
-)
+
+    if (currentCategory === "all") return all;
+    return all.filter((p) => p.category === currentCategory);
+  }
+);
