@@ -6,4 +6,5 @@ export { Shipping } from "./icons/Shipping";
 export { Support } from "./icons/Support";
 export { AppSlider } from "./AppSlider/AppSlider";
 export { StarRating } from "./StarRating/StarRating";
-export {ErrorBoundary} from "./ErrorBoundary/ErrorBoundary";
+export { Input } from "./Input/Input";
+export { ErrorBoundary } from "./ErrorBoundary/ErrorBoundary";
