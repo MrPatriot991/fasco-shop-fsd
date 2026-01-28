@@ -40,7 +40,7 @@ export const productSlice = createSlice({
   initialState,
   reducers: {
     setCategory: (state, action) => {
-      const result = categorySchema.safeParse(action.payload)
+      const result = categorySchema.safeParse(action.payload);
 
       state.currentCategory = result.success ? result.data : "all";
     },
