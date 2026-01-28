@@ -1,6 +1,6 @@
 import { cn } from "@/shared/lib/utils";
 
-type ContainerSize = "sm" | "md" | "lg" | "xl" | "xxl" | "xxxl" | "full";
+type ContainerSize = "sm" | "md" | "lg" | "xl" | "xxl" | "xxxl" | "4xl" | "full";
 
 interface ContainerProps {
   children: React.ReactNode;
@@ -8,12 +8,13 @@ interface ContainerProps {
 }
 
 const maxWidthMap: Record<string, string> = {
-  sm: "max-w-xl",
-  md: "max-w-3xl",
-  lg: "max-w-5xl",
-  xl: "max-w-7xl",
-  xxl: "max-w-[1320px]",
-  xxxl: "max-w-[1440px]",
+  sm: "w-full max-w-xl",
+  md: "w-full max-w-3xl",
+  lg: "w-full max-w-5xl",
+  xl: "w-full max-w-7xl",
+  xxl: "w-full max-w-[1320px]",
+  xxxl: "w-full max-w-[1440px]",
+  "4xl": "w-full max-w-[1920px]",
   full: "max-w-full",
 };
 
