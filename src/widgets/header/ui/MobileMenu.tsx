@@ -1,6 +1,7 @@
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { LANDING_NAV } from "@/shared/config";
 import { Button } from "@/shared/ui";
+// import { Button } from "@/shared/ui";
 
 interface MobileMenuProps {
   onClose: () => void;
@@ -14,9 +15,9 @@ export const MobileMenu = ({ onClose }: MobileMenuProps) => {
           {LANDING_NAV.map((item) => (
             <li key={item.path} className="py-1 text-brand-dark">
               {item.type === "route" ? (
-                <NavLink to={item.path} className="p-1" onClick={onClose}>
+                <Link to={item.path} className="p-1" onClick={onClose}>
                   {item.label}
-                </NavLink>
+                </Link>
               ) : (
                 <a href={item.path} className="p-1" onClick={onClose}>
                   {item.label}
@@ -26,8 +27,12 @@ export const MobileMenu = ({ onClose }: MobileMenuProps) => {
           ))}
         </ul>
         <div className="flex flex-col gap-4 mt-auto">
-          <Button variant="outline">Sign In</Button>
-          <Button>Sign Up</Button>
+          <Button asChild>
+            <Link to="/sign-in">Sign In</Link>
+          </Button>
+          <Button variant="outline" asChild>
+            <Link to="sign-up">Sign Up</Link>
+          </Button>
         </div>
       </nav>
     </div>

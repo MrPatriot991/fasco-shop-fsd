@@ -1,11 +1,11 @@
 import { Button } from "@/shared/ui";
+import { Container } from "@/shared/ui";
+import { BrandMarquee } from "./BrandMarquee";
 
 import heroImgLeft from "@/shared/assets/images/ban-left.avif";
 import heroImgRight from "@/shared/assets/images/ban-right.avif";
 import heroImgTop from "@/shared/assets/images/ban-top.avif";
 import heroImgBottom from "@/shared/assets/images/ban-bottom.avif";
-import { BrandMarquee } from "./BrandMarquee";
-import { Container } from "@/shared/ui";
 
 export const Hero = () => {
   return (

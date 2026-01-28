@@ -27,12 +27,11 @@ export const CategoryTabs = () => {
 
   return (
     <div className="w-full overflow-hidden">
-      <div className="flex overflow-x-auto md:justify-between gap-3 md:gap-7 scrollbar-hide">
+      <div className="relative z-10 flex overflow-x-auto px-1 py-3 md:justify-between gap-3 md:gap-7 scrollbar-hide">
         {buttons.map((button) => (
           <Button
             key={button.id}
             variant="secondary"
-            className="whitespace-nowrap shrink-0"
             onClick={() => handleCategoryClick(button.category)}
           >
             {button.label}

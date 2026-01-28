@@ -31,23 +31,27 @@ export const Header = () => {
           <nav className="hidden lg:flex ml-auto mr-10">
             <ul className="flex gap-6 lg:gap-12 ">
               {LANDING_NAV.map((item) => (
-                <li key={item.path} className="relative group">
+                <li key={item.path}>
                   {item.type === "route" ? (
-                    <NavLink
-                      to={item.path}
-                      className="hover:text-brand-dark duration-300 transition-colors p-1"
-                    >
-                      {item.label}
+                    <NavLink to={item.path}>
+                      {({ isActive }) => (
+                        <Button
+                          asChild
+                          variant="link"
+                          size="none"
+                          className={
+                            isActive ? "text-brand-black after:scale-x-100 after:origin-left" : ""
+                          }
+                        >
+                          <span>{item.label}</span>
+                        </Button>
+                      )}
                     </NavLink>
                   ) : (
-                    <a
-                      href={item.path}
-                      className="hover:text-brand-dark duration-300 transition-colors p-1"
-                    >
-                      {item.label}
-                    </a>
+                    <Button asChild variant="link" size="none">
+                      <a href={item.path}>{item.label}</a>
+                    </Button>
                   )}
-                  <span className="absolute left-0 border-b-2 border-brand-gray block w-full h-1 -translate-y-1/2 -translate-x-full opacity-0 transition duration-300 group-hover:translate-x-0 group-hover:opacity-100"></span>
                 </li>
               ))}
             </ul>
@@ -55,10 +59,12 @@ export const Header = () => {
 
           {/* Actions */}
           <div className="hidden lg:flex items-center ml-auto mr-6 lg:mr-0 lg:ml-0 gap-6 lg:gap-8">
-            <button className="hover:text-brand-dark duration-300 transition-colors cursor-pointer p-1">
-              Sign In
-            </button>
-            <Button size="md-2">Sign Up</Button>
+            <Button asChild variant="link" size="none">
+              <NavLink to="/sign-in">Sign In</NavLink>
+            </Button>
+            <Button size="md-2" asChild>
+              <NavLink to="sign-up">Sign Up</NavLink>
+            </Button>
           </div>
 
           {/* Mobile/Tablet Controls: Burger Button */}

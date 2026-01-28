@@ -13,7 +13,7 @@ export const HomePage = () => {
     <>
       <Hero />
       <Deals />
-      <NewArrivals/>
+      <NewArrivals />
       <Packages />
       <Benefits />
       <InstagramFeed />

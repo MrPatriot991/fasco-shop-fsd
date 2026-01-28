@@ -1,4 +1,4 @@
-import { Container } from "@/shared/ui";
+import { Container, Button } from "@/shared/ui";
 import { FOOTER_NAV } from "@/shared/config";
 import { NavLink } from "react-router-dom";
 
@@ -11,11 +11,10 @@ export const Footer = () => {
             <div className="font-volkhov text-4xl text-brand-dark">FASCO</div>
             <ul className="mt-4 grid grid-cols-2 gap-x-8 gap-y-4 text-center text-sm sm:grid-cols-3 lg:mt-0 lg:ml-auto lg:flex">
               {FOOTER_NAV.map(({ label, path }, i) => (
-                <li key={i} className="relative group">
-                  <NavLink to={path} className="text-brand-dark">
-                    {label}
-                  </NavLink>
-                  <span className="absolute left-0 border-b-2 border-brand-gray block w-full h-1 -translate-y-1/2 -translate-x-full opacity-0 transition duration-300 group-hover:translate-x-0 group-hover:opacity-100"></span>
+                <li key={i} className="">
+                  <Button asChild variant="link" size="none">
+                    <NavLink to={path}>{label}</NavLink>
+                  </Button>
                 </li>
               ))}
             </ul>
