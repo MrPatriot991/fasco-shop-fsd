@@ -13,7 +13,7 @@ const buttonVariants = cva(
         secondary:
           "bg-brand-secondary text-brand-dark border border-brand-surface hover:bg-brand-black hover:text-brand-white hover:shadow-brand-secondary/20 shadow-lg",
         outline:
-          "border-2 border-brand-blue bg-transparent text-brand-blue hover:bg-brand-blue hover:text-brand-white shadow-lg",
+          "border-2 border-brand-blue/70 bg-transparent text-brand-blue hover:bg-brand-blue hover:text-brand-white shadow-lg",
         link: cn(
           "relative p-0 h-auto text-brand-dark transition-colors duration-300",
           "after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-px after:w-full after:origin-right after:scale-x-0 after:bg-brand-dark after:transition-transform after:duration-300",

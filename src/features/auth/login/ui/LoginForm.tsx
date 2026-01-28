@@ -35,11 +35,11 @@ export const LoginForm = () => {
           error={errors.password?.message}
         />
       </div>
-      <div className="flex flex-col items-center max-w-[575px] w-full gap-5">
-        <Button type="submit" size="xl-2">
+      <div className="flex flex-col w-full gap-5">
+        <Button type="submit" size="widthFull">
           Sign In
         </Button>
-        <Button asChild type="button" size="xl-2" variant="outline">
+        <Button asChild type="button" size="widthFull" variant="outline">
           <NavLink to="/sign-up">Register Now</NavLink>
         </Button>
         <Button asChild variant="link" size="none" className="self-end text-brand-blue">

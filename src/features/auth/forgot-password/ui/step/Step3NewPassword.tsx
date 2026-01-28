@@ -21,7 +21,7 @@ export const Step3NewPassword = ({ onSubmit }: Props) => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-11">
-        <h2 className="text-3xl font-volkhov">Enter Your New Password</h2>
+      <h2 className="text-3xl font-volkhov">Enter Your New Password</h2>
 
       <div>
         <Input
