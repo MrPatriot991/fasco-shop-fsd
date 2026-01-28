@@ -1,7 +1,8 @@
 import { z } from "zod";
+import { emailRule } from "@/shared/lib/validation";
 
 export const subscribeSchema = z.object({
-  email: z.string().email("Please enter a valide email address"),
+  email: emailRule,
 });
 
 export type SubscribeSchema = z.infer<typeof subscribeSchema>;
