@@ -1,8 +1,13 @@
-import { Container, Button } from "@/shared/ui";
-import { FOOTER_NAV } from "@/shared/config";
 import { NavLink } from "react-router-dom";
+import { Container, Button } from "@/shared/ui";
+import { FOOTER_NAV, AUTH_NAV } from "@/shared/config";
+import { useAppSelector } from "@/shared/lib/hooks";
+import { selectIsAuthenticated } from "@/features/auth/model";
 
 export const Footer = () => {
+  const isAuth = useAppSelector(selectIsAuthenticated);
+  const navItems = isAuth ? AUTH_NAV : FOOTER_NAV;
+
   return (
     <footer className="bg-brand-white py-10">
       <Container>
@@ -10,7 +15,7 @@ export const Footer = () => {
           <div className="flex flex-col items-center gap-8 lg:flex-row lg:justify-between">
             <div className="font-volkhov text-4xl text-brand-dark">FASCO</div>
             <ul className="mt-4 grid grid-cols-2 gap-x-8 gap-y-4 text-center text-sm sm:grid-cols-3 lg:mt-0 lg:ml-auto lg:flex">
-              {FOOTER_NAV.map(({ label, path }, i) => (
+              {navItems.map(({ label, path }, i) => (
                 <li key={i} className="">
                   <Button asChild variant="link" size="none">
                     <NavLink to={path}>{label}</NavLink>
