@@ -1,6 +1,8 @@
 import { useLocation } from "react-router-dom";
 import { Button } from "@/shared/ui";
-import { LoginForm, RegistrForm, ForgotPasswordForm } from "@/features/auth";
+import { LoginForm } from "@/features/auth/login";
+import { RegistrForm } from "@/features/auth/register";
+import { ForgotPasswordForm } from "@/features/auth/forgot-password";
 import { GoogleIcon } from "@/shared/ui/icons/GoogleIcon";
 import { GmailIcon } from "@/shared/ui/icons/GmailIcon";
 
