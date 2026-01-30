@@ -1,8 +1,10 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useAppDispatch } from "@/shared/lib/hooks";
 import { loginSchema, type LoginSchema } from "@/features/auth/login/model/loginSchema";
 import { Button, Input } from "@/shared/ui";
+import { setCredentials } from "../../model/authSlice";
 
 export const LoginForm = () => {
   const {
@@ -12,9 +14,13 @@ export const LoginForm = () => {
   } = useForm<LoginSchema>({
     resolver: zodResolver(loginSchema),
   });
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   const onSubmit = (data: LoginSchema) => {
     console.log("Dfta sending", data);
+    dispatch(setCredentials());
+    navigate("/shop");
   };
 
   return (
