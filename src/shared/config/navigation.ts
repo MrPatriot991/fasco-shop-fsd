@@ -29,7 +29,7 @@ export const LANDING_NAV: NavigationItem[] = [
 export const AUTH_NAV: NavigationItem[] = [
   { label: "Home", path: "/", type: "route" },
   { label: "Shop", path: "/shop", type: "route" },
-  { label: "Products", path: "/products", type: "route" },
+  { label: "Products", path: "/product", type: "route" },
   { label: "Pages", path: "/pages", type: "route" },
 ];
 
