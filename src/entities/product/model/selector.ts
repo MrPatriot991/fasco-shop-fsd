@@ -26,3 +26,8 @@ export const selectFilteredProducts = createSelector(
     return all.filter((p) => p.category === currentCategory);
   }
 );
+
+export const selectAllCombinedProducts = createSelector(
+  [productSelectors.selectAll],
+  (products) => [...MOCK_PRODUCTS, ...products]
+);
