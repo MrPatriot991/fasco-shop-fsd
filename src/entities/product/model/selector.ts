@@ -20,14 +20,21 @@ export const {
 export const selectFilteredProducts = createSelector(
   [selectAllProducts, selectCurrentCategory],
   (products, currentCategory) => {
-    const all = [...MOCK_PRODUCTS, ...products];
+    if (currentCategory === "all") return products;
 
-    if (currentCategory === "all") return all;
-    return all.filter((p) => p.category === currentCategory);
+    if (currentCategory === "discount-deals") {
+      return products.filter((p) => p.isDiscount);
+    }
+
+    return products.filter((p) => p.category === currentCategory);
   }
 );
 
 export const selectAllCombinedProducts = createSelector(
   [productSelectors.selectAll],
   (products) => [...MOCK_PRODUCTS, ...products]
+);
+
+export const selectOnlyDeals = createSelector([productSelectors.selectAll], (products) =>
+  products.filter((p) => p.isDiscount)
 );

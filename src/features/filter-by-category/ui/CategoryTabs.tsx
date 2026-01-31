@@ -15,7 +15,7 @@ const buttons: Buttons[] = [
   { id: 2, label: "Men’s Fashion", category: "men's clothing" },
   { id: 3, label: "Women Accessories", category: "jewelery" },
   { id: 4, label: "Men Accessories", category: "electronics" },
-  { id: 5, label: "Discount Deals", category: "all" },
+  { id: 5, label: "Discount Deals", category: "discount-deals" },
 ];
 
 export const CategoryTabs = () => {
