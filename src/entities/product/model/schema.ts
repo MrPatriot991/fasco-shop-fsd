@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { SIZES, CATEGORY, COLLECTIONS, TAGS } from "@/shared/lib/constants";
 
 export const rawProductSchema = z.object({
   id: z.number(),
@@ -6,13 +7,8 @@ export const rawProductSchema = z.object({
   price: z.number(),
   description: z.string(),
   category: z.string(),
-  image: z.string().url(),
-  rating: z
-    .object({
-      rate: z.number(),
-      count: z.number(),
-    })
-    .optional(),
+  image: z.string(),
+  isDiscount: z.boolean().optional(),
 });
 
 export const productSchema = rawProductSchema.extend({
@@ -20,17 +16,17 @@ export const productSchema = rawProductSchema.extend({
     rate: z.number(),
     count: z.number(),
   }),
-  size: z.array(z.enum(["s", "m", "l", "xl"])).catch(["s", "m", "l"]),
-  brand: z.string().catch("Generic Brand"),
+  size: z.array(z.enum(SIZES)),
+  brand: z.string(),
+  colors: z.array(z.string()),
+  collection: z.array(z.enum(COLLECTIONS)),
+  tags: z.array(z.enum(TAGS)),
+  isDiscount: z.boolean(),
+  isSoldOut: z.boolean(),
+  isAlmostSoldOut: z.boolean(),
 });
 
-export const categorySchema = z.enum([
-  "all",
-  "men's clothing",
-  "women's clothing",
-  "jewelery",
-  "electronics",
-]);
+export const categorySchema = z.enum(CATEGORY);
 
 export type RawProduct = z.infer<typeof rawProductSchema>;
 export type Product = z.infer<typeof productSchema>;
