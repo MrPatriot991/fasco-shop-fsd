@@ -9,7 +9,8 @@ import type { EmblaOptionsType, EmblaCarouselType } from "embla-carousel";
 type SlideSize = "sm" | "md" | "lg" | "xl" | "full";
 type Direction = "forward" | "backward";
 
-interface BaseSlide {
+export interface BaseSlide {
+  id: string | number;
   image?: string;
   title?: string;
 }

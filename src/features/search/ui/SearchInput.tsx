@@ -3,7 +3,7 @@ import { X, Search } from "lucide-react";
 import { cn } from "@/shared/lib/utils";
 import { useDebounce } from "@/shared/lib/hooks";
 import { useAppSelector } from "@/shared/lib/hooks";
-import { selectAllCombinedProducts } from "@/entities/product";
+import { selectAllProducts } from "@/entities/product";
 import { Input, Button } from "@/shared/ui";
 import { QuickResults } from "./QuickResults";
 
@@ -15,7 +15,7 @@ interface SearchInputProps {
 export const SearchInput = ({ variant = "header", onClose }: SearchInputProps) => {
   const [query, setQuery] = useState("");
   const debounceQuery = useDebounce(query, 300);
-  const products = useAppSelector(selectAllCombinedProducts);
+  const products = useAppSelector(selectAllProducts);
 
   const filterProducts = useMemo(() => {
     if (debounceQuery.length < 3) return [];

@@ -1,18 +1,19 @@
 import { Container } from "@/shared/ui/Container/Container";
 import { AppSlider, StarRating } from "@/shared/ui";
 import type { EmblaOptionsType } from "embla-carousel";
+import type { BaseSlide } from "@/shared/ui/AppSlider/AppSlider";
 
 import avatarReview1 from "@/shared/assets/images/reviews-img-1.jpg";
 import avatarReview2 from "@/shared/assets/images/reviews-img-2.jpg";
 import avatarReview3 from "@/shared/assets/images/reviews-img-3.jpg";
 
-interface ReviewSlider {
+interface ReviewSlider extends BaseSlide {
   id: number;
   userName: string;
   userRole: string;
   comment: string;
   rating: number;
-  src: string;
+  image: string;
   alt: string;
 }
 
@@ -26,7 +27,7 @@ const reviewsData: ReviewSlider[] = [
     comment:
       "You won't regret it. I would like to personally thank you for your outstanding product. Absolutely wonderful!",
     rating: 5,
-    src: avatarReview1,
+    image: avatarReview1,
     alt: "User comment 1",
   },
   {
@@ -36,7 +37,7 @@ const reviewsData: ReviewSlider[] = [
     comment:
       "Items That I ordered were the best investment I ever made. I can't say enough about your quality service.",
     rating: 4,
-    src: avatarReview2,
+    image: avatarReview2,
     alt: "User comment 2",
   },
   {
@@ -46,7 +47,7 @@ const reviewsData: ReviewSlider[] = [
     comment:
       "Just what I was looking for. Thank you for making it painless, pleasant and most of all hassle free! All products are great.",
     rating: 3,
-    src: avatarReview3,
+    image: avatarReview3,
     alt: "User comment 3",
   },
 ];
@@ -79,7 +80,7 @@ export const Reviews = () => {
                 className="embla__slide-img p-6 md:p-10 rounded-xl shadow-around flex flex-col lg:flex-row gap-6 lg:gap-16 max-w-[750px]"
               >
                 <div className="shrink-0 w-full h-40 lg:w-60 lg:h-60">
-                  <img src={slide.src} alt={slide.alt} className="h-full w-full object-cover" />
+                  <img src={slide.image} alt={slide.title} className="h-full w-full object-cover" />
                 </div>
 
                 <div className="flex flex-col gap-4">

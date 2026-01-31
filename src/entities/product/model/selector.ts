@@ -1,6 +1,5 @@
 import { createSelector } from "@reduxjs/toolkit";
 import { productAdapter, type ProductState } from "./slice";
-import { MOCK_PRODUCTS } from "./moks";
 
 export const selectProductState = (state: { products: ProductState }) => state.products;
 export const selectProductStatus = (state: { products: ProductState }) => state.products.status;
@@ -28,11 +27,6 @@ export const selectFilteredProducts = createSelector(
 
     return products.filter((p) => p.category === currentCategory);
   }
-);
-
-export const selectAllCombinedProducts = createSelector(
-  [productSelectors.selectAll],
-  (products) => [...MOCK_PRODUCTS, ...products]
 );
 
 export const selectOnlyDeals = createSelector([productSelectors.selectAll], (products) =>
