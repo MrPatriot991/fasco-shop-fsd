@@ -1,8 +1,9 @@
 import { createSlice, createEntityAdapter, createAsyncThunk } from "@reduxjs/toolkit";
 import { z } from "zod";
 import { baseApi } from "@/shared/api";
-import { mapProduct } from "../lib/mapProduct";
+import { mapProduct } from "@/entities/product/lib/mapProduct";
 import { categorySchema, productSchema, type Product, type RawProduct } from "./schema";
+import { MOCK_PRODUCTS } from "./moks";
 import type { ProductStatus } from "./types";
 
 export const productAdapter = createEntityAdapter<Product>({});
@@ -13,14 +14,17 @@ export const fetchProducts = createAsyncThunk<Product[], void, { rejectValue: st
     try {
       const response = await baseApi.get<RawProduct[]>("/products");
 
-      const validated = response.data.map((item) => {
-        const enhancedItem = mapProduct(item);
-        return productSchema.safeParse(enhancedItem);
-      });
+      const allRawData = [...MOCK_PRODUCTS, ...response.data];
 
-      return validated
-        .filter((result): result is z.ZodSafeParseSuccess<Product> => result.success)
-        .map((result) => result.data);
+      const products = allRawData.map(mapProduct);
+      const result = z.array(productSchema).safeParse(products);
+
+      if (!result.success) {
+        console.error("Validation error:", result.error);
+        return rejectWithValue("Data validation failed");
+      }
+
+      return result.data;
     } catch {
       return rejectWithValue("Network or Server error");
     }
