@@ -11,18 +11,18 @@ import instImg6 from "@/shared/assets/images/inst-img-6.jpg";
 import instImg7 from "@/shared/assets/images/inst-img-7.jpg";
 
 interface Instagram {
-  src: string;
+  image: string;
   alt: string;
 }
 
 const instSlides: Instagram[] = [
-  { src: instImg1, alt: "Happy subscriber in FASCO total look 1" },
-  { src: instImg2, alt: "Happy subscriber in FASCO total look 2" },
-  { src: instImg3, alt: "Happy subscriber in FASCO total look 3" },
-  { src: instImg4, alt: "Happy subscriber in FASCO total look 4" },
-  { src: instImg5, alt: "Happy subscriber in FASCO total look 5" },
-  { src: instImg6, alt: "Happy subscriber in FASCO total look 6" },
-  { src: instImg7, alt: "Happy subscriber in FASCO total look 7" },
+  { image: instImg1, alt: "Happy subscriber in FASCO total look 1" },
+  { image: instImg2, alt: "Happy subscriber in FASCO total look 2" },
+  { image: instImg3, alt: "Happy subscriber in FASCO total look 3" },
+  { image: instImg4, alt: "Happy subscriber in FASCO total look 4" },
+  { image: instImg5, alt: "Happy subscriber in FASCO total look 5" },
+  { image: instImg6, alt: "Happy subscriber in FASCO total look 6" },
+  { image: instImg7, alt: "Happy subscriber in FASCO total look 7" },
 ];
 
 const OPTIONS: EmblaOptionsType = { loop: true, align: "center" };

@@ -1,35 +1,17 @@
 import { Button, Container } from "@/shared/ui";
-import { useTimer } from "@/shared/lib/hooks";
+import { useAppSelector, useTimer } from "@/shared/lib/hooks";
 import { AppSlider } from "@/shared/ui";
+import { selectOnlyDeals } from "@/entities/product";
 import type { EmblaOptionsType } from "embla-carousel";
-
-import imgSale1 from "@/shared/assets/images/sl-sale-1.webp";
-import imgSale2 from "@/shared/assets/images/sl-sale-2.webp";
-import imgSale3 from "@/shared/assets/images/sl-sale-3.webp";
-import imgSale4 from "@/shared/assets/images/sl-sale-4.webp";
-import imgSale5 from "@/shared/assets/images/sl-sale-5.webp";
 
 interface TimerDisplayProp {
   targetDate: string;
-}
-
-interface Slides {
-  src: string;
-  alt: string;
 }
 
 interface Items {
   label: string;
   value: number;
 }
-
-const slides: Slides[] = [
-  { src: imgSale1, alt: "Deal sale 1" },
-  { src: imgSale2, alt: "Deal sale 2" },
-  { src: imgSale3, alt: "Deal sale 3" },
-  { src: imgSale4, alt: "Deal sale 4" },
-  { src: imgSale5, alt: "Deal sale 5" },
-];
 
 const OPTIONS: EmblaOptionsType = { loop: true, align: "center" };
 
@@ -63,6 +45,8 @@ const TimerDisplay = ({ targetDate }: TimerDisplayProp) => {
 };
 
 export const Deals = () => {
+  const discountDeals = useAppSelector(selectOnlyDeals);
+
   return (
     <section id="deals" className="bg-brand-secondary py-16 lg:py-36">
       <Container>
@@ -84,7 +68,7 @@ export const Deals = () => {
             </div>
           </div>
           <AppSlider
-            slides={slides}
+            slides={discountDeals}
             options={OPTIONS}
             showButtons
             height="36rem"

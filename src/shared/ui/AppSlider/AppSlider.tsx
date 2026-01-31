@@ -9,19 +9,13 @@ import type { EmblaOptionsType, EmblaCarouselType } from "embla-carousel";
 type SlideSize = "sm" | "md" | "lg" | "xl" | "full";
 type Direction = "forward" | "backward";
 
-interface Slide {
-  id?: number;
-  src?: string;
-  alt?: string;
-  userName?: string;
-  userRole?: string;
-  comment?: string;
-  rating?: number;
-  avatar?: string;
+interface BaseSlide {
+  image?: string;
+  title?: string;
 }
 
-type PropType = {
-  slides: Slide[];
+type PropType<T> = {
+  slides: T[];
   options?: EmblaOptionsType;
   autoScroll?: {
     speed?: number;
@@ -36,7 +30,7 @@ type PropType = {
   showButtons?: boolean;
   className?: string;
   imageClassName?: string;
-  children?: (slide: Slide, index: number) => React.ReactNode;
+  children?: (slide: T, index: number) => React.ReactNode;
 };
 
 const maxWidthMap: Record<string, string> = {
@@ -47,7 +41,7 @@ const maxWidthMap: Record<string, string> = {
   full: "max-w-full",
 };
 
-export const AppSlider = ({
+export const AppSlider = <T extends BaseSlide>({
   slides,
   options,
   autoScroll,
@@ -59,7 +53,7 @@ export const AppSlider = ({
   imageClassName,
   className,
   children,
-}: PropType) => {
+}: PropType<T>) => {
   const plugins = useMemo(() => {
     if (!autoScroll) return [];
     return [
@@ -127,7 +121,7 @@ export const AppSlider = ({
   const sliderStyle = {
     "--slide-height": height,
     "--slide-spacing": spacing,
-    "--slide-size-mob": typeof sliderSize === "object" ? sliderSize.mobile : "55%",
+    "--slide-size-mob": typeof sliderSize === "object" ? sliderSize.mobile : "70%",
     "--slide-size-desk": typeof sliderSize === "object" ? sliderSize.desktop : sliderSize,
   } as CSSProperties;
 
@@ -146,8 +140,8 @@ export const AppSlider = ({
                 children(slide, index)
               ) : (
                 <img
-                  src={slide.src}
-                  alt={slide.alt}
+                  src={slide.image}
+                  alt={slide.title}
                   className={cn(
                     "embla__slide-img w-full h-(--slide-height) object-cover select-none",
                     imageClassName
