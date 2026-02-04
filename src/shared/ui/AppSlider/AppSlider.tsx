@@ -11,7 +11,7 @@ type Direction = "forward" | "backward";
 
 export interface BaseSlide {
   id: string | number;
-  image?: string;
+  image: string;
   title?: string;
 }
 
@@ -144,8 +144,11 @@ export const AppSlider = <T extends BaseSlide>({
                   src={slide.image}
                   alt={slide.title}
                   className={cn(
-                    "embla__slide-img w-full h-(--slide-height) object-cover select-none",
-                    imageClassName
+                    "embla__slide-img w-full h-(--slide-height)",
+                    imageClassName,
+                    slide.image.includes("https://fakestoreapi.com")
+                      ? "object-contain object-center"
+                      : "object-cover object-top"
                   )}
                   loading="lazy"
                 />

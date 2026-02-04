@@ -4,10 +4,13 @@ import { Button, Container, ErrorBoundary } from "@/shared/ui";
 import { ProductList } from "@/entities/product";
 import { CatalogHeader } from "./CatalogHeader";
 import { FilterSidebar } from "@/features/filter-products/ui/FilterSidebar";
-import { useLockBodyScroll } from "@/shared/lib/hooks";
+import { useAppSelector, useLockBodyScroll } from "@/shared/lib/hooks";
+import { selectFilterState } from "@/features/filter-products";
 
 export const ProductCatalog = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const activeFilters = useAppSelector(selectFilterState);
+  const filterKey = JSON.stringify(activeFilters);
 
   useLockBodyScroll(isOpen);
 
@@ -64,7 +67,7 @@ export const ProductCatalog = () => {
                 <CatalogHeader />
               </div>
               <ErrorBoundary>
-                <ProductList />
+                <ProductList key={filterKey} mode="shop" />
               </ErrorBoundary>
             </div>
           </div>
