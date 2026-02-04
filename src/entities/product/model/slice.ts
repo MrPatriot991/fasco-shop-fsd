@@ -2,7 +2,7 @@ import { createSlice, createEntityAdapter, createAsyncThunk } from "@reduxjs/too
 import { z } from "zod";
 import { baseApi } from "@/shared/api";
 import { mapProduct } from "@/entities/product/lib/mapProduct";
-import { categorySchema, productSchema, type Product, type RawProduct } from "./schema";
+import { productSchema, type Product, type RawProduct } from "./schema";
 import { MOCK_PRODUCTS } from "./moks";
 import type { ProductStatus } from "./types";
 
@@ -34,7 +34,6 @@ export const fetchProducts = createAsyncThunk<Product[], void, { rejectValue: st
 const initialState = productAdapter.getInitialState<ProductStatus>({
   status: "idle",
   error: null,
-  currentCategory: "all",
 });
 
 export type ProductState = typeof initialState;
@@ -42,13 +41,7 @@ export type ProductState = typeof initialState;
 export const productSlice = createSlice({
   name: "products",
   initialState,
-  reducers: {
-    setCategory: (state, action) => {
-      const result = categorySchema.safeParse(action.payload);
-
-      state.currentCategory = result.success ? result.data : "all";
-    },
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(fetchProducts.pending, (state) => {
@@ -66,5 +59,4 @@ export const productSlice = createSlice({
   },
 });
 
-export const { setCategory } = productSlice.actions;
 export default productSlice.reducer;

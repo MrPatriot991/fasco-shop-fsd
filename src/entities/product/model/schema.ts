@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { SIZES, CATEGORY, COLLECTIONS, TAGS } from "@/shared/lib/constants";
+import { SIZES, COLLECTIONS, TAGS } from "@/shared/lib/constants";
 
 export const rawProductSchema = z.object({
   id: z.number(),
@@ -26,8 +26,5 @@ export const productSchema = rawProductSchema.extend({
   isAlmostSoldOut: z.boolean(),
 });
 
-export const categorySchema = z.enum(CATEGORY);
-
 export type RawProduct = z.infer<typeof rawProductSchema>;
 export type Product = z.infer<typeof productSchema>;
-export type Category = z.infer<typeof categorySchema>;

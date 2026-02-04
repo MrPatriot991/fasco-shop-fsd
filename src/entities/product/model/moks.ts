@@ -36,6 +36,7 @@ export const MOCK_PRODUCTS: RawProduct[] = [
     image: img3,
     category: "women's clothing",
     description: "Original design from FASCO layout",
+    isDiscount: false,
   },
   {
     id: 9994,
@@ -60,6 +61,7 @@ export const MOCK_PRODUCTS: RawProduct[] = [
     image: img6,
     category: "women's clothing",
     description: "Original design from FASCO layout",
+    isDiscount: false,
   },
   {
     id: 9997,
