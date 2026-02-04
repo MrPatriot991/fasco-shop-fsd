@@ -38,6 +38,7 @@
 
 @layer base {
   html {
+    height: 100%;
     scroll-behavior: smooth;
     scroll-padding-top: 100px;
   }
@@ -58,4 +59,28 @@
   }
   -ms-overflow-style: none;
   scrollbar-width: none;
+}
+
+@layer utilities {
+  .scrollbar-fashion::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  .scrollbar-fashion::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .scrollbar-fashion::-webkit-scrollbar-thumb {
+    background: var(--color-brand-surface);
+    border-radius: 10px;
+  }
+
+  .scrollbar-fashion::-webkit-scrollbar-thumb:hover {
+    background: var(--color-brand-black);
+  }
+
+  .scrollbar-fashion {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-brand-surface) transparent;
+  }
 }

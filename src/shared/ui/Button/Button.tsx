@@ -21,9 +21,12 @@ const buttonVariants = cva(
         ),
         ghost:
           "bg-transparent text-brand-dark hover:bg-surface-muted active:bg-surface-muted hover:text-brand-black",
+        surface:
+          "border border-gray-200 bg-white text-brand-dark hover:border-brand-black hover:text-brand-black shadow-sm",
+        active: "bg-brand-black text-brand-white border border-brand-black shadow-md",
       },
       size: {
-        none: "p-1 h-auto",
+        none: "",
         xs: "min-w-4 h-4 p-1",
         sm: "min-w-10 h-10 p-2",
         "md-1": "min-w-14 h-14 px-4 py-3",

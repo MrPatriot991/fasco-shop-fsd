@@ -2,6 +2,7 @@ import { formatCurrency } from "@/shared/lib/format";
 import { StarRating } from "@/shared/ui";
 import { calculateDiscount } from "@/shared/lib/utils/calculateDiscount";
 import type { Product } from "@/entities/product/model/schema";
+import { cn } from "@/shared/lib/utils";
 
 export const ProductCard = ({ product }: { product: Product }) => {
   const { title, brand, price, image, rating, isDiscount, isSoldOut, isAlmostSoldOut } = product;
@@ -13,7 +14,12 @@ export const ProductCard = ({ product }: { product: Product }) => {
         <img
           src={image}
           alt={title}
-          className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-110"
+          className={cn(
+            "w-full h-full",
+            image.includes("https://fakestoreapi.com")
+              ? "object-contain object-center"
+              : "object-cover object-top"
+          )}
         />
 
         {isDiscount && discountPercent > 0 && (
