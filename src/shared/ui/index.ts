@@ -8,3 +8,4 @@ export { AppSlider } from "./AppSlider/AppSlider";
 export { StarRating } from "./StarRating/StarRating";
 export { Input } from "./Input/Input";
 export { ErrorBoundary } from "./ErrorBoundary/ErrorBoundary";
+export { Pagination } from "./pagination/Pagination";

@@ -1,8 +1,9 @@
-import { setCategory } from "@/entities/product";
-import { useAppDispatch } from "@/shared/lib/hooks";
+import { setCategory } from "@/features/filter-products/model/filterSlice";
+import { selectCategoryFilter } from "@/features/filter-products";
+import { useAppDispatch, useAppSelector } from "@/shared/lib/hooks";
 import { Button } from "@/shared/ui";
 
-import type { Category } from "@/entities/product";
+import type { Category } from "@/shared/lib/constants";
 
 interface Buttons {
   id: number;
@@ -20,6 +21,7 @@ const buttons: Buttons[] = [
 
 export const CategoryTabs = () => {
   const dispatch = useAppDispatch();
+  const activeCategory = useAppSelector(selectCategoryFilter);
 
   const handleCategoryClick = (category: Category) => {
     dispatch(setCategory(category));
@@ -28,15 +30,19 @@ export const CategoryTabs = () => {
   return (
     <div className="w-full overflow-hidden">
       <div className="relative z-10 flex overflow-x-auto px-1 py-3 md:justify-between gap-3 md:gap-7 scrollbar-hide">
-        {buttons.map((button) => (
-          <Button
-            key={button.id}
-            variant="secondary"
-            onClick={() => handleCategoryClick(button.category)}
-          >
-            {button.label}
-          </Button>
-        ))}
+        {buttons.map((button) => {
+          const isActive = activeCategory === button.category;
+
+          return (
+            <Button
+              key={button.id}
+              variant={isActive ? "primary" : "secondary"}
+              onClick={() => handleCategoryClick(button.category)}
+            >
+              {button.label}
+            </Button>
+          );
+        })}
       </div>
     </div>
   );
