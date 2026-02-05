@@ -21,7 +21,7 @@ const initialState: ActiveFilter = {
   brands: [],
   collection: "All products",
   tags: [],
-  currentCategory: "women's clothing",
+  currentCategory: "all",
 };
 
 export const filterSlice = createSlice({

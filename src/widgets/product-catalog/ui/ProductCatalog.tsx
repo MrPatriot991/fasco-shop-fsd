@@ -1,18 +1,26 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ChevronRight, SlidersHorizontal, X } from "lucide-react";
 import { Button, Container, ErrorBoundary } from "@/shared/ui";
 import { ProductList } from "@/entities/product";
 import { CatalogHeader } from "./CatalogHeader";
 import { FilterSidebar } from "@/features/filter-products/ui/FilterSidebar";
-import { useAppSelector, useLockBodyScroll } from "@/shared/lib/hooks";
+import { useAppDispatch, useAppSelector, useLockBodyScroll } from "@/shared/lib/hooks";
 import { selectFilterState } from "@/features/filter-products";
+import { resetFilters, setCategory } from "@/features/filter-products/model/filterSlice";
 
 export const ProductCatalog = () => {
   const [isOpen, setIsOpen] = useState(false);
   const activeFilters = useAppSelector(selectFilterState);
   const filterKey = JSON.stringify(activeFilters);
+  const dispatch = useAppDispatch();
 
   useLockBodyScroll(isOpen);
+
+  useEffect(() => {
+    dispatch(setCategory("all"));
+    dispatch(resetFilters());
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [dispatch]);
 
   return (
     <section className="bg-brand-white py-10">

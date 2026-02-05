@@ -17,7 +17,7 @@ export const selectFilteredProducts = createSelector(
   (products, filter) => {
     return products.filter((product) => {
       const matchesCategory =
-        filter.currentCategory === "women's clothing" ||
+        filter.currentCategory === "all" ||
         (filter.currentCategory === "discount-deals"
           ? product.isDiscount
           : product.category === filter.currentCategory);

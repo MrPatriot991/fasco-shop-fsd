@@ -14,6 +14,7 @@ export const MOCK_COLORS = Object.keys(COLOR_MAP) as Array<keyof typeof COLOR_MA
 export const MOCK_BRANDS = ["FASCO", "Zara", "Gucci", "Nike", "Prada"] as const;
 export const COLLECTIONS = ["All products", "best-sellers", "new-arrivals", "accessories"] as const;
 export const CATEGORY = [
+  "all",
   "men's clothing",
   "women's clothing",
   "jewelery",
