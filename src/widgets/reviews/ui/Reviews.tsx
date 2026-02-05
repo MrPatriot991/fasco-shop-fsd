@@ -1,7 +1,7 @@
-import { Container } from "@/shared/ui/Container/Container";
+import { Container } from "@/shared/ui/container/Container";
 import { AppSlider, StarRating } from "@/shared/ui";
 import type { EmblaOptionsType } from "embla-carousel";
-import type { BaseSlide } from "@/shared/ui/AppSlider/AppSlider";
+import type { BaseSlide } from "@/shared/ui/appSlider/AppSlider";
 
 import avatarReview1 from "@/shared/assets/images/reviews-img-1.jpg";
 import avatarReview2 from "@/shared/assets/images/reviews-img-2.jpg";
