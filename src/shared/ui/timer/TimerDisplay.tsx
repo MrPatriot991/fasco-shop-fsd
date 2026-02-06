@@ -20,9 +20,9 @@ export const TimerDisplay = ({ targetDate, variant = "boxed", className }: Timer
 
   if (variant === "minimal") {
     return (
-      <div className={cn("flex items-center gap-4 font-medium text-2xl", className)}>
+      <div className={cn("flex items-center gap-2 font-medium text-lg md:text-2xl", className)}>
         {items.map(({ label, value }, i) => (
-          <div key={label} className="flex items-center gap-4">
+          <div key={label} className="flex items-center gap-2">
             <span className="size-8">{pad(value)}</span>
             {i !== items.length - 1 && <span className="opacity-50">:</span>}
           </div>
