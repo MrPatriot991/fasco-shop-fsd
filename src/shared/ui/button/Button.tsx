@@ -4,7 +4,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/shared/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap transition-[colors_shadow] duration-300 active:scale-[0.97] disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-6 [&_svg]:shrink-0 cursor-pointer rounded-xl",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap transition-[colors_shadow] duration-300 active:scale-[0.97] disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-6 [&_svg]:shrink-0 cursor-pointer rounded-xl transition-colors duration-300",
   {
     variants: {
       variant: {
@@ -12,10 +12,12 @@ const buttonVariants = cva(
           "bg-brand-black text-brand-white hover:bg-brand-dark hover:shadow-brand-black/20 shadow-lg",
         secondary:
           "bg-brand-secondary text-brand-dark border border-brand-surface hover:bg-brand-black hover:text-brand-white hover:shadow-brand-secondary/20 shadow-lg",
-        outline:
+        outlineDark:
+          "border-2 border-brand-black bg-transparent text-brand-black hover:bg-brand-black hover:text-brand-white ",
+        outlineBlue:
           "border-2 border-brand-blue/70 bg-transparent text-brand-blue hover:bg-brand-blue hover:text-brand-white shadow-lg",
         link: cn(
-          "relative p-0 h-auto text-brand-dark transition-colors duration-300",
+          "relative p-0 h-auto text-brand-dark",
           "after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-px after:w-full after:origin-right after:scale-x-0 after:bg-brand-dark after:transition-transform after:duration-300",
           "hover:text-brand-black hover:after:origin-left hover:after:scale-x-100"
         ),

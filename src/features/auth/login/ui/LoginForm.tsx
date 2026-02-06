@@ -45,7 +45,7 @@ export const LoginForm = () => {
         <Button type="submit" size="widthFull">
           Sign In
         </Button>
-        <Button asChild type="button" size="widthFull" variant="outline">
+        <Button asChild type="button" size="widthFull" variant="outlineBlue">
           <NavLink to="/sign-up">Register Now</NavLink>
         </Button>
         <Button asChild variant="link" size="none" className="self-end text-brand-blue">

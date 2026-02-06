@@ -23,10 +23,10 @@ export const AuthPage = () => {
             <h2 className="text-3xl self-start font-volkhov ">{title}</h2>
             <div className="flex flex-col items-center justify-center gap-8 md:gap-16">
               <div className="flex items-center flex-wrap  w-full gap-4">
-                <Button variant="outline">
+                <Button variant="outlineBlue">
                   <GoogleIcon /> Sign up with Google
                 </Button>
-                <Button variant="outline">
+                <Button variant="outlineBlue">
                   <GmailIcon /> Sign up with Email
                 </Button>
               </div>

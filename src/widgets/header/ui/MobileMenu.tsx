@@ -59,7 +59,7 @@ export const MobileMenu = ({ onClose, isOpen }: MobileMenuProps) => {
                 Sign In
               </Link>
             </Button>
-            <Button asChild variant="outline">
+            <Button asChild variant="outlineBlue">
               <Link to="/sign-up" onClick={onClose}>
                 Sign Up
               </Link>
