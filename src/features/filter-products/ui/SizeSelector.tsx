@@ -1,16 +1,32 @@
 import { useAppDispatch, useAppSelector } from "@/shared/lib/hooks";
 import { toggleArrayFilter } from "@/features/filter-products";
 import { selectActiveSize } from "@/features/filter-products";
-import { SIZES } from "@/shared/lib/constants";
 import { Button } from "@/shared/ui";
+import { setFilterValue } from "../model/filterSlice";
+import { SIZES, type Sizes } from "@/shared/lib/constants";
+import { cn } from "@/shared/lib/utils";
 
-export const SizeSelector = () => {
+interface SizeSelectorProps {
+  sizes?: readonly Sizes[];
+  isMult?: boolean;
+  className?: string;
+}
+
+export const SizeSelector = ({ sizes = SIZES, isMult = true, className }: SizeSelectorProps) => {
   const dispatch = useAppDispatch();
   const activeSizes = useAppSelector(selectActiveSize);
 
+  const handleSizeClick = (size: Sizes) => {
+    if (isMult) {
+      dispatch(toggleArrayFilter({ key: "sizes", value: size }));
+    } else {
+      dispatch(setFilterValue({ key: "sizes", value: [size] }));
+    }
+  };
+
   return (
-    <div className="flex flex-wrap gap-3 px-3 py-4">
-      {SIZES.map((size) => {
+    <div className={cn("flex flex-wrap gap-3 px-3 py-4", className)}>
+      {sizes.map((size) => {
         const isActive = activeSizes.includes(size);
 
         return (
@@ -21,7 +37,7 @@ export const SizeSelector = () => {
             aria-pressed={isActive}
             aria-label={`Filter by size ${size}`}
             variant={isActive ? "active" : "surface"}
-            onClick={() => dispatch(toggleArrayFilter({ key: "sizes", value: size }))}
+            onClick={() => handleSizeClick(size)}
             className="w-12 h-12 uppercase rounded-lg text-sm"
           >
             {size}
