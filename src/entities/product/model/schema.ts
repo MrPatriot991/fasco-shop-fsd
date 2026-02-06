@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { SIZES, COLLECTIONS, TAGS } from "@/shared/lib/constants";
+import { SIZES, COLLECTIONS, TAGS, MOCK_COLORS } from "@/shared/lib/constants";
 
 export const rawProductSchema = z.object({
   id: z.number(),
@@ -16,9 +16,9 @@ export const productSchema = rawProductSchema.extend({
     rate: z.number(),
     count: z.number(),
   }),
-  size: z.array(z.enum(SIZES)),
+  sizes: z.array(z.enum(SIZES)),
   brand: z.string(),
-  colors: z.array(z.string()),
+  colors: z.array(z.enum(MOCK_COLORS)),
   collection: z.array(z.enum(COLLECTIONS)),
   tags: z.array(z.enum(TAGS)),
   isDiscount: z.boolean(),

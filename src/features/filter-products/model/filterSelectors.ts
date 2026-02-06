@@ -22,7 +22,7 @@ export const selectFilteredProducts = createSelector(
           ? product.isDiscount
           : product.category === filter.currentCategory);
       const matchesSize =
-        filter.sizes.length === 0 || product.size.some((s) => filter.sizes.includes(s as Sizes));
+        filter.sizes.length === 0 || product.sizes.some((s) => filter.sizes.includes(s as Sizes));
       const matchesPrice =
         product.price >= filter.priceRange[0] && product.price <= filter.priceRange[1];
       const matchesColor =

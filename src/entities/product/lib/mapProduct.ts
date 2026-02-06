@@ -9,7 +9,7 @@ export const mapProduct = (item: RawProduct & Partial<Product>): Product => {
     ...item,
     brand: item.brand ?? getStable(MOCK_BRANDS, seed),
     colors: item.colors ?? [getStable(MOCK_COLORS, seed), getStable(MOCK_COLORS, seed + 1)],
-    size: item.size ?? SIZES.slice(0, (seed % 3) + 1),
+    sizes: item.sizes ?? SIZES.slice(0, (seed % 3) + 1),
     collection: item.collection ?? [getStable(COLLECTIONS, seed)],
     rating: item.rating ?? {
       rate: parseFloat((3 + (seed % 21) / 10).toFixed(1)),
