@@ -50,10 +50,23 @@ export const filterSlice = createSlice({
     setCategory: (state, action) => {
       state.currentCategory = action.payload;
     },
+    setFilterValue: <K extends keyof ActiveFilter>(
+      state: ActiveFilter,
+      action: PayloadAction<{ key: K; value: ActiveFilter[K] }>
+    ) => {
+      const { key, value } = action.payload;
+      state[key] = value;
+    },
     resetFilters: () => initialState,
   },
 });
 
-export const { toggleArrayFilter, setPriceRange, setCollection, setCategory, resetFilters } =
-  filterSlice.actions;
+export const {
+  toggleArrayFilter,
+  setFilterValue,
+  setPriceRange,
+  setCollection,
+  setCategory,
+  resetFilters,
+} = filterSlice.actions;
 export default filterSlice.reducer;
