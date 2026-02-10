@@ -1,5 +1,5 @@
 import { createPortal } from "react-dom";
-import { useAppDispatch, useAppSelector } from "@/shared/lib/hooks";
+import { useAppDispatch, useAppSelector, useLockBodyScroll } from "@/shared/lib/hooks";
 import {
   updateCartItem,
   closeCart,
@@ -25,6 +25,7 @@ export const CartModal = () => {
   const subtotal = useAppSelector(selectItemTotalWithWrap);
 
   const currentItem = cartItems.find((item) => item.id === lastAddedId);
+  useLockBodyScroll(isOpen);
 
   if (!isOpen || !currentItem) return null;
 
