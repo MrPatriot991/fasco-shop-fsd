@@ -1,6 +1,5 @@
-import { useAppDispatch, useAppSelector } from "@/shared/lib/hooks";
+import { useAppDispatch } from "@/shared/lib/hooks";
 import { toggleArrayFilter } from "@/features/filter-products";
-import { selectActiveSize } from "@/features/filter-products";
 import { Button } from "@/shared/ui";
 import { setFilterValue } from "../model/filterSlice";
 import { SIZES, type Sizes } from "@/shared/lib/constants";
@@ -10,11 +9,16 @@ interface SizeSelectorProps {
   sizes?: readonly Sizes[];
   isMult?: boolean;
   className?: string;
+  selectedSize?: Sizes[];
 }
 
-export const SizeSelector = ({ sizes = SIZES, isMult = true, className }: SizeSelectorProps) => {
+export const SizeSelector = ({
+  sizes = SIZES,
+  isMult = true,
+  selectedSize,
+  className,
+}: SizeSelectorProps) => {
   const dispatch = useAppDispatch();
-  const activeSizes = useAppSelector(selectActiveSize);
 
   const handleSizeClick = (size: Sizes) => {
     if (isMult) {
@@ -24,10 +28,12 @@ export const SizeSelector = ({ sizes = SIZES, isMult = true, className }: SizeSe
     }
   };
 
+  if (!selectedSize) return null;
+
   return (
     <div className={cn("flex flex-wrap gap-3 px-3 py-4", className)}>
       {sizes.map((size) => {
-        const isActive = activeSizes.includes(size);
+        const isActive = selectedSize.includes(size);
 
         return (
           <Button

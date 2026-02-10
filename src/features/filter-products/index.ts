@@ -1,4 +1,10 @@
-export { toggleArrayFilter, setPriceRange, setCollection } from "./model/filterSlice";
+export {
+  toggleArrayFilter,
+  setPriceRange,
+  setCollection,
+  resetFilters,
+  setFilterValue,
+} from "./model/filterSlice";
 export {
   selectFilteredProducts,
   selectFilterState,

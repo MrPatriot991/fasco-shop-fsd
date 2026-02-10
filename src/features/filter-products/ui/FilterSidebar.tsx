@@ -1,3 +1,5 @@
+import { useAppSelector, useAppDispatch } from "@/shared/lib/hooks";
+import { selectActiveSize, selectActiveColors, resetFilters } from "@/features/filter-products";
 import { Button } from "@/shared/ui";
 import { BrandFilter } from "./BrandFilter";
 import { CollectionFilter } from "./CollectionsFilter";
@@ -6,19 +8,19 @@ import { FilterSection } from "./FilterSection";
 import { PriceRange } from "./PriceRange";
 import { SizeSelector } from "./SizeSelector";
 import { TagsFilter } from "./TagsFilter";
-import { useAppDispatch } from "@/shared/lib/hooks";
-import { resetFilters } from "../model/filterSlice";
 
 export const FilterSidebar = () => {
   const dispatch = useAppDispatch();
+  const selectedSize = useAppSelector(selectActiveSize);
+  const selectedColor = useAppSelector(selectActiveColors);
 
   return (
     <div className="flex flex-col space-y-4">
       <FilterSection title="Size">
-        <SizeSelector />
+        <SizeSelector selectedSize={selectedSize} />
       </FilterSection>
       <FilterSection title="Colors">
-        <ColorPiaker />
+        <ColorPiaker selectedColor={selectedColor} />
       </FilterSection>
       <FilterSection title="Price">
         <PriceRange />

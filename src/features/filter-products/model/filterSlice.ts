@@ -1,5 +1,4 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
-// import { categorySchema } from "./schema";
 import type { Collection, Brand, Color, Sizes, Tags, Category } from "@/shared/lib/constants";
 
 interface ActiveFilter {

@@ -1,6 +1,5 @@
 import { MOCK_COLORS, COLOR_MAP, type Color } from "@/shared/lib/constants";
-import { useAppDispatch, useAppSelector } from "@/shared/lib/hooks";
-import { selectActiveColors } from "@/features/filter-products";
+import { useAppDispatch } from "@/shared/lib/hooks";
 import { toggleArrayFilter } from "@/features/filter-products";
 import { cn } from "@/shared/lib/utils";
 import { Button } from "@/shared/ui";
@@ -10,15 +9,16 @@ interface ColorPickerProps {
   colors?: Color[];
   isMult?: boolean;
   className?: string;
+  selectedColor?: Color[];
 }
 
 export const ColorPiaker = ({
   colors = MOCK_COLORS,
   isMult = true,
+  selectedColor,
   className,
 }: ColorPickerProps) => {
   const dispatch = useAppDispatch();
-  const activeColors = useAppSelector(selectActiveColors);
 
   const handleColorClick = (color: Color) => {
     if (isMult) {
@@ -28,11 +28,13 @@ export const ColorPiaker = ({
     }
   };
 
+  if (!selectedColor) return null;
+
   return (
     <div className={cn("flex flex-wrap gap-3 px-3 py-4", className)}>
       {colors.map((color) => {
         const hex = COLOR_MAP[color];
-        const isActive = activeColors.includes(color);
+        const isActive = selectedColor.includes(color);
 
         return (
           <Button
