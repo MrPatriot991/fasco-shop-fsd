@@ -37,7 +37,7 @@ export const ProductGallery = ({ colors, image, title }: ProductGalleryProps) =>
           src={image}
           alt={title}
           className={cn(
-            "w-full h-full p-4",
+            "w-full h-full",
             image.includes("https://fakestoreapi.com")
               ? "object-contain object-center"
               : "object-cover object-top"
