@@ -21,6 +21,7 @@ const buttonVariants = cva(
           "after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-px after:w-full after:origin-right after:scale-x-0 after:bg-brand-dark after:transition-transform after:duration-300",
           "hover:text-brand-black hover:after:origin-left hover:after:scale-x-100"
         ),
+        linkPlain: "relative p-0 h-auto text-brand-dark hover:text-brand-black",
         ghost:
           "bg-transparent text-brand-dark hover:bg-surface-muted active:bg-surface-muted hover:text-brand-black",
         surface:
