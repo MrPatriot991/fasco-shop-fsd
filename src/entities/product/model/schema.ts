@@ -22,6 +22,7 @@ export const productSchema = rawProductSchema.extend({
   collection: z.array(z.enum(COLLECTIONS)),
   tags: z.array(z.enum(TAGS)),
   isDiscount: z.boolean(),
+  salePercent: z.number(),
   isSoldOut: z.boolean(),
   isAlmostSoldOut: z.boolean(),
 });

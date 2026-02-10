@@ -5,6 +5,8 @@ export const mapProduct = (item: RawProduct & Partial<Product>): Product => {
   const seed = item.id;
   const getStable = <T>(arr: readonly T[], index: number): T => arr[index % arr.length];
 
+  const hasDiscount = item.isDiscount ?? seed % 3 === 0;
+
   return {
     ...item,
     brand: item.brand ?? getStable(MOCK_BRANDS, seed),
@@ -16,7 +18,8 @@ export const mapProduct = (item: RawProduct & Partial<Product>): Product => {
       count: 10 + ((seed * 7) % 200),
     },
     tags: item.tags ?? [getStable(TAGS, seed)],
-    isDiscount: item.isDiscount ?? seed % 3 === 0,
+    isDiscount: hasDiscount,
+    salePercent: hasDiscount ? 10 + Math.floor(Math.random() * 41) : 0,
     isSoldOut: item.isSoldOut ?? seed % 10 === 0,
     isAlmostSoldOut: item.isAlmostSoldOut ?? seed % 7 === 0,
   };
