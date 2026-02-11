@@ -7,29 +7,31 @@ import {
   ProductCard,
   ProductCardSkeleton,
 } from "@/entities/product";
-import { selectFilteredProducts } from "@/features/filter-products";
-
 import type { Product } from "@/entities/product/model/schema";
 
-export const ProductList = ({ mode = "shop" }: { mode?: "home" | "shop" }) => {
+interface ProductsListProps {
+  products: Product[];
+  mode?:  "home" | "shop";
+}
+
+export const ProductList = ({ products, mode = "shop" }: ProductsListProps) => {
   const dispatch = useAppDispatch();
-  const apiProducts = useAppSelector<Product[]>(selectFilteredProducts);
   const status = useAppSelector(selectProductStatus);
   const [visibleCount, setVisibleCount] = useState(6);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 9;
-  const totalPages = Math.ceil(apiProducts.length / itemsPerPage);
+  const totalPages = Math.ceil(products.length / itemsPerPage);
   const catalogRef = useRef<HTMLUListElement | null>(null);
 
   const displayProducts = useMemo(() => {
     if (mode === "home") {
-      return apiProducts.slice(0, visibleCount);
+      return products.slice(0, visibleCount);
     }
 
     const lastIndex = currentPage * itemsPerPage;
     const firstIndex = lastIndex - itemsPerPage;
-    return apiProducts.slice(firstIndex, lastIndex);
-  }, [apiProducts, visibleCount, mode, currentPage]);
+    return products.slice(firstIndex, lastIndex);
+  }, [products, visibleCount, mode, currentPage]);
 
   const handleShowMore = () => {
     setVisibleCount((prev) => prev + 6);
@@ -55,7 +57,7 @@ export const ProductList = ({ mode = "shop" }: { mode?: "home" | "shop" }) => {
         <span className="text-brand-dark">Products do not exist.</span>
       )}
       <ul ref={catalogRef} className="grid grid-cols-1 w-full sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {status === "loading" && apiProducts.length === 0
+        {status === "loading" && products.length === 0
           ? Array.from({ length: 6 }).map((_, i) => (
               <li key={`skeleton-${i}`}>
                 <ProductCardSkeleton />
@@ -69,7 +71,7 @@ export const ProductList = ({ mode = "shop" }: { mode?: "home" | "shop" }) => {
       </ul>
 
       {mode === "home" ? (
-        visibleCount < apiProducts.length && (
+        visibleCount < products.length && (
           <Button onClick={handleShowMore}>
             {status === "loading" ? "Loading..." : "View more"}
           </Button>

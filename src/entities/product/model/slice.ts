@@ -34,6 +34,7 @@ export const fetchProducts = createAsyncThunk<Product[], void, { rejectValue: st
 const initialState = productAdapter.getInitialState<ProductStatus>({
   status: "idle",
   error: null,
+  currentCategory: "all",
 });
 
 export type ProductState = typeof initialState;
@@ -41,7 +42,11 @@ export type ProductState = typeof initialState;
 export const productSlice = createSlice({
   name: "products",
   initialState,
-  reducers: {},
+  reducers: {
+    setCategory: (state, action) => {
+      state.currentCategory = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchProducts.pending, (state) => {
@@ -59,4 +64,5 @@ export const productSlice = createSlice({
   },
 });
 
+export const { setCategory } = productSlice.actions;
 export default productSlice.reducer;
