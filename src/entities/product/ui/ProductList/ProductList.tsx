@@ -1,11 +1,13 @@
 import { useEffect, useState, useMemo, useRef } from "react";
-import { useAppSelector, useAppDispatch } from "@/shared/lib/hooks";
-import { fetchProducts } from "@/entities/product/model/slice";
-import { selectProductStatus } from "@/entities/product/model/selector";
-import { selectFilteredProducts } from "@/features/filter-products";
 import { Button, Pagination } from "@/shared/ui";
-import { ProductCard } from "@/entities/product/ui/ProductCard/ProductCard";
-import { ProductCardSkeleton } from "@/entities/product/ui/ProductCardSkeleton/ProductCardSkeleton";
+import { useAppSelector, useAppDispatch } from "@/shared/lib/hooks";
+import {
+  fetchProducts,
+  selectProductStatus,
+  ProductCard,
+  ProductCardSkeleton,
+} from "@/entities/product";
+import { selectFilteredProducts } from "@/features/filter-products";
 
 import type { Product } from "@/entities/product/model/schema";
 
@@ -53,19 +55,17 @@ export const ProductList = ({ mode = "shop" }: { mode?: "home" | "shop" }) => {
         <span className="text-brand-dark">Products do not exist.</span>
       )}
       <ul ref={catalogRef} className="grid grid-cols-1 w-full sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {displayProducts.map((product) => (
-          <li key={`mock-${product.id}`}>
-            <ProductCard product={product} />
-          </li>
-        ))}
-
-        {status === "loading" &&
-          apiProducts.length === 0 &&
-          Array.from({ length: 3 }).map((_, i) => (
-            <li key={`skeleton-${i}`}>
-              <ProductCardSkeleton />
-            </li>
-          ))}
+        {status === "loading" && apiProducts.length === 0
+          ? Array.from({ length: 6 }).map((_, i) => (
+              <li key={`skeleton-${i}`}>
+                <ProductCardSkeleton />
+              </li>
+            ))
+          : displayProducts.map((product) => (
+              <li key={`product-${product.id}`}>
+                <ProductCard product={product} />
+              </li>
+            ))}
       </ul>
 
       {mode === "home" ? (
