@@ -29,7 +29,7 @@ export const CartPageContent = () => {
     dispatch(updateCartItem({ id, quantity }));
   };
 
-  const handleRemove = (id: number) => {
+  const handleRemove = (id: string) => {
     dispatch(removeFromCart(id));
   };
 

@@ -16,13 +16,12 @@ interface CartItemProps {
   showRemove?: boolean;
   showTotal?: boolean;
   onQuantityChange: (id: string, quantity: number) => void;
-  onRemove?: (id: number) => void;
+  onRemove?: (id: string) => void;
   className?: string;
 }
 
 export const CartItem = ({
   id,
-  productId,
   image,
   title,
   color,
@@ -92,7 +91,7 @@ export const CartItem = ({
                 <Button
                   variant="linkPlain"
                   size="none"
-                  onClick={() => onRemove(productId)}
+                  onClick={() => onRemove(id)}
                   className="text-sm text-brand-gray underline hover:text-red-500"
                 >
                   Remove

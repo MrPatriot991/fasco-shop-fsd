@@ -63,6 +63,9 @@ export const ProductDetails = () => {
   const { image, title, brand, isDiscount, rating, sizes, colors, price, salePercent } = product;
 
   const handleAddToCart = () => {
+    const size = selectedSize[0];
+    const color = selectedColor[0];
+
     if (!selectedSize || !selectedColor) {
       alert("Please select size and color");
       return;
@@ -76,8 +79,8 @@ export const ProductDetails = () => {
       title,
       price,
       image,
-      size: selectedSize,
-      color: selectedColor,
+      size: size,
+      color: color,
       quantity: count,
       isWrapped: false,
     };
