@@ -12,7 +12,13 @@ export const COLOR_MAP = {
 export const SIZES = ["s", "m", "l", "xl"] as const;
 export const MOCK_COLORS = Object.keys(COLOR_MAP) as Array<keyof typeof COLOR_MAP>;
 export const MOCK_BRANDS = ["FASCO", "Zara", "Gucci", "Nike", "Prada"] as const;
-export const COLLECTIONS = ["All products", "best-sellers", "new-arrivals", "accessories"] as const;
+export const COLLECTIONS = [
+  "All products",
+  "best-sellers",
+  "new-arrivals",
+  "accessories",
+  "discount-deals",
+] as const;
 export const CATEGORY = [
   "all",
   "men's clothing",

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import { ChevronRight, SlidersHorizontal, X } from "lucide-react";
 import { Button, Container, ErrorBoundary } from "@/shared/ui";
 import { useAppDispatch, useAppSelector, useLockBodyScroll } from "@/shared/lib/hooks";
@@ -8,6 +9,8 @@ import { selectFilterState } from "@/features/filter-products";
 import { resetFilters } from "@/features/filter-products";
 import { selectFilteredProducts } from "@/features/filter-products";
 import { CatalogHeader } from "./CatalogHeader";
+import { setFilterValue } from "@/features/filter-products";
+import type { Collection } from "@/shared/lib/constants";
 
 export const ProductCatalog = () => {
   const dispatch = useAppDispatch();
@@ -15,6 +18,7 @@ export const ProductCatalog = () => {
   const activeFilters = useAppSelector(selectFilterState);
   const productsByCategory = useAppSelector(selectFilteredProducts);
   const filterKey = JSON.stringify(activeFilters);
+  const [searchParams] = useSearchParams();
 
   useLockBodyScroll(isOpen);
 
@@ -22,6 +26,13 @@ export const ProductCatalog = () => {
     dispatch(resetFilters());
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, [dispatch]);
+
+  useEffect(() => {
+    const collection = searchParams.get("collection");
+    if (collection) {
+      dispatch(setFilterValue({ key: "collection", value: collection as Collection }));
+    }
+  }, [searchParams, dispatch]);
 
   return (
     <section className="bg-brand-white py-10">
@@ -56,7 +67,7 @@ export const ProductCatalog = () => {
               <div className="fixed inset-0 z-100 lg:hidden">
                 <div className="absolute inset-0 bg-black/50" onClick={() => setIsOpen(false)} />
 
-                <div className="absolute left-0 top-0 h-full w-[300px] bg-white p-5 shadow-xl">
+                <div className="absolute left-0 top-0 h-full w-75 bg-white p-5 shadow-xl">
                   <div className="flex justify-between items-center mb-6">
                     <h3 className="text-2xl font-volkhov">Filters</h3>
                     <button onClick={() => setIsOpen(false)}>

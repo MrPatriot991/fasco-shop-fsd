@@ -1,7 +1,7 @@
+import { Link } from "react-router-dom";
 import { Button } from "@/shared/ui";
 import { Container } from "@/shared/ui";
 import { BrandMarquee } from "./BrandMarquee";
-
 import heroImgLeft from "@/shared/assets/images/ban-left.avif";
 import heroImgRight from "@/shared/assets/images/ban-right.avif";
 import heroImgTop from "@/shared/assets/images/ban-top.avif";
@@ -21,7 +21,7 @@ export const Hero = () => {
               fetchPriority="high"
             />
           </div>
-          <div className="flex flex-col items-center justify-between h-full gap-6 md:gap-9 md:max-w-[768px]">
+          <div className="flex flex-col items-center justify-between h-full gap-6 md:gap-9 md:max-w-3xl">
             <div className="w-full h-32 md:h-auto overflow-hidden">
               <img
                 src={heroImgTop}
@@ -42,7 +42,9 @@ export const Hero = () => {
                 <span className="text-lg md:text-xl mt-4 font-medium">NEW COLLECTION</span>
               </h1>
               <div className="mt-8">
-                <Button size="lg-1">SHOP NOW</Button>
+                <Button asChild size="lg-1">
+                  <Link to="/shop">SHOP NOW</Link>
+                </Button>
               </div>
             </header>
 

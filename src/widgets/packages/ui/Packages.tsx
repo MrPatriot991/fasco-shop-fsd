@@ -1,12 +1,12 @@
+import { Link } from "react-router-dom";
 import { Button } from "@/shared/ui";
 import { formatCurrency } from "@/shared/lib/format";
-
 import peakyBlindersImg from "@/shared/assets/images/bg-packages.png";
 
 export const Packages = () => {
   return (
     <section id="packages" className="overflow-hidden pt-16 lg:pt-36">
-      <div className="relative z-10 bg-surface-muted flex inset-0 lg:min-h-[570px]">
+      <div className="relative z-10 bg-surface-muted flex inset-0 lg:min-h-142.5">
         <div
           className="hidden absolute lg:flex inset-0 bg-surface-neutral"
           style={{
@@ -24,7 +24,7 @@ export const Packages = () => {
             />
             <div className="absolute inset-0 bg-black/5 lg:hidden" />
           </div>
-          <div className="p-10  lg:px-20 space-y-5 max-w-[550px]">
+          <div className="p-10  lg:px-20 space-y-5 max-w-137.5">
             <div className="space-y-5">
               <p className="text-brand-gray tracking-widest text-sm uppercase">Women Collection</p>
               <h2 className="text-section-title  font-volkhov text-brand-dark leading-tight">
@@ -46,7 +46,9 @@ export const Packages = () => {
               </div>
             </div>
             <div>
-              <Button>Buy Now</Button>
+              <Button asChild>
+                <Link to="/shop?collection=best-sellers">Buy Now</Link>
+              </Button>
             </div>
           </div>
         </div>

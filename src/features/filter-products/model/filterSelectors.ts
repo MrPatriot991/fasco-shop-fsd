@@ -25,8 +25,11 @@ export const selectFilteredProducts = createSelector(
       const matchesBrand =
         filter.brands.length === 0 || filter.brands.includes(product.brand as Brand);
       const matchesCollection =
-        filter.collection === "All products" ||
-        product.collection.includes(filter.collection as Collection);
+        filter.collection === "All products"
+          ? true
+          : filter.collection === "discount-deals"
+            ? product.isDiscount
+            : product.collection.includes(filter.collection as Collection);
       const matchesTags =
         filter.tags.length === 0 || product.tags.some((t) => filter.tags.includes(t as Tags));
 
