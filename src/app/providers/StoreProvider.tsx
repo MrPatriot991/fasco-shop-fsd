@@ -4,6 +4,7 @@ import { productReducer } from "@/entities/product";
 import { authReducer } from "@/features/auth/model";
 import { filterReducer } from "@/features/filter-products";
 import { cartReducer } from "@/entities/cart";
+import { wishlistReducer } from "@/features/wishlist";
 
 const store = configureStore({
   reducer: {
@@ -11,6 +12,7 @@ const store = configureStore({
     auth: authReducer,
     filters: filterReducer,
     cart: cartReducer,
+    wishlist: wishlistReducer,
   },
 });
 
