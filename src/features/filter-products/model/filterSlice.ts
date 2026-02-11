@@ -55,11 +55,6 @@ export const filterSlice = createSlice({
   },
 });
 
-export const {
-  toggleArrayFilter,
-  setFilterValue,
-  setPriceRange,
-  setCollection,
-  resetFilters,
-} = filterSlice.actions;
+export const { toggleArrayFilter, setFilterValue, setPriceRange, setCollection, resetFilters } =
+  filterSlice.actions;
 export default filterSlice.reducer;

@@ -11,7 +11,7 @@ import type { Product } from "@/entities/product/model/schema";
 
 interface ProductsListProps {
   products: Product[];
-  mode?:  "home" | "shop";
+  mode?: "home" | "shop";
 }
 
 export const ProductList = ({ products, mode = "shop" }: ProductsListProps) => {

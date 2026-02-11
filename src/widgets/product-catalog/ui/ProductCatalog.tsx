@@ -76,7 +76,7 @@ export const ProductCatalog = () => {
                 <CatalogHeader />
               </div>
               <ErrorBoundary>
-                <ProductList key={filterKey} mode="shop" products={productsByCategory}/>
+                <ProductList key={filterKey} mode="shop" products={productsByCategory} />
               </ErrorBoundary>
             </div>
           </div>

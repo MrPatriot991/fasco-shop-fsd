@@ -16,4 +16,4 @@ export {
   selectTagsFilter,
 } from "./model/filterSelectors";
 export { default as filterReducer } from "./model/filterSlice";
-export {FilterSidebar} from "./ui/FilterSidebar";
+export { FilterSidebar } from "./ui/FilterSidebar";

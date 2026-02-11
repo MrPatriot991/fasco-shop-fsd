@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
 import { ScrollToTopButton } from "@/features/scroll-to-top";
-import { FloatingCartButton } from "@/widgets/cart/ui/FloatingCartButton";
+import { FloatingCartButton } from "@/widgets/cart";
 import { Header } from "@/widgets/header";
 import { CartModal } from "@/widgets/cart";
 

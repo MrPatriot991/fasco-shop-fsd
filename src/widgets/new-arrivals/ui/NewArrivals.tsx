@@ -18,7 +18,7 @@ export const NewArrivals = () => {
           </p>
           <CategoryTabs />
           <ErrorBoundary>
-            <ProductList mode="home" products={productsByTabs}/>
+            <ProductList mode="home" products={productsByTabs} />
           </ErrorBoundary>
         </div>
       </Container>
