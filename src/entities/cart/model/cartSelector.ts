@@ -30,3 +30,7 @@ export const selectCartSubtotal = createSelector(
     return itemsTotal + (isGiftWrap ? 10 : 0);
   }
 );
+
+export const selectCartItemCount = createSelector([selectCartItems], (cartItems) =>
+  cartItems.reduce((count, item) => count + item.quantity, 0)
+);

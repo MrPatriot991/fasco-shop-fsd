@@ -14,6 +14,7 @@ export {
   selectCartSubtotal,
   selectItemTotalWithWrap,
   selectIsGiftWrapEnabled,
+  selectCartItemCount,
 } from "./model/cartSelector";
 export { FreeShippingMessage } from "./ui/FreeShippingMessage";
 export { default as cartReducer } from "./model/cartSlice";

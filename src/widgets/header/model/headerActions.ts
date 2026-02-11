@@ -1,7 +1,7 @@
 export const PATHS = {
   PROFILE: "/user",
   FAVORITES: "/star",
-  CART: "/shopping",
+  CART: "/cart",
 };
 
 export const AUTH_ACTIONS = [

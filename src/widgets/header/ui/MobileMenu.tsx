@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
 import { User, Star, ShoppingBag } from "lucide-react";
-import { useAppSelector, useLockBodyScroll } from "@/shared/lib/hooks";
-import { selectIsAuthenticated } from "@/features/auth/model";
 import { Button } from "@/shared/ui";
+import { useAppSelector, useLockBodyScroll } from "@/shared/lib/hooks";
+import { selectCartItemCount } from "@/entities/cart";
+import { selectIsAuthenticated } from "@/features/auth/model";
 import { SearchInput } from "@/features/search";
 import { NavList } from "./NavList";
 
@@ -13,6 +14,7 @@ interface MobileMenuProps {
 
 export const MobileMenu = ({ onClose, isOpen }: MobileMenuProps) => {
   const isAuth = useAppSelector(selectIsAuthenticated);
+  const cartCount = useAppSelector(selectCartItemCount);
 
   useLockBodyScroll(isOpen);
 
@@ -45,9 +47,14 @@ export const MobileMenu = ({ onClose, isOpen }: MobileMenuProps) => {
                   <span className="absolute top-0 right-0 w-2 h-2 bg-brand-dark rounded-full" />
                 </Link>
               </Button>
-              <Button asChild size="icon" variant="ghost">
-                <Link to="/shopping" onClick={onClose}>
+              <Button asChild size="icon" variant="ghost" className="relative">
+                <Link to="/cart" onClick={onClose}>
                   <ShoppingBag size={28} />
+                  {cartCount > 0 && (
+                    <span className="absolute -top-0.5 -right-0.5 flex h-5 w-5 items-center justify-center rounded-full bg-red-500 text-[10px] font-bold text-white shadow-sm">
+                      {cartCount > 9 ? "9+" : cartCount}
+                    </span>
+                  )}
                 </Link>
               </Button>
             </div>

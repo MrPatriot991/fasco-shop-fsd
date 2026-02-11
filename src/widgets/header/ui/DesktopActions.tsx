@@ -1,9 +1,10 @@
 import { NavLink, Link } from "react-router-dom";
-import { selectIsAuthenticated } from "@/features/auth/model";
-import { useAppSelector } from "@/shared/lib/hooks";
-import { Button } from "@/shared/ui";
-import { AUTH_ACTIONS } from "@/widgets/header/model";
 import { ShoppingBag, Star, User } from "lucide-react";
+import { Button } from "@/shared/ui";
+import { useAppSelector } from "@/shared/lib/hooks";
+import { selectIsAuthenticated } from "@/features/auth/model";
+import { selectCartItemCount } from "@/entities/cart";
+import { AUTH_ACTIONS } from "@/widgets/header/model";
 
 const iconMap = {
   profile: User,
@@ -13,6 +14,7 @@ const iconMap = {
 
 export const DesktopActions = () => {
   const isAuth = useAppSelector(selectIsAuthenticated);
+  const cartCount = useAppSelector(selectCartItemCount);
 
   if (!isAuth) {
     return (
@@ -31,11 +33,17 @@ export const DesktopActions = () => {
     <div className="hidden lg:flex gap-4">
       {AUTH_ACTIONS.map(({ to, id }) => {
         const Icon = iconMap[id];
+        const isCart = id === "cart";
 
         return (
-          <Button key={id} asChild size="icon" variant="ghost">
+          <Button key={id} asChild size="icon" variant="ghost" className="relative">
             <Link to={to}>
               <Icon />
+              {isCart && cartCount > 0 && (
+                <span className="absolute -top-0.5 -right-0.5 flex h-5 w-5 items-center justify-center rounded-full bg-red-500 text-[10px] font-bold text-white shadow-sm">
+                  {cartCount > 9 ? "9+" : cartCount}
+                </span>
+              )}
             </Link>
           </Button>
         );
