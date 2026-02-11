@@ -1,46 +1,63 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
-import type { CartState } from "./types";
+import type { CartState, CartItem } from "./types";
+
+const loadCartFromLS = (): CartItem[] => {
+  try {
+    const data = localStorage.getItem("cart");
+    return data ? JSON.parse(data) : [];
+  } catch {
+    return [];
+  }
+};
+
+const loadGiftWrapFromLS = (): boolean => {
+  return localStorage.getItem("giftWrap") === "true";
+};
 
 const initialState: CartState = {
-  cart: [],
+  cart: loadCartFromLS(),
   lastAddedId: null,
   isCartModalOpen: false,
-  isGlobalGiftWrap: false,
+  isGlobalGiftWrap: loadGiftWrapFromLS(),
 };
 
 export const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
-    addToCart: (state, action) => {
-      state.lastAddedId = action.payload.id;
+    addToCart: (state, action: PayloadAction<CartItem>) => {
       const existing = state.cart.find((item) => item.id === action.payload.id);
-
+      
       if (existing) {
         existing.quantity += action.payload.quantity;
       } else {
         state.cart.push(action.payload);
       }
+      
+      state.lastAddedId = action.payload.id;
+      localStorage.setItem("cart", JSON.stringify(state.cart));
     },
     updateCartItem: (state, action: PayloadAction<{ id: string; quantity: number }>) => {
-      state.lastAddedId = action.payload.id;
       const item = state.cart.find((item) => item.id === action.payload.id);
 
       if (item) {
         item.quantity = Math.max(1, action.payload.quantity);
+        localStorage.setItem("cart", JSON.stringify(state.cart));
       }
+    },
+    removeFromCart: (state, action: PayloadAction<string>) => {
+      state.cart = state.cart.filter((item) => item.id !== action.payload);
+      localStorage.setItem("cart", JSON.stringify(state.cart));
     },
     toggleGifWrap: (state) => {
       state.isGlobalGiftWrap = !state.isGlobalGiftWrap;
+      localStorage.setItem("giftWrap", String(state.isGlobalGiftWrap));
     },
     openCart: (state) => {
       state.isCartModalOpen = true;
     },
     closeCart: (state) => {
       state.isCartModalOpen = false;
-    },
-    removeFromCart: (state, action) => {
-      state.cart = state.cart.filter((item) => item.id !== action.payload);
     },
   },
 });

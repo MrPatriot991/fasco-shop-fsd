@@ -30,7 +30,6 @@ export const CartModal = () => {
   if (!isOpen || !currentItem) return null;
 
   const handleClose = () => {
-    console.log("Test", cartItems);
     dispatch(closeCart());
   };
 

@@ -1,6 +1,6 @@
 import type { Color, Sizes } from "@/shared/lib/constants";
 
-type CartItem = {
+export type CartItem = {
   id: string;
   productId: number;
   title: string;

@@ -1,6 +1,6 @@
 import { useAppSelector } from "@/shared/lib/hooks";
 import { formatCurrency } from "@/shared/lib/format";
-import { selectItemTotal } from "@/entities/cart";
+import { selectCartSubtotal } from "@/entities/cart";
 import { cn } from "@/shared/lib/utils";
 
 interface FreeShippingProps {
@@ -9,7 +9,7 @@ interface FreeShippingProps {
 }
 
 export const FreeShippingMessage = ({ threshold = 75, className }: FreeShippingProps) => {
-  const subtotal = useAppSelector(selectItemTotal);
+  const subtotal = useAppSelector(selectCartSubtotal);
   const remaining = threshold - subtotal;
 
   if (remaining <= 0) {
