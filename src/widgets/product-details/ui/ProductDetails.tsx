@@ -98,7 +98,7 @@ export const ProductDetails = () => {
             <ProductHeader brand={brand} title={title} rating={rating} />
             <ProductPrice price={price} salePercent={salePercent} />
             <ProductViewers />
-            {isDiscount && <ProductTimer targetDate="02-13-2026" />}
+            {isDiscount && <ProductTimer targetDate="2026-02-28" />}
             <ProductStock />
             <ProductVariants
               sizes={sizes}

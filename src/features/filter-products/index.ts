@@ -16,3 +16,4 @@ export {
   selectTagsFilter,
   selectCategoryFilter,
 } from "./model/filterSelectors";
+export { default as filterReducer } from "./model/filterSlice";

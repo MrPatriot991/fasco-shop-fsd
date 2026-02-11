@@ -3,6 +3,7 @@ export * from "./model/slice";
 export * from "./model/schema";
 export * from "./model/types";
 export * from "./model/moks";
+export { default as productReducer } from "./model/slice";
 
 export { ProductCard } from "./ui/ProductCard/ProductCard";
 export { ProductCardSkeleton } from "./ui/ProductCardSkeleton/ProductCardSkeleton";

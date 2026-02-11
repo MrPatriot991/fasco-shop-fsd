@@ -1,9 +1,9 @@
 import { Provider } from "react-redux";
 import { configureStore } from "@reduxjs/toolkit";
-import productReducer from "@/entities/product/model/slice";
-import authReducer from "@/features/auth/model/authSlice";
-import filterReducer from "@/features/filter-products/model/filterSlice";
-import cartReducer from "@/entities/cart/model/cartSlice";
+import { productReducer } from "@/entities/product";
+import { authReducer } from "@/features/auth/model";
+import { filterReducer } from "@/features/filter-products";
+import { cartReducer } from "@/entities/cart";
 
 const store = configureStore({
   reducer: {
