@@ -1,8 +1,6 @@
-import { setCategory } from "@/features/filter-products/model/filterSlice";
-import { selectCategoryFilter } from "@/features/filter-products";
 import { useAppDispatch, useAppSelector } from "@/shared/lib/hooks";
 import { Button } from "@/shared/ui";
-
+import { selectCategory, setCategory } from "@/entities/product";
 import type { Category } from "@/shared/lib/constants";
 
 interface Buttons {
@@ -21,7 +19,7 @@ const buttons: Buttons[] = [
 
 export const CategoryTabs = () => {
   const dispatch = useAppDispatch();
-  const activeCategory = useAppSelector(selectCategoryFilter);
+  const activeCategory = useAppSelector(selectCategory);
 
   const handleCategoryClick = (category: Category) => {
     dispatch(setCategory(category));
