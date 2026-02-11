@@ -1,9 +1,12 @@
 import { Container } from "@/shared/ui";
 import { ErrorBoundary } from "@/shared/ui";
-import { ProductList } from "@/entities/product";
+import { useAppSelector } from "@/shared/lib/hooks";
+import { ProductList, selectCategoryFilter } from "@/entities/product";
 import { CategoryTabs } from "@/features/filter-by-category";
 
 export const NewArrivals = () => {
+  const productsByTabs = useAppSelector(selectCategoryFilter);
+
   return (
     <section id="new-arrivals" className="bg-brand-white pt-16 lg:pt-36">
       <Container>
@@ -15,7 +18,7 @@ export const NewArrivals = () => {
           </p>
           <CategoryTabs />
           <ErrorBoundary>
-            <ProductList mode="home" />
+            <ProductList mode="home" products={productsByTabs}/>
           </ErrorBoundary>
         </div>
       </Container>

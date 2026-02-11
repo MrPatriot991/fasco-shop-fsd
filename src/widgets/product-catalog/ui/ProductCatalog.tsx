@@ -1,23 +1,24 @@
 import { useEffect, useState } from "react";
 import { ChevronRight, SlidersHorizontal, X } from "lucide-react";
 import { Button, Container, ErrorBoundary } from "@/shared/ui";
-import { ProductList } from "@/entities/product";
-import { CatalogHeader } from "./CatalogHeader";
-import { FilterSidebar } from "@/features/filter-products/ui/FilterSidebar";
 import { useAppDispatch, useAppSelector, useLockBodyScroll } from "@/shared/lib/hooks";
+import { ProductList } from "@/entities/product";
+import { FilterSidebar } from "@/features/filter-products";
 import { selectFilterState } from "@/features/filter-products";
-import { resetFilters, setCategory } from "@/features/filter-products/model/filterSlice";
+import { resetFilters } from "@/features/filter-products";
+import { selectFilteredProducts } from "@/features/filter-products";
+import { CatalogHeader } from "./CatalogHeader";
 
 export const ProductCatalog = () => {
+  const dispatch = useAppDispatch();
   const [isOpen, setIsOpen] = useState(false);
   const activeFilters = useAppSelector(selectFilterState);
+  const productsByCategory = useAppSelector(selectFilteredProducts);
   const filterKey = JSON.stringify(activeFilters);
-  const dispatch = useAppDispatch();
 
   useLockBodyScroll(isOpen);
 
   useEffect(() => {
-    dispatch(setCategory("all"));
     dispatch(resetFilters());
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, [dispatch]);
@@ -75,7 +76,7 @@ export const ProductCatalog = () => {
                 <CatalogHeader />
               </div>
               <ErrorBoundary>
-                <ProductList key={filterKey} mode="shop" />
+                <ProductList key={filterKey} mode="shop" products={productsByCategory}/>
               </ErrorBoundary>
             </div>
           </div>
