@@ -19,7 +19,7 @@ export const MobileMenu = ({ onClose, isOpen }: MobileMenuProps) => {
   useLockBodyScroll(isOpen);
 
   return (
-    <div className="fixed inset-x-0 top-[97px] h-[calc(100dvh-97px)] lg:hidden bg-brand-white flex flex-col p-6">
+    <div className="fixed inset-x-0 z-50 top-24.25 h-[calc(100dvh-97px)] lg:hidden bg-brand-white flex flex-col p-6">
       <div className="mb-8">
         <SearchInput variant="mobile" onClose={onClose} />
       </div>
