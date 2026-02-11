@@ -1,7 +1,7 @@
 import type { RootState } from "@/app/providers";
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 
-const loadWishlistFromLS = (): number[] => {
+const loadWishlistFromLS = (): string[] => {
   try {
     const data = localStorage.getItem("wishlist");
     return data ? JSON.parse(data) : [];
@@ -11,7 +11,7 @@ const loadWishlistFromLS = (): number[] => {
 };
 
 interface WisglistState {
-  items: number[];
+  items: string[];
 }
 
 const initialState: WisglistState = {
@@ -22,7 +22,7 @@ export const wishlistSlice = createSlice({
   name: "wishlist",
   initialState,
   reducers: {
-    toggleWishlist: (state, action: PayloadAction<number>) => {
+    toggleWishlist: (state, action: PayloadAction<string>) => {
       const id = action.payload;
       const index = state.items.indexOf(id);
 

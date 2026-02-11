@@ -1,15 +1,16 @@
-import { Star } from "lucide-react";
 import { Button } from "@/shared/ui";
 import { cn } from "@/shared/lib/utils";
 import type { Color } from "@/shared/lib/constants";
+import { ToggleWishlistButton } from "@/features/wishlist";
 
 interface ProductGalleryProps {
+  id: string;
   colors: Color[];
   image: string;
   title: string;
 }
 
-export const ProductGallery = ({ colors, image, title }: ProductGalleryProps) => {
+export const ProductGallery = ({ id, colors, image, title }: ProductGalleryProps) => {
   return (
     <div className="flex gap-4 flex-1 flex-col-reverse lg:flex-row">
       <div className="flex lg:flex-col gap-3">
@@ -25,14 +26,13 @@ export const ProductGallery = ({ colors, image, title }: ProductGalleryProps) =>
         ))}
       </div>
       <div className="relative flex-1 rounded-lg overflow-hidden w-full lg:max-w-lg max-h-[654px]">
-        <Button
-          type="button"
-          variant="ghost"
-          size="none"
-          className="absolute lg:hidden top-5 right-5 p-2 bg-white rounded-full cursor-pointer"
-        >
-          <Star size={19} className="text-black" />
-        </Button>
+        <div className="absolute flex top-5 right-5 lg:hidden">
+          <ToggleWishlistButton
+            productId={id}
+            colorStar="text-black"
+            className="active:bg-transparent"
+          />
+        </div>
         <img
           src={image}
           alt={title}

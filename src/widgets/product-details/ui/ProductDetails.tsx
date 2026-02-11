@@ -58,7 +58,7 @@ export const ProductDetails = () => {
     };
   }, [dispatch]);
 
-  if (!product) return null;
+  if (!product || !id) return null;
 
   const { image, title, brand, isDiscount, rating, sizes, colors, price, salePercent } = product;
 
@@ -92,10 +92,10 @@ export const ProductDetails = () => {
     <section className="py-8 md:py-16 bg-brand-white">
       <Container>
         <div className="flex flex-col lg:flex-row gap-10 md:gap-20">
-          <ProductGallery colors={colors} image={image} title={title} />
+          <ProductGallery id={id} colors={colors} image={image} title={title} />
 
           <div className="flex-1 lg:max-w-2xl">
-            <ProductHeader brand={brand} title={title} rating={rating} />
+            <ProductHeader id={id} brand={brand} title={title} rating={rating} />
             <ProductPrice price={price} salePercent={salePercent} />
             <ProductViewers />
             {isDiscount && <ProductTimer targetDate="2026-02-28" />}

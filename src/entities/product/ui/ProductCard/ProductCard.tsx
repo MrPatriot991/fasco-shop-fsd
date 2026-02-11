@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
+import { cn } from "@/shared/lib/utils";
+import { getDiscountData } from "@/shared/lib/utils";
 import { formatCurrency } from "@/shared/lib/format";
 import { StarRating } from "@/shared/ui";
-import { getDiscountData } from "@/shared/lib/utils";
-import { cn } from "@/shared/lib/utils";
+import { ToggleWishlistButton } from "@/features/wishlist";
 import type { Product } from "@/entities/product/model/schema";
 
 export const ProductCard = ({ product }: { product: Product }) => {
@@ -19,6 +20,7 @@ export const ProductCard = ({ product }: { product: Product }) => {
     salePercent,
   } = product;
   const { currentPrice, oldPrice, percent, hasDiscount } = getDiscountData(price, salePercent);
+  const productId = String(id);
 
   return (
     <Link to={`/product/${id}`}>
@@ -34,7 +36,13 @@ export const ProductCard = ({ product }: { product: Product }) => {
                 : "object-cover object-top"
             )}
           />
-
+          <div className="absolute flex top-5 right-5 z-25">
+            <ToggleWishlistButton
+              productId={productId}
+              colorStar="text-black"
+              className="active:bg-transparent"
+            />
+          </div>
           {isDiscount && hasDiscount && (
             <div className="absolute top-4 left-4 z-10">
               <span className="bg-brand-dark text-white px-3 py-1 rounded-full text-sm font-bold shadow-lg">
