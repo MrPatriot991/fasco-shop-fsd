@@ -3,7 +3,11 @@ import { Button } from "@/shared/ui";
 import { formatCurrency } from "@/shared/lib/format";
 import peakyBlindersImg from "@/shared/assets/images/bg-packages.png";
 
-export const Packages = () => {
+interface PackagesProps {
+  onActionClick?: () => void;
+}
+
+export const Packages = ({ onActionClick }: PackagesProps) => {
   return (
     <section id="packages" className="overflow-hidden pt-16 lg:pt-36">
       <div className="relative z-10 bg-surface-muted flex inset-0 lg:min-h-142.5">
@@ -46,7 +50,7 @@ export const Packages = () => {
               </div>
             </div>
             <div>
-              <Button asChild>
+              <Button asChild onClick={onActionClick}>
                 <Link to="/shop?collection=best-sellers">Buy Now</Link>
               </Button>
             </div>

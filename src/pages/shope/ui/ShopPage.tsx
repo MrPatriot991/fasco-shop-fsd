@@ -6,10 +6,16 @@ import { Footer } from "@/widgets/footer";
 import { ProductCatalog } from "@/widgets/product-catalog";
 
 export const ShopPage = () => {
+  const scrollToCatalog = () => {
+    document.getElementById("catalog-top")?.scrollIntoView({
+      behavior: "smooth",
+    });
+  };
+
   return (
     <>
       <ProductCatalog />
-      <Packages />
+      <Packages onActionClick={scrollToCatalog} />
       <Benefits />
       <InstagramFeed />
       <NewsLetter />
