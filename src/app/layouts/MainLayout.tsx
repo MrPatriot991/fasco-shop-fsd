@@ -1,10 +1,13 @@
 import { Outlet } from "react-router-dom";
+import { useScrollToTop } from "@/shared/lib/hooks";
 import { ScrollToTopButton } from "@/features/scroll-to-top";
 import { FloatingCartButton } from "@/widgets/cart";
 import { Header } from "@/widgets/header";
 import { CartModal } from "@/widgets/cart";
 
 export const MainLayout = () => {
+  useScrollToTop();
+
   return (
     <>
       <div className="relative flex flex-col min-h-screen bg-brand-white">

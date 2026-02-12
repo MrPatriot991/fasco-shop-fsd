@@ -38,10 +38,6 @@ export const ProductDetails = () => {
   }, [status, dispatch]);
 
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  }, [dispatch]);
-
-  useEffect(() => {
     if (!product) return;
 
     if (selectedSize.length === 0) {
@@ -72,7 +68,6 @@ export const ProductDetails = () => {
     }
 
     const currentUniqueId = `${id}-${selectedSize}-${selectedColor}`;
-
     const cartItem = {
       id: currentUniqueId,
       productId: Number(id),

@@ -24,7 +24,6 @@ export const ProductCatalog = () => {
 
   useEffect(() => {
     dispatch(resetFilters());
-    window.scrollTo({ top: 0, behavior: "smooth" });
   }, [dispatch]);
 
   useEffect(() => {
@@ -35,7 +34,7 @@ export const ProductCatalog = () => {
   }, [searchParams, dispatch]);
 
   return (
-    <section className="bg-brand-white py-10">
+    <section id="catalog-top" className="bg-brand-white py-10">
       <Container>
         <div className="flex flex-col gap-4">
           <div className="flex flex-col items-center gap-5">
