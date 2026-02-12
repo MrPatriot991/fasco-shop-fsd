@@ -42,9 +42,12 @@ export const TAGS = [
   "Beachwear",
 ] as const;
 
+export const SORT = ["default", "price-low", "price-high"] as const;
+
 export type Tags = (typeof TAGS)[number];
 export type Sizes = (typeof SIZES)[number];
 export type Color = (typeof MOCK_COLORS)[number];
 export type Brand = (typeof MOCK_BRANDS)[number];
 export type Collection = (typeof COLLECTIONS)[number];
 export type Category = (typeof CATEGORY)[number];
+export type SortOption = (typeof SORT)[number];

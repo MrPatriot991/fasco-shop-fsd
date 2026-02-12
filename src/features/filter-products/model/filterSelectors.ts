@@ -14,7 +14,7 @@ export const selectTagsFilter = (state: RootState) => state.filters.tags;
 export const selectFilteredProducts = createSelector(
   [selectAllProducts, selectFilterState],
   (products, filter) => {
-    return products.filter((product) => {
+    const filtered = products.filter((product) => {
       const matchesSize =
         filter.sizes.length === 0 || product.sizes.some((s) => filter.sizes.includes(s as Sizes));
       const matchesPrice =
@@ -41,6 +41,18 @@ export const selectFilteredProducts = createSelector(
         matchesCollection &&
         matchesTags
       );
+    });
+
+    return [...filtered].sort((a, b) => {
+      if (filter.sortBy === "price-low") {
+        return a.price - b.price;
+      }
+
+      if (filter.sortBy === "price-high") {
+        return b.price - a.price;
+      }
+
+      return 0;
     });
   }
 );

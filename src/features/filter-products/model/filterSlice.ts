@@ -1,5 +1,5 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
-import type { Collection, Brand, Color, Sizes, Tags } from "@/shared/lib/constants";
+import type { Collection, Brand, Color, Sizes, Tags, SortOption } from "@/shared/lib/constants";
 
 interface ActiveFilter {
   sizes: Sizes[];
@@ -8,6 +8,7 @@ interface ActiveFilter {
   brands: Brand[];
   collection: Collection;
   tags: Tags[];
+  sortBy: SortOption;
 }
 
 type ArrayKey = keyof Pick<ActiveFilter, "sizes" | "colors" | "brands" | "tags">;
@@ -19,6 +20,7 @@ const initialState: ActiveFilter = {
   brands: [],
   collection: "All products",
   tags: [],
+  sortBy: "default",
 };
 
 export const filterSlice = createSlice({
@@ -51,10 +53,19 @@ export const filterSlice = createSlice({
       const { key, value } = action.payload;
       state[key] = value;
     },
+    setSortBy: (state, action: PayloadAction<SortOption>) => {
+      state.sortBy = action.payload;
+    },
     resetFilters: () => initialState,
   },
 });
 
-export const { toggleArrayFilter, setFilterValue, setPriceRange, setCollection, resetFilters } =
-  filterSlice.actions;
+export const {
+  toggleArrayFilter,
+  setFilterValue,
+  setPriceRange,
+  setCollection,
+  resetFilters,
+  setSortBy,
+} = filterSlice.actions;
 export default filterSlice.reducer;

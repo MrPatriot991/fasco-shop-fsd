@@ -4,6 +4,7 @@ export {
   setCollection,
   resetFilters,
   setFilterValue,
+  setSortBy,
 } from "./model/filterSlice";
 export {
   selectFilteredProducts,
