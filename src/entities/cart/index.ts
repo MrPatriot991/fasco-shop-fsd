@@ -5,7 +5,8 @@ export {
   updateCartItem,
   removeFromCart,
   toggleGifWrap,
-} from "./model/cartSlice";
+  cartSlice,
+} from "./model/cart.slice";
 export {
   selectIsCartModalOpen,
   selectItemTotal,
@@ -15,6 +16,6 @@ export {
   selectItemTotalWithWrap,
   selectIsGiftWrapEnabled,
   selectCartItemCount,
-} from "./model/cartSelector";
+  selectCartDetails,
+} from "./model/cart.selector";
 export { FreeShippingMessage } from "./ui/FreeShippingMessage";
-export { default as cartReducer } from "./model/cartSlice";
