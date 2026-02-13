@@ -13,7 +13,14 @@ const SORT_OPTIONS: {
   { label: "Price: High to Low", value: "price-high" },
 ];
 
-export const CatalogHeader = () => {
+const views = [
+  { cols: 1, icon: <Menu className="w-3 h-3 text-black" /> },
+  { cols: 2, icon: <Tally2 className="w-3 h-3 text-black" /> },
+  { cols: 3, icon: <Tally3 className="w-3 h-3 text-black" /> },
+  { cols: 4, icon: <Tally4 className="w-3 h-3 text-black" /> },
+];
+
+export const CatalogHeader = ({ setCols }: { setCols: (col: number) => void }) => {
   const dispatch = useAppDispatch();
 
   return (
@@ -25,19 +32,18 @@ export const CatalogHeader = () => {
           onSelect={(item) => dispatch(setSortBy(item.value))}
         />
       </div>
-      <div>
-        <Button variant="ghost" size="none" className="p-3 text-[#f2f2f2] rounded-xs">
-          <Menu className="w-3 h-3 text-black" />
-        </Button>
-        <Button variant="ghost" size="none" className="p-3 text-[#f2f2f2] rounded-xs">
-          <Tally2 className="w-3 h-3 text-black" />
-        </Button>
-        <Button variant="ghost" size="none" className="p-3 text-[#f2f2f2] rounded-xs">
-          <Tally3 className="w-3 h-3 text-black" />
-        </Button>
-        <Button variant="ghost" size="none" className="p-3 text-[#f2f2f2] rounded-xs">
-          <Tally4 className="w-3 h-3 text-black" />
-        </Button>
+      <div className="flex gap-2">
+        {views.map((view) => (
+          <Button
+            key={view.cols}
+            variant="ghost"
+            size="icon"
+            onClick={() => setCols(view.cols)}
+            className="bg-gray-200/50 hover:bg-gray-200 rounded-xs"
+          >
+            {view.icon}
+          </Button>
+        ))}
       </div>
     </div>
   );
