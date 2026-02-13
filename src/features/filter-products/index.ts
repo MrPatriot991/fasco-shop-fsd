@@ -16,5 +16,5 @@ export {
   selectCollectionFilter,
   selectTagsFilter,
 } from "./model/filterSelectors";
-export { default as filterReducer } from "./model/filterSlice";
+export { filterSlice } from "./model/filterSlice";
 export { FilterSidebar } from "./ui/FilterSidebar";
