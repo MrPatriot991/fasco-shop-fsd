@@ -16,4 +16,5 @@ export { CartSummaryBlock } from "./cartSummaryBlock/CartSummaryBlock";
 export { CartCheckoutButtons } from "./cartCheckoutButtons/CartCheckoutButtons";
 export { SectionTitle } from "./sectionTitle/SectionTitle";
 export { Dropdown } from "./dropdown/Dropdown";
+export { Skeleton } from "./skeleton/Skeleton";
 export { ErrorBoundary } from "./errorBoundary/ErrorBoundary";

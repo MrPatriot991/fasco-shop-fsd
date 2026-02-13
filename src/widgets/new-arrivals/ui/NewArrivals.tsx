@@ -1,11 +1,16 @@
-import { Container } from "@/shared/ui";
-import { ErrorBoundary } from "@/shared/ui";
+import { useState, useMemo } from "react";
+import { Container, ErrorBoundary, Button } from "@/shared/ui";
 import { useAppSelector } from "@/shared/lib/hooks";
 import { ProductList, selectCategoryFilter } from "@/entities/product";
 import { CategoryTabs } from "@/features/filter-by-category";
 
 export const NewArrivals = () => {
-  const productsByTabs = useAppSelector(selectCategoryFilter);
+  const products = useAppSelector(selectCategoryFilter);
+  const [visibleCount, setVisibleCount] = useState(6);
+
+  const displayProducts = useMemo(() => {
+    return products.slice(0, visibleCount);
+  }, [products, visibleCount]);
 
   return (
     <section id="new-arrivals" className="bg-brand-white pt-16 lg:pt-36">
@@ -18,7 +23,22 @@ export const NewArrivals = () => {
           </p>
           <CategoryTabs />
           <ErrorBoundary>
-            <ProductList mode="home" products={productsByTabs} />
+            <ProductList
+              products={displayProducts}
+              cols={3}
+              skeletonCount={6}
+              footer={
+                visibleCount < products.length && (
+                  <Button
+                    type="button"
+                    variant="primary"
+                    onClick={() => setVisibleCount((prev: number) => prev + 6)}
+                  >
+                    View More
+                  </Button>
+                )
+              }
+            />
           </ErrorBoundary>
         </div>
       </Container>
