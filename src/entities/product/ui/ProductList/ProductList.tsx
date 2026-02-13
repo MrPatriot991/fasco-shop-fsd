@@ -1,12 +1,7 @@
-import { useEffect, useState, useMemo, useRef } from "react";
+import { useState, useMemo, useRef } from "react";
 import { Button, Pagination } from "@/shared/ui";
-import { useAppSelector, useAppDispatch } from "@/shared/lib/hooks";
-import {
-  fetchProducts,
-  selectProductStatus,
-  ProductCard,
-  ProductCardSkeleton,
-} from "@/entities/product";
+import { useAppSelector } from "@/shared/lib/hooks";
+import { selectProductStatus, ProductCard } from "@/entities/product";
 import type { Product } from "@/entities/product/model/schema";
 
 interface ProductsListProps {
@@ -15,7 +10,6 @@ interface ProductsListProps {
 }
 
 export const ProductList = ({ products, mode = "shop" }: ProductsListProps) => {
-  const dispatch = useAppDispatch();
   const status = useAppSelector(selectProductStatus);
   const [visibleCount, setVisibleCount] = useState(6);
   const [currentPage, setCurrentPage] = useState(1);
@@ -36,12 +30,6 @@ export const ProductList = ({ products, mode = "shop" }: ProductsListProps) => {
   const handleShowMore = () => {
     setVisibleCount((prev) => prev + 6);
   };
-
-  useEffect(() => {
-    if (status === "idle") {
-      dispatch(fetchProducts());
-    }
-  }, [dispatch, status]);
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);

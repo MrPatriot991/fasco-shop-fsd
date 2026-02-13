@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { ChevronRight } from "lucide-react";
 import { useAppDispatch, useAppSelector } from "@/shared/lib/hooks";
 import {
@@ -18,8 +17,6 @@ import {
   FreeShippingMessage,
   selectCartDetails,
 } from "@/entities/cart";
-import { fetchProducts } from "@/entities/product";
-import { selectProductStatus } from "@/entities/product";
 import { CartTableHeader } from "./CartTableHeader";
 
 export const CartPageContent = () => {
@@ -27,7 +24,6 @@ export const CartPageContent = () => {
   const cartItems = useAppSelector(selectCartDetails);
   const isGiftWrap = useAppSelector(selectIsGiftWrapEnabled);
   const subtotal = useAppSelector(selectCartSubtotal);
-  const isLoading = useAppSelector(selectProductStatus);
 
   const handleQuantityChange = (id: string, quantity: number) => {
     dispatch(updateCartItem({ id, quantity }));
@@ -36,12 +32,6 @@ export const CartPageContent = () => {
   const handleRemove = (id: string) => {
     dispatch(removeFromCart(id));
   };
-
-  useEffect(() => {
-    if (isLoading === "idle") {
-      dispatch(fetchProducts());
-    }
-  }, [isLoading, dispatch]);
 
   const handleCheckout = () => {
     console.log("Checkout", { cartItems, isGiftWrap });

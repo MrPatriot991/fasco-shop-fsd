@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "@/shared/lib/hooks";
 import { Button, Container, QuantityPicker } from "@/shared/ui";
-import { fetchProducts, selectProductByID, selectProductStatus } from "@/entities/product";
+import { selectProductByID } from "@/entities/product";
 import { openCart, addToCart } from "@/entities/cart";
 import {
   selectActiveColors,
@@ -26,16 +26,9 @@ export const ProductDetails = () => {
   const { id } = useParams<{ id: string }>();
   const [count, setCount] = useState(1);
 
-  const status = useAppSelector(selectProductStatus);
   const selectedSize = useAppSelector(selectActiveSize);
   const selectedColor = useAppSelector(selectActiveColors);
   const product = useAppSelector((state) => selectProductByID(state, Number(id)));
-
-  useEffect(() => {
-    if (status === "idle") {
-      dispatch(fetchProducts());
-    }
-  }, [status, dispatch]);
 
   useEffect(() => {
     if (!product) return;
