@@ -8,7 +8,7 @@ interface QuantityPickerProps {
 
 export const QuantityPicker = ({ value, onChange, min = 1 }: QuantityPickerProps) => {
   return (
-    <div className="inline-flex h-10 md:h-14 w-[133px] border border-brand-gray/10 rounded-sm">
+    <div className="inline-flex h-10 md:h-14 w-33.25 border border-brand-gray/10 rounded-sm">
       <Button
         variant="ghost"
         size="none"

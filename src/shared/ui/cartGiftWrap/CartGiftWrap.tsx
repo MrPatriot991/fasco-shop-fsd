@@ -30,7 +30,7 @@ export const CartGiftWrap = ({
           />
           <Check className="absolute w-4 h-4 text-white opacity-0 peer-checked:opacity-100 transition-opacity pointer-events-none" />
         </div>
-        <span className="mt-[3px] text-brand-gray group-hover:text-brand-black transition-colors duration-300">
+        <span className="mt-0.75 text-brand-gray group-hover:text-brand-black transition-colors duration-300">
           For <span className="font-semibold text-brand-black">{formatCurrency(price)}</span> Please
           Wrap The Product
         </span>

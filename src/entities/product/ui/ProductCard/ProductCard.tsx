@@ -6,7 +6,13 @@ import { StarRating } from "@/shared/ui";
 import { ToggleWishlistButton } from "@/features/wishlist";
 import type { Product } from "@/entities/product/model/schema";
 
-export const ProductCard = ({ product }: { product: Product }) => {
+export const ProductCard = ({
+  product,
+  variant,
+}: {
+  product: Product;
+  variant: "list" | "grid";
+}) => {
   const {
     id,
     title,
@@ -24,8 +30,18 @@ export const ProductCard = ({ product }: { product: Product }) => {
 
   return (
     <Link to={`/product/${id}`}>
-      <article className="flex space-y-5 flex-col p-4 h-full bg-brand-white w-full  md:min-w-1/2 rounded-2xl shadow-subtle overflow-hidden hover:shadow-lg cursor-pointer transition-shadow duration-200">
-        <div className="relative aspect-3/4 overflow-hidden bg-brand-surface/30">
+      <article
+        className={cn(
+          "flex space-y-5 p-4 h-full bg-brand-white w-full  md:min-w-1/2 rounded-2xl shadow-subtle overflow-hidden hover:shadow-lg cursor-pointer transition-shadow duration-200",
+          variant === "grid" ? "flex-col" : "flex-col lg:flex-row items-start"
+        )}
+      >
+        <div
+          className={cn(
+            "relative aspect-3/4 overflow-hidden bg-brand-surface/30",
+            variant === "list" ? "w-full lg:w-1/2" : "w-full"
+          )}
+        >
           <img
             src={image}
             alt={title}
@@ -59,7 +75,12 @@ export const ProductCard = ({ product }: { product: Product }) => {
             </div>
           )}
         </div>
-        <div className="flex space-y-4 justify-between w-full flex-col flex-1">
+        <div
+          className={cn(
+            "flex space-y-4 justify-between w-full flex-col flex-1",
+            variant === "list" ? "px-4 py-2" : "px-0 py-0"
+          )}
+        >
           <header className="flex justify-between items-start gap-4">
             <div className="min-w-0">
               <h3 className="text-xl text-brand-dark font-medium line-clamp-1">{title}</h3>
