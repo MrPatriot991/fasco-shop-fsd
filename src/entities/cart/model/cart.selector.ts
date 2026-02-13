@@ -1,13 +1,31 @@
 import { createSelector } from "@reduxjs/toolkit";
 import type { RootState } from "@/app/providers";
 
-export const selectCartItems = (state: RootState) => state.cart.cart;
+export const selectCartItems = (state: RootState) => state.cart.items;
 export const selectLastAddedId = (state: RootState) => state.cart.lastAddedId;
 export const selectIsCartModalOpen = (state: RootState) => state.cart.isCartModalOpen;
 export const selectIsGiftWrapEnabled = (state: RootState) => state.cart.isGlobalGiftWrap;
 
+export const selectCartDetails = createSelector(
+  [selectCartItems, (state: RootState) => state.products.entities],
+  (cartItems, products) => {
+    if (!products) return [];
+    return cartItems.map((item) => {
+      const product = products[item.productId];
+      const price = product?.price || 0;
+
+      return {
+        ...item,
+        title: product?.title || "Unknown Product",
+        price,
+        image: product?.image,
+      };
+    });
+  }
+);
+
 export const selectItemTotal = createSelector(
-  [selectCartItems, selectLastAddedId],
+  [selectCartDetails, selectLastAddedId],
   (cartItems, id) => {
     const item = cartItems.find((el) => el.id === id);
 
@@ -24,7 +42,7 @@ export const selectItemTotalWithWrap = createSelector(
 );
 
 export const selectCartSubtotal = createSelector(
-  [selectCartItems, selectIsGiftWrapEnabled],
+  [selectCartDetails, selectIsGiftWrapEnabled],
   (cart, isGiftWrap) => {
     const itemsTotal = cart.reduce((total, item) => total + item.price * item.quantity, 0);
     return itemsTotal + (isGiftWrap ? 10 : 0);

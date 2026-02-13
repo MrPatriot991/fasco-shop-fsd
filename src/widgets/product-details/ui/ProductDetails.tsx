@@ -59,25 +59,16 @@ export const ProductDetails = () => {
   const { image, title, brand, isDiscount, rating, sizes, colors, price, salePercent } = product;
 
   const handleAddToCart = () => {
-    const size = selectedSize[0];
-    const color = selectedColor[0];
-
     if (!selectedSize || !selectedColor) {
       alert("Please select size and color");
       return;
     }
 
-    const currentUniqueId = `${id}-${selectedSize}-${selectedColor}`;
     const cartItem = {
-      id: currentUniqueId,
       productId: Number(id),
-      title,
-      price,
-      image,
-      size: size,
-      color: color,
+      size: selectedSize[0],
+      color: selectedColor[0],
       quantity: count,
-      isWrapped: false,
     };
 
     dispatch(addToCart(cartItem));

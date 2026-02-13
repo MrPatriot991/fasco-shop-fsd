@@ -6,9 +6,9 @@ import {
   selectIsCartModalOpen,
   selectItemTotalWithWrap,
   selectLastAddedId,
-  selectCartItems,
   selectIsGiftWrapEnabled,
   toggleGifWrap,
+  selectCartDetails,
 } from "@/entities/cart";
 import { CartModalContent } from "./CartModalContent";
 import { CartModalHeader } from "./CartModalHeader";
@@ -20,7 +20,7 @@ export const CartModal = () => {
   const dispatch = useAppDispatch();
   const isOpen = useAppSelector(selectIsCartModalOpen);
   const lastAddedId = useAppSelector(selectLastAddedId);
-  const cartItems = useAppSelector(selectCartItems);
+  const cartItems = useAppSelector(selectCartDetails);
   const isGiftWrap = useAppSelector(selectIsGiftWrapEnabled);
   const subtotal = useAppSelector(selectItemTotalWithWrap);
 

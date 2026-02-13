@@ -57,7 +57,7 @@ export const CartItem = ({
               alt={title}
               className={cn(
                 "w-full h-full p-4",
-                image.includes("https://fakestoreapi.com")
+                image?.includes("https://fakestoreapi.com")
                   ? "object-contain object-center"
                   : "object-cover object-top"
               )}
