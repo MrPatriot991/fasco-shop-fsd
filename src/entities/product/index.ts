@@ -6,5 +6,4 @@ export * from "./model/moks";
 export { productSlice } from "./model/slice";
 export { setCategory } from "./model/slice";
 export { ProductCard } from "./ui/ProductCard/ProductCard";
-export { ProductCardSkeleton } from "./ui/ProductCard/ProductCardSkeleton";
 export { ProductList } from "./ui/ProductList/ProductList";
