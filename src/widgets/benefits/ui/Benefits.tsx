@@ -1,4 +1,4 @@
-import { Container } from "@/shared/ui";
+import { Section } from "@/shared/ui";
 import { Quality } from "@/shared/ui";
 import { Protection } from "@/shared/ui";
 import { Shipping } from "@/shared/ui";
@@ -19,23 +19,21 @@ const benefits: Benefit[] = [
 
 export const Benefits = () => {
   return (
-    <section className="bg-brand-white py-8 md:py-10">
-      <Container>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {benefits.map(({ icon, title, desc }, i) => (
-            <div
-              key={i}
-              className="flex items-center  gap-3  rounded p-4 bg-brand-white shadow-subtle lg:shadow-none"
-            >
-              <div>{icon}</div>
-              <div>
-                <div className="text-brand-dark">{title}</div>
-                <div className="text-brand-dark">{desc}</div>
-              </div>
+    <Section spacing="compact" className="bg-brand-white">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        {benefits.map(({ icon, title, desc }, i) => (
+          <div
+            key={i}
+            className="flex items-center  gap-3  rounded p-4 bg-brand-white shadow-subtle lg:shadow-none"
+          >
+            <div>{icon}</div>
+            <div>
+              <div className="text-brand-dark">{title}</div>
+              <div className="text-brand-dark">{desc}</div>
             </div>
-          ))}
-        </div>
-      </Container>
-    </section>
+          </div>
+        ))}
+      </div>
+    </Section>
   );
 };
