@@ -3,14 +3,16 @@ import type { ElementType, ReactNode } from "react";
 
 type TitleTag = ElementType;
 type Variant = "hero" | "section";
+type Align = "left" | "center" | "right" | "leftCenter";
 
 interface SectionTitleProps {
   children: ReactNode;
   as?: TitleTag;
   variant?: Variant;
-  align?: "left" | "center" | "right";
-  maxWidth?: string;
+  align?: Align;
+  alignLg?: Align;
   subContent?: ReactNode;
+  subJustify?: Align;
   className?: string;
   classNameSubContent?: string;
 }
@@ -24,9 +26,10 @@ export const SectionTitle = ({
   children,
   as: Tag = "h2",
   align = "center",
+  alignLg,
   variant = "section",
   subContent,
-  maxWidth,
+  subJustify,
   className,
   classNameSubContent,
 }: SectionTitleProps) => {
@@ -37,12 +40,23 @@ export const SectionTitle = ({
         align === "left" && "items-start text-start",
         align === "center" && "items-center text-center",
         align === "right" && "items-end text-right",
+        alignLg === "left" && "lg:items-start lg:text-start",
+        alignLg === "center" && "lg:items-center lg:text-center",
+        alignLg === "right" && "lg:items-end lg:text-right",
         className
       )}
     >
       <Tag className={cn("font-volkhov", variantStyles[variant])}>{children}</Tag>
       {subContent && (
-        <div className={cn(`max-w-${maxWidth} text-base text-brand-gray`, classNameSubContent)}>
+        <div
+          className={cn(
+            "flex text-base text-brand-gray",
+            subJustify === "left" && "justify-start text-left",
+            subJustify === "center" && "justify-center text-center",
+            subJustify === "right" && "justify-end text-right",
+            classNameSubContent
+          )}
+        >
           {subContent}
         </div>
       )}
