@@ -31,7 +31,7 @@ export const ProductList = ({
   });
 
   return (
-    <div className="flex flex-col w-full items-center justify-center flex-1 gap-12">
+    <div className="flex flex-col w-full items-center justify-center flex-1 gap-10">
       {products.length === 0 && empty}
       <ul className={gridClasses}>
         {status === "loading" && products.length === 0 ? (
