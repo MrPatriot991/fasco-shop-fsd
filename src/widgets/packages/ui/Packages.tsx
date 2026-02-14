@@ -28,7 +28,7 @@ export const Packages = ({ onActionClick }: PackagesProps) => {
             />
             <div className="absolute inset-0 bg-black/5 lg:hidden" />
           </div>
-          <div className="px-0 sm:px-10 py-10 lg:px-20 space-y-5 max-w-4/5 md:max-w-1/2">
+          <div className="px-0 sm:pl-10 py-10 lg:pl-20 space-y-5 max-w-4/5 md:max-w-1/2">
             <div className="space-y-5">
               <p className="text-brand-gray tracking-widest text-sm uppercase">Women Collection</p>
               <SectionTitle
