@@ -15,7 +15,7 @@ const brands = [
 export const BrandMarquee = () => {
   return (
     <div className="w-full overflow-x-hidden">
-      <div className="flex items-center py-5 lg:py-10">
+      <div className="flex items-center mt-12 lg:mt-16">
         <div
           className="
             flex 
@@ -38,7 +38,7 @@ export const BrandMarquee = () => {
         </div>
 
         <div
-          className="flex shrink-0 gap-4 sm:gap-8 md:gap-12 lg:gap-16  animate-marquee min-w-full items-center justify-around"
+          className="flex shrink-0 gap-10 md:gap-12 lg:gap-16  animate-marquee min-w-full items-center justify-around"
           aria-hidden="true"
         >
           {brands.map((brand, i) => (
@@ -46,7 +46,7 @@ export const BrandMarquee = () => {
               key={`dup-2-${i}`}
               src={brand.src}
               alt={brand.alt}
-              className="h-6 md:h-10 w-auto shrink-0"
+              className="h-6 md:h-8 lg:h-10 w-auto shrink-0"
             />
           ))}
         </div>
