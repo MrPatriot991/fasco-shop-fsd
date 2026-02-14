@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Button } from "@/shared/ui";
+import { Button, Section, SectionTitle } from "@/shared/ui";
 import { formatCurrency } from "@/shared/lib/format";
 import peakyBlindersImg from "@/shared/assets/images/bg-packages.png";
 
@@ -9,7 +9,7 @@ interface PackagesProps {
 
 export const Packages = ({ onActionClick }: PackagesProps) => {
   return (
-    <section id="packages" className="overflow-hidden pt-16 lg:pt-36">
+    <Section id="packages" containerSize="full" spacing="none" className="pt-6 md:pt-10 ">
       <div className="relative z-10 bg-surface-muted flex inset-0 lg:min-h-142.5">
         <div
           className="hidden absolute lg:flex inset-0 bg-surface-neutral"
@@ -28,17 +28,25 @@ export const Packages = ({ onActionClick }: PackagesProps) => {
             />
             <div className="absolute inset-0 bg-black/5 lg:hidden" />
           </div>
-          <div className="p-10  lg:px-20 space-y-5 max-w-137.5">
+          <div className="px-0 sm:px-10 py-10 lg:px-20 space-y-5 max-w-4/5 md:max-w-1/2">
             <div className="space-y-5">
               <p className="text-brand-gray tracking-widest text-sm uppercase">Women Collection</p>
-              <h2 className="text-section-title  font-volkhov text-brand-dark leading-tight">
+              <SectionTitle
+                as="h2"
+                variant="section"
+                align="left"
+                subContent={
+                  <div className="flex flex-col gap-3">
+                    <p className="text-brand-black underline">DESCRIPTION</p>
+                    <p className="font-volkhov text-brand-gray">
+                      Explore the latest trends in our Peaky Blinders collection. High-quality
+                      fabrics and timeless designs for the modern woman.
+                    </p>
+                  </div>
+                }
+              >
                 Peaky Blinders
-              </h2>
-              <p className="text-brand-black underline">DESCRIPTION</p>
-              <p className="text-brand-gray">
-                Explore the latest trends in our Peaky Blinders collection. High-quality fabrics and
-                timeless designs for the modern woman.
-              </p>
+              </SectionTitle>
             </div>
             <div className="flex flex-col gap-5">
               <div className="flex items-center gap-5">
@@ -57,6 +65,6 @@ export const Packages = ({ onActionClick }: PackagesProps) => {
           </div>
         </div>
       </div>
-    </section>
+    </Section>
   );
 };
