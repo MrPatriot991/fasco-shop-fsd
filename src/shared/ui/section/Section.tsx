@@ -1,3 +1,4 @@
+import { forwardRef } from "react";
 import { cn } from "@/shared/lib/utils";
 import { Container } from "@/shared/ui";
 
@@ -17,16 +18,14 @@ interface Props {
   containerSize?: ContainerMaxWidth;
 }
 
-export const Section = ({
-  id,
-  children,
-  className,
-  containerSize = "2xl",
-  spacing = "default",
-}: Props) => {
-  return (
-    <section id={id} className={cn(spacingMap[spacing], className)}>
-      <Container maxWidth={containerSize}>{children}</Container>
-    </section>
-  );
-};
+export const Section = forwardRef<HTMLElement, Props>(
+  ({ id, children, className, containerSize = "2xl", spacing = "default" }, ref) => {
+    return (
+      <section id={id} ref={ref} className={cn(spacingMap[spacing], className)}>
+        <Container maxWidth={containerSize}>{children}</Container>
+      </section>
+    );
+  }
+);
+
+Section.displayName = "Section";
