@@ -1,4 +1,4 @@
-import { CartItem } from "@/shared/ui";
+import { CartItem, ErrorBoundary } from "@/shared/ui";
 import type { Color, Sizes } from "@/shared/lib/constants";
 
 interface CartModalItemProps {
@@ -14,5 +14,9 @@ interface CartModalItemProps {
 }
 
 export const CartModalItem = (props: CartModalItemProps) => {
-  return <CartItem {...props} variant="compact" />;
+  return (
+    <ErrorBoundary>
+      <CartItem {...props} variant="compact" />
+    </ErrorBoundary>
+  );
 };

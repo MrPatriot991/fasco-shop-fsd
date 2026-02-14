@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Button, Container } from "@/shared/ui";
+import { Button, Container, ErrorBoundary } from "@/shared/ui";
 import { useAppSelector } from "@/shared/lib/hooks";
 import { AppSlider } from "@/shared/ui";
 import { selectOnlyDeals } from "@/entities/product";
@@ -33,14 +33,16 @@ export const Deals = () => {
               <TimerDisplay targetDate="2026-02-28" />
             </div>
           </div>
-          <AppSlider
-            slides={discountDeals}
-            options={OPTIONS}
-            showButtons
-            height="36rem"
-            maxWidth="lg"
-            sliderSize="55%"
-          />
+          <ErrorBoundary>
+            <AppSlider
+              slides={discountDeals}
+              options={OPTIONS}
+              showButtons
+              height="36rem"
+              maxWidth="lg"
+              sliderSize="55%"
+            />
+          </ErrorBoundary>
         </div>
       </Container>
     </section>

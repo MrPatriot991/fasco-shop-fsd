@@ -1,3 +1,4 @@
+import { ErrorBoundary } from "@/shared/ui";
 import { Benefits } from "@/widgets/benefits";
 import { Deals } from "@/widgets/deals";
 import { Footer } from "@/widgets/footer";
@@ -8,7 +9,9 @@ import { ProductDetails } from "@/widgets/product-details";
 export const ProductPage = () => {
   return (
     <>
-      <ProductDetails />
+      <ErrorBoundary>
+        <ProductDetails />
+      </ErrorBoundary>
       <Packages />
       <Benefits />
       <Deals />

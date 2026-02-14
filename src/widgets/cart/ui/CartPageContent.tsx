@@ -7,6 +7,7 @@ import {
   CartItem,
   CartSummaryBlock,
   Container,
+  ErrorBoundary,
 } from "@/shared/ui";
 import {
   updateCartItem,
@@ -54,15 +55,17 @@ export const CartPageContent = () => {
           <CartTableHeader />
           <div>
             {cartItems.map((item) => (
-              <CartItem
-                key={item.id}
-                {...item}
-                variant="detailed"
-                showRemove
-                showTotal
-                onQuantityChange={handleQuantityChange}
-                onRemove={handleRemove}
-              />
+              <ErrorBoundary>
+                <CartItem
+                  key={item.id}
+                  {...item}
+                  variant="detailed"
+                  showRemove
+                  showTotal
+                  onQuantityChange={handleQuantityChange}
+                  onRemove={handleRemove}
+                />
+              </ErrorBoundary>
             ))}
           </div>
 
