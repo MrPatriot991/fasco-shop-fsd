@@ -6,8 +6,8 @@ import {
   SectionTitle,
   CartItem,
   CartSummaryBlock,
-  Container,
   ErrorBoundary,
+  Section,
 } from "@/shared/ui";
 import {
   updateCartItem,
@@ -39,52 +39,53 @@ export const CartPageContent = () => {
   };
 
   return (
-    <section className="py-8 md:py-16 bg-brand-white">
-      <Container>
-        <SectionTitle
-          as="h1"
-          title="Shopping Cart"
-          subContent={
-            <p className="text-black hidden lg:flex items-center gap-2">
-              Home <ChevronRight className="w-4 h-4" /> Your Shopping Cart
-            </p>
-          }
-        />
+    <Section spacing="compact" className="bg-brand-white">
+      <SectionTitle
+        as="h1"
+        align="center"
+        className="md:gap-4 lg:gap-6"
+        subContent={
+          <p className="font-volkhov text-black hidden md:flex items-center gap-2">
+            Home <ChevronRight className="w-4 h-4" /> Your Shopping Cart
+          </p>
+        }
+      >
+        Shopping Cart
+      </SectionTitle>
 
-        <div className="mt-8 md:mt-20">
-          <CartTableHeader />
-          <div>
-            {cartItems.map((item) => (
-              <ErrorBoundary>
-                <CartItem
-                  key={item.id}
-                  {...item}
-                  variant="detailed"
-                  showRemove
-                  showTotal
-                  onQuantityChange={handleQuantityChange}
-                  onRemove={handleRemove}
-                />
-              </ErrorBoundary>
-            ))}
-          </div>
-
-          <div className="flex justify-end">
-            <div className="flex flex-col w-full md:max-w-1/2">
-              <CartGiftWrap
-                price={10}
-                checked={isGiftWrap}
-                onChange={() => dispatch(toggleGifWrap())}
-                className="w-full md:w-auto mb-6"
+      <div className="mt-8 md:mt-20">
+        <CartTableHeader />
+        <div>
+          {cartItems.map((item) => (
+            <ErrorBoundary>
+              <CartItem
+                key={item.id}
+                {...item}
+                variant="detailed"
+                showRemove
+                showTotal
+                onQuantityChange={handleQuantityChange}
+                onRemove={handleRemove}
               />
+            </ErrorBoundary>
+          ))}
+        </div>
 
-              <CartSummaryBlock subtotal={subtotal} className="w-full md:w-auto mb-6" />
-              <CartCheckoutButtons onCheckout={handleCheckout} />
-              <FreeShippingMessage className="mt-2" />
-            </div>
+        <div className="flex justify-end">
+          <div className="flex flex-col w-full md:max-w-1/2">
+            <CartGiftWrap
+              price={10}
+              checked={isGiftWrap}
+              onChange={() => dispatch(toggleGifWrap())}
+              className="w-full md:w-auto mb-6"
+            />
+
+            <CartSummaryBlock subtotal={subtotal} className="w-full md:w-auto mb-6" />
+            <CartCheckoutButtons onCheckout={handleCheckout} />
+            <FreeShippingMessage className="mt-2" />
           </div>
         </div>
-      </Container>
-    </section>
+      </div>
+    </Section>
   );
 };

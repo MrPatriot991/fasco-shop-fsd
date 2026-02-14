@@ -12,11 +12,12 @@ export const CartModalHeader = ({ freeShippingThreshold, onClick }: CartModalHea
     <div className="border-b border-gray-200 py-6">
       <div className="flex items-start justify-between gap-4">
         <SectionTitle
-          title="Shopping Cart"
           as="h2"
-          className="items-start"
+          align="left"
           subContent={<FreeShippingMessage threshold={freeShippingThreshold} />}
-        />
+        >
+          Shopping Cart
+        </SectionTitle>
         <Button type="button" variant="ghost" size="none" onClick={onClick}>
           <X />
         </Button>
