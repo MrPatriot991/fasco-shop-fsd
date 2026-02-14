@@ -1,5 +1,4 @@
-import { Container } from "@/shared/ui/container/Container";
-import { AppSlider, StarRating } from "@/shared/ui";
+import { AppSlider, Section, SectionTitle, StarRating } from "@/shared/ui";
 import type { EmblaOptionsType } from "embla-carousel";
 import type { BaseSlide } from "@/shared/ui/appSlider/AppSlider";
 
@@ -54,53 +53,55 @@ const reviewsData: ReviewSlider[] = [
 
 export const Reviews = () => {
   return (
-    <section className="bg-brand-gray/10 py-16 lg:py-24">
-      <Container maxWidth="3xl">
-        <div className="flex flex-col gap-16">
-          <div className="flex flex-col gap-5">
-            <h2 className="text-center tracking-tight leading-12 text-section-title font-volkhov text-brand-dark">
-              This Is What Our Customers Say
-            </h2>
-            <p className="text-brand-gray text-center">
+    <Section className="bg-brand-gray/10" containerSize="3xl">
+      <div className="flex flex-col gap-6 lg:gap-10">
+        <SectionTitle
+          as="h2"
+          variant="section"
+          align="center"
+          subContent={
+            <p className="font-volkhov">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Scelerisque duis
             </p>
-          </div>
-          <AppSlider
-            slides={reviewsData}
-            options={OPTIONS}
-            height="80vh"
-            maxWidth="full"
-            spacing="0.5rem"
-            sliderSize={{ mobile: "80%", desktop: "60%" }}
-            showButtons
-          >
-            {(slide) => (
-              <article
-                key={slide.id}
-                className="embla__slide-img p-6 md:p-10 rounded-xl shadow-around flex flex-col lg:flex-row gap-6 lg:gap-16 max-w-[750px]"
-              >
-                <div className="shrink-0 w-full h-40 lg:w-60 lg:h-60">
-                  <img src={slide.image} alt={slide.title} className="h-full w-full object-cover" />
-                </div>
+          }
+        >
+          This Is What Our Customers Say
+        </SectionTitle>
+        <AppSlider
+          slides={reviewsData}
+          options={OPTIONS}
+          height="80vh"
+          maxWidth="full"
+          spacing="0.5rem"
+          sliderSize={{ mobile: "80%", desktop: "60%" }}
+          showButtons
+        >
+          {(slide) => (
+            <article
+              key={slide.id}
+              className="embla__slide-img p-6 md:p-10 rounded-xl shadow-around flex flex-col lg:flex-row gap-6 lg:gap-16 max-w-187.5"
+            >
+              <div className="shrink-0 w-full h-40 lg:w-60 lg:h-60">
+                <img src={slide.image} alt={slide.title} className="h-full w-full object-cover" />
+              </div>
 
-                <div className="flex flex-col gap-4">
-                  <blockquote>
-                    <p className="text-brand-dark">"{slide.comment}"</p>
-                  </blockquote>
+              <div className="flex flex-col gap-4">
+                <blockquote>
+                  <p className="text-brand-dark">"{slide.comment}"</p>
+                </blockquote>
 
-                  <div>
-                    <StarRating rate={slide.rating} />
-                  </div>
-                  <div>
-                    <h3 className="text-brand-dark font-volkhov text-[2rem]">{slide.userName}</h3>
-                    <p className="text-brand-dark">{slide.userRole}</p>
-                  </div>
+                <div>
+                  <StarRating rate={slide.rating} />
                 </div>
-              </article>
-            )}
-          </AppSlider>
-        </div>
-      </Container>
-    </section>
+                <div>
+                  <h3 className="text-brand-dark font-volkhov text-[2rem]">{slide.userName}</h3>
+                  <p className="text-brand-dark">{slide.userRole}</p>
+                </div>
+              </div>
+            </article>
+          )}
+        </AppSlider>
+      </div>
+    </Section>
   );
 };
