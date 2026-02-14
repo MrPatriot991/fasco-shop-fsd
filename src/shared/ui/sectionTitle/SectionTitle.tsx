@@ -1,33 +1,51 @@
 import { cn } from "@/shared/lib/utils";
+import type { ElementType, ReactNode } from "react";
 
-type Title = "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "div";
+type TitleTag = ElementType;
+type Variant = "hero" | "section";
 
 interface SectionTitleProps {
-  title: string;
-  subContent?: React.ReactNode;
-  as?: Title;
+  children: ReactNode;
+  as?: TitleTag;
+  variant?: Variant;
+  align?: "left" | "center" | "right";
+  maxWidth?: string;
+  subContent?: ReactNode;
   className?: string;
-  classNameTitle?: string;
+  classNameSubContent?: string;
 }
 
+const variantStyles: Record<Variant, string> = {
+  hero: "text-[clamp(1.75rem,3vw+1rem,4rem)] text-brand-black leading-tight",
+  section: "text-[clamp(1.25rem,2vw+1rem,2.5rem)] text-brand-dark leading-snug",
+};
+
 export const SectionTitle = ({
-  title,
+  children,
+  as: Tag = "h2",
+  align = "center",
+  variant = "section",
   subContent,
-  as: Tag = "h1",
+  maxWidth,
   className,
-  classNameTitle,
+  classNameSubContent,
 }: SectionTitleProps) => {
   return (
-    <div className={cn("flex flex-col items-center gap-3", className)}>
-      <Tag
-        className={cn(
-          "text-2xl md:text-[44px] font-volkhov font-bold text-brand-black",
-          classNameTitle
-        )}
-      >
-        {title}
-      </Tag>
-      {subContent && <div>{subContent}</div>}
+    <div
+      className={cn(
+        "flex flex-col gap-4 md:gap-6 lg:gap-8",
+        align === "left" && "items-start text-start",
+        align === "center" && "items-center text-center",
+        align === "right" && "items-end text-right",
+        className
+      )}
+    >
+      <Tag className={cn("font-volkhov", variantStyles[variant])}>{children}</Tag>
+      {subContent && (
+        <div className={cn(`max-w-${maxWidth} text-base text-brand-gray`, classNameSubContent)}>
+          {subContent}
+        </div>
+      )}
     </div>
   );
 };
