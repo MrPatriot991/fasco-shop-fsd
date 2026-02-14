@@ -13,14 +13,14 @@ export const Deals = () => {
     <Section id="deals" className="bg-brand-secondary">
       <div className="flex flex-col lg:flex-row gap-12 lg:gap-20 overflow-hidden">
         <div className="flex flex-col items-center gap-12 lg:w-2/5">
-          <div className="flex flex-col items-center lg:items-start gap-4 md:gap-6 lg:gap-10">
+          <div className="flex flex-col items-center lg:items-start gap-6 lg:gap-10">
             <SectionTitle
               variant="section"
               align="center"
               alignLg="left"
               subJustify="center"
               subContent={
-                <p className="text-center sm:w-2/3 lg:w-full lg:text-start">
+                <p className="font-volkhov text-center w-4/5 sm:h-2/3 lg:w-full lg:text-start">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Scelerisque duis ultrices
                   sollicitudin aliquam sem. Scelerisque duis ultrices sollicitudin
                 </p>
