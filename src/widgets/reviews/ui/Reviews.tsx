@@ -55,7 +55,7 @@ const reviewsData: ReviewSlider[] = [
 export const Reviews = () => {
   return (
     <section className="bg-brand-gray/10 py-16 lg:py-24">
-      <Container maxWidth="xxxl">
+      <Container maxWidth="3xl">
         <div className="flex flex-col gap-16">
           <div className="flex flex-col gap-5">
             <h2 className="text-center tracking-tight leading-12 text-section-title font-volkhov text-brand-dark">

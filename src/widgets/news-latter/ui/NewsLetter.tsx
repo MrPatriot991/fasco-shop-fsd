@@ -7,7 +7,7 @@ import girlImg from "@/shared/assets/images/sub-img-2.png";
 export const NewsLetter = () => {
   return (
     <section className="bg-brand-ehite pt-20 md:pt-36 pb-12 border-b">
-      <Container maxWidth="xxxl">
+      <Container maxWidth="3xl">
         <div
           className="
             grid

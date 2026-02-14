@@ -11,7 +11,7 @@ export const AuthLayout = () => {
 
   return (
     <div className="flex flex-col items-center lg:justify-center min-h-dvh py-10">
-      <Container maxWidth="xxxl">
+      <Container maxWidth="3xl">
         <div className="grid grid-cols-1 lg:grid-cols-2 lg:border lg:border-border-gray rounded-r-2xl">
           <div className="hidden lg:block w-full">
             <img src={bgImg} alt="FASCO Fashion" className="w-full h-full object-cover" />

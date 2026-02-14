@@ -17,4 +17,5 @@ export { CartCheckoutButtons } from "./cartCheckoutButtons/CartCheckoutButtons";
 export { SectionTitle } from "./sectionTitle/SectionTitle";
 export { Dropdown } from "./dropdown/Dropdown";
 export { Skeleton } from "./skeleton/Skeleton";
+export { Section } from "./section/Section";
 export { ErrorBoundary } from "./errorBoundary/ErrorBoundary";
