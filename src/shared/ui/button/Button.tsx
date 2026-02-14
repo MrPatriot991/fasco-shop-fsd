@@ -9,13 +9,13 @@ const buttonVariants = cva(
     variants: {
       variant: {
         primary:
-          "bg-brand-black text-brand-white hover:bg-brand-dark hover:shadow-brand-black/20 shadow-lg",
+          "bg-brand-black text-brand-white hover:bg-brand-dark hover:shadow-brand-black/20 shadow-sm",
         secondary:
-          "bg-brand-secondary text-brand-dark border border-brand-surface hover:bg-brand-black hover:text-brand-white hover:shadow-brand-secondary/20 shadow-lg",
+          "bg-brand-secondary text-brand-dark border border-brand-surface hover:bg-brand-black hover:text-brand-white hover:shadow-brand-secondary/20 shadow-sm",
         outlineDark:
           "border-2 border-brand-black bg-transparent text-brand-black hover:bg-brand-black hover:text-brand-white ",
         outlineBlue:
-          "border-2 border-brand-blue/70 bg-transparent text-brand-blue hover:bg-brand-blue hover:text-brand-white shadow-lg",
+          "border-2 border-brand-blue/70 bg-transparent text-brand-blue hover:bg-brand-blue hover:text-brand-white shadow-sm",
         link: cn(
           "relative p-0 h-auto text-brand-dark",
           "after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-px after:w-full after:origin-right after:scale-x-0 after:bg-brand-dark after:transition-transform after:duration-300",
@@ -26,7 +26,7 @@ const buttonVariants = cva(
           "bg-transparent text-brand-dark hover:bg-surface-muted active:bg-surface-muted hover:text-brand-black",
         surface:
           "border border-gray-200 bg-white text-brand-dark hover:border-brand-black hover:text-brand-black shadow-sm",
-        active: "bg-brand-black text-brand-white border border-brand-black shadow-md",
+        active: "bg-brand-black text-brand-white border border-brand-black shadow-sm",
       },
       size: {
         none: "",
