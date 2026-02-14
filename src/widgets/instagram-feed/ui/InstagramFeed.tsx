@@ -1,4 +1,4 @@
-import { Container } from "@/shared/ui";
+import { Section, SectionTitle } from "@/shared/ui";
 import { AppSlider } from "@/shared/ui";
 import type { EmblaOptionsType } from "embla-carousel";
 
@@ -31,30 +31,35 @@ const OPTIONS_AUTO_SCROLL = { speed: 0.4, stopOnInteraction: false, stopOnMouseE
 
 export const InstagramFeed = () => {
   return (
-    <section className="bg-brand-secondary py-14 lg:py-36">
-      <Container>
-        <div className="flex flex-col items-center gap-10 lg:gap-14">
-          <div className="flex flex-col items-center gap-4 md:max-w-3xl">
-            <h2 className="text-center tracking-tight leading-12 text-section-title font-volkhov text-brand-dark">
-              Follow Us On Instagram
-            </h2>
-            <p className="text-brand-gray text-center">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Scelerisque duis ultrices
-              sollicitudin aliquam sem. Scelerisque duis ultrices sollicitudin{" "}
-            </p>
-          </div>
-          <div>
-            <AppSlider
-              slides={instSlides}
-              options={OPTIONS}
-              autoScroll={OPTIONS_AUTO_SCROLL}
-              height="36rem"
-              maxWidth="full"
-              sliderSize={{ mobile: "70%", desktop: "25%" }}
-            />
-          </div>
+    <Section className="bg-brand-secondary">
+      <div className="flex flex-col items-center gap-6 lg:gap-10">
+        <div className="flex flex-col items-center gap-4">
+          <SectionTitle
+            as="h2"
+            variant="section"
+            align="center"
+            subJustify="center"
+            subContent={
+              <p className="font-volkhov max-w-4/5 sm:w-2/3">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Scelerisque duis ultrices
+                sollicitudin aliquam sem. Scelerisque duis ultrices sollicitudin
+              </p>
+            }
+          >
+            Follow Us On Instagram
+          </SectionTitle>
         </div>
-      </Container>
-    </section>
+        <div>
+          <AppSlider
+            slides={instSlides}
+            options={OPTIONS}
+            autoScroll={OPTIONS_AUTO_SCROLL}
+            height="36rem"
+            maxWidth="full"
+            sliderSize={{ mobile: "70%", desktop: "25%" }}
+          />
+        </div>
+      </div>
+    </Section>
   );
 };
