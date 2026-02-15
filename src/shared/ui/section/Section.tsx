@@ -16,13 +16,20 @@ interface Props {
   children: React.ReactNode;
   className?: string;
   containerSize?: ContainerMaxWidth;
+  headerSlot?: React.ReactNode;
+  footerSlot?: React.ReactNode;
 }
 
 export const Section = forwardRef<HTMLElement, Props>(
-  ({ id, children, className, containerSize = "2xl", spacing = "default" }, ref) => {
+  (
+    { id, children, className, containerSize = "2xl", spacing = "default", headerSlot, footerSlot },
+    ref
+  ) => {
     return (
       <section id={id} ref={ref} className={cn(spacingMap[spacing], className)}>
+        {headerSlot}
         <Container maxWidth={containerSize}>{children}</Container>
+        {footerSlot}
       </section>
     );
   }
