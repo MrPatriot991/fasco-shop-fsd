@@ -33,6 +33,7 @@ export const SearchInput = ({ variant = "header", onClose }: SearchInputProps) =
       )}
     >
       <Input
+        variant="underline"
         autoFocus
         className={cn(
           variant === "header"

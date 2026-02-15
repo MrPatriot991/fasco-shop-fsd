@@ -27,6 +27,7 @@ export const Step2VerifyCode = ({ onNext }: Props) => {
         <h2 className="text-3xl font-volkhov">Enter The Confirmation Code</h2>
       </div>
       <Input
+        variant="underline"
         {...register("code")}
         type="text"
         inputMode="numeric"

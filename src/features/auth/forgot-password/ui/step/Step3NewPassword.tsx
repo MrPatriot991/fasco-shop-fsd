@@ -25,12 +25,14 @@ export const Step3NewPassword = ({ onSubmit }: Props) => {
 
       <div>
         <Input
+          variant="underline"
           type="password"
           {...register("password")}
           placeholder="New Password"
           error={errors.password?.message}
         />
         <Input
+          variant="underline"
           type="password"
           {...register("confirmPassword")}
           placeholder="Confirmation Password"

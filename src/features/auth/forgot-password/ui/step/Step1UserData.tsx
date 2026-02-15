@@ -26,24 +26,28 @@ export const Step1UserData = ({ onNext }: Props) => {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <Input
+          variant="underline"
           {...register("firstName")}
           type="text"
           placeholder="First Name"
           error={errors.firstName?.message}
         />
         <Input
+          variant="underline"
           {...register("lastName")}
           type="text"
           placeholder="Last Name"
           error={errors.lastName?.message}
         />
         <Input
+          variant="underline"
           {...register("email")}
           type="email"
           placeholder="Email Address"
           error={errors.email?.message}
         />
         <Input
+          variant="underline"
           {...register("phone")}
           type="tel"
           placeholder="Phone Number"

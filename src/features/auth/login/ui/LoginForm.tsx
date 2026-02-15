@@ -27,6 +27,7 @@ export const LoginForm = () => {
     <form className="flex flex-col items-center gap-11" onSubmit={handleSubmit(onSubmit)}>
       <div className="flex flex-col w-full gap-7">
         <Input
+          variant="underline"
           type="email"
           aria-invalid={!!errors?.email}
           placeholder="Email"
@@ -34,6 +35,7 @@ export const LoginForm = () => {
           error={errors.email?.message}
         />
         <Input
+          variant="underline"
           type="password"
           aria-invalid={!!errors?.password}
           placeholder="Password"
