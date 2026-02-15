@@ -1,5 +1,6 @@
 import { createPortal } from "react-dom";
 import { useAppDispatch, useAppSelector, useLockBodyScroll } from "@/shared/lib/hooks";
+import { formatCurrency } from "@/shared/lib/format";
 import {
   updateCartItem,
   closeCart,
@@ -62,7 +63,12 @@ export const CartModal = () => {
           />
 
           <CartGiftOption
-            price={10}
+            label={
+              <>
+                For <span className="font-semibold text-brand-black">{formatCurrency(10)}</span>{" "}
+                Please Wrap The Product
+              </>
+            }
             checked={isGiftWrap}
             onChange={() => dispatch(toggleGifWrap())}
           />

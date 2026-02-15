@@ -1,5 +1,6 @@
 import { ChevronRight } from "lucide-react";
 import { useAppDispatch, useAppSelector } from "@/shared/lib/hooks";
+import { formatCurrency } from "@/shared/lib/format";
 import {
   CartCheckoutButtons,
   CartGiftWrap,
@@ -73,7 +74,12 @@ export const CartPageContent = () => {
         <div className="flex justify-end">
           <div className="flex flex-col w-full md:max-w-1/2">
             <CartGiftWrap
-              price={10}
+              label={
+                <>
+                  For <span className="font-semibold text-brand-black">{formatCurrency(10)}</span>{" "}
+                  Please Wrap The Product
+                </>
+              }
               checked={isGiftWrap}
               onChange={() => dispatch(toggleGifWrap())}
               className="w-full md:w-auto mb-6"
