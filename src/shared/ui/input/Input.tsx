@@ -27,7 +27,7 @@ export const Input = forwardRef<HTMLInputElement, InputProp>(
         <input
           ref={ref}
           className={cn(
-            "w-full px-4 py-3 md:py-4 text-base outline-none transition-colors duration-300 placeholder:text-neutral-300 shadow-around/8",
+            "w-full px-4 py-3 md:py-4 text-base outline-none transition-colors duration-300 placeholder:text-neutral-300",
             variantMap[variant],
             error && errorMap[variant],
             className

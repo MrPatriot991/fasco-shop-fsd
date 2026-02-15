@@ -14,6 +14,7 @@ interface SectionTitleProps {
   subContent?: ReactNode;
   subJustify?: Align;
   className?: string;
+  classNameWrapper?: string;
   classNameSubContent?: string;
 }
 
@@ -31,6 +32,7 @@ export const SectionTitle = ({
   subContent,
   subJustify,
   className,
+  classNameWrapper,
   classNameSubContent,
 }: SectionTitleProps) => {
   return (
@@ -43,10 +45,10 @@ export const SectionTitle = ({
         alignLg === "left" && "lg:items-start lg:text-start",
         alignLg === "center" && "lg:items-center lg:text-center",
         alignLg === "right" && "lg:items-end lg:text-right",
-        className
+        classNameWrapper
       )}
     >
-      <Tag className={cn("font-volkhov", variantStyles[variant])}>{children}</Tag>
+      <Tag className={cn("font-volkhov", variantStyles[variant], className)}>{children}</Tag>
       {subContent && (
         <div
           className={cn(
