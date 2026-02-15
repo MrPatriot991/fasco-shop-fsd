@@ -1,20 +1,35 @@
 import { cn } from "@/shared/lib/utils";
 import { forwardRef, type InputHTMLAttributes } from "react";
 
+type InputVariant = "outline" | "underline" | "ghost";
 interface InputProp extends InputHTMLAttributes<HTMLInputElement> {
+  variant: InputVariant;
   error?: string;
   className?: string;
 }
 
+const variantMap: Record<InputVariant, string> = {
+  outline: "border border-neutral-300 focus:border-brand-black",
+  underline: "border-b border-neutral-300 focus:border-brand-dark",
+  ghost: "border border-transparent focus:ring-2 focus:ring-neutral-300/40 shadow-around/8",
+};
+
+const errorMap: Record<InputVariant, string> = {
+  outline: "border-accent-red focus:border-accent-red",
+  underline: "border-accent-red focus:border-accent-red",
+  ghost: "focus:ring-accent-red/40",
+};
+
 export const Input = forwardRef<HTMLInputElement, InputProp>(
-  ({ error, className, ...props }, ref) => {
+  ({ error, variant = "outline", className, ...props }, ref) => {
     return (
       <div className="flex flex-col w-full gap-2">
         <input
           ref={ref}
           className={cn(
-            "w-full py-3 outline-none border-b border-b-border-gray transition-colors duration-300",
-            error ? "border-b-accent-red" : "border-b-border-gray",
+            "w-full px-4 py-3 md:py-4 text-base outline-none transition-colors duration-300 placeholder:text-neutral-300 shadow-around/8",
+            variantMap[variant],
+            error && errorMap[variant],
             className
           )}
           {...props}

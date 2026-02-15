@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { subscribeSchema, type SubscribeSchema } from "../model/schema";
-import { Button } from "@/shared/ui";
+import { Button, Input } from "@/shared/ui";
+import { subscribeSchema, type SubscribeSchema } from "@/features/subscribe-newsletter";
 
 export const SubscribeForm = () => {
   const {
@@ -18,14 +18,14 @@ export const SubscribeForm = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col items-center gap-6">
-      <div className="max-w-[630px] w-full p-2">
-        <input
+      <div className="max-w-157.5 w-full">
+        <Input
+          variant="ghost"
           type="email"
           {...register("email")}
           placeholder="Enter your email"
-          className="p-6 shadow-around w-full rounded-xl"
+          error={errors.email?.message}
         />
-        {errors.email && <p className="mt-2 text-xs text-accent-red">{errors.email.message}</p>}
       </div>
       <Button>Subscribe Now</Button>
     </form>
