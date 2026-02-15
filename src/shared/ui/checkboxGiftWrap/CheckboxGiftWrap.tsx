@@ -9,7 +9,7 @@ interface CartGiftWrapProps {
   className?: string;
 }
 
-export const CartGiftWrap = ({
+export const CheckboxGiftWrap = ({
   id = "giftWrap",
   label,
   checked,

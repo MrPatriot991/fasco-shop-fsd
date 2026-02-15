@@ -11,7 +11,7 @@ export { Pagination } from "./pagination/Pagination";
 export { TimerDisplay } from "./timer/TimerDisplay";
 export { QuantityPicker } from "./quantityPicker/QuantityPiker";
 export { CartItem } from "./cartItem/CartItem";
-export { CartGiftWrap } from "./cartGiftWrap/CartGiftWrap";
+export { CheckboxGiftWrap } from "./checkboxGiftWrap/CheckboxGiftWrap";
 export { CartSummaryBlock } from "./cartSummaryBlock/CartSummaryBlock";
 export { CartCheckoutButtons } from "./cartCheckoutButtons/CartCheckoutButtons";
 export { SectionTitle } from "./sectionTitle/SectionTitle";
