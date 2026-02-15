@@ -57,9 +57,8 @@ export const CartPageContent = () => {
         <CartTableHeader />
         <div>
           {cartItems.map((item) => (
-            <ErrorBoundary>
+            <ErrorBoundary key={item.id}>
               <CartItem
-                key={item.id}
                 {...item}
                 variant="detailed"
                 showRemove
