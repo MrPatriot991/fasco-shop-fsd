@@ -5,6 +5,7 @@ import { authSlice } from "@/features/auth/model";
 import { filterSlice } from "@/features/filter-products";
 import { cartSlice } from "@/entities/cart";
 import { wishlistSlice } from "@/features/wishlist";
+import { checkoutSubmitted } from "@/features/checkout";
 
 const cartListener = createListenerMiddleware();
 
@@ -13,7 +14,8 @@ cartListener.startListening({
     cartSlice.actions.addToCart,
     cartSlice.actions.updateCartItem,
     cartSlice.actions.toggleGifWrap,
-    cartSlice.actions.removeFromCart
+    cartSlice.actions.removeFromCart,
+    checkoutSubmitted
   ),
   effect: (_, listenerApi) => {
     const state = listenerApi.getState() as RootState;
