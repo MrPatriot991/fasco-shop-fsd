@@ -24,7 +24,7 @@ export const CheckoutDiscount = ({ onApply }: CheckoutDiscountProps) => {
         value={code}
         onChange={(e) => setCode(e.target.value)}
       />
-      <Button type="button" variant="primary" size="md-1" onClick={handleApply}>
+      <Button variant="primary" size="medium" onClick={handleApply}>
         Apply
       </Button>
     </div>

@@ -22,7 +22,7 @@ export const DesktopActions = () => {
         <Button asChild variant="link" size="none">
           <NavLink to="/sign-in">Sign In</NavLink>
         </Button>
-        <Button size="md-2" asChild>
+        <Button size="medium" asChild>
           <NavLink to="sign-up">Sign Up</NavLink>
         </Button>
       </div>

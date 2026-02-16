@@ -40,7 +40,7 @@ export const Hero = () => {
               <span className="text-lg md:text-xl mt-4 font-medium">NEW COLLECTION</span>
             </h1>
             <div className="mt-8">
-              <Button asChild size="lg-1">
+              <Button asChild size="large">
                 <Link to="/shop">SHOP NOW</Link>
               </Button>
             </div>

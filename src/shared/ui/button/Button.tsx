@@ -30,23 +30,17 @@ const buttonVariants = cva(
       },
       size: {
         none: "",
-        xs: "min-w-4 h-4 p-1",
-        sm: "min-w-10 h-10 p-2",
-        "md-1":
-          "min-w-[120px] h-12 px-3 py-2 md:min-w-[152px] md:h-14 md:px-4 md:py-3 lg:min-w-[180px] lg:h-14 lg:px-6 lg:py-3",
-        "md-2": "min-w-[152px] h-14 px-6 py-3",
-        "lg-1": "min-w-[220px] h-12 px-4 py-2 md:min-w-[294px] md:h-14 md:px-6 md:py-4",
-        "lg-2": "min-w-[294px] h-14 px-6 py-4",
-        "xl-1": "w-full md:max-w-[442px] h-14 px-6 py-4",
-        "xl-2": "w-full md:max-w-[575px] h-15 px-6 py-4",
-        xxl: "w-full md:max-w-[610px] h-16 px-6 py-4",
-        widthFull: "w-full h-16 px-6 py-4",
+        medium:
+          "min-w-[120px] h-12 px-4 py-2 md:min-w-[140px] md:h-14 md:px-5 md:py-3 lg:min-w-[160px]",
+        large:
+          "min-w-[140px] h-12 px-4 py-2 md:min-w-[180px] md:h-14 md:px-5 md:py-3 lg:min-w-[207px]",
+        widthFull: "w-full h-12 px-4 py-2 md:h-14 md:px-5 md:py-3",
         icon: "h-10 w-10",
       },
     },
     defaultVariants: {
       variant: "primary",
-      size: "lg-1",
+      size: "large",
     },
   }
 );
@@ -57,10 +51,15 @@ export interface ButtonProps
 }
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant, size, asChild = false, ...props }, ref) => {
+  ({ className, type, variant, size, asChild = false, ...props }, ref) => {
     const Comp = asChild ? Slot : "button";
     return (
-      <Comp className={cn(buttonVariants({ variant, size, className }))} ref={ref} {...props} />
+      <Comp
+        className={cn(buttonVariants({ variant, size, className }))}
+        ref={ref}
+        {...(!asChild && { type: type ?? "button" })}
+        {...props}
+      />
     );
   }
 );
