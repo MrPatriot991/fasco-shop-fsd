@@ -1,9 +1,7 @@
-import { useForm, Controller } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
+import { useFormContext, Controller } from "react-hook-form";
 import { ChevronDown } from "lucide-react";
 import { Input, SectionTitle, Select } from "@/shared/ui";
 import { COUNTRIES } from "@/shared/lib/constants";
-import { checkoutSchema, type CheckoutSchema } from "@/features/checkout";
 
 interface CheckoutDeliveryProps {
   saveInfoSlot?: React.ReactNode;
@@ -14,9 +12,7 @@ export const CheckoutDelivery = ({ saveInfoSlot }: CheckoutDeliveryProps) => {
     register,
     control,
     formState: { errors },
-  } = useForm<CheckoutSchema>({
-    resolver: zodResolver(checkoutSchema),
-  });
+  } = useFormContext();
 
   return (
     <div className="flex flex-col gap-2 md:gap-4 lg:gap-6">
@@ -50,7 +46,7 @@ export const CheckoutDelivery = ({ saveInfoSlot }: CheckoutDeliveryProps) => {
             variant="outline"
             className="lg:py-6 col-span-2 md:col-span-1"
             placeholder="First Name"
-            error={errors.firstName?.message}
+            error={errors.firstName?.message as string}
           />
           <Input
             {...register("lastName")}
@@ -58,7 +54,7 @@ export const CheckoutDelivery = ({ saveInfoSlot }: CheckoutDeliveryProps) => {
             variant="outline"
             className="lg:py-6 col-span-2 md:col-span-1"
             placeholder="Last Name"
-            error={errors.lastName?.message}
+            error={errors.lastName?.message as string}
           />
           <Input
             {...register("address")}
@@ -66,7 +62,7 @@ export const CheckoutDelivery = ({ saveInfoSlot }: CheckoutDeliveryProps) => {
             variant="outline"
             className="lg:py-6 col-span-2 md:col-span-2"
             placeholder="Address"
-            error={errors.address?.message}
+            error={errors.address?.message as string}
           />
           <Input
             {...register("city")}
@@ -74,7 +70,7 @@ export const CheckoutDelivery = ({ saveInfoSlot }: CheckoutDeliveryProps) => {
             variant="outline"
             className="lg:py-6 col-span-2 md:col-span-1"
             placeholder="City"
-            error={errors.city?.message}
+            error={errors.city?.message as string}
           />
           <Input
             {...register("postCode")}
@@ -82,7 +78,7 @@ export const CheckoutDelivery = ({ saveInfoSlot }: CheckoutDeliveryProps) => {
             variant="outline"
             className="lg:py-6 col-span-2 md:col-span-1"
             placeholder="Postal Code"
-            error={errors.postCode?.message}
+            error={errors.postCode?.message as string}
           />
         </div>
         {saveInfoSlot}

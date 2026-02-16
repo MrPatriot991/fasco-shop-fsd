@@ -1,7 +1,5 @@
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
+import { useFormContext } from "react-hook-form";
 import { Input, SectionTitle } from "@/shared/ui";
-import { checkoutSchema, type CheckoutSchema } from "@/features/checkout";
 
 interface CheckoutContactProps {
   accountPrompt?: React.ReactNode;
@@ -11,9 +9,7 @@ export const CheckoutContact = ({ accountPrompt }: CheckoutContactProps) => {
   const {
     register,
     formState: { errors },
-  } = useForm<CheckoutSchema>({
-    resolver: zodResolver(checkoutSchema),
-  });
+  } = useFormContext();
 
   return (
     <>
@@ -33,7 +29,7 @@ export const CheckoutContact = ({ accountPrompt }: CheckoutContactProps) => {
         variant="outline"
         className="lg:py-6"
         placeholder="Email Address"
-        error={errors.email?.message}
+        error={errors.email?.message as string}
       />
     </>
   );
