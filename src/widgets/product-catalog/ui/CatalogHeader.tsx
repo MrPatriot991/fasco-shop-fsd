@@ -30,6 +30,7 @@ export const CatalogHeader = ({ setCols }: { setCols: (col: number) => void }) =
           label="Sort by"
           items={SORT_OPTIONS}
           onSelect={(item) => dispatch(setSortBy(item.value))}
+          dropdownClassName="w-56"
         />
       </div>
       <div className="flex gap-2">

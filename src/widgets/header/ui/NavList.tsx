@@ -21,7 +21,7 @@ export const NavList = ({ variant, onItemClick }: NavListProps) => {
         if (item.path === "/pages") {
           return (
             <li key={item.path} className="flex items-center">
-              <Dropdown label="Pages" items={FOOTER_NAV} />
+              <Dropdown label="Pages" items={FOOTER_NAV} dropdownClassName="w-56" />
             </li>
           );
         }

@@ -15,6 +15,9 @@ interface DropdownProps<T extends DropdownItem | string> {
   items: readonly T[];
   onSelect?: (items: T) => void;
   className?: string;
+  buttonClassName?: string;
+  dropdownClassName?: string;
+  children?: React.ReactNode;
 }
 
 export const Dropdown = <T extends DropdownItem | string>({
@@ -22,6 +25,9 @@ export const Dropdown = <T extends DropdownItem | string>({
   items,
   onSelect,
   className,
+  buttonClassName,
+  dropdownClassName,
+  children,
 }: DropdownProps<T>) => {
   const [isOpen, setIsOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -35,11 +41,18 @@ export const Dropdown = <T extends DropdownItem | string>({
       className={cn("relative py-1", className)}
     >
       <button
+        type="button"
         onClick={() => setIsOpen(!isOpen)}
         onMouseEnter={() => setIsOpen(true)}
-        className="flex items-center gap-1 pl-4 font-medium text-brand-gray hover:text-brand-black outline-none transition-colors duration-200"
+        className={cn(
+          "flex items-center gap-1 pl-4 font-medium text-brand-gray hover:text-brand-black outline-none transition-colors duration-200",
+          buttonClassName
+        )}
       >
-        {label}{" "}
+        <div className="flex items-center gap-2">
+          {children} {/* сюда вставится картинка */}
+          <span>{label}</span>
+        </div>
         <ChevronDown
           className={cn("transition-transform duration-200", isOpen && "rotate-180")}
           size={14}
@@ -47,8 +60,8 @@ export const Dropdown = <T extends DropdownItem | string>({
       </button>
 
       {isOpen && (
-        <div className="absolute left-0 top-full pt-2 z-100">
-          <div className="w-48 bg-white border border-gray-100 shadow-xl rounded-lg overflow-hidden flex flex-col">
+        <div className={cn("absolute left-0 top-full pt-2 z-50", dropdownClassName)}>
+          <div className="bg-white border border-gray-100 shadow-xl rounded-lg overflow-hidden flex flex-col">
             {items.map((item, index) => {
               const itemLabel = typeof item === "string" ? item : item.label;
               const itemPath = typeof item === "string" ? undefined : item.path;
