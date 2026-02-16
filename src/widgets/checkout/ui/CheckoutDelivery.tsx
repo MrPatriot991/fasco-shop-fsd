@@ -10,8 +10,8 @@ export const CheckoutDelivery = ({ saveInfoSlot }: CheckoutDeliveryProps) => {
   const [country, setCountry] = useState("");
 
   return (
-    <div className="flex flex-col gap-6 md:gap-10 lg:gap-14">
-      <SectionTitle variant="section" as="h2" align="left">
+    <div className="flex flex-col gap-2 md:gap-4 lg:gap-6">
+      <SectionTitle variant="section" as="h2" align="left" className="font-bold">
         Delivery
       </SectionTitle>
       <div>
@@ -28,21 +28,36 @@ export const CheckoutDelivery = ({ saveInfoSlot }: CheckoutDeliveryProps) => {
             </Select>
             <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400 transition-transform duration-200" />
           </div>
-          <div className="col-span-2 md:col-span-1">
-            <Input type="text" variant="outline" className="lg:py-6" placeholder="First Name" />
-          </div>
-          <div className="col-span-2 md:col-span-1">
-            <Input type="text" variant="outline" className="lg:py-6" placeholder="Last Name" />
-          </div>
-          <div className="col-span-2 md:col-span-2">
-            <Input type="text" variant="outline" className="lg:py-6" placeholder="Address" />
-          </div>
-          <div className="col-span-2 md:col-span-1">
-            <Input type="text" variant="outline" className="lg:py-6" placeholder="City" />
-          </div>
-          <div className="col-span-2 md:col-span-1">
-            <Input type="text" variant="outline" className="lg:py-6" placeholder="Postal Code" />
-          </div>
+          <Input
+            type="text"
+            variant="outline"
+            className="lg:py-6 col-span-2 md:col-span-1"
+            placeholder="First Name"
+          />
+          <Input
+            type="text"
+            variant="outline"
+            className="lg:py-6 col-span-2 md:col-span-1"
+            placeholder="Last Name"
+          />
+          <Input
+            type="text"
+            variant="outline"
+            className="lg:py-6 col-span-2 md:col-span-2"
+            placeholder="Address"
+          />
+          <Input
+            type="text"
+            variant="outline"
+            className="lg:py-6 col-span-2 md:col-span-1"
+            placeholder="City"
+          />
+          <Input
+            type="text"
+            variant="outline"
+            className="lg:py-6 col-span-2 md:col-span-1"
+            placeholder="Postal Code"
+          />
         </div>
         {saveInfoSlot}
       </div>
