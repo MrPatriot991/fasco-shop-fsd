@@ -20,7 +20,7 @@ export const CartModalFooter = ({ subtotal, onClose }: CartModalFooterProps) => 
           <Button asChild variant="linkPlain" size="none" onClick={onClose}>
             <Link
               to="/cart"
-              className="text-center text-2xl font-volkhov underline underline-offset-4"
+              className="text-center text-base md:text-2xl font-volkhov underline underline-offset-4"
             >
               View Cart
             </Link>

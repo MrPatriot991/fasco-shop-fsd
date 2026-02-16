@@ -34,7 +34,7 @@ export const ProductCatalog = () => {
 
   return (
     <Section id="catalog-top" ref={catalogRef} spacing="compact" className="bg-brand-white py-10">
-      <div className="flex flex-col">
+      <div className="flex flex-col gap-6">
         <SectionTitle
           as="h1"
           align="center"
