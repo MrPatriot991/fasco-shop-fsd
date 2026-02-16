@@ -1,16 +1,20 @@
 import { z } from "zod";
-import { CARDS, COUNTRIES } from "@/shared/lib/constants";
+import { CARDS, COUNTRIES, type CardType, type CountryType } from "@/shared/lib/constants";
 import { emailRule, firstNameRule, lastNameRule } from "@/shared/lib/validation";
 
 export const checkoutSchema = z.object({
   email: emailRule,
-  country: z.enum(COUNTRIES, { message: "Please select a valid countr" }),
+  country: z.enum(COUNTRIES.map((c) => c.value) as [CountryType, ...CountryType[]], {
+    message: "Please select a valid countr",
+  }),
   firstName: firstNameRule,
   lastName: lastNameRule,
   address: z.string().min(2, "Required field"),
   city: z.string().min(2, "Required field"),
   postCode: z.string().min(2, "Required field"),
-  card: z.enum(CARDS, { message: "Please select a valid card" }),
+  card: z.enum(CARDS.map((c) => c.value) as [CardType, ...CardType[]], {
+    message: "Please select a valid card",
+  }),
   cardNumber: z
     .string()
     .transform((val) => val.replace(/\s/g, ""))
