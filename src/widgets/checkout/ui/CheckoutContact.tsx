@@ -12,12 +12,12 @@ export const CheckoutContact = ({ accountPrompt }: CheckoutContactProps) => {
         as="h2"
         align="left"
         subContent={accountPrompt}
-        classNameWrapper="flex-row items-end justify-between"
+        classNameWrapper="flex-row items-center justify-between gap-0"
         className="leading-11"
       >
         Contact
       </SectionTitle>
-      <Input variant="outline" className="lg:py-6" placeholder="Email Address" />
+      <Input type="email" variant="outline" className="lg:py-6" placeholder="Email Address" />
     </>
   );
 };
