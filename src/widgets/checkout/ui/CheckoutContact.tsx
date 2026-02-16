@@ -13,7 +13,7 @@ export const CheckoutContact = ({ accountPrompt }: CheckoutContactProps) => {
         align="left"
         subContent={accountPrompt}
         classNameWrapper="flex-row items-center justify-between gap-0"
-        className="leading-11"
+        className="font-bold leading-11"
       >
         Contact
       </SectionTitle>
