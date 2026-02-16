@@ -19,4 +19,5 @@ export { Dropdown } from "./dropdown/Dropdown";
 export { Skeleton } from "./skeleton/Skeleton";
 export { Section } from "./section/Section";
 export { CheckoutDiscount } from "./checkoutDiscount/CheckoutDiscount";
+export { Select } from "./select/Select";
 export { ErrorBoundary } from "./errorBoundary/ErrorBoundary";
