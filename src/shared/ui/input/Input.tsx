@@ -23,7 +23,7 @@ const errorMap: Record<InputVariant, string> = {
 export const Input = forwardRef<HTMLInputElement, InputProp>(
   ({ error, variant = "outline", className, ...props }, ref) => {
     return (
-      <div className="flex flex-col w-full gap-2">
+      <>
         <input
           ref={ref}
           className={cn(
@@ -34,8 +34,8 @@ export const Input = forwardRef<HTMLInputElement, InputProp>(
           )}
           {...props}
         />
-        {error && <span className="text-accent-red">{error}</span>}
-      </div>
+        {error && <span className="mt-1 text-accent-red">{error}</span>}
+      </>
     );
   }
 );
