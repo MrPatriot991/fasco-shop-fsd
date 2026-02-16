@@ -2,6 +2,7 @@ import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 import { loadCartFromLocalStorage } from "./cart.persist";
 import type { CartState } from "./cart.types";
 import type { CartItem } from "./cart.schema";
+import { checkoutSubmitted } from "@/features/checkout/model/checkout.actions";
 
 const persistedState = loadCartFromLocalStorage();
 
@@ -47,6 +48,13 @@ export const cartSlice = createSlice({
     closeCart: (state) => {
       state.isCartModalOpen = false;
     },
+  },
+  extraReducers: (builder) => {
+    builder.addCase(checkoutSubmitted, (state) => {
+      state.items = [];
+      state.lastAddedId = null;
+      state.isGlobalGiftWrap = false;
+    });
   },
 });
 
