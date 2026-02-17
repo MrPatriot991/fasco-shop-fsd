@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
-import { cn } from "@/shared/lib/utils";
-import { getDiscountData } from "@/shared/lib/utils";
+import { cn, getDiscountData } from "@/shared/lib/utils";
 import { formatCurrency } from "@/shared/lib/format";
 import { StarRating } from "@/shared/ui";
 import { ToggleWishlistButton } from "@/features/wishlist";
@@ -29,7 +28,7 @@ export const ProductCard = ({
   const productId = String(id);
 
   return (
-    <Link to={`/product/${id}`}>
+    <Link to={`/shop/${id}`}>
       <article
         className={cn(
           "flex space-y-5 p-4 h-full bg-brand-white w-full  md:min-w-1/2 rounded-2xl shadow-subtle overflow-hidden hover:shadow-lg cursor-pointer transition-shadow duration-200",
