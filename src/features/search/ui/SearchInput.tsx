@@ -1,4 +1,5 @@
 import { useState, useMemo } from "react";
+import { useNavigate } from "react-router-dom";
 import { X, Search } from "lucide-react";
 import { cn } from "@/shared/lib/utils";
 import { useDebounce, useAppSelector } from "@/shared/lib/hooks";
@@ -13,8 +14,9 @@ interface SearchInputProps {
 
 export const SearchInput = ({ variant = "header", onClose }: SearchInputProps) => {
   const [query, setQuery] = useState("");
-  const debounceQuery = useDebounce(query, 300);
   const products = useAppSelector(selectAllProducts);
+  const debounceQuery = useDebounce(query, 300);
+  const navigate = useNavigate();
 
   const filterProducts = useMemo(() => {
     if (debounceQuery.length < 3) return [];
@@ -23,6 +25,12 @@ export const SearchInput = ({ variant = "header", onClose }: SearchInputProps) =
       product.title.toLowerCase().includes(debounceQuery.toLowerCase())
     );
   }, [debounceQuery, products]);
+
+  const handleViewAll = () => {
+    if (!query.trim()) return;
+    navigate(`/shop?search=${encodeURIComponent(query)}`);
+    onClose?.();
+  };
 
   return (
     <div
@@ -52,7 +60,12 @@ export const SearchInput = ({ variant = "header", onClose }: SearchInputProps) =
       )}
 
       {query.length > 2 && (
-        <QuickResults results={filterProducts} isLoading={false} onClose={onClose} />
+        <QuickResults
+          results={filterProducts}
+          onViewAll={handleViewAll}
+          isLoading={false}
+          onClose={onClose}
+        />
       )}
     </div>
   );

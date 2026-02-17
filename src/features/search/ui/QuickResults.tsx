@@ -1,16 +1,16 @@
 import { Link } from "react-router-dom";
 import { formatCurrency } from "@/shared/lib/format";
 import type { Product } from "@/entities/product";
+import { Button } from "@/shared/ui";
 
-export const QuickResults = ({
-  results,
-  isLoading,
-  onClose,
-}: {
+interface QuickResultsProps {
   results: Product[];
   isLoading?: boolean;
   onClose?: () => void;
-}) => {
+  onViewAll?: () => void;
+}
+
+export const QuickResults = ({ results, isLoading, onClose, onViewAll }: QuickResultsProps) => {
   if (isLoading)
     return (
       <div className="absolute top-full left-0 w-full bg-white shadow-xl rounded-b-xl p-4 text-center text-brand-dark/50">
@@ -43,12 +43,14 @@ export const QuickResults = ({
           </li>
         ))}
       </ul>
-      <Link
-        to=""
+      <Button
+        variant="ghost"
+        size="widthFull"
+        onClick={onViewAll}
         className="block p-3 text-center text-sm font-semibold bg-brand-dark text-white hover:bg-brand-dark/90"
       >
         View all results
-      </Link>
+      </Button>
     </div>
   );
 };
