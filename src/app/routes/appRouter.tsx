@@ -5,6 +5,7 @@ import { ShopPage } from "@/pages/shope";
 import { ProductPage } from "@/pages/product";
 import { CartPage } from "@/pages/cart";
 import { CheckoutPage, SuccessPage } from "@/pages/checkout";
+import { InfoPage } from "@/pages/info";
 import { AuthLayout, MainLayout } from "@/app/layouts";
 
 export const appRouter = createBrowserRouter([
@@ -18,6 +19,7 @@ export const appRouter = createBrowserRouter([
       { path: "/cart", element: <CartPage /> },
       { path: "/checkout", element: <CheckoutPage /> },
       { path: "/checkout/success", element: <SuccessPage /> },
+      { path: "/info", element: <InfoPage /> },
     ],
   },
   {
