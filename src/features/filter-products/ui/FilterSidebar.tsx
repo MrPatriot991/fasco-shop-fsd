@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { useAppSelector, useAppDispatch } from "@/shared/lib/hooks";
 import { selectActiveSize, selectActiveColors, resetFilters } from "@/features/filter-products";
 import { Button } from "@/shared/ui";
@@ -11,8 +12,14 @@ import { TagsFilter } from "./TagsFilter";
 
 export const FilterSidebar = () => {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   const selectedSize = useAppSelector(selectActiveSize);
   const selectedColor = useAppSelector(selectActiveColors);
+
+  const handleResetAll = () => {
+    dispatch(resetFilters());
+    navigate("/shop", { replace: true });
+  };
 
   return (
     <div className="flex flex-col space-y-4">
@@ -35,11 +42,7 @@ export const FilterSidebar = () => {
         <TagsFilter />
       </FilterSection>
 
-      <Button
-        variant="ghost"
-        onClick={() => dispatch(resetFilters())}
-        className="font-medium text-brand-black"
-      >
+      <Button variant="ghost" onClick={handleResetAll} className="font-medium text-brand-black">
         Clear All Filters
       </Button>
     </div>
