@@ -3,6 +3,7 @@ import { useAppDispatch } from "@/shared/lib/hooks";
 import { Button, Dropdown } from "@/shared/ui";
 import { setSortBy } from "@/features/filter-products";
 import type { SortOption } from "@/shared/lib/constants";
+import { SearchFilterStatus } from "@/features/search-filter-status";
 
 const SORT_OPTIONS: {
   label: string;
@@ -20,7 +21,12 @@ const views = [
   { cols: 4, icon: <Tally4 className="w-3 h-3 text-black" /> },
 ];
 
-export const CatalogHeader = ({ setCols }: { setCols: (col: number) => void }) => {
+interface CatalogHeaderProps {
+  setCols: (col: number) => void;
+  searchTerm?: string | null;
+}
+
+export const CatalogHeader = ({ setCols, searchTerm }: CatalogHeaderProps) => {
   const dispatch = useAppDispatch();
 
   return (
@@ -32,6 +38,7 @@ export const CatalogHeader = ({ setCols }: { setCols: (col: number) => void }) =
           onSelect={(item) => dispatch(setSortBy(item.value))}
           dropdownClassName="w-56"
         />
+        {searchTerm && <SearchFilterStatus searchTerm={searchTerm} />}
       </div>
       <div className="flex gap-2">
         {views.map((view) => (
