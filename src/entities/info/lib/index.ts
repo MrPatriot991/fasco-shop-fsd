@@ -1,0 +1,1 @@
+export { getInfoSectionRenderer } from "./getInfoSectionRenderer";

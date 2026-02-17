@@ -7,7 +7,7 @@ export interface NavItem {
   icon: React.ComponentType<{ size?: number; className?: string }>;
 }
 
-export interface FagItems {
+export interface FaqItem {
   q: string;
   a: string;
 }
@@ -26,7 +26,7 @@ export interface Job {
 
 export interface BlogPost {
   img: string;
-  data: string;
+  date: string;
   tag: string;
   title: string;
 }
@@ -37,7 +37,7 @@ export interface InfoContentBase {
 }
 
 export interface AccordionContent extends InfoContentBase {
-  items: FagItems[];
+  items: FaqItem[];
 }
 
 export interface DocumentContent extends InfoContentBase {
