@@ -4,7 +4,7 @@ import { AuthPage } from "@/pages/auth";
 import { ShopPage } from "@/pages/shope";
 import { ProductPage } from "@/pages/product";
 import { CartPage } from "@/pages/cart";
-import { CheckoutPage } from "@/pages/checkout";
+import { CheckoutPage, SuccessPage } from "@/pages/checkout";
 import { AuthLayout, MainLayout } from "@/app/layouts";
 
 export const appRouter = createBrowserRouter([
@@ -17,6 +17,7 @@ export const appRouter = createBrowserRouter([
       { path: "/shop/:id", element: <ProductPage /> },
       { path: "/cart", element: <CartPage /> },
       { path: "/checkout", element: <CheckoutPage /> },
+      { path: "/checkout/success", element: <SuccessPage /> },
     ],
   },
   {
