@@ -1,6 +1,6 @@
 import { useForm, FormProvider } from "react-hook-form";
+import { Link, useNavigate } from "react-router-dom";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Link } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "@/shared/lib/hooks";
 import { Section, SectionTitle, CheckoutDiscount, CheckboxGiftWrap, Button } from "@/shared/ui";
 import { selectCartDetails, selectCartSubtotal } from "@/entities/cart";
@@ -16,6 +16,7 @@ const SHIPPING_COST = 40;
 
 export const CheckoutPageContent = () => {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   const cartItems = useAppSelector(selectCartDetails);
   const subtotal = useAppSelector(selectCartSubtotal);
   const total = subtotal + SHIPPING_COST;
@@ -43,6 +44,7 @@ export const CheckoutPageContent = () => {
 
     dispatch(checkoutSubmitted());
     reset();
+    navigate("/checkout/success", { replace: true });
   };
 
   return (
