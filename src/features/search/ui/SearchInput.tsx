@@ -1,11 +1,10 @@
 import { useState, useMemo } from "react";
 import { X, Search } from "lucide-react";
 import { cn } from "@/shared/lib/utils";
-import { useDebounce } from "@/shared/lib/hooks";
-import { useAppSelector } from "@/shared/lib/hooks";
-import { selectAllProducts } from "@/entities/product";
+import { useDebounce, useAppSelector } from "@/shared/lib/hooks";
 import { Input, Button } from "@/shared/ui";
-import { QuickResults } from "./QuickResults";
+import { selectAllProducts } from "@/entities/product";
+import { QuickResults } from "@/features/search";
 
 interface SearchInputProps {
   variant?: "header" | "mobile";
@@ -37,7 +36,7 @@ export const SearchInput = ({ variant = "header", onClose }: SearchInputProps) =
         autoFocus
         className={cn(
           variant === "header"
-            ? "py-1"
+            ? "md:py-2"
             : "w-full py-3 pl-10 pr-4 bg-brand-surface/50 border border-transparent focus:border-brand-dark focus:bg-brand-white outline-none transition-colors duration-300 rounded-lg"
         )}
         placeholder="Search..."

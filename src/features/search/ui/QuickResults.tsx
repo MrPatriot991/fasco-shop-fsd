@@ -22,7 +22,7 @@ export const QuickResults = ({
 
   return (
     <div className="absolute top-full left-0 w-full bg-white shadow-2xl rounded-b-xl border-t border-brand-surface overflow-hidden z-60">
-      <ul className="max-h-[400px] overflow-y-auto">
+      <ul className="max-h-100 overflow-y-auto">
         {results.map((product) => (
           <li key={product.id}>
             <Link
