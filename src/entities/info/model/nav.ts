@@ -1,7 +1,7 @@
 import { MessageCircle, Receipt, FileText, Briefcase, BookOpen, HelpCircle } from "lucide-react";
 import type { NavItem } from "./types";
 
-export const FOOTER_NAV: NavItem[] = [
+export const INFO_NAV_ITEMS: NavItem[] = [
   { label: "Support Center", path: "/support", type: "route", icon: MessageCircle },
   { label: "Invoicing", path: "/invoicing", type: "route", icon: Receipt },
   { label: "Contract", path: "/contract", type: "route", icon: FileText },

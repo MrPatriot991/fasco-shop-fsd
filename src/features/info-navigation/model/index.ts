@@ -1,0 +1,1 @@
+export { useInfoType } from "./useInfoType";
