@@ -33,10 +33,10 @@ export const AUTH_NAV: NavigationItem[] = [
 ];
 
 export const FOOTER_NAV: NavigationItem[] = [
-  { label: "Support Center", path: "/support", type: "route" },
-  { label: "Invoicing", path: "/invoicing", type: "route" },
-  { label: "Contract", path: "/contract", type: "route" },
-  { label: "Careers", path: "/careers", type: "route" },
-  { label: "Blog", path: "/blog", type: "route" },
-  { label: "FAQ", path: "/faq", type: "route" },
+  { label: "Support Center", path: "/info?type=support", type: "route" },
+  { label: "Invoicing", path: "/info?type=invoicing", type: "route" },
+  { label: "Contract", path: "/info?type=contract", type: "route" },
+  { label: "Careers", path: "/info?type=careers", type: "route" },
+  { label: "Blog", path: "/info?type=blog", type: "route" },
+  { label: "FAQ", path: "/info?type=faq", type: "route" },
 ];
