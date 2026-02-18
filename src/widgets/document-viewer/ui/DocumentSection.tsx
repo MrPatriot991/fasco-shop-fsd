@@ -20,7 +20,9 @@ export const DocumentSection = ({
       <div className="space-y-8">
         {sections.map((section) => (
           <article key={section.heading} className="group">
-            <h3 className="mb-2 text-lg font-semibold tracking-tight text-slate-800">{section.heading}</h3>
+            <h3 className="mb-2 text-lg font-semibold tracking-tight text-slate-800">
+              {section.heading}
+            </h3>
             <p className="text-[15px] leading-[1.85] text-slate-600">{section.body}</p>
           </article>
         ))}
