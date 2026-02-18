@@ -1,10 +1,3 @@
-export interface NavItem {
-  label: string;
-  path: string;
-  type: "route";
-  icon: React.ComponentType<{ size?: number; className?: string }>;
-}
-
 export interface FaqItem {
   q: string;
   a: string;
