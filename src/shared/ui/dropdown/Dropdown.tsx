@@ -16,6 +16,7 @@ interface DropdownProps<T extends DropdownItem | string> {
   items: readonly T[];
   onSelect?: (items: T) => void;
   portal?: boolean;
+  direction?: "down" | "up";
   className?: string;
   buttonClassName?: string;
   dropdownClassName?: string;
@@ -27,6 +28,7 @@ export const Dropdown = <T extends DropdownItem | string>({
   items,
   onSelect,
   portal = false,
+  direction = "down",
   className,
   buttonClassName,
   dropdownClassName,
@@ -45,8 +47,9 @@ export const Dropdown = <T extends DropdownItem | string>({
     const updatePosition = () => {
       if (!containerRef.current) return;
       const rect = containerRef.current.getBoundingClientRect();
+      const menuHeight = menuRef.current?.offsetHeight ?? 0;
       setPosition({
-        top: rect.bottom + 8,
+        top: direction === "up" ? Math.max(8, rect.top - menuHeight - 8) : rect.bottom + 8,
         left: rect.left,
       });
     };
@@ -71,13 +74,17 @@ export const Dropdown = <T extends DropdownItem | string>({
       document.removeEventListener("mousedown", handlePointerDown);
       document.removeEventListener("touchstart", handlePointerDown);
     };
-  }, [isOpen, portal]);
+  }, [isOpen, portal, direction]);
 
   const menuContent = (
     <div
       ref={menuRef}
       className={cn(
-        portal ? "fixed z-120 pt-2" : "absolute left-0 top-full z-50 pt-2",
+        portal
+          ? "fixed z-120"
+          : direction === "up"
+            ? "absolute bottom-full left-0 z-50 pb-2"
+            : "absolute left-0 top-full z-50 pt-2",
         dropdownClassName
       )}
       style={portal ? { top: position.top, left: position.left } : undefined}
