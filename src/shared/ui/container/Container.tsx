@@ -21,5 +21,5 @@ const maxWidthMap: Record<string, string> = {
 export const Container = ({ maxWidth = "2xl", children }: ContainerProps) => {
   const maxWidthClass = maxWidthMap[maxWidth] || maxWidth;
 
-  return <div className={cn("mx-auto px-5", maxWidthClass)}>{children}</div>;
+  return <div className={cn("mx-auto px-4", maxWidthClass)}>{children}</div>;
 };
