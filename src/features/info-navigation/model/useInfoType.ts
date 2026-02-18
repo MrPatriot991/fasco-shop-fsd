@@ -1,18 +1,6 @@
 import { useCallback } from "react";
 import { useSearchParams } from "react-router-dom";
-import type { InfoType } from "@/entities/info";
-
-const DEFAULT_INFO_TYPE: InfoType = "faq";
-const INFO_TYPES: ReadonlySet<InfoType> = new Set([
-  "faq",
-  "support",
-  "invoicing",
-  "contract",
-  "careers",
-  "blog",
-]);
-
-const isInfoType = (value: string): value is InfoType => INFO_TYPES.has(value as InfoType);
+import { isInfoType, DEFAULT_INFO_TYPE, type InfoType } from "@/entities/info";
 
 const parseInfoType = (value: string | null): InfoType => {
   if (!value) {
