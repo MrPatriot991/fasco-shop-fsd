@@ -23,21 +23,8 @@ export const useInfoType = () => {
     [searchParams, setSearchParams]
   );
 
-  const handleNav = useCallback(
-    (path: string) => {
-      const nextType = path.replace(/^\//, "");
-      if (!isInfoType(nextType)) {
-        setInfoType(DEFAULT_INFO_TYPE);
-        return;
-      }
-      setInfoType(nextType);
-    },
-    [setInfoType]
-  );
-
   return {
     type,
     setInfoType,
-    handleNav,
   };
 };
