@@ -21,7 +21,7 @@ export const InfoNav = ({ className }: InfoNavProps) => {
             key={item.id}
             onClick={() => setInfoType(item.id)}
             className={cn(
-              "flex items-center gap-3 rounded-xl px-4 py-2.5 text-left text-sm font-medium transition-all duration-150",
+              "flex items-center gap-3 rounded-xl px-4 py-2.5 text-left text-sm font-medium transition-[colors_shadow] duration-150",
               isActive
                 ? "bg-indigo-600 text-white shadow-md shadow-indigo-200"
                 : "text-slate-600 hover:bg-white hover:text-slate-900 hover:shadow-sm"
