@@ -1,5 +1,3 @@
-export type InfoType = "faq" | "support" | "invoicing" | "contract" | "careers" | "blog";
-
 export interface NavItem {
   label: string;
   path: string;
@@ -37,18 +35,22 @@ export interface InfoContentBase {
 }
 
 export interface AccordionContent extends InfoContentBase {
+  type: "faq" | "support";
   items: FaqItem[];
 }
 
 export interface DocumentContent extends InfoContentBase {
+  type: "invoicing" | "contract";
   sections: DocumentSectionItem[];
 }
 
 export interface CareersContent extends InfoContentBase {
+  type: "careers";
   jobs: Job[];
 }
 
 export interface BlogContent extends InfoContentBase {
+  type: "blog";
   posts: BlogPost[];
 }
 
