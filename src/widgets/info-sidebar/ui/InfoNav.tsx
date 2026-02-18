@@ -1,25 +1,25 @@
-import { INFO_NAV_ITEMS } from "@/entities/info";
+import { INFO_SECTIONS } from "@/entities/info";
 import { cn } from "@/shared/lib/utils";
 import { useInfoType } from "@/features/info-navigation/model";
+import { INFO_ICON_MAP } from "./iconMap";
 
 interface InfoNavProps {
   className?: string;
 }
 
 export const InfoNav = ({ className }: InfoNavProps) => {
-  const { type, handleNav } = useInfoType();
+  const { type, setInfoType } = useInfoType();
 
   return (
     <nav aria-label="Info navigation" className={cn("flex flex-col gap-1", className)}>
-      {INFO_NAV_ITEMS.map((item) => {
-        const itemType = item.path.replace(/^\//, "");
-        const isActive = type === itemType;
-        const Icon = item.icon;
+      {INFO_SECTIONS.map((item) => {
+        const isActive = type === item.id;
+        const Icon = INFO_ICON_MAP[item.id];
 
         return (
           <button
-            key={item.path}
-            onClick={() => handleNav(item.path)}
+            key={item.id}
+            onClick={() => setInfoType(item.id)}
             className={cn(
               "flex items-center gap-3 rounded-xl px-4 py-2.5 text-left text-sm font-medium transition-all duration-150",
               isActive
