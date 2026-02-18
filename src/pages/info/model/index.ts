@@ -1,0 +1,1 @@
+export { renderInfoSection } from "./renderInfoSection";
