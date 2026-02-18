@@ -1,3 +1,5 @@
+import { INFO_SECTIONS } from "@/entities/info";
+
 type NavigationType = "anchor" | "route";
 
 export type NavigationItem = {
@@ -32,11 +34,8 @@ export const AUTH_NAV: NavigationItem[] = [
   { label: "Pages", path: "/pages", type: "route" },
 ];
 
-export const FOOTER_NAV: NavigationItem[] = [
-  { label: "Support Center", path: "/info?type=support", type: "route" },
-  { label: "Invoicing", path: "/info?type=invoicing", type: "route" },
-  { label: "Contract", path: "/info?type=contract", type: "route" },
-  { label: "Careers", path: "/info?type=careers", type: "route" },
-  { label: "Blog", path: "/info?type=blog", type: "route" },
-  { label: "FAQ", path: "/info?type=faq", type: "route" },
-];
+export const FOOTER_NAV = INFO_SECTIONS.map((s) => ({
+  label: s.label,
+  path: `/info?type=${s.id}`,
+  type: "route",
+}));
