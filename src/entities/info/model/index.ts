@@ -1,3 +1,3 @@
 export * from "./types.ts";
-export * from "./content.ts";
-export * from "./nav.ts";
+export * from "./contentMap.ts";
+export * from "./sections.ts";
