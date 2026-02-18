@@ -1,8 +1,8 @@
 import type { ReactNode } from "react";
 import { ArrowRight, MessageCircle } from "lucide-react";
-import { InfoNav } from "@/features/info-navigation";
 import { cn } from "@/shared/lib/utils";
 import { Button } from "@/shared/ui";
+import { InfoNav } from "@/widgets/info-sidebar";
 
 interface InfoLayoutProps {
   title: string;
@@ -11,7 +11,7 @@ interface InfoLayoutProps {
   sidebar?: ReactNode;
   className?: string;
   onContactSupport?: () => void;
-  supportCtaLabel?: string;
+  supportCardLabel?: string;
   supportCardTitle?: string;
   supportCardText?: string;
 }
@@ -23,14 +23,12 @@ export const InfoLayout = ({
   sidebar,
   className,
   onContactSupport,
-  supportCtaLabel = "Contact Us",
+  supportCardLabel = "Contact Us",
   supportCardTitle = "Need help?",
   supportCardText = "Our team replies within 24 hours on business days.",
 }: InfoLayoutProps) => {
   return (
     <div className={cn("min-h-screen bg-slate-50", className)}>
-      <div className="h-1 w-full bg-linear-to-r from-indigo-500 via-violet-500 to-fuchsia-500" />
-
       <div className="mx-auto flex max-w-7xl flex-col gap-12 px-4 py-12 md:flex-row">
         <aside className="shrink-0 md:w-1/4">
           <div className="sticky top-6">
@@ -50,7 +48,7 @@ export const InfoLayout = ({
                 className="mt-3 inline-flex gap-1 px-0 py-0 text-xs font-medium text-indigo-600 hover:text-indigo-800"
                 onClick={onContactSupport}
               >
-                {supportCtaLabel}
+                {supportCardLabel}
                 <ArrowRight size={11} />
               </Button>
             </div>
@@ -74,7 +72,7 @@ export const InfoLayout = ({
               onClick={onContactSupport}
             >
               <MessageCircle size={15} />
-              {supportCtaLabel}
+              {supportCardLabel}
             </Button>
           </footer>
         </main>
