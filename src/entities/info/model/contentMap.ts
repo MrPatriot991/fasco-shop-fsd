@@ -1,5 +1,9 @@
+import type { InfoContent } from "./types";
+import type { InfoType } from "./sections";
+
 export const CONTENT_MAP = {
   faq: {
+    type: "faq",
     title: "Frequently Asked Questions",
     description: "Everything you need to know about shopping with FASCO.",
     items: [
@@ -30,6 +34,7 @@ export const CONTENT_MAP = {
     ],
   },
   support: {
+    type: "support",
     title: "Support Center",
     description: "We're here to help with orders, returns, and everything in between.",
     items: [
@@ -56,6 +61,7 @@ export const CONTENT_MAP = {
     ],
   },
   invoicing: {
+    type: "invoicing",
     title: "Orders & Billing",
     description: "Clear information about payments, invoices, and charges.",
     sections: [
@@ -82,6 +88,7 @@ export const CONTENT_MAP = {
     ],
   },
   contract: {
+    type: "contract",
     title: "Terms & Conditions",
     description: "The legal stuff, explained simply.",
     sections: [
@@ -108,6 +115,7 @@ export const CONTENT_MAP = {
     ],
   },
   careers: {
+    type: "careers",
     title: "Careers at FASCO",
     description: "Join a team that's redefining fashion for the modern wardrobe.",
     jobs: [
@@ -144,6 +152,7 @@ export const CONTENT_MAP = {
     ],
   },
   blog: {
+    type: "blog",
     title: "The FASCO Edit",
     description: "Style guides, trend reports, and stories from our world.",
     posts: [
@@ -185,4 +194,4 @@ export const CONTENT_MAP = {
       },
     ],
   },
-};
+} satisfies Record<InfoType, InfoContent>;
