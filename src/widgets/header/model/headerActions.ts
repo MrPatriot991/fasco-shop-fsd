@@ -1,6 +1,6 @@
 export const PATHS = {
   PROFILE: "/user",
-  FAVORITES: "/star",
+  FAVORITES: "/wishlist",
   CART: "/cart",
 };
 

@@ -7,6 +7,7 @@ import { CartPage } from "@/pages/cart";
 import { CheckoutPage, SuccessPage } from "@/pages/checkout";
 import { InfoPage } from "@/pages/info";
 import { AuthLayout, MainLayout } from "@/app/layouts";
+import { Wishlist } from "@/pages/wishlist";
 
 export const appRouter = createBrowserRouter([
   {
@@ -20,6 +21,7 @@ export const appRouter = createBrowserRouter([
       { path: "/checkout", element: <CheckoutPage /> },
       { path: "/checkout/success", element: <SuccessPage /> },
       { path: "/info", element: <InfoPage /> },
+      { path: "/wishlist", element: <Wishlist /> },
     ],
   },
   {

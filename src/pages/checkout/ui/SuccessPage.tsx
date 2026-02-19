@@ -36,7 +36,6 @@ export const SuccessPage = () => {
   return (
     <div className="flex flex-col items-center justify-center min-h-[70vh] px-4">
       <div className="bg-green-100 p-6 rounded-full mb-6">
-        {/* Иконка галочки */}
         <svg
           className="w-12 h-12 text-green-600"
           fill="none"

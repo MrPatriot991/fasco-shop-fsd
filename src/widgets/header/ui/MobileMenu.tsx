@@ -42,7 +42,7 @@ export const MobileMenu = ({ onClose, isOpen }: MobileMenuProps) => {
             {/* Quick buttons on the right */}
             <div className="flex gap-2">
               <Button asChild size="icon" variant="ghost" className="relative">
-                <Link to="/star" onClick={onClose}>
+                <Link to="/wishlist" onClick={onClose}>
                   <Star size={28} />
                   <span className="absolute top-0 right-0 w-2 h-2 bg-brand-dark rounded-full" />
                 </Link>
