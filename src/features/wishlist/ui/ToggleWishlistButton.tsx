@@ -2,7 +2,8 @@ import { Star } from "lucide-react";
 import { cn } from "@/shared/lib/utils";
 import { Button } from "@/shared/ui";
 import { useAppDispatch, useAppSelector } from "@/shared/lib/hooks";
-import { selectWishlistIds, toggleWishlist } from "@/features/wishlist";
+import { toggleWishlist } from "@/entities/wishlist";
+import { selectIsInWishlist } from "@/entities/wishlist";
 
 interface ToggleWishlistProps {
   productId: string;
@@ -12,9 +13,7 @@ interface ToggleWishlistProps {
 
 export const ToggleWishlistButton = ({ productId, colorStar, className }: ToggleWishlistProps) => {
   const dispatch = useAppDispatch();
-
-  const wishlistIds = useAppSelector(selectWishlistIds);
-  const isFavorite = wishlistIds.includes(productId);
+  const isFavorite = useAppSelector(selectIsInWishlist(productId));
 
   const handleToggle = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();

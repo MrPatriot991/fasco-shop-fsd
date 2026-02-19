@@ -4,7 +4,7 @@ import { productSlice } from "@/entities/product";
 import { authSlice } from "@/features/auth/model";
 import { filterSlice } from "@/features/filter-products";
 import { cartSlice } from "@/entities/cart";
-import { wishlistSlice } from "@/features/wishlist";
+import { wishlistSlice } from "@/entities/wishlist";
 import { checkoutSubmitted } from "@/features/checkout";
 
 const cartListener = createListenerMiddleware();
@@ -30,6 +30,21 @@ cartListener.startListening({
   },
 });
 
+const wishlistListener = createListenerMiddleware();
+
+wishlistListener.startListening({
+  matcher: isAnyOf(
+    wishlistSlice.actions.toggleWishlist,
+    wishlistSlice.actions.removeFromWhislist,
+    wishlistSlice.actions.clearWhishlist
+  ),
+  effect: (_, api) => {
+    const state = api.getState() as RootState;
+    const ids = Object.keys(state.wishlist.ids);
+    localStorage.setItem("wishlist", JSON.stringify(ids));
+  },
+});
+
 const store = configureStore({
   reducer: {
     [productSlice.name]: productSlice.reducer,
@@ -38,7 +53,8 @@ const store = configureStore({
     [cartSlice.name]: cartSlice.reducer,
     [wishlistSlice.name]: wishlistSlice.reducer,
   },
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware().prepend(cartListener.middleware),
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().prepend(cartListener.middleware, wishlistListener.middleware),
 });
 
 export function StoreProvider({ children }: { children: React.ReactNode }) {
