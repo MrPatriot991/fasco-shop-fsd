@@ -1,5 +1,8 @@
 import { useMemo, useState } from "react";
+import { Link } from "react-router-dom";
+import { HeartOff } from "lucide-react";
 import { useAppSelector, useDebounce } from "@/shared/lib/hooks";
+import { Button, EmptyState } from "@/shared/ui";
 import { selectWishlistCount, selectWishlistProducts } from "@/entities/wishlist";
 import { WishlistToolbar, type WishlistSortValue } from "@/features/wishlist-toolbar";
 import { WishlistHeader } from "@/widgets/wishlist-header";
@@ -57,7 +60,22 @@ export const Wishlist = () => {
           renderItem={(product) => <ProductCard product={product} variant="grid" />}
         />
       }
-      emptySlot={<div className="py-16 text-center text-neutral-600">No items found.</div>}
+      emptySlot={
+        <EmptyState
+          icon={<HeartOff size={22} className="text-neutral-700" />}
+          title={search.trim() ? "Nothing matched your search" : "Your wishlist is empty"}
+          description={
+            search.trim()
+              ? "Try a different keyword, or keep browsing to add more items."
+              : "Save items you love so you can find them quickly later."
+          }
+          action={
+            <Button asChild variant="outlineDark" size="medium">
+              <Link to="/shop">Continue shopping</Link>
+            </Button>
+          }
+        />
+      }
     />
   );
 };

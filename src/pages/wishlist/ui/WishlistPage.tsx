@@ -25,7 +25,9 @@ export const WishlistPage = ({
 
       {toolbarSlot ? <div>{toolbarSlot}</div> : null}
 
-      <Section spacing="none">{isEmpty ? emptySlot : contentSlot}</Section>
+      <Section spacing="none" className="pb-8 md:pb-12 lg:pb-16">
+        {isEmpty ? emptySlot : contentSlot}
+      </Section>
     </div>
   );
 };

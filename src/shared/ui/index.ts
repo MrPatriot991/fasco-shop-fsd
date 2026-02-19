@@ -23,3 +23,4 @@ export { Select } from "./select/Select";
 export { ErrorBoundary } from "./errorBoundary/ErrorBoundary";
 
 export * from "./accordion";
+export * from "./empty-state";
