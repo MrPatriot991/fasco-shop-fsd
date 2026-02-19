@@ -1,5 +1,5 @@
 export { loadWishlistFromLocalStorage } from "./storage";
-export { wishlistSlice, toggleWishlist, removeFromWhislist, clearWhishlist } from "./slice";
+export { wishlistSlice, toggleWishlist, removeFromWhislist, clearWishlist } from "./slice";
 export {
   selectWishlistIdsMap,
   selectWishlistIds,

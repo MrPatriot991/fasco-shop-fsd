@@ -1,16 +1,19 @@
 import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { HeartOff } from "lucide-react";
-import { useAppSelector, useDebounce } from "@/shared/lib/hooks";
+import { useAppDispatch, useAppSelector, useDebounce } from "@/shared/lib/hooks";
 import { Button, EmptyState } from "@/shared/ui";
-import { selectWishlistCount, selectWishlistProducts } from "@/entities/wishlist";
+import { ProductCard } from "@/entities/product";
+import { addToCart } from "@/entities/cart";
+import { clearWishlist, selectWishlistCount, selectWishlistProducts } from "@/entities/wishlist";
 import { WishlistToolbar, type WishlistSortValue } from "@/features/wishlist-toolbar";
 import { WishlistHeader } from "@/widgets/wishlist-header";
-import { WishlistPage } from "./WishlistPage";
 import { WishlistList } from "@/widgets/wishlist-list";
-import { ProductCard } from "@/entities/product";
+import { WishlistPage } from "./WishlistPage";
 
 export const Wishlist = () => {
+  const dispatch = useAppDispatch();
+
   const products = useAppSelector(selectWishlistProducts);
   const count = useAppSelector(selectWishlistCount);
 
@@ -31,6 +34,29 @@ export const Wishlist = () => {
 
   const isEmpty = viewItems.length === 0;
 
+  const onClear = () => {
+    if (count === 0) return;
+    const ok = window.confirm("Clear wishlist?");
+    if (!ok) return;
+    dispatch(clearWishlist());
+  };
+
+  const onMoveAllToCart = () => {
+    if (count === 0) return;
+
+    for (const p of products) {
+      dispatch(
+        addToCart({
+          productId: Number(p.id),
+          size: p.sizes[0],
+          color: p.colors[0],
+          quantity: 1,
+        })
+      );
+    }
+    dispatch(clearWishlist());
+  };
+
   return (
     <WishlistPage
       isEmpty={isEmpty}
@@ -41,8 +67,8 @@ export const Wishlist = () => {
           count={count}
           isMoveAllDisabled={count === 0}
           isClearDisabled={count === 0}
-          onMoveAllToCart={() => {}}
-          onClearWishlist={() => {}}
+          onMoveAllToCart={onMoveAllToCart}
+          onClearWishlist={onClear}
         />
       }
       toolbarSlot={
@@ -57,6 +83,7 @@ export const Wishlist = () => {
       contentSlot={
         <WishlistList
           items={viewItems}
+          getKey={(product) => product.id}
           renderItem={(product) => <ProductCard product={product} variant="grid" />}
         />
       }

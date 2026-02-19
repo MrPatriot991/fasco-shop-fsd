@@ -23,11 +23,11 @@ export const wishlistSlice = createSlice({
     removeFromWhislist: (state, action: PayloadAction<string>) => {
       delete state.ids[action.payload];
     },
-    clearWhishlist: (state) => {
+    clearWishlist: (state) => {
       state.ids = {};
     },
   },
 });
 
-export const { toggleWishlist, removeFromWhislist, clearWhishlist } = wishlistSlice.actions;
+export const { toggleWishlist, removeFromWhislist, clearWishlist } = wishlistSlice.actions;
 export default wishlistSlice.reducer;
