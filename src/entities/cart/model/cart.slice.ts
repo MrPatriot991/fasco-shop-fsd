@@ -4,6 +4,8 @@ import type { CartState } from "./cart.types";
 import type { CartItem } from "./cart.schema";
 import { checkoutSubmitted } from "@/features/checkout/model/checkout.actions";
 
+type AddManyPayload = CartItem[];
+
 const persistedState = loadCartFromLocalStorage();
 
 const initialState: CartState = {
@@ -29,6 +31,17 @@ export const cartSlice = createSlice({
       }
 
       state.lastAddedId = compositeId;
+    },
+    addManyToCart: (state, action: PayloadAction<AddManyPayload>) => {
+      for (const item of action.payload) {
+        const existing = state.items.find((x) => x.id === item.id);
+
+        if (existing) {
+          existing.quantity += item.quantity;
+        } else {
+          state.items.push(item);
+        }
+      }
     },
     updateCartItem: (state, action: PayloadAction<{ id: string; quantity: number }>) => {
       const item = state.items.find((item) => item.id === action.payload.id);
@@ -58,6 +71,13 @@ export const cartSlice = createSlice({
   },
 });
 
-export const { addToCart, openCart, closeCart, updateCartItem, removeFromCart, toggleGifWrap } =
-  cartSlice.actions;
+export const {
+  addToCart,
+  addManyToCart,
+  openCart,
+  closeCart,
+  updateCartItem,
+  removeFromCart,
+  toggleGifWrap,
+} = cartSlice.actions;
 export default cartSlice.reducer;

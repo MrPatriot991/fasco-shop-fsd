@@ -12,6 +12,7 @@ const cartListener = createListenerMiddleware();
 cartListener.startListening({
   matcher: isAnyOf(
     cartSlice.actions.addToCart,
+    cartSlice.actions.addManyToCart,
     cartSlice.actions.updateCartItem,
     cartSlice.actions.toggleGifWrap,
     cartSlice.actions.removeFromCart,
@@ -36,7 +37,7 @@ wishlistListener.startListening({
   matcher: isAnyOf(
     wishlistSlice.actions.toggleWishlist,
     wishlistSlice.actions.removeFromWhislist,
-    wishlistSlice.actions.clearWhishlist
+    wishlistSlice.actions.clearWishlist
   ),
   effect: (_, api) => {
     const state = api.getState() as RootState;

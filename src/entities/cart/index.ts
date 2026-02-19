@@ -6,6 +6,7 @@ export {
   removeFromCart,
   toggleGifWrap,
   cartSlice,
+  addManyToCart,
 } from "./model/cart.slice";
 export {
   selectIsCartModalOpen,

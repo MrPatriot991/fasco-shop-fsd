@@ -4,7 +4,7 @@ import { HeartOff } from "lucide-react";
 import { useAppDispatch, useAppSelector, useDebounce } from "@/shared/lib/hooks";
 import { Button, EmptyState, ConfirmDialog } from "@/shared/ui";
 import { ProductCard } from "@/entities/product";
-import { addToCart } from "@/entities/cart";
+import { addManyToCart } from "@/entities/cart";
 import { clearWishlist, selectWishlistCount, selectWishlistProducts } from "@/entities/wishlist";
 import { WishlistToolbar, type WishlistSortValue } from "@/features/wishlist-toolbar";
 import { WishlistHeader } from "@/widgets/wishlist-header";
@@ -46,16 +46,24 @@ export const Wishlist = () => {
   const onMoveAllToCart = () => {
     if (count === 0) return;
 
-    for (const p of products) {
-      dispatch(
-        addToCart({
+    const items = products
+      .filter((p) => p.sizes?.length && p.colors?.length)
+      .map((p) => {
+        const size = p.sizes[0];
+        const color = p.colors[0];
+
+        return {
+          id: `${p.id}-${size}-${color}`,
           productId: Number(p.id),
-          size: p.sizes[0],
-          color: p.colors[0],
+          size,
+          color,
           quantity: 1,
-        })
-      );
-    }
+        };
+      });
+
+    if (items.length === 0) return;
+
+    dispatch(addManyToCart(items));
     dispatch(clearWishlist());
   };
 
