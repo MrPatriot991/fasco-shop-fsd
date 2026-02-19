@@ -7,7 +7,8 @@ export const selectCategory = (state: { products: ProductState }) => state.produ
 
 export const productSelectors = productAdapter.getSelectors(selectProductState);
 
-export const { selectAll: selectAllProducts } = productSelectors;
+export const { selectAll: selectAllProducts, selectEntities: selectProductEntities } =
+  productSelectors;
 
 export const selectOnlyDeals = createSelector([selectAllProducts], (products) =>
   products.filter((p) => p.isDiscount)

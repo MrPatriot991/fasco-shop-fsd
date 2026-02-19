@@ -5,4 +5,5 @@ export {
   selectWishlistIds,
   selectWishlistCount,
   selectIsInWishlist,
+  selectWishlistProducts,
 } from "./selectors";

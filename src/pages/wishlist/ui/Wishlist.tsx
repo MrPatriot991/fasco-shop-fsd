@@ -1,16 +1,20 @@
+import { useState } from "react";
+import { useAppSelector } from "@/shared/lib/hooks";
+import { selectWishlistCount, selectWishlistProducts } from "@/entities/wishlist";
 import { WishlistToolbar, type WishlistSortValue } from "@/features/wishlist-toolbar";
 import { WishlistHeader } from "@/widgets/wishlist-header";
 import { WishlistPage } from "./WishlistPage";
-import { useState } from "react";
 
 export const Wishlist = () => {
-  const count = 0;
+  const products = useAppSelector(selectWishlistProducts);
+  const count = useAppSelector(selectWishlistCount);
 
   const [search, setSearch] = useState("");
   const [sort, setSort] = useState<WishlistSortValue>("default");
 
   return (
     <WishlistPage
+      isEmpty={count === 0}
       headerSlot={
         <WishlistHeader
           title="Wishlist"
@@ -31,8 +35,7 @@ export const Wishlist = () => {
           className="pb-6 md:pb-8"
         />
       }
-      isEmpty={true}
-      contentSlot={<></>}
+      contentSlot={<pre>{JSON.stringify(products, null, 2)}</pre>}
       emptySlot={<div />}
     />
   );
