@@ -2,7 +2,7 @@ import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { HeartOff } from "lucide-react";
 import { useAppDispatch, useAppSelector, useDebounce } from "@/shared/lib/hooks";
-import { Button, EmptyState } from "@/shared/ui";
+import { Button, EmptyState, ConfirmDialog } from "@/shared/ui";
 import { ProductCard } from "@/entities/product";
 import { addToCart } from "@/entities/cart";
 import { clearWishlist, selectWishlistCount, selectWishlistProducts } from "@/entities/wishlist";
@@ -19,6 +19,7 @@ export const Wishlist = () => {
 
   const [search, setSearch] = useState("");
   const [sort, setSort] = useState<WishlistSortValue>("default");
+  const [confirmOpen, setConfirmOpen] = useState(false);
   const debounceQuery = useDebounce(search, 300);
 
   const viewItems = useMemo(() => {
@@ -32,13 +33,14 @@ export const Wishlist = () => {
     return list;
   }, [products, debounceQuery, sort]);
 
-  const isEmpty = viewItems.length === 0;
-
   const onClear = () => {
     if (count === 0) return;
-    const ok = window.confirm("Clear wishlist?");
-    if (!ok) return;
+    setConfirmOpen(true);
+  };
+
+  const confirmClear = () => {
     dispatch(clearWishlist());
+    setConfirmOpen(false);
   };
 
   const onMoveAllToCart = () => {
@@ -57,52 +59,74 @@ export const Wishlist = () => {
     dispatch(clearWishlist());
   };
 
+  const isWishlistEmpty = count === 0;
+  const isSearchEmpty = !isWishlistEmpty && viewItems.length === 0;
+
   return (
-    <WishlistPage
-      isEmpty={isEmpty}
-      headerSlot={
-        <WishlistHeader
-          title="Wishlist"
-          description="Your wishlist of products"
-          count={count}
-          isMoveAllDisabled={count === 0}
-          isClearDisabled={count === 0}
-          onMoveAllToCart={onMoveAllToCart}
-          onClearWishlist={onClear}
-        />
-      }
-      toolbarSlot={
-        <WishlistToolbar
-          search={search}
-          sort={sort}
-          onSearchChange={setSearch}
-          onSortChange={setSort}
-          className="pb-6 md:pb-8"
-        />
-      }
-      contentSlot={
-        <WishlistList
-          items={viewItems}
-          getKey={(product) => product.id}
-          renderItem={(product) => <ProductCard product={product} variant="grid" />}
-        />
-      }
-      emptySlot={
-        <EmptyState
-          icon={<HeartOff size={22} className="text-neutral-700" />}
-          title={search.trim() ? "Nothing matched your search" : "Your wishlist is empty"}
-          description={
-            search.trim()
-              ? "Try a different keyword, or keep browsing to add more items."
-              : "Save items you love so you can find them quickly later."
-          }
-          action={
-            <Button asChild variant="outlineDark" size="medium">
-              <Link to="/shop">Continue shopping</Link>
-            </Button>
-          }
-        />
-      }
-    />
+    <>
+      <WishlistPage
+        isEmpty={isWishlistEmpty || isSearchEmpty}
+        headerSlot={
+          <WishlistHeader
+            title="Wishlist"
+            description="Your wishlist of products"
+            count={count}
+            isMoveAllDisabled={count === 0}
+            isClearDisabled={count === 0}
+            onMoveAllToCart={onMoveAllToCart}
+            onClearWishlist={onClear}
+          />
+        }
+        toolbarSlot={
+          <WishlistToolbar
+            search={search}
+            sort={sort}
+            onSearchChange={setSearch}
+            onSortChange={setSort}
+            className="pb-6 md:pb-8"
+          />
+        }
+        contentSlot={
+          <WishlistList
+            items={viewItems}
+            getKey={(product) => product.id}
+            renderItem={(product) => <ProductCard product={product} variant="grid" />}
+          />
+        }
+        emptySlot={
+          isWishlistEmpty ? (
+            <EmptyState
+              icon={<HeartOff size={22} className="text-neutral-700" />}
+              title="Your wishlist is empty"
+              description="Save items you love so you can find them quickly later."
+              action={
+                <Button asChild variant="outlineDark">
+                  <Link to="/shop">Continue shopping</Link>
+                </Button>
+              }
+            />
+          ) : isSearchEmpty ? (
+            <EmptyState
+              title="Nothing matched your search"
+              description="Try another keyword or clear the search."
+              action={
+                <Button variant="ghost" onClick={() => setSearch("")}>
+                  Clear search
+                </Button>
+              }
+            />
+          ) : null
+        }
+      />
+      <ConfirmDialog
+        open={confirmOpen}
+        title="Clear wishlist?"
+        description="This action cannot be undone."
+        confirmText="Clear"
+        cancelText="Cancel"
+        onConfirm={confirmClear}
+        onCancel={() => setConfirmOpen(false)}
+      />
+    </>
   );
 };
