@@ -1,5 +1,5 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
-import { loadWishlistFromLocalStorage } from "./storage";
+import { loadWishlistFromLocalStorage } from "./wishlistStorage";
 
 interface WishlistState {
   ids: Record<string, true>;
@@ -20,7 +20,7 @@ export const wishlistSlice = createSlice({
       if (state.ids[id]) delete state.ids[id];
       else state.ids[id] = true;
     },
-    removeFromWhislist: (state, action: PayloadAction<string>) => {
+    removeFromWishlist: (state, action: PayloadAction<string>) => {
       delete state.ids[action.payload];
     },
     clearWishlist: (state) => {
@@ -29,5 +29,5 @@ export const wishlistSlice = createSlice({
   },
 });
 
-export const { toggleWishlist, removeFromWhislist, clearWishlist } = wishlistSlice.actions;
+export const { toggleWishlist, removeFromWishlist, clearWishlist } = wishlistSlice.actions;
 export default wishlistSlice.reducer;

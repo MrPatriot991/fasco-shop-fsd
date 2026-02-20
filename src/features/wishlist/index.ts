@@ -1,3 +1,3 @@
-export * from "../../entities/wishlist/model/slice";
-export { wishlistSlice } from "../../entities/wishlist/model/slice";
+export * from "../../entities/wishlist/model/wishlistSlice";
+export { wishlistSlice } from "../../entities/wishlist/model/wishlistSlice";
 export { ToggleWishlistButton } from "./ui/ToggleWishlistButton";
