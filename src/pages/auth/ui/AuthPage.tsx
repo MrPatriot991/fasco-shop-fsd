@@ -3,7 +3,7 @@ import { Button } from "@/shared/ui/button";
 import { GmailIcon } from "@/shared/ui/icons";
 import { GoogleIcon } from "@/shared/ui/icons";
 import { LoginForm } from "@/features/auth/login";
-import { RegistrForm } from "@/features/auth/register";
+import { RegisterForm } from "@/features/auth/register";
 import { ForgotPasswordForm } from "@/features/auth/forgot-password";
 
 export const AuthPage = () => {
@@ -41,7 +41,7 @@ export const AuthPage = () => {
       </div>
 
       {isSignIn && <LoginForm />}
-      {isSignUp && <RegistrForm />}
+      {isSignUp && <RegisterForm />}
       {isForgot && <ForgotPasswordForm />}
     </>
   );

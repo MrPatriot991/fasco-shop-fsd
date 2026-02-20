@@ -5,7 +5,7 @@ import { Button } from "@/shared/ui/button";
 import { Input } from "@/shared/ui/input";
 import { registerSchema, type RegisterSchema } from "../model/registerSchema";
 
-export const RegistrForm = () => {
+export const RegisterForm = () => {
   const {
     register,
     handleSubmit,

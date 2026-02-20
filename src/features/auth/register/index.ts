@@ -1,2 +1,2 @@
-export * from "./model/registerSchema";
-export { RegistrForm } from "./ui/RegistrForm";
+export { registerSchema, type RegisterSchema } from "./model/registerSchema";
+export { RegisterForm } from "./ui/RegisterForm";
