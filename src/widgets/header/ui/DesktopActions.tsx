@@ -4,7 +4,7 @@ import { Button } from "@/shared/ui/button";
 import { useAppSelector } from "@/shared/lib/hooks";
 import { selectIsAuthenticated } from "@/features/auth/model";
 import { selectCartItemCount } from "@/entities/cart";
-import { AUTH_ACTIONS } from "@/widgets/header/model";
+import { AUTH_ACTIONS } from "@/widgets/header/model/headerActions";
 
 const iconMap = {
   profile: User,
