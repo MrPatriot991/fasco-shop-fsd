@@ -1,1 +1,1 @@
-export * from "./ui";
+export { WishlistHeader } from "./ui/WishlistHeader";
