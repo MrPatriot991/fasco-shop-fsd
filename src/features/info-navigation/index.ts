@@ -1,1 +1,1 @@
-export * from "./model";
+export { useInfoType } from "./model/useInfoType";

@@ -1,6 +1,6 @@
 import { INFO_SECTIONS } from "@/entities/info";
 import { cn } from "@/shared/lib/utils";
-import { useInfoType } from "@/features/info-navigation/model";
+import { useInfoType } from "@/features/info-navigation";
 import { INFO_ICON_MAP } from "./iconMap";
 
 interface InfoNavProps {
