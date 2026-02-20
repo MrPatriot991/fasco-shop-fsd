@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { ShoppingCart } from "lucide-react";
-import { Button } from "@/shared/ui";
+import { Button } from "@/shared/ui/button";
 import { useAppSelector } from "@/shared/lib/hooks";
 import { selectCartItemCount } from "@/entities/cart";
 
@@ -18,7 +18,7 @@ export const FloatingCartButton = () => {
         <div className="relative">
           <ShoppingCart size={28} className="text-white" />
           {count > 0 && (
-            <span className="absolute -top-2 -right-2 flex items-center justify-center w-4 h-4 bg-white text-black font-bold text-[10px] rounded-full">
+            <span className="absolute -top-1.5 -right-1.5 flex items-center justify-center w-4 h-4 bg-white text-black font-bold text-[10px] rounded-full">
               {count > 9 ? "9+" : count}
             </span>
           )}
@@ -27,3 +27,4 @@ export const FloatingCartButton = () => {
     </Button>
   );
 };
+

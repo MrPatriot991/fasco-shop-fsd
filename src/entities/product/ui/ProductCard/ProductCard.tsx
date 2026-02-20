@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { cn, getDiscountData } from "@/shared/lib/utils";
 import { formatCurrency } from "@/shared/lib/format";
-import { StarRating } from "@/shared/ui";
+import { StarRating } from "@/shared/ui/starRating";
 import { ToggleWishlistButton } from "@/features/wishlist";
 import type { Product } from "@/entities/product/model/schema";
 
@@ -110,3 +110,4 @@ export const ProductCard = ({
     </Link>
   );
 };
+

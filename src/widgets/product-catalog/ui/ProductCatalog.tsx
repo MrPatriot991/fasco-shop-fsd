@@ -1,6 +1,10 @@
 import { useState, useRef, useMemo } from "react";
 import { ChevronRight, SlidersHorizontal } from "lucide-react";
-import { Button, ErrorBoundary, Pagination, Section, SectionTitle } from "@/shared/ui";
+import { Button } from "@/shared/ui/button";
+import { ErrorBoundary } from "@/shared/ui/errorBoundary";
+import { Pagination } from "@/shared/ui/pagination";
+import { Section } from "@/shared/ui/section";
+import { SectionTitle } from "@/shared/ui/sectionTitle";
 import { useAppSelector, useLockBodyScroll, usePagination } from "@/shared/lib/hooks";
 import { ProductCard, ProductList } from "@/entities/product";
 import { FilterSidebar, selectFilteredProducts } from "@/features/filter-products";
@@ -109,3 +113,4 @@ export const ProductCatalog = ({ searchTerm }: ProductCatalogProps) => {
     </Section>
   );
 };
+

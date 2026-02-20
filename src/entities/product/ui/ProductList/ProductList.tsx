@@ -1,5 +1,5 @@
 import { cn } from "@/shared/lib/utils";
-import { Skeleton } from "@/shared/ui";
+import { Skeleton } from "@/shared/ui/skeleton";
 import { useAppSelector } from "@/shared/lib/hooks";
 import { selectProductStatus, ProductCard } from "@/entities/product";
 import type { Product } from "@/entities/product/model/schema";
@@ -53,3 +53,4 @@ export const ProductList = ({
     </div>
   );
 };
+

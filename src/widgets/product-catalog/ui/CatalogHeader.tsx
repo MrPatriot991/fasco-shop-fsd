@@ -1,6 +1,7 @@
 import { Menu, Tally4, Tally2, Tally3 } from "lucide-react";
 import { useAppDispatch } from "@/shared/lib/hooks";
-import { Button, Dropdown } from "@/shared/ui";
+import { Button } from "@/shared/ui/button";
+import { Dropdown } from "@/shared/ui/dropdown";
 import { setSortBy } from "@/features/filter-products";
 import type { SortOption } from "@/shared/lib/constants";
 import { SearchFilterStatus } from "@/features/search-filter-status";
@@ -36,7 +37,7 @@ export const CatalogHeader = ({ setCols, cols, searchTerm }: CatalogHeaderProps)
         <Dropdown
           label="Sort by"
           items={SORT_OPTIONS}
-          onSelect={(item) => dispatch(setSortBy(item.value))}
+          onSelect={(item: { label: string; value: SortOption }) => dispatch(setSortBy(item.value))}
           dropdownClassName="w-56"
         />
         {searchTerm && <SearchFilterStatus searchTerm={searchTerm} />}
@@ -61,3 +62,4 @@ export const CatalogHeader = ({ setCols, cols, searchTerm }: CatalogHeaderProps)
     </div>
   );
 };
+
