@@ -2,7 +2,7 @@ import { Search } from "lucide-react";
 import { Container } from "@/shared/ui/container";
 import { Dropdown } from "@/shared/ui/dropdown";
 import { Input } from "@/shared/ui/input";
-import type { WishlistSortValue } from "../model/types";
+import type { WishlistSortValue } from "../model/wishlistToolbarTypes";
 
 interface SortOptions {
   label: string;
@@ -10,7 +10,7 @@ interface SortOptions {
 }
 
 const SORT_OPTIONS: SortOptions[] = [
-  { label: "Defaut", value: "default" },
+  { label: "Default", value: "default" },
   { label: "Price: Low to High", value: "price-low" },
   { label: "Price: High to Low", value: "price-high" },
 ];

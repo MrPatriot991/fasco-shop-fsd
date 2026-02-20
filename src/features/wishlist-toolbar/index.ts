@@ -1,2 +1,2 @@
-export * from "./ui";
-export type { WishlistSortValue } from "./model/types";
+export { WishlistToolbar } from "./ui";
+export type { WishlistSortValue } from "./model/wishlistToolbarTypes";
