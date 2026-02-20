@@ -9,7 +9,6 @@ import { Section } from "@/shared/ui/section";
 import { SectionTitle } from "@/shared/ui/sectionTitle";
 import { selectCartDetails, selectCartSubtotal } from "@/entities/cart";
 import { checkoutSchema, checkoutSubmitted, type CheckoutSchema } from "@/features/checkout";
-import { createOrder, type OrderDTO } from "@/features/create-order";
 import {
   CheckoutOrderSummary,
   CheckoutContact,
@@ -36,41 +35,21 @@ export const CheckoutPageContent = () => {
   });
   const { handleSubmit, reset } = methods;
 
-  const onSubmit = async (data: CheckoutSchema) => {
-    const { cvv, cardNumber, ...safe } = data;
+  const onSubmit = (data: CheckoutSchema) => {
+    const { cvv, cardNumber, ...safeData } = data;
 
     if (!cvv || !cardNumber) return;
 
-    const dto: OrderDTO = {
-      customer: {
-        email: safe.email,
-        firstName: safe.firstName,
-        lastName: safe.lastName,
-        country: safe.country,
-        address: safe.address,
-        city: safe.city,
-        postCode: safe.postCode,
-      },
-      items: cartItems.map((i) => ({
-        id: i.id,
-        title: i.title,
-        price: i.price,
-        qty: i.quantity,
-      })),
-      total: total,
-      createdAt: new Date().toISOString(),
-    };
+    console.log("Pay now", {
+      ...safeData,
+      cardNumber: "**** **** ****" + cardNumber.slice(-4),
+      cvv: "***",
+    });
 
-    try {
-      const { orderId } = await dispatch(createOrder(dto)).unwrap();
+    dispatch(checkoutSubmitted());
+    reset();
 
-      dispatch(checkoutSubmitted());
-      reset();
-
-      navigate(`/checkout/success?order=${orderId}`, { replace: true });
-    } catch {
-      alert("Order failed. Try again.");
-    }
+    navigate("/checkout/success", { replace: true });
   };
 
   return (
