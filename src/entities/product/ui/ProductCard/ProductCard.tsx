@@ -28,16 +28,16 @@ export const ProductCard = ({
   const productId = String(id);
 
   return (
-    <Link to={`/shop/${id}`}>
+    <Link to={`/shop/${id}`} className="group block h-full focus-visible:outline-none">
       <article
         className={cn(
-          "flex space-y-5 p-4 h-full bg-brand-white w-full  md:min-w-1/2 rounded-2xl shadow-subtle overflow-hidden hover:shadow-lg cursor-pointer transition-shadow duration-200",
-          variant === "grid" ? "flex-col" : "flex-col lg:flex-row items-start"
+          "flex h-full w-full cursor-pointer overflow-hidden rounded-2xl border border-brand-gray/10 bg-brand-white p-4 shadow-subtle transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl group-focus-visible:ring-2 group-focus-visible:ring-brand-dark/30",
+          variant === "grid" ? "flex-col gap-4" : "flex-col gap-4 lg:flex-row lg:items-start"
         )}
       >
         <div
           className={cn(
-            "relative aspect-3/4 overflow-hidden bg-brand-surface/30",
+            "relative aspect-3/4 overflow-hidden rounded-xl bg-brand-surface/30",
             variant === "list" ? "w-full lg:w-1/2" : "w-full"
           )}
         >
@@ -45,7 +45,7 @@ export const ProductCard = ({
             src={image}
             alt={title}
             className={cn(
-              "w-full h-full",
+              "h-full w-full transition-transform duration-500 ease-out group-hover:scale-105",
               image.includes("https://fakestoreapi.com")
                 ? "object-contain object-center"
                 : "object-cover object-top"
@@ -55,7 +55,7 @@ export const ProductCard = ({
             <ToggleWishlistButton
               productId={productId}
               colorStar="text-black"
-              className="active:bg-transparent"
+              className="rounded-full bg-white/90 backdrop-blur-sm active:bg-white"
             />
           </div>
           {isDiscount && hasDiscount && (
@@ -76,7 +76,7 @@ export const ProductCard = ({
         </div>
         <div
           className={cn(
-            "flex space-y-4 justify-between w-full flex-col flex-1",
+            "flex w-full flex-1 flex-col justify-between gap-4",
             variant === "list" ? "px-4 py-2" : "px-0 py-0"
           )}
         >
@@ -87,8 +87,8 @@ export const ProductCard = ({
             </div>
             <StarRating rate={rating.rate} />
           </header>
-          <span className="text-xs text-brand-dark font-medium">
-            ({rating.count}k) Customer Reviews
+          <span className="text-xs font-medium text-brand-dark">
+            ({rating.count.toLocaleString()}) Customer Reviews
           </span>
           <footer className="flex justify-between items-center">
             <div className="flex items-center gap-4">

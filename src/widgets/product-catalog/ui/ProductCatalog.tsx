@@ -83,7 +83,7 @@ export const ProductCatalog = ({ searchTerm }: ProductCatalogProps) => {
 
           <div className="flex flex-col items-center gap-4">
             <div className="hidden lg:flex w-full">
-              <CatalogHeader setCols={setCols} searchTerm={searchTerm} />
+              <CatalogHeader setCols={setCols} cols={cols} searchTerm={searchTerm} />
             </div>
             <ErrorBoundary>
               <ProductList

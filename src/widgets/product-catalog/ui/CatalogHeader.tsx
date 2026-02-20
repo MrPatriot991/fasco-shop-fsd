@@ -15,18 +15,19 @@ const SORT_OPTIONS: {
 ];
 
 const views = [
-  { cols: 1, icon: <Menu className="w-3 h-3 text-black" /> },
-  { cols: 2, icon: <Tally2 className="w-3 h-3 text-black" /> },
-  { cols: 3, icon: <Tally3 className="w-3 h-3 text-black" /> },
-  { cols: 4, icon: <Tally4 className="w-3 h-3 text-black" /> },
+  { cols: 1, icon: <Menu className="h-3 w-3" /> },
+  { cols: 2, icon: <Tally2 className="h-3 w-3" /> },
+  { cols: 3, icon: <Tally3 className="h-3 w-3" /> },
+  { cols: 4, icon: <Tally4 className="h-3 w-3" /> },
 ];
 
 interface CatalogHeaderProps {
   setCols: (col: number) => void;
+  cols: number;
   searchTerm?: string | null;
 }
 
-export const CatalogHeader = ({ setCols, searchTerm }: CatalogHeaderProps) => {
+export const CatalogHeader = ({ setCols, cols, searchTerm }: CatalogHeaderProps) => {
   const dispatch = useAppDispatch();
 
   return (
@@ -47,7 +48,11 @@ export const CatalogHeader = ({ setCols, searchTerm }: CatalogHeaderProps) => {
             variant="ghost"
             size="icon"
             onClick={() => setCols(view.cols)}
-            className="bg-gray-200/50 hover:bg-gray-200 rounded-xs"
+            className={
+              view.cols === cols
+                ? "rounded-xs bg-brand-dark text-white hover:bg-brand-dark/90"
+                : "rounded-xs bg-gray-200/50 hover:bg-gray-200"
+            }
           >
             {view.icon}
           </Button>
