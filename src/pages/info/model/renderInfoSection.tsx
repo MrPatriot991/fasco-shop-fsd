@@ -1,4 +1,7 @@
-import { AccordionSection, BlogSection, CareersSection, DocumentSection } from "@/widgets";
+import { BlogSection } from "@/widgets/blog-grid";
+import { CareersSection } from "@/widgets/careers-list";
+import { DocumentSection } from "@/widgets/document-viewer";
+import { AccordionSection } from "@/widgets/faq-accordion";
 import type { InfoContent } from "@/entities/info";
 
 export const renderInfoSection = (content: InfoContent) => {

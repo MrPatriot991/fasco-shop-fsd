@@ -1,1 +1,1 @@
-export * from "./ui";
+export { AccordionSection } from "./ui/AccordionSection";
