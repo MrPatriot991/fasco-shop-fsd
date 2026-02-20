@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { formatCurrency } from "@/shared/lib/format";
 import type { Product } from "@/entities/product";
-import { Button } from "@/shared/ui";
+import { Button } from "@/shared/ui/button";
 
 interface QuickResultsProps {
   results: Product[];
@@ -54,3 +54,4 @@ export const QuickResults = ({ results, isLoading, onClose, onViewAll }: QuickRe
     </div>
   );
 };
+

@@ -1,6 +1,8 @@
 import { useFormContext, Controller } from "react-hook-form";
 import { ChevronDown } from "lucide-react";
-import { Input, SectionTitle, Select } from "@/shared/ui";
+import { Input } from "@/shared/ui/input";
+import { SectionTitle } from "@/shared/ui/sectionTitle";
+import { Select } from "@/shared/ui/select";
 import { COUNTRIES } from "@/shared/lib/constants";
 
 interface CheckoutDeliveryProps {
@@ -86,3 +88,4 @@ export const CheckoutDelivery = ({ saveInfoSlot }: CheckoutDeliveryProps) => {
     </div>
   );
 };
+

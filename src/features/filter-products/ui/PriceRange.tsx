@@ -2,7 +2,7 @@ import { useAppDispatch, useAppSelector } from "@/shared/lib/hooks";
 import { selectPricePicker } from "@/features/filter-products";
 import { setPriceRange } from "@/features/filter-products";
 import { cn } from "@/shared/lib/utils";
-import { Button } from "@/shared/ui";
+import { Button } from "@/shared/ui/button";
 
 const PRICE_BUCKETS = [
   { label: "$0 - $50", min: 0, max: 50 },
@@ -50,3 +50,4 @@ export const PriceRange = () => {
     </div>
   );
 };
+

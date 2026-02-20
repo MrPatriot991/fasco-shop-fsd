@@ -1,5 +1,6 @@
 import { useFormContext } from "react-hook-form";
-import { Input, SectionTitle } from "@/shared/ui";
+import { Input } from "@/shared/ui/input";
+import { SectionTitle } from "@/shared/ui/sectionTitle";
 
 interface CheckoutContactProps {
   accountPrompt?: React.ReactNode;
@@ -34,3 +35,4 @@ export const CheckoutContact = ({ accountPrompt }: CheckoutContactProps) => {
     </>
   );
 };
+

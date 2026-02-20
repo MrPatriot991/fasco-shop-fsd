@@ -1,6 +1,9 @@
-import { AppSlider, Section, SectionTitle, StarRating } from "@/shared/ui";
+import { AppSlider } from "@/shared/ui/appSlider";
+import { Section } from "@/shared/ui/section";
+import { SectionTitle } from "@/shared/ui/sectionTitle";
+import { StarRating } from "@/shared/ui/starRating";
 import type { EmblaOptionsType } from "embla-carousel";
-import type { BaseSlide } from "@/shared/ui/appSlider/AppSlider";
+import type { BaseSlide } from "@/shared/ui/appSlider";
 
 import avatarReview1 from "@/shared/assets/images/reviews-img-1.jpg";
 import avatarReview2 from "@/shared/assets/images/reviews-img-2.jpg";
@@ -105,3 +108,4 @@ export const Reviews = () => {
     </Section>
   );
 };
+

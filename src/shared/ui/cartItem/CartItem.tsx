@@ -1,4 +1,5 @@
-import { Button, QuantityPicker } from "@/shared/ui";
+import { Button } from "@/shared/ui/button";
+import { QuantityPicker } from "@/shared/ui/quantityPicker";
 import { formatCurrency } from "@/shared/lib/format";
 import { cn } from "@/shared/lib/utils";
 import type { Color, Sizes } from "@/shared/lib/constants";
@@ -121,3 +122,4 @@ export const CartItem = ({
     </div>
   );
 };
+

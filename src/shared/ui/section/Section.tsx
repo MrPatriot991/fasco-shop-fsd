@@ -1,6 +1,6 @@
 import { forwardRef } from "react";
 import { cn } from "@/shared/lib/utils";
-import { Container } from "@/shared/ui";
+import { Container } from "@/shared/ui/container";
 
 type ContainerMaxWidth = "sm" | "md" | "lg" | "xl" | "2xl" | "3xl" | "4xl" | "full";
 type Spacing = "compact" | "default" | "none";
@@ -36,3 +36,4 @@ export const Section = forwardRef<HTMLElement, Props>(
 );
 
 Section.displayName = "Section";
+

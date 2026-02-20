@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import confetti from "canvas-confetti";
-import { Button } from "@/shared/ui";
+import { Button } from "@/shared/ui/button";
 
 export const SuccessPage = () => {
   const [orderId] = useState(() => `FASCO-${Math.floor(Math.random() * 1000000)}`);
@@ -60,3 +60,4 @@ export const SuccessPage = () => {
     </div>
   );
 };
+

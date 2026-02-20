@@ -1,5 +1,7 @@
 import type { ReactNode } from "react";
-import { Button, Container, SectionTitle } from "@/shared/ui";
+import { Button } from "@/shared/ui/button";
+import { Container } from "@/shared/ui/container";
+import { SectionTitle } from "@/shared/ui/sectionTitle";
 
 type WishlistHeaderProps = {
   title: string;
@@ -78,3 +80,4 @@ export const WishlistHeader = ({
     </header>
   );
 };
+

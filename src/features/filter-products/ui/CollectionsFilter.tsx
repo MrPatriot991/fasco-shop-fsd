@@ -2,7 +2,7 @@ import { useAppDispatch, useAppSelector } from "@/shared/lib/hooks";
 import { selectCollectionFilter, setCollection } from "@/features/filter-products";
 import { COLLECTIONS } from "@/shared/lib/constants";
 import { cn } from "@/shared/lib/utils";
-import { Button } from "@/shared/ui";
+import { Button } from "@/shared/ui/button";
 
 export const CollectionFilter = () => {
   const dispatch = useAppDispatch();
@@ -33,3 +33,4 @@ export const CollectionFilter = () => {
     </div>
   );
 };
+

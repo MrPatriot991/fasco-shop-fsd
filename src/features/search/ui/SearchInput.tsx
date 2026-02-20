@@ -3,7 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { X, Search } from "lucide-react";
 import { cn } from "@/shared/lib/utils";
 import { useDebounce, useAppSelector } from "@/shared/lib/hooks";
-import { Input, Button } from "@/shared/ui";
+import { Button } from "@/shared/ui/button";
+import { Input } from "@/shared/ui/input";
 import { selectAllProducts } from "@/entities/product";
 import { QuickResults } from "@/features/search";
 
@@ -70,3 +71,4 @@ export const SearchInput = ({ variant = "header", onClose }: SearchInputProps) =
     </div>
   );
 };
+

@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "@/shared/lib/hooks";
-import { Button, Container, QuantityPicker } from "@/shared/ui";
+import { Button } from "@/shared/ui/button";
+import { Container } from "@/shared/ui/container";
+import { QuantityPicker } from "@/shared/ui/quantityPicker";
 import { selectProductByID } from "@/entities/product";
 import { openCart, addToCart } from "@/entities/cart";
 import {
@@ -114,3 +116,4 @@ export const ProductDetails = () => {
     </section>
   );
 };
+

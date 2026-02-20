@@ -1,6 +1,6 @@
 import { useAppDispatch } from "@/shared/lib/hooks";
 import { toggleArrayFilter } from "@/features/filter-products";
-import { Button } from "@/shared/ui";
+import { Button } from "@/shared/ui/button";
 import { setFilterValue } from "../model/filterSlice";
 import { SIZES, type Sizes } from "@/shared/lib/constants";
 import { cn } from "@/shared/lib/utils";
@@ -53,3 +53,4 @@ export const SizeSelector = ({
     </div>
   );
 };
+

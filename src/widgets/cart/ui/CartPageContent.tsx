@@ -1,15 +1,13 @@
 import { ChevronRight } from "lucide-react";
 import { useAppDispatch, useAppSelector } from "@/shared/lib/hooks";
 import { formatCurrency } from "@/shared/lib/format";
-import {
-  CartCheckoutButtons,
-  CheckboxGiftWrap,
-  SectionTitle,
-  CartItem,
-  CartSummaryBlock,
-  ErrorBoundary,
-  Section,
-} from "@/shared/ui";
+import { CartCheckoutButtons } from "@/shared/ui/cartCheckoutButtons";
+import { CartItem } from "@/shared/ui/cartItem";
+import { CartSummaryBlock } from "@/shared/ui/cartSummaryBlock";
+import { CheckboxGiftWrap } from "@/shared/ui/checkboxGiftWrap";
+import { ErrorBoundary } from "@/shared/ui/errorBoundary";
+import { Section } from "@/shared/ui/section";
+import { SectionTitle } from "@/shared/ui/sectionTitle";
 import {
   updateCartItem,
   removeFromCart,
@@ -94,3 +92,4 @@ export const CartPageContent = () => {
     </Section>
   );
 };
+

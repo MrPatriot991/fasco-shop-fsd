@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { X } from "lucide-react";
 import { useAppDispatch } from "@/shared/lib/hooks";
-import { Button } from "@/shared/ui";
+import { Button } from "@/shared/ui/button";
 import { resetFilters } from "@/features/filter-products";
 
 interface SearchFilterStatusProps {
@@ -36,3 +36,4 @@ export const SearchFilterStatus = ({ searchTerm }: SearchFilterStatusProps) => {
     </div>
   );
 };
+

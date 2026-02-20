@@ -1,5 +1,5 @@
 import { Download } from "lucide-react";
-import { Button } from "@/shared/ui";
+import { Button } from "@/shared/ui/button";
 import type { DocumentSectionItem } from "@/entities/info/model/types";
 
 interface DocumentSectionProps {
@@ -46,3 +46,4 @@ export const DocumentSection = ({
     </section>
   );
 };
+

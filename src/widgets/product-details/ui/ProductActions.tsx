@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { ArrowUpDown, CircleQuestionMark, Share2 } from "lucide-react";
-import { Button } from "@/shared/ui";
+import { Button } from "@/shared/ui/button";
 
 const PRODUCT_ACTIONS = [
   { to: "/compare", icon: ArrowUpDown, label: "Compare" },
@@ -25,3 +25,4 @@ export const ProductActions = () => {
     </>
   );
 };
+

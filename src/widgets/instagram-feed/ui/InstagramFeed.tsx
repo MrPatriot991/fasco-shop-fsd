@@ -1,5 +1,6 @@
-import { Section, SectionTitle } from "@/shared/ui";
-import { AppSlider } from "@/shared/ui";
+import { Section } from "@/shared/ui/section";
+import { SectionTitle } from "@/shared/ui/sectionTitle";
+import { AppSlider } from "@/shared/ui/appSlider";
 import type { EmblaOptionsType } from "embla-carousel";
 
 import instImg1 from "@/shared/assets/images/inst-img-1.jpg";
@@ -63,3 +64,4 @@ export const InstagramFeed = () => {
     </Section>
   );
 };
+

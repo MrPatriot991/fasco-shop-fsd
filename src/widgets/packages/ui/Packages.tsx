@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
-import { Button, Section, SectionTitle } from "@/shared/ui";
+import { Button } from "@/shared/ui/button";
+import { Section } from "@/shared/ui/section";
+import { SectionTitle } from "@/shared/ui/sectionTitle";
 import { formatCurrency } from "@/shared/lib/format";
 import peakyBlindersImg from "@/shared/assets/images/bg-packages.png";
 
@@ -68,3 +70,4 @@ export const Packages = ({ onActionClick }: PackagesProps) => {
     </Section>
   );
 };
+

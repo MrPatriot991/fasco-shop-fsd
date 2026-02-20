@@ -1,4 +1,4 @@
-import { ErrorBoundary } from "@/shared/ui";
+import { ErrorBoundary } from "@/shared/ui/errorBoundary";
 import { Benefits } from "@/widgets/benefits";
 import { Deals } from "@/widgets/deals";
 import { Footer } from "@/widgets/footer";
@@ -20,3 +20,4 @@ export const ProductPage = () => {
     </>
   );
 };
+

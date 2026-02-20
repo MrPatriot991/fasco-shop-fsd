@@ -3,7 +3,8 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useAppDispatch } from "@/shared/lib/hooks";
 import { loginSchema, type LoginSchema } from "@/features/auth/login/model/loginSchema";
-import { Button, Input } from "@/shared/ui";
+import { Button } from "@/shared/ui/button";
+import { Input } from "@/shared/ui/input";
 import { setCredentials } from "../../model/authSlice";
 
 export const LoginForm = () => {
@@ -57,3 +58,4 @@ export const LoginForm = () => {
     </form>
   );
 };
+

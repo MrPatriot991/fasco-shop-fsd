@@ -1,8 +1,8 @@
-import { Section } from "@/shared/ui";
-import { Quality } from "@/shared/ui";
-import { Protection } from "@/shared/ui";
-import { Shipping } from "@/shared/ui";
-import { Support } from "@/shared/ui";
+import { Section } from "@/shared/ui/section";
+import { Quality } from "@/shared/ui/icons";
+import { Protection } from "@/shared/ui/icons";
+import { Shipping } from "@/shared/ui/icons";
+import { Support } from "@/shared/ui/icons";
 
 interface Benefit {
   icon: React.ReactNode;
@@ -37,3 +37,4 @@ export const Benefits = () => {
     </Section>
   );
 };
+

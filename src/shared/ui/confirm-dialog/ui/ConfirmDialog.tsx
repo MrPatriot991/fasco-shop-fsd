@@ -1,5 +1,5 @@
 import { createPortal } from "react-dom";
-import { Button } from "@/shared/ui";
+import { Button } from "@/shared/ui/button";
 
 interface ConfirmDialogProps {
   open: boolean;
@@ -41,3 +41,4 @@ export const ConfirmDialog = ({
     document.body
   );
 };
+

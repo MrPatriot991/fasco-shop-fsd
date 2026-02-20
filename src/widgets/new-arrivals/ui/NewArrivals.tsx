@@ -1,5 +1,8 @@
 import { useState, useMemo } from "react";
-import { ErrorBoundary, Button, Section, SectionTitle } from "@/shared/ui";
+import { Button } from "@/shared/ui/button";
+import { ErrorBoundary } from "@/shared/ui/errorBoundary";
+import { Section } from "@/shared/ui/section";
+import { SectionTitle } from "@/shared/ui/sectionTitle";
 import { useAppSelector } from "@/shared/lib/hooks";
 import { ProductList, selectCategoryFilter } from "@/entities/product";
 import { CategoryTabs } from "@/features/filter-by-category";
@@ -51,3 +54,4 @@ export const NewArrivals = () => {
     </Section>
   );
 };
+

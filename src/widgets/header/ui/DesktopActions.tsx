@@ -1,6 +1,6 @@
 import { NavLink, Link } from "react-router-dom";
 import { ShoppingBag, Star, User } from "lucide-react";
-import { Button } from "@/shared/ui";
+import { Button } from "@/shared/ui/button";
 import { useAppSelector } from "@/shared/lib/hooks";
 import { selectIsAuthenticated } from "@/features/auth/model";
 import { selectCartItemCount } from "@/entities/cart";
@@ -51,3 +51,4 @@ export const DesktopActions = () => {
     </div>
   );
 };
+

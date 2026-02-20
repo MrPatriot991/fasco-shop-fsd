@@ -1,5 +1,5 @@
 import { useAppDispatch, useAppSelector } from "@/shared/lib/hooks";
-import { Button } from "@/shared/ui";
+import { Button } from "@/shared/ui/button";
 import { selectCategory, setCategory } from "@/entities/product";
 import type { Category } from "@/shared/lib/constants";
 
@@ -46,3 +46,4 @@ export const CategoryTabs = () => {
     </div>
   );
 };
+

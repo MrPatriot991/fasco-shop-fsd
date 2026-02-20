@@ -1,4 +1,5 @@
-import { Section, SectionTitle } from "@/shared/ui";
+import { Section } from "@/shared/ui/section";
+import { SectionTitle } from "@/shared/ui/sectionTitle";
 import { SubscribeForm } from "@/features/subscribe-newsletter";
 import guyImg from "@/shared/assets/images/sub-img-1.png";
 import girlImg from "@/shared/assets/images/sub-img-2.png";
@@ -42,3 +43,4 @@ export const NewsLetter = () => {
     </Section>
   );
 };
+

@@ -1,4 +1,4 @@
-import { StarRating } from "@/shared/ui";
+import { StarRating } from "@/shared/ui/starRating";
 import { ToggleWishlistButton } from "@/features/wishlist";
 
 interface ProductHeaderProps {
@@ -29,3 +29,4 @@ export const ProductHeader = ({ id, brand, title, rating }: ProductHeaderProps) 
     </>
   );
 };
+

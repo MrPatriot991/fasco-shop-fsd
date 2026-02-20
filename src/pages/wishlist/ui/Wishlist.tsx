@@ -2,7 +2,9 @@ import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { HeartOff } from "lucide-react";
 import { useAppDispatch, useAppSelector, useDebounce } from "@/shared/lib/hooks";
-import { Button, EmptyState, ConfirmDialog } from "@/shared/ui";
+import { Button } from "@/shared/ui/button";
+import { ConfirmDialog } from "@/shared/ui/confirm-dialog";
+import { EmptyState } from "@/shared/ui/empty-state";
 import { ProductCard } from "@/entities/product";
 import { addManyToCart } from "@/entities/cart";
 import { clearWishlist, selectWishlistCount, selectWishlistProducts } from "@/entities/wishlist";
@@ -138,3 +140,4 @@ export const Wishlist = () => {
     </>
   );
 };
+

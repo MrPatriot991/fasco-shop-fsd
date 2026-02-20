@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { ArrowUp } from "lucide-react";
-import { Button } from "@/shared/ui";
+import { Button } from "@/shared/ui/button";
 
 export const ScrollToTopButton = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -30,3 +30,4 @@ export const ScrollToTopButton = () => {
     </Button>
   );
 };
+

@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 import { ArrowRight, MessageCircle } from "lucide-react";
 import { cn } from "@/shared/lib/utils";
-import { Button } from "@/shared/ui";
+import { Button } from "@/shared/ui/button";
 import { InfoNav } from "@/widgets/info-sidebar";
 
 interface InfoLayoutProps {
@@ -80,3 +80,4 @@ export const InfoLayout = ({
     </div>
   );
 };
+

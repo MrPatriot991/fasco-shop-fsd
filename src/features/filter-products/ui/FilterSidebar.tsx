@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useAppSelector, useAppDispatch } from "@/shared/lib/hooks";
 import { selectActiveSize, selectActiveColors, resetFilters } from "@/features/filter-products";
-import { Button } from "@/shared/ui";
+import { Button } from "@/shared/ui/button";
 import { BrandFilter } from "./BrandFilter";
 import { CollectionFilter } from "./CollectionsFilter";
 import { ColorPiaker } from "./ColorPicker";
@@ -48,3 +48,4 @@ export const FilterSidebar = () => {
     </div>
   );
 };
+

@@ -1,5 +1,10 @@
 import { Link } from "react-router-dom";
-import { Button, ErrorBoundary, Section, SectionTitle, TimerDisplay, AppSlider } from "@/shared/ui";
+import { AppSlider } from "@/shared/ui/appSlider";
+import { Button } from "@/shared/ui/button";
+import { ErrorBoundary } from "@/shared/ui/errorBoundary";
+import { Section } from "@/shared/ui/section";
+import { SectionTitle } from "@/shared/ui/sectionTitle";
+import { TimerDisplay } from "@/shared/ui/timer";
 import { useAppSelector } from "@/shared/lib/hooks";
 import { selectOnlyDeals, ProductBadge } from "@/entities/product";
 import type { EmblaOptionsType } from "embla-carousel";
@@ -61,3 +66,4 @@ export const Deals = () => {
     </Section>
   );
 };
+

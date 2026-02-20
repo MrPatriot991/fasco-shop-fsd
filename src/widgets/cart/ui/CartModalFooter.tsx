@@ -1,8 +1,8 @@
 // widgets/cart/ui/CartModalFooter.tsx
 import { Link } from "react-router-dom";
-import { Button } from "@/shared/ui";
-import { CartSummaryBlock } from "@/shared/ui";
-import { CartCheckoutButtons } from "@/shared/ui";
+import { Button } from "@/shared/ui/button";
+import { CartSummaryBlock } from "@/shared/ui/cartSummaryBlock";
+import { CartCheckoutButtons } from "@/shared/ui/cartCheckoutButtons";
 
 interface CartModalFooterProps {
   subtotal: number;
@@ -30,3 +30,4 @@ export const CartModalFooter = ({ subtotal, onClose }: CartModalFooterProps) => 
     </div>
   );
 };
+

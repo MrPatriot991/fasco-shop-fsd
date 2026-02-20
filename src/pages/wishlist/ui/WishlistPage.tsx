@@ -1,4 +1,4 @@
-import { Section } from "@/shared/ui";
+import { Section } from "@/shared/ui/section";
 
 interface WishlistPageProps {
   headerSlot: React.ReactNode;
@@ -31,3 +31,4 @@ export const WishlistPage = ({
     </div>
   );
 };
+

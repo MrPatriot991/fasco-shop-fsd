@@ -1,4 +1,4 @@
-import { TimerDisplay } from "@/shared/ui";
+import { TimerDisplay } from "@/shared/ui/timer";
 
 interface ProductTimerProps {
   targetDate: string;
@@ -14,3 +14,4 @@ export const ProductTimer = ({ targetDate }: ProductTimerProps) => {
     </div>
   );
 };
+

@@ -1,6 +1,7 @@
 import { NavLink } from "react-router-dom";
 import { cn } from "@/shared/lib/utils";
-import { Button, Dropdown } from "@/shared/ui";
+import { Button } from "@/shared/ui/button";
+import { Dropdown } from "@/shared/ui/dropdown";
 import { useAppSelector } from "@/shared/lib/hooks";
 import { LANDING_NAV, AUTH_NAV, FOOTER_NAV } from "@/shared/config";
 import { selectIsAuthenticated } from "@/features/auth/model";
@@ -66,3 +67,4 @@ export const NavList = ({ variant, onItemClick }: NavListProps) => {
     </ul>
   );
 };
+

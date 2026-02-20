@@ -2,7 +2,7 @@ import { MOCK_COLORS, COLOR_MAP, type Color } from "@/shared/lib/constants";
 import { useAppDispatch } from "@/shared/lib/hooks";
 import { toggleArrayFilter } from "@/features/filter-products";
 import { cn } from "@/shared/lib/utils";
-import { Button } from "@/shared/ui";
+import { Button } from "@/shared/ui/button";
 import { setFilterValue } from "../model/filterSlice";
 
 interface ColorPickerProps {
@@ -58,3 +58,4 @@ export const ColorPiaker = ({
     </div>
   );
 };
+

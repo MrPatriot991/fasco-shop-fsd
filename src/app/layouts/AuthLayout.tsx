@@ -1,5 +1,5 @@
 import { Outlet, useLocation } from "react-router-dom";
-import { Container } from "@/shared/ui";
+import { Container } from "@/shared/ui/container";
 
 import authIn from "@/shared/assets/images/auth-img.webp";
 import authUp from "@/shared/assets/images/auth-up-img.webp";
@@ -27,3 +27,4 @@ export const AuthLayout = () => {
     </div>
   );
 };
+

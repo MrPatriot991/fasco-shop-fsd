@@ -1,5 +1,5 @@
 import { ArrowRight, Clock, MapPin } from "lucide-react";
-import { Button } from "@/shared/ui";
+import { Button } from "@/shared/ui/button";
 import type { Job } from "@/entities/info/model/types";
 
 interface CareersSectionProps {
@@ -58,3 +58,4 @@ export const CareersSection = ({
     </section>
   );
 };
+

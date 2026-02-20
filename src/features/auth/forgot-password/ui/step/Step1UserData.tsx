@@ -1,7 +1,8 @@
 import { NavLink } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Input, Button } from "@/shared/ui";
+import { Button } from "@/shared/ui/button";
+import { Input } from "@/shared/ui/input";
 import {
   forgotStep1Schema,
   type ForgotStep1Schema,
@@ -69,3 +70,4 @@ export const Step1UserData = ({ onNext }: Props) => {
     </form>
   );
 };
+

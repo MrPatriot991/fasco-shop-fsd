@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Button, Input } from "@/shared/ui";
+import { Button } from "@/shared/ui/button";
+import { Input } from "@/shared/ui/input";
 import {
   forgotStep3Schema,
   type ForgotStep3Schema,
@@ -43,3 +44,4 @@ export const Step3NewPassword = ({ onSubmit }: Props) => {
     </form>
   );
 };
+

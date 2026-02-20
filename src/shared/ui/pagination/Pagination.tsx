@@ -1,5 +1,5 @@
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { Button } from "@/shared/ui";
+import { Button } from "@/shared/ui/button";
 import { cn } from "@/shared/lib/utils";
 
 interface Props {
@@ -77,3 +77,4 @@ export const Pagination = ({ totalPages, currentPage, onPageChange }: Props) => 
     </div>
   );
 };
+

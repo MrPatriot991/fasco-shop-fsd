@@ -1,4 +1,4 @@
-import { Button } from "@/shared/ui";
+import { Button } from "@/shared/ui/button";
 
 interface QuantityPickerProps {
   value: number;
@@ -31,3 +31,4 @@ export const QuantityPicker = ({ value, onChange, min = 1 }: QuantityPickerProps
     </div>
   );
 };
+

@@ -1,7 +1,7 @@
 import { useAppDispatch, useAppSelector } from "@/shared/lib/hooks";
 import { selectTagsFilter, toggleArrayFilter } from "@/features/filter-products";
 import { TAGS } from "@/shared/lib/constants";
-import { Button } from "@/shared/ui";
+import { Button } from "@/shared/ui/button";
 import { cn } from "@/shared/lib/utils";
 
 export const TagsFilter = () => {
@@ -28,3 +28,4 @@ export const TagsFilter = () => {
     </div>
   );
 };
+

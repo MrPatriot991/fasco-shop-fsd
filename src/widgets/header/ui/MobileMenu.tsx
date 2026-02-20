@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { User, Star, ShoppingBag } from "lucide-react";
-import { Button } from "@/shared/ui";
+import { Button } from "@/shared/ui/button";
 import { useAppSelector, useLockBodyScroll } from "@/shared/lib/hooks";
 import { selectCartItemCount } from "@/entities/cart";
 import { selectIsAuthenticated } from "@/features/auth/model";
@@ -77,3 +77,4 @@ export const MobileMenu = ({ onClose, isOpen }: MobileMenuProps) => {
     </div>
   );
 };
+

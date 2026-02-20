@@ -1,4 +1,4 @@
-import { Button } from "@/shared/ui";
+import { Button } from "@/shared/ui/button";
 import { cn } from "@/shared/lib/utils";
 import type { Color } from "@/shared/lib/constants";
 import { ToggleWishlistButton } from "@/features/wishlist";
@@ -47,3 +47,4 @@ export const ProductGallery = ({ id, colors, image, title }: ProductGalleryProps
     </div>
   );
 };
+

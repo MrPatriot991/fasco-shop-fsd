@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-import { Button, Section } from "@/shared/ui";
+import { Button } from "@/shared/ui/button";
+import { Section } from "@/shared/ui/section";
 import { BrandMarquee } from "@/widgets/hero";
 import heroImgLeft from "@/shared/assets/images/ban-left.avif";
 import heroImgRight from "@/shared/assets/images/ban-right.avif";
@@ -71,3 +72,4 @@ export const Hero = () => {
     </Section>
   );
 };
+

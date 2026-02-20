@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Button } from "@/shared/ui";
+import { Button } from "@/shared/ui/button";
 import { cn } from "@/shared/lib/utils";
 
 interface CartCheckoutButtonsProps {
@@ -24,3 +24,4 @@ export const CartCheckoutButtons = ({
     </div>
   );
 };
+

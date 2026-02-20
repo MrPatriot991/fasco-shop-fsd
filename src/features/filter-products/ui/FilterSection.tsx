@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
 import { cn } from "@/shared/lib/utils";
-import { Button } from "@/shared/ui";
+import { Button } from "@/shared/ui/button";
 
 interface FilterSectionProps {
   title: string;
@@ -38,3 +38,4 @@ export const FilterSection = ({ title, children, defaultOpen = false }: FilterSe
     </div>
   );
 };
+

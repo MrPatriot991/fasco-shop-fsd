@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Button, Input } from "@/shared/ui";
+import { Button } from "@/shared/ui/button";
+import { Input } from "@/shared/ui/input";
 import { subscribeSchema, type SubscribeSchema } from "@/features/subscribe-newsletter";
 
 export const SubscribeForm = () => {
@@ -31,3 +32,4 @@ export const SubscribeForm = () => {
     </form>
   );
 };
+

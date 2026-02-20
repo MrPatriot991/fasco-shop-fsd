@@ -1,7 +1,8 @@
 import { NavLink } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Button, Input } from "@/shared/ui";
+import { Button } from "@/shared/ui/button";
+import { Input } from "@/shared/ui/input";
 import { registerSchema, type RegisterSchema } from "../model/registerSchema";
 
 export const RegistrForm = () => {
@@ -78,3 +79,4 @@ export const RegistrForm = () => {
     </form>
   );
 };
+

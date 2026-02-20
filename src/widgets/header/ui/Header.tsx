@@ -4,7 +4,8 @@ import { useAppSelector } from "@/shared/lib/hooks";
 import { selectIsAuthenticated } from "@/features/auth/model";
 import { cn } from "@/shared/lib/utils";
 import { MobileMenu } from "./MobileMenu";
-import { Button, Container } from "@/shared/ui";
+import { Button } from "@/shared/ui/button";
+import { Container } from "@/shared/ui/container";
 import { SearchInput } from "@/features/search";
 import { DesktopNav } from "./DesktopNav";
 import { DesktopActions } from "./DesktopActions";
@@ -59,3 +60,4 @@ export const Header = () => {
     </header>
   );
 };
+

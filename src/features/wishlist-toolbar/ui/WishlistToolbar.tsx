@@ -1,5 +1,7 @@
 import { Search } from "lucide-react";
-import { Container, Dropdown, Input } from "@/shared/ui";
+import { Container } from "@/shared/ui/container";
+import { Dropdown } from "@/shared/ui/dropdown";
+import { Input } from "@/shared/ui/input";
 import type { WishlistSortValue } from "../model/types";
 
 interface SortOptions {
@@ -62,3 +64,4 @@ export const WishlistToolbar = ({
     </div>
   );
 };
+

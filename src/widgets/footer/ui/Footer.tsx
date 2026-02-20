@@ -1,6 +1,8 @@
 import { NavLink } from "react-router-dom";
 import { Facebook, Instagram, Twitter } from "lucide-react";
-import { Container, Button, Dropdown } from "@/shared/ui";
+import { Button } from "@/shared/ui/button";
+import { Container } from "@/shared/ui/container";
+import { Dropdown } from "@/shared/ui/dropdown";
 import { FOOTER_NAV, AUTH_NAV } from "@/shared/config";
 import { useAppSelector } from "@/shared/lib/hooks";
 import { selectIsAuthenticated } from "@/features/auth/model";
@@ -87,3 +89,4 @@ export const Footer = () => {
     </footer>
   );
 };
+

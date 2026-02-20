@@ -1,4 +1,4 @@
-import { CheckboxGiftWrap } from "@/shared/ui";
+import { CheckboxGiftWrap } from "@/shared/ui/checkboxGiftWrap";
 
 interface CartGiftOptionProps {
   label: React.ReactNode;
@@ -17,3 +17,4 @@ export const CartGiftOption = ({ label, checked, onChange }: CartGiftOptionProps
     />
   );
 };
+
