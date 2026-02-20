@@ -2,7 +2,7 @@ import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 import { loadCartFromLocalStorage } from "./cartPersist";
 import type { CartState } from "./cartTypes";
 import type { CartItem } from "./cartSchema";
-import { checkoutSubmitted } from "@/features/checkout/model/checkout.actions";
+import { checkoutSubmitted } from "@/features/checkout/model/checkoutActions";
 
 type AddManyPayload = CartItem[];
 
