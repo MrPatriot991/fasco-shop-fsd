@@ -1,6 +1,6 @@
 import { Download } from "lucide-react";
 import { Button } from "@/shared/ui/button";
-import type { DocumentSectionItem } from "@/entities/info/model/types";
+import type { DocumentSectionItem } from "@/entities/info";
 
 interface DocumentSectionProps {
   sections: DocumentSectionItem[];

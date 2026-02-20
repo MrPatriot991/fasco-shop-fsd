@@ -1,6 +1,6 @@
 import { z } from "zod";
-import { cartItemSchema } from "./cart.schema";
-import type { CartStorage } from "./cart.types";
+import { cartItemSchema } from "./cartSchema";
+import type { CartStorage } from "./cartTypes";
 
 export const loadCartFromLocalStorage = (): CartStorage => {
   try {

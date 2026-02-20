@@ -1,5 +1,5 @@
 import { AccordionItem } from "./AccordionItem";
-import type { FaqItem } from "@/entities/info/model/types";
+import type { FaqItem } from "@/entities/info";
 
 interface AccordionSectionProps {
   items: FaqItem[];

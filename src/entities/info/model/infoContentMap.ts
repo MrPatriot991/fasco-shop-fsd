@@ -1,5 +1,5 @@
-import type { InfoContent } from "./types";
-import type { InfoType } from "./sections";
+import type { InfoContent } from "./infoTypes";
+import type { InfoType } from "./infoSections";
 
 export const CONTENT_MAP = {
   faq: {

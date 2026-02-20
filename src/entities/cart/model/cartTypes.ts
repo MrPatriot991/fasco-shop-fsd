@@ -1,4 +1,4 @@
-import type { CartItem } from "./cart.schema";
+import type { CartItem } from "./cartSchema";
 
 export type CartStorage = {
   items: CartItem[];

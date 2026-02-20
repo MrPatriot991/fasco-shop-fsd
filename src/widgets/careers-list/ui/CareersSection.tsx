@@ -1,6 +1,6 @@
 import { ArrowRight, Clock, MapPin } from "lucide-react";
 import { Button } from "@/shared/ui/button";
-import type { Job } from "@/entities/info/model/types";
+import type { Job } from "@/entities/info";
 
 interface CareersSectionProps {
   jobs: Job[];

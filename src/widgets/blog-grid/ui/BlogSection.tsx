@@ -1,5 +1,5 @@
 import { ExternalLink } from "lucide-react";
-import type { BlogPost } from "@/entities/info/model/types";
+import type { BlogPost } from "@/entities/info";
 
 const TAG_COLORS: Record<string, string> = {
   Product: "bg-violet-100 text-violet-700",

@@ -12,7 +12,7 @@ import {
   updateCartItem,
   removeFromCart,
   selectIsGiftWrapEnabled,
-  toggleGifWrap,
+  toggleGiftWrap,
   selectCartSubtotal,
   FreeShippingMessage,
   selectCartDetails,
@@ -79,7 +79,7 @@ export const CartPageContent = () => {
                 </>
               }
               checked={isGiftWrap}
-              onChange={() => dispatch(toggleGifWrap())}
+              onChange={() => dispatch(toggleGiftWrap())}
               className="w-full md:w-auto mb-6"
             />
 

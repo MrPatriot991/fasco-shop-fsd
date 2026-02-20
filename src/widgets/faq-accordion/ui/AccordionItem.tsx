@@ -1,7 +1,7 @@
 import { ChevronDown } from "lucide-react";
 import { Accordion } from "@/shared/ui/accordion";
 import { cn } from "@/shared/lib/utils";
-import type { FaqItem } from "@/entities/info/model/types";
+import type { FaqItem } from "@/entities/info";
 
 interface AccordionItemProps extends FaqItem {
   defaultOpen?: boolean;

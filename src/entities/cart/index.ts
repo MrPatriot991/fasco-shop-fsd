@@ -4,10 +4,10 @@ export {
   closeCart,
   updateCartItem,
   removeFromCart,
-  toggleGifWrap,
+  toggleGiftWrap,
   cartSlice,
   addManyToCart,
-} from "./model/cart.slice";
+} from "./model/cartSlice";
 export {
   selectIsCartModalOpen,
   selectItemTotal,
@@ -18,5 +18,5 @@ export {
   selectIsGiftWrapEnabled,
   selectCartItemCount,
   selectCartDetails,
-} from "./model/cart.selector";
+} from "./model/cartSelector";
 export { FreeShippingMessage } from "./ui/FreeShippingMessage";

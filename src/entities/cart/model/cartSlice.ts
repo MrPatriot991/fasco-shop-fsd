@@ -1,7 +1,7 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
-import { loadCartFromLocalStorage } from "./cart.persist";
-import type { CartState } from "./cart.types";
-import type { CartItem } from "./cart.schema";
+import { loadCartFromLocalStorage } from "./cartPersist";
+import type { CartState } from "./cartTypes";
+import type { CartItem } from "./cartSchema";
 import { checkoutSubmitted } from "@/features/checkout/model/checkout.actions";
 
 type AddManyPayload = CartItem[];
@@ -49,7 +49,7 @@ export const cartSlice = createSlice({
         item.quantity = Math.max(1, action.payload.quantity);
       }
     },
-    toggleGifWrap: (state) => {
+    toggleGiftWrap: (state) => {
       state.isGlobalGiftWrap = !state.isGlobalGiftWrap;
     },
     removeFromCart: (state, action: PayloadAction<string>) => {
@@ -78,6 +78,6 @@ export const {
   closeCart,
   updateCartItem,
   removeFromCart,
-  toggleGifWrap,
+  toggleGiftWrap,
 } = cartSlice.actions;
 export default cartSlice.reducer;

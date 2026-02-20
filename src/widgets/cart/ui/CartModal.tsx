@@ -8,7 +8,7 @@ import {
   selectItemTotalWithWrap,
   selectLastAddedId,
   selectIsGiftWrapEnabled,
-  toggleGifWrap,
+  toggleGiftWrap,
   selectCartDetails,
 } from "@/entities/cart";
 import { CartModalContent } from "./CartModalContent";
@@ -70,7 +70,7 @@ export const CartModal = () => {
               </>
             }
             checked={isGiftWrap}
-            onChange={() => dispatch(toggleGifWrap())}
+            onChange={() => dispatch(toggleGiftWrap())}
           />
         </CartModalContent>
 

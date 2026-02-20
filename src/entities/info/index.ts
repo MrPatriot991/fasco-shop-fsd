@@ -1,4 +1,4 @@
-export { INFO_SECTIONS, DEFAULT_INFO_TYPE, isInfoType } from "./model/sections";
-export { CONTENT_MAP } from "./model/contentMap";
-export type { InfoType } from "./model/sections";
-export type { InfoContent, FaqItem, Job, BlogPost, DocumentSectionItem } from "./model/types";
+export { INFO_SECTIONS, DEFAULT_INFO_TYPE, isInfoType } from "./model/infoSections";
+export { CONTENT_MAP } from "./model/infoContentMap";
+export type { InfoType } from "./model/infoSections";
+export type { InfoContent, FaqItem, Job, BlogPost, DocumentSectionItem } from "./model/infoTypes";
