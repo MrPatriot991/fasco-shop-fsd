@@ -1,1 +1,1 @@
-export * from "./ui";
+export { InfoNav } from "./ui/InfoNav";

@@ -1,1 +1,0 @@
-export { InfoNav } from "./InfoNav";
