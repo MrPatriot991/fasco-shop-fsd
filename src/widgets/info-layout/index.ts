@@ -1,1 +1,1 @@
-export * from "./ui";
+export { InfoLayout } from "./ui/InfoLayout";
