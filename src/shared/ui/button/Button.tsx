@@ -29,7 +29,7 @@ const buttonVariants = cva(
         medium: "h-11 px-4 text-sm md:h-12 md:px-5 md:text-base",
         large: "h-12 px-5 text-sm md:h-14 md:px-7 md:text-base",
         widthFull: "w-full h-12 px-5 text-sm md:h-14 md:px-6 md:text-base",
-        icon: "size-10 md:size-11",
+        icon: "size-12 md:size-12",
       },
     },
     defaultVariants: {
