@@ -1,1 +1,2 @@
-export * from "./ui";
+export { Wishlist } from "./ui/Wishlist";
+export { WishlistPage } from "./ui/WishlistPage";
