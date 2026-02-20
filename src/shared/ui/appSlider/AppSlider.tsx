@@ -1,4 +1,4 @@
-import { useEffect, useCallback, useRef, useMemo, type CSSProperties } from "react";
+import { useEffect, useState, useCallback, useRef, useMemo, type CSSProperties } from "react";
 import AutoScroll from "embla-carousel-auto-scroll";
 import useEmblaCarousel from "embla-carousel-react";
 import { cn } from "@/shared/lib/utils/cn";
@@ -31,6 +31,7 @@ type PropType<T> = {
   showButtons?: boolean;
   className?: string;
   imageClassName?: string;
+  discountSlot?: (slide: T, idx: number) => React.ReactNode;
   children?: (slide: T, index: number) => React.ReactNode;
 };
 
@@ -52,6 +53,7 @@ export const AppSlider = <T extends BaseSlide>({
   maxWidth = "lg",
   showButtons = false,
   imageClassName,
+  discountSlot,
   className,
   children,
 }: PropType<T>) => {
@@ -66,9 +68,14 @@ export const AppSlider = <T extends BaseSlide>({
   }, [autoScroll]);
   const [emblaRef, emblaApi] = useEmblaCarousel(options, plugins);
   const tweenNodes = useRef<HTMLElement[]>([]);
+  const [selectedIndex, setSelectedIndex] = useState(0);
 
   const { prevBtnDisabled, nextBtnDisabled, onPrevButtonClick, onNextButtonClick } =
     usePrevNextButtons(emblaApi);
+
+  const onSelect = useCallback((emblaApi: EmblaCarouselType) => {
+    setSelectedIndex(emblaApi.selectedScrollSnap());
+  }, []);
 
   const setTweenNodes = useCallback((emblaApi: EmblaCarouselType) => {
     tweenNodes.current = emblaApi
@@ -113,6 +120,13 @@ export const AppSlider = <T extends BaseSlide>({
   useEffect(() => {
     if (!emblaApi) return;
 
+    onSelect(emblaApi);
+    emblaApi.on("select", onSelect).on("reInit", onSelect);
+  }, [emblaApi, onSelect]);
+
+  useEffect(() => {
+    if (!emblaApi) return;
+
     setTweenNodes(emblaApi);
     tweenScale(emblaApi);
 
@@ -135,23 +149,26 @@ export const AppSlider = <T extends BaseSlide>({
           {slides.map((slide, index) => (
             <div
               key={index}
-              className="shrink-0 basis-(--slide-size-mob) md:basis-(--slide-size-desk) min-w-0 pl-(--slide-spacing)"
+              className="relative shrink-0 basis-(--slide-size-mob) md:basis-(--slide-size-desk) min-w-0 pl-(--slide-spacing)"
             >
               {children ? (
                 children(slide, index)
               ) : (
-                <img
-                  src={slide.image}
-                  alt={slide.title}
-                  className={cn(
-                    "embla__slide-img w-full h-(--slide-height)",
-                    imageClassName,
-                    slide.image.includes("https://fakestoreapi.com")
-                      ? "object-contain object-center"
-                      : "object-cover object-top"
-                  )}
-                  loading="lazy"
-                />
+                <>
+                  <img
+                    src={slide.image}
+                    alt={slide.title}
+                    className={cn(
+                      "embla__slide-img w-full h-(--slide-height)",
+                      imageClassName,
+                      slide.image.includes("https://fakestoreapi.com")
+                        ? "object-contain object-center"
+                        : "object-cover object-top"
+                    )}
+                    loading="lazy"
+                  />
+                  {discountSlot && index === selectedIndex && discountSlot(slide, index + 1)}
+                </>
               )}
             </div>
           ))}

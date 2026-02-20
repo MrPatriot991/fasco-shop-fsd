@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Button, ErrorBoundary, Section, SectionTitle, TimerDisplay, AppSlider } from "@/shared/ui";
 import { useAppSelector } from "@/shared/lib/hooks";
-import { selectOnlyDeals } from "@/entities/product";
+import { selectOnlyDeals, ProductBadge } from "@/entities/product";
 import type { EmblaOptionsType } from "embla-carousel";
 
 const OPTIONS: EmblaOptionsType = { loop: true, align: "center" };
@@ -52,6 +52,9 @@ export const Deals = () => {
             height="36rem"
             maxWidth="lg"
             sliderSize="55%"
+            discountSlot={(slide, idx) => {
+              return <ProductBadge discountPercent={slide.salePercent} count={idx} />;
+            }}
           />
         </ErrorBoundary>
       </div>

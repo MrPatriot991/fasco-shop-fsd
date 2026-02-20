@@ -7,3 +7,4 @@ export { productSlice } from "./model/slice";
 export { setCategory } from "./model/slice";
 export { ProductCard } from "./ui/ProductCard/ProductCard";
 export { ProductList } from "./ui/ProductList/ProductList";
+export { ProductBadge } from "./ui/product-badge/ProductBadge";
