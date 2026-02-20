@@ -3,7 +3,7 @@ import { cn, getDiscountData } from "@/shared/lib/utils";
 import { formatCurrency } from "@/shared/lib/format";
 import { StarRating } from "@/shared/ui/starRating";
 import { ToggleWishlistButton } from "@/features/wishlist";
-import type { Product } from "@/entities/product/model/schema";
+import type { Product } from "@/entities/product/model/productSchema";
 
 export const ProductCard = ({
   product,

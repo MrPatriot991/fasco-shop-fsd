@@ -1,4 +1,4 @@
-import type { RawProduct } from "./schema";
+import type { RawProduct } from "./productSchema";
 
 import img1 from "@/shared/assets/images/imag-home-card-1.jpg";
 import img2 from "@/shared/assets/images/imag-home-card-2.jpg";

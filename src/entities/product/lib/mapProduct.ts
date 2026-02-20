@@ -1,5 +1,5 @@
 import { SIZES, MOCK_BRANDS, MOCK_COLORS, COLLECTIONS, TAGS } from "@/shared/lib/constants";
-import type { Product, RawProduct } from "@/entities/product/model/schema";
+import type { Product, RawProduct } from "@/entities/product/model/productSchema";
 
 export const mapProduct = (item: RawProduct & Partial<Product>): Product => {
   const seed = item.id;

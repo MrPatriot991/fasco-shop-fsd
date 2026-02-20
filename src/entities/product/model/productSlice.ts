@@ -2,9 +2,9 @@ import { createSlice, createEntityAdapter, createAsyncThunk } from "@reduxjs/too
 import { z } from "zod";
 import { baseApi } from "@/shared/api";
 import { mapProduct } from "@/entities/product/lib/mapProduct";
-import { productSchema, type Product, type RawProduct } from "./schema";
-import { MOCK_PRODUCTS } from "./moks";
-import type { ProductStatus } from "./types";
+import { productSchema, type Product, type RawProduct } from "./productSchema";
+import { MOCK_PRODUCTS } from "./mocks";
+import type { ProductStatus } from "./productTypes";
 
 export const productAdapter = createEntityAdapter<Product>({});
 

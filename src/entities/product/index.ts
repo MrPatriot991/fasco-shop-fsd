@@ -1,10 +1,19 @@
-export * from "./model/selector";
-export * from "./model/slice";
-export * from "./model/schema";
-export * from "./model/types";
-export * from "./model/moks";
-export { productSlice } from "./model/slice";
-export { setCategory } from "./model/slice";
-export { ProductCard } from "./ui/ProductCard/ProductCard";
-export { ProductList } from "./ui/ProductList/ProductList";
+export {
+  selectProductState,
+  selectProductStatus,
+  selectCategory,
+  productSelectors,
+  selectAllProducts,
+  selectProductEntities,
+  selectOnlyDeals,
+  selectProductByID,
+  selectCategoryFilter,
+} from "./model/productSelector";
+export { fetchProducts, productSlice, setCategory } from "./model/productSlice";
+export { rawProductSchema, productSchema } from "./model/productSchema";
+export type { RawProduct, Product } from "./model/productSchema";
+export type { Status, ProductStatus } from "./model/productTypes";
+export { MOCK_PRODUCTS } from "./model/mocks";
+export { ProductCard } from "./ui/product-card/ProductCard";
+export { ProductList } from "./ui/product-list/ProductList";
 export { ProductBadge } from "./ui/product-badge/ProductBadge";

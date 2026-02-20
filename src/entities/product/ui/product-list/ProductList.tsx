@@ -2,7 +2,7 @@ import { cn } from "@/shared/lib/utils";
 import { Skeleton } from "@/shared/ui/skeleton";
 import { useAppSelector } from "@/shared/lib/hooks";
 import { selectProductStatus, ProductCard } from "@/entities/product";
-import type { Product } from "@/entities/product/model/schema";
+import type { Product } from "@/entities/product/model/productSchema";
 
 interface ProductsListProps {
   products: Product[];

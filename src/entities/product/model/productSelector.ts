@@ -1,5 +1,5 @@
 import { createSelector } from "@reduxjs/toolkit";
-import { productAdapter, type ProductState } from "./slice";
+import { productAdapter, type ProductState } from "./productSlice";
 
 export const selectProductState = (state: { products: ProductState }) => state.products;
 export const selectProductStatus = (state: { products: ProductState }) => state.products.status;
