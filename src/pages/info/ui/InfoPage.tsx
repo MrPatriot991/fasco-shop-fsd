@@ -1,7 +1,7 @@
 import { CONTENT_MAP } from "@/entities/info";
 import { useInfoType } from "@/features/info-navigation";
 import { InfoLayout } from "@/widgets/info-layout";
-import { renderInfoSection } from "../model";
+import { renderInfoSection } from "../model/renderInfoSection";
 
 export const InfoPage = () => {
   const { type, setInfoType } = useInfoType();
