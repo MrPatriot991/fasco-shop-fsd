@@ -7,6 +7,7 @@ import { EmptyState } from "@/shared/ui/empty-state";
 import { useAppDispatch, useAppSelector } from "@/shared/lib/hooks";
 import { selectCartDetails, selectCartSubtotal } from "@/entities/cart";
 import { checkoutSubmitted, checkoutSchema, type CheckoutSchema } from "@/features/checkout";
+import { useCheckoutDiscount } from "@/features/checkout-discount";
 import { CheckoutFormSection, CheckoutHeader, CheckoutSummarySection } from "@/widgets/checkout";
 import { Footer } from "@/widgets/footer";
 import { NewsLetter } from "@/widgets/news-latter";
@@ -19,7 +20,10 @@ export const Checkout = () => {
   const navigate = useNavigate();
   const cartItems = useAppSelector(selectCartDetails);
   const subtotal = useAppSelector(selectCartSubtotal);
-  const total = subtotal + SHIPPING_COST;
+
+  const { discountCode, setDiscountCode, discountAmount, discountError, applyDiscount } =
+    useCheckoutDiscount();
+  const total = Math.max(0, subtotal + SHIPPING_COST - discountAmount);
 
   const methods = useForm<CheckoutSchema>({
     resolver: zodResolver(checkoutSchema),
@@ -37,6 +41,7 @@ export const Checkout = () => {
 
     console.log("Pay now", {
       ...safeData,
+      total: total,
       cardNumber: "**** **** ****" + cardNumber.slice(-4),
       cvv: "***",
     });
@@ -60,6 +65,11 @@ export const Checkout = () => {
             total={total}
             subtotal={subtotal}
             shippingCost={SHIPPING_COST}
+            discountCode={discountCode}
+            discountAmount={discountAmount}
+            discountError={discountError}
+            setDiscountCode={setDiscountCode}
+            applyDiscount={applyDiscount}
           />
         }
         emptySlot={

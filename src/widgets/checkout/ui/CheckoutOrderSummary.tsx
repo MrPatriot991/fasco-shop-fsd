@@ -13,6 +13,7 @@ interface CheckoutOrderSummaryProps {
   items: OrderItem[];
   subtotal: number;
   shippingCost: number;
+  discountAmount?: number;
   total: number;
   discountSlot?: React.ReactNode;
 }
@@ -21,6 +22,7 @@ export const CheckoutOrderSummary = ({
   items,
   subtotal,
   shippingCost,
+  discountAmount = 0,
   total,
   discountSlot,
 }: CheckoutOrderSummaryProps) => {
@@ -71,6 +73,12 @@ export const CheckoutOrderSummary = ({
           <span>Shipping</span>
           <span>{formatCurrency(shippingCost)}</span>
         </div>
+        {discountAmount > 0 ? (
+          <div className="flex items-center justify-between text-brand-gray">
+            <span>Discount</span>
+            <span>-{formatCurrency(discountAmount)}</span>
+          </div>
+        ) : null}
         <div className="flex items-center justify-between text-brand-gray">
           <span>Total</span>
           <span>{formatCurrency(total)}</span>

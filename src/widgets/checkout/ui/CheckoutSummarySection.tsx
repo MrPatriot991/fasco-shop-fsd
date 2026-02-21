@@ -7,6 +7,11 @@ interface CheckoutSummarySectionProps {
   total: number;
   subtotal: number;
   shippingCost: number;
+  discountCode: string;
+  discountAmount: number;
+  discountError: string;
+  setDiscountCode: (value: string) => void;
+  applyDiscount: () => void;
 }
 
 export const CheckoutSummarySection = ({
@@ -14,6 +19,11 @@ export const CheckoutSummarySection = ({
   total,
   subtotal,
   shippingCost,
+  discountCode,
+  discountAmount,
+  discountError,
+  setDiscountCode,
+  applyDiscount,
 }: CheckoutSummarySectionProps) => {
   return (
     <div>
@@ -22,7 +32,15 @@ export const CheckoutSummarySection = ({
         total={total}
         subtotal={subtotal}
         shippingCost={shippingCost}
-        discountSlot={<CheckoutDiscount />}
+        discountAmount={discountAmount}
+        discountSlot={
+          <CheckoutDiscount
+            code={discountCode}
+            error={discountError}
+            onCodeChange={setDiscountCode}
+            onApply={applyDiscount}
+          />
+        }
       />
     </div>
   );
