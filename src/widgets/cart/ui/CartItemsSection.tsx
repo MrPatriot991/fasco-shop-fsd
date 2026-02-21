@@ -1,5 +1,5 @@
 import { ErrorBoundary } from "@/shared/ui/errorBoundary";
-import { CartItem } from "@/shared/ui/cartItem";
+import { CartItem } from "@/shared/ui/cart-item";
 import { CartTableHeader } from "./CartTableHeader";
 import type { CartDetailsItem } from "@/entities/cart";
 

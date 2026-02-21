@@ -1,4 +1,4 @@
-import { CartItem } from "@/shared/ui/cartItem";
+import { CartItem } from "@/shared/ui/cart-item";
 import { ErrorBoundary } from "@/shared/ui/errorBoundary";
 import type { Color, Sizes } from "@/shared/lib/constants";
 
