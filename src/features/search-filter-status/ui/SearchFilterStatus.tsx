@@ -16,7 +16,7 @@ export const SearchFilterStatus = ({ searchTerm }: SearchFilterStatusProps) => {
 
   const handleResetAll = () => {
     dispatch(resetFilters());
-    navigate("/shop", { replace: true });
+    navigate("/shop");
   };
 
   return (
@@ -36,4 +36,3 @@ export const SearchFilterStatus = ({ searchTerm }: SearchFilterStatusProps) => {
     </div>
   );
 };
-
