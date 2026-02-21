@@ -1,7 +1,7 @@
 import { AppSlider } from "@/shared/ui/app-slider";
 import { Section } from "@/shared/ui/section";
 import { SectionTitle } from "@/shared/ui/section-title";
-import { StarRating } from "@/shared/ui/starRating";
+import { StarRating } from "@/shared/ui/star-rating";
 import type { EmblaOptionsType } from "embla-carousel";
 import type { BaseSlide } from "@/shared/ui/app-slider";
 
