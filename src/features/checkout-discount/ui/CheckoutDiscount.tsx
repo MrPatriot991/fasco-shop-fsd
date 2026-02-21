@@ -1,6 +1,6 @@
-import { useState } from "react";
-import { Button } from "../button/Button";
-import { Input } from "../input/Input";
+import { useState, type ChangeEvent } from "react";
+import { Button } from "@/shared/ui/button";
+import { Input } from "@/shared/ui/input";
 
 interface CheckoutDiscountProps {
   onApply?: (code: string) => void;
@@ -22,7 +22,7 @@ export const CheckoutDiscount = ({ onApply }: CheckoutDiscountProps) => {
         type="text"
         placeholder="Discount code"
         value={code}
-        onChange={(e) => setCode(e.target.value)}
+        onChange={(e: ChangeEvent<HTMLInputElement>) => setCode(e.target.value)}
       />
       <Button variant="primary" size="medium" onClick={handleApply}>
         Apply
