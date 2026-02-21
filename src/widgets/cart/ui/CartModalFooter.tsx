@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/shared/ui/button";
-import { CartSummaryBlock } from "@/shared/ui/cartSummaryBlock";
+import { CartSummaryBlock } from "@/shared/ui/cart-summary-block";
 import { CartCheckoutButtons } from "@/shared/ui/cart-checkout-buttons";
 
 interface CartModalFooterProps {
