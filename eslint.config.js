@@ -19,5 +19,15 @@ export default defineConfig([
       ecmaVersion: 2020,
       globals: globals.browser,
     },
+    rules: {
+      // Disallow wildcard barrel exports. Keep explicit public API.
+      'no-restricted-syntax': [
+        'error',
+        {
+          selector: 'ExportAllDeclaration',
+          message: 'Use explicit exports instead of `export *`.',
+        },
+      ],
+    },
   },
 ])
