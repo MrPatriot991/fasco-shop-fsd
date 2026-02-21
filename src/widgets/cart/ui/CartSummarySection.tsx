@@ -1,6 +1,6 @@
 import { CheckboxGiftWrap } from "@/shared/ui/checkboxGiftWrap";
 import { CartSummaryBlock } from "@/shared/ui/cartSummaryBlock";
-import { CartCheckoutButtons } from "@/shared/ui/cartCheckoutButtons";
+import { CartCheckoutButtons } from "@/shared/ui/cart-checkout-buttons";
 import { formatCurrency } from "@/shared/lib/format";
 import { FreeShippingMessage } from "@/entities/cart";
 
