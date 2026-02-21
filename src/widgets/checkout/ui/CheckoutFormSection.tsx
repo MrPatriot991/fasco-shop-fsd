@@ -65,7 +65,7 @@ export const CheckoutFormSection = ({ methods, onSubmit }: CheckoutFormSectionPr
         </div>
 
         <p className="hidden lg:block text-center text-xs text-brand-gray">
-          Copyright © 2022 FASCO . All Rights Reseved.
+          Copyright 2022 FASCO. All rights reserved.
         </p>
       </form>
     </FormProvider>
