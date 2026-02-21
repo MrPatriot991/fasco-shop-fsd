@@ -1,29 +1,42 @@
-import { useSearchParams } from "react-router-dom";
-import { Packages } from "@/widgets/packages";
-import { Benefits } from "@/widgets/benefits";
-import { InstagramFeed } from "@/widgets/instagram-feed";
-import { NewsLetter } from "@/widgets/news-latter";
-import { Footer } from "@/widgets/footer";
-import { ProductCatalog } from "@/widgets/product-catalog";
+import { Section } from "@/shared/ui/section";
 
-export const ShopPage = () => {
-  const [searchParams] = useSearchParams();
-  const searchQuery = searchParams.get("search") || "";
+interface ShopPageProps {
+  headerSlot: React.ReactNode;
+  mobileToolbarSlot?: React.ReactNode;
+  toolbarSlot?: React.ReactNode;
+  filterSlot: React.ReactNode;
+  itemsSlot: React.ReactNode;
+  emptySlot?: React.ReactNode;
+  isEmpty?: boolean;
+}
 
-  const scrollToCatalog = () => {
-    document.getElementById("catalog-top")?.scrollIntoView({
-      behavior: "smooth",
-    });
-  };
-
+export const ShopPage = ({
+  headerSlot,
+  mobileToolbarSlot,
+  toolbarSlot,
+  filterSlot,
+  itemsSlot,
+  emptySlot,
+  isEmpty = false,
+}: ShopPageProps) => {
   return (
-    <>
-      <ProductCatalog searchTerm={searchQuery} />
-      <Packages onActionClick={scrollToCatalog} />
-      <Benefits />
-      <InstagramFeed />
-      <NewsLetter />
-      <Footer />
-    </>
+    <Section id="catalog-top" spacing="compact" className="bg-brand-white py-10">
+      {headerSlot}
+
+      {mobileToolbarSlot ? (
+        <div className="flex justify-between items-start sm:items-center flex-col sm:flex-row lg:hidden gap-3 mt-6">
+          {mobileToolbarSlot}
+        </div>
+      ) : null}
+
+      <div className="grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-8 mt-0 lg:mt-12">
+        {filterSlot}
+
+        <div className="flex flex-col items-center gap-4">
+          {toolbarSlot ? <div className="hidden lg:flex w-full">{toolbarSlot}</div> : null}
+          {isEmpty && emptySlot ? emptySlot : itemsSlot}
+        </div>
+      </div>
+    </Section>
   );
 };

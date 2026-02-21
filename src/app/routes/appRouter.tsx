@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import { HomePage } from "@/pages/home";
 import { AuthPage } from "@/pages/auth";
-import { ShopPage } from "@/pages/shope";
+import { Shop } from "@/pages/shope";
 import { ProductPage } from "@/pages/product";
 import { Cart } from "@/pages/cart";
 import { Checkout, SuccessPage } from "@/pages/checkout";
@@ -15,7 +15,7 @@ export const appRouter = createBrowserRouter([
     element: <MainLayout />,
     children: [
       { path: "/", element: <HomePage /> },
-      { path: "/shop", element: <ShopPage /> },
+      { path: "/shop", element: <Shop /> },
       { path: "/shop/:id", element: <ProductPage /> },
       { path: "/cart", element: <Cart /> },
       { path: "/checkout", element: <Checkout /> },
