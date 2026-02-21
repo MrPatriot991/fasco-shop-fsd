@@ -7,7 +7,7 @@ import type { Color, Sizes } from "@/shared/lib/constants";
 interface CartItemProps {
   id: string;
   productId: number;
-  image: string;
+  image?: string;
   title: string;
   color: Color;
   size: Sizes;
@@ -53,16 +53,18 @@ export const CartItem = ({
       >
         <div className={cn("flex gap-6", !isCompact && "md:col-span-5")}>
           <div className="shrink-0 overflow-hidden w-24 h-32 md:w-40 md:h-64 bg-gray-100">
-            <img
-              src={image}
-              alt={title}
-              className={cn(
-                "w-full h-full p-4",
-                image?.includes("https://fakestoreapi.com")
-                  ? "object-contain object-center"
-                  : "object-cover object-top"
-              )}
-            />
+            {image ? (
+              <img
+                src={image}
+                alt={title}
+                className={cn(
+                  "w-full h-full p-4",
+                  image.includes("https://fakestoreapi.com")
+                    ? "object-contain object-center"
+                    : "object-cover object-top"
+                )}
+              />
+            ) : null}
           </div>
 
           <div className="flex flex-col justify-between flex-1">
@@ -122,4 +124,3 @@ export const CartItem = ({
     </div>
   );
 };
-

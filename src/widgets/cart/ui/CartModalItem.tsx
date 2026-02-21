@@ -6,7 +6,7 @@ interface CartModalItemProps {
   id: string;
   productId: number;
   title: string;
-  image: string;
+  image?: string;
   price: number;
   color: Color;
   size: Sizes;
@@ -21,4 +21,3 @@ export const CartModalItem = (props: CartModalItemProps) => {
     </ErrorBoundary>
   );
 };
-

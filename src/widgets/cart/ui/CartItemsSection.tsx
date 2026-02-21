@@ -19,7 +19,7 @@ export const CartItemsSection = ({ cartItems, onQuantityChange, onRemove }: Cart
             <CartItem
               id={item.id}
               productId={item.productId}
-              image={item.image ?? ""}
+              image={item.image}
               title={item.title}
               color={item.color}
               size={item.size}

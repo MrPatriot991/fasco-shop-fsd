@@ -125,7 +125,7 @@ export const CheckoutPageContent = () => {
         </FormProvider>
         <div className="">
           <CheckoutOrderSummary
-            items={cartItems.map((item) => ({ ...item, image: item.image ?? "" }))}
+            items={cartItems}
             total={total}
             subtotal={subtotal}
             shippingCost={SHIPPING_COST}

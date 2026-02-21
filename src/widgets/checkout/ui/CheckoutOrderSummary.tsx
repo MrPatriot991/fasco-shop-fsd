@@ -5,7 +5,7 @@ interface OrderItem {
   title: string;
   price: number;
   color: string;
-  image: string;
+  image?: string;
   quantity: number;
 }
 
@@ -33,11 +33,13 @@ export const CheckoutOrderSummary = ({
             {/* Image with quantity badge */}
             <div className="relative shrink-0">
               <div className="w-32 h-32 rounded-md overflow-hidden bg-gray-200">
-                <img
-                  src={item.image}
-                  alt={item.title}
-                  className="w-full h-full object-cover object-top"
-                />
+                {item.image ? (
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    className="w-full h-full object-cover object-top"
+                  />
+                ) : null}
               </div>
               <span className="absolute -top-2 -right-2 w-5 h-5 bg-red-500 text-white text-xs rounded-full flex items-center justify-center font-semibold">
                 {item.quantity}

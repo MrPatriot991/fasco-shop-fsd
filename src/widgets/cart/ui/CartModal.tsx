@@ -54,7 +54,7 @@ export const CartModal = () => {
             id={currentItem.id}
             productId={currentItem.productId}
             title={currentItem.title}
-            image={currentItem.image ?? ""}
+            image={currentItem.image}
             price={currentItem.price}
             color={currentItem.color}
             size={currentItem.size}
