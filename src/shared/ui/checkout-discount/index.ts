@@ -1,1 +1,0 @@
-export { CheckoutDiscount } from "./CheckoutDiscount";

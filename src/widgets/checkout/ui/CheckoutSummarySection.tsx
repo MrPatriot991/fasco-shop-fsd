@@ -1,4 +1,4 @@
-import { CheckoutDiscount } from "@/shared/ui/checkout-discount";
+import { CheckoutDiscount } from "@/features/checkout-discount";
 import { CheckoutOrderSummary } from "./CheckoutOrderSummary";
 import type { CartDetailsItem } from "@/entities/cart";
 
