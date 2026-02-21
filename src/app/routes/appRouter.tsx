@@ -3,7 +3,7 @@ import { HomePage } from "@/pages/home";
 import { AuthPage } from "@/pages/auth";
 import { ShopPage } from "@/pages/shope";
 import { ProductPage } from "@/pages/product";
-import { CartPage } from "@/pages/cart";
+import { Cart } from "@/pages/cart";
 import { CheckoutPage, SuccessPage } from "@/pages/checkout";
 import { InfoPage } from "@/pages/info";
 import { AuthLayout, MainLayout } from "@/app/layouts";
@@ -17,7 +17,7 @@ export const appRouter = createBrowserRouter([
       { path: "/", element: <HomePage /> },
       { path: "/shop", element: <ShopPage /> },
       { path: "/shop/:id", element: <ProductPage /> },
-      { path: "/cart", element: <CartPage /> },
+      { path: "/cart", element: <Cart /> },
       { path: "/checkout", element: <CheckoutPage /> },
       { path: "/checkout/success", element: <SuccessPage /> },
       { path: "/info", element: <InfoPage /> },
