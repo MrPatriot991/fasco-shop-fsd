@@ -1,4 +1,4 @@
-import { CheckboxGiftWrap } from "@/shared/ui/checkboxGiftWrap";
+import { CheckboxGiftWrap } from "@/shared/ui/checkbox-gift-wrap";
 import { CartSummaryBlock } from "@/shared/ui/cart-summary-block";
 import { CartCheckoutButtons } from "@/shared/ui/cart-checkout-buttons";
 import { formatCurrency } from "@/shared/lib/format";

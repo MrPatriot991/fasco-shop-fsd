@@ -1,7 +1,7 @@
 import { FormProvider, type SubmitHandler, type UseFormReturn } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { Button } from "@/shared/ui/button";
-import { CheckboxGiftWrap } from "@/shared/ui/checkboxGiftWrap";
+import { CheckboxGiftWrap } from "@/shared/ui/checkbox-gift-wrap";
 import { CheckoutContact } from "./CheckoutContact";
 import { CheckoutDelivery } from "./CheckoutDelivery";
 import { CheckoutPayment } from "./CheckoutPayment";
