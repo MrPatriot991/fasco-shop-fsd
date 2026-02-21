@@ -8,6 +8,8 @@ import { useAppDispatch, useAppSelector } from "@/shared/lib/hooks";
 import { selectCartDetails, selectCartSubtotal } from "@/entities/cart";
 import { checkoutSubmitted, checkoutSchema, type CheckoutSchema } from "@/features/checkout";
 import { CheckoutFormSection, CheckoutHeader, CheckoutSummarySection } from "@/widgets/checkout";
+import { Footer } from "@/widgets/footer";
+import { NewsLetter } from "@/widgets/news-latter";
 import { CheckoutPage } from "./CheckoutPage";
 
 const SHIPPING_COST = 40;
@@ -47,30 +49,34 @@ export const Checkout = () => {
   const isEmpty = cartItems.length === 0;
 
   return (
-    <CheckoutPage
-      isEmpty={isEmpty}
-      headerSlot={<CheckoutHeader />}
-      formSlot={<CheckoutFormSection methods={methods} onSubmit={onSubmit} />}
-      summarySlot={
-        <CheckoutSummarySection
-          cartItems={cartItems}
-          total={total}
-          subtotal={subtotal}
-          shippingCost={SHIPPING_COST}
-        />
-      }
-      emptySlot={
-        <EmptyState
-          icon={<ShoppingBag size={22} className="text-neutral-700" />}
-          title="Your checkout is empty"
-          description="Your cart has no items yet. Add products to proceed with checkout."
-          action={
-            <Button asChild variant="outlineDark">
-              <Link to="/shop">Go to shop</Link>
-            </Button>
-          }
-        />
-      }
-    />
+    <>
+      <CheckoutPage
+        isEmpty={isEmpty}
+        headerSlot={<CheckoutHeader />}
+        formSlot={<CheckoutFormSection methods={methods} onSubmit={onSubmit} />}
+        summarySlot={
+          <CheckoutSummarySection
+            cartItems={cartItems}
+            total={total}
+            subtotal={subtotal}
+            shippingCost={SHIPPING_COST}
+          />
+        }
+        emptySlot={
+          <EmptyState
+            icon={<ShoppingBag size={22} className="text-neutral-700" />}
+            title="Your checkout is empty"
+            description="Your cart has no items yet. Add products to proceed with checkout."
+            action={
+              <Button asChild variant="outlineDark">
+                <Link to="/shop">Go to shop</Link>
+              </Button>
+            }
+          />
+        }
+      />
+      <NewsLetter />
+      <Footer />
+    </>
   );
 };

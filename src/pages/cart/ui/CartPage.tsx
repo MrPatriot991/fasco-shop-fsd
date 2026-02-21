@@ -1,6 +1,4 @@
 import { Section } from "@/shared/ui/section";
-import { Footer } from "@/widgets/footer";
-import { NewsLetter } from "@/widgets/news-latter";
 
 interface CartPageProps {
   headerSlot: React.ReactNode;
@@ -18,22 +16,18 @@ export const CartPage = ({
   isEmpty,
 }: CartPageProps) => {
   return (
-    <>
-      <Section spacing="compact">
-        {headerSlot}
-        <div className="mt-8 md:mt-20">
-          {isEmpty ? (
-            emptySlot
-          ) : (
-            <>
-              {itemsSlot}
-              <div className="flex justify-end">{summarySlot}</div>
-            </>
-          )}
-        </div>
-      </Section>
-      <NewsLetter />
-      <Footer />
-    </>
+    <Section spacing="compact">
+      {headerSlot}
+      <div className="mt-8 md:mt-20">
+        {isEmpty ? (
+          emptySlot
+        ) : (
+          <>
+            {itemsSlot}
+            <div className="flex justify-end">{summarySlot}</div>
+          </>
+        )}
+      </div>
+    </Section>
   );
 };

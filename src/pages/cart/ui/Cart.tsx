@@ -12,6 +12,8 @@ import {
   removeFromCart,
 } from "@/entities/cart";
 import { CartHeader, CartItemsSection, CartSummarySection } from "@/widgets/cart";
+import { Footer } from "@/widgets/footer";
+import { NewsLetter } from "@/widgets/news-latter";
 import { CartPage } from "./CartPage";
 
 export const Cart = () => {
@@ -33,35 +35,39 @@ export const Cart = () => {
   const isEmpty = cartItems.length === 0;
 
   return (
-    <CartPage
-      isEmpty={isEmpty}
-      headerSlot={<CartHeader />}
-      itemsSlot={
-        <CartItemsSection
-          cartItems={cartItems}
-          onQuantityChange={onQuantityChange}
-          onRemove={onRemove}
-        />
-      }
-      summarySlot={
-        <CartSummarySection
-          isGiftWrap={isGiftWrap}
-          subtotal={subtotal}
-          onToggleGiftWrap={onToggleGiftWrap}
-        />
-      }
-      emptySlot={
-        <EmptyState
-          icon={<ShoppingCart size={22} className="text-neutral-700" />}
-          title="Your cart is empty"
-          description="Looks like you haven’t added anything yet. Explore products and add your favorites."
-          action={
-            <Button asChild variant="outlineDark">
-              <Link to="/shop">Continue shopping</Link>
-            </Button>
-          }
-        />
-      }
-    />
+    <>
+      <CartPage
+        isEmpty={isEmpty}
+        headerSlot={<CartHeader />}
+        itemsSlot={
+          <CartItemsSection
+            cartItems={cartItems}
+            onQuantityChange={onQuantityChange}
+            onRemove={onRemove}
+          />
+        }
+        summarySlot={
+          <CartSummarySection
+            isGiftWrap={isGiftWrap}
+            subtotal={subtotal}
+            onToggleGiftWrap={onToggleGiftWrap}
+          />
+        }
+        emptySlot={
+          <EmptyState
+            icon={<ShoppingCart size={22} className="text-neutral-700" />}
+            title="Your cart is empty"
+            description="Looks like your cart is still empty. Explore products and add your favorites."
+            action={
+              <Button asChild variant="outlineDark">
+                <Link to="/shop">Continue shopping</Link>
+              </Button>
+            }
+          />
+        }
+      />
+      <NewsLetter />
+      <Footer />
+    </>
   );
 };
