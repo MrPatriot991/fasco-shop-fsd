@@ -2,7 +2,7 @@ import { Controller, useFormContext } from "react-hook-form";
 import { PatternFormat } from "react-number-format";
 import { Dropdown } from "@/shared/ui/dropdown";
 import { Input } from "@/shared/ui/input";
-import { SectionTitle } from "@/shared/ui/sectionTitle";
+import { SectionTitle } from "@/shared/ui/section-title";
 import { CARDS } from "@/shared/lib/constants";
 
 interface CheckoutPaymentProps {
@@ -124,4 +124,3 @@ export const CheckoutPayment = ({ saveInfoSlot, submitSlot }: CheckoutPaymentPro
     </div>
   );
 };
-

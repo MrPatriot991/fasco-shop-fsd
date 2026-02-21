@@ -1,6 +1,6 @@
 import { X } from "lucide-react";
 import { Button } from "@/shared/ui/button";
-import { SectionTitle } from "@/shared/ui/sectionTitle";
+import { SectionTitle } from "@/shared/ui/section-title";
 import { FreeShippingMessage } from "@/entities/cart";
 
 interface CartModalHeaderProps {
@@ -26,4 +26,3 @@ export const CartModalHeader = ({ freeShippingThreshold, onClick }: CartModalHea
     </div>
   );
 };
-

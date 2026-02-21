@@ -1,6 +1,6 @@
 import { cn } from "@/shared/lib/utils";
 import { cva, type VariantProps } from "class-variance-authority";
-import { SectionTitle } from "../sectionTitle/SectionTitle";
+import { SectionTitle } from "../section-title/SectionTitle";
 
 const wrapVariants = cva("mx-auto flex max-w-xl flex-col items-center gap-4 text-center", {
   variants: {

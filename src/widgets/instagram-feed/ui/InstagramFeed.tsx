@@ -1,5 +1,5 @@
 import { Section } from "@/shared/ui/section";
-import { SectionTitle } from "@/shared/ui/sectionTitle";
+import { SectionTitle } from "@/shared/ui/section-title";
 import { AppSlider } from "@/shared/ui/app-slider";
 import type { EmblaOptionsType } from "embla-carousel";
 

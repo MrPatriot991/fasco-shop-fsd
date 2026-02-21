@@ -3,7 +3,7 @@ import { AppSlider } from "@/shared/ui/app-slider";
 import { Button } from "@/shared/ui/button";
 import { ErrorBoundary } from "@/shared/ui/error-boundary";
 import { Section } from "@/shared/ui/section";
-import { SectionTitle } from "@/shared/ui/sectionTitle";
+import { SectionTitle } from "@/shared/ui/section-title";
 import { TimerDisplay } from "@/shared/ui/timer";
 import { useAppSelector } from "@/shared/lib/hooks";
 import { selectOnlyDeals, ProductBadge } from "@/entities/product";

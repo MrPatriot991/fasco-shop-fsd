@@ -1,5 +1,5 @@
 import { ChevronRight } from "lucide-react";
-import { SectionTitle } from "@/shared/ui/sectionTitle";
+import { SectionTitle } from "@/shared/ui/section-title";
 
 export const CartHeader = () => {
   return (

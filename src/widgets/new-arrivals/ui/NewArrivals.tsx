@@ -2,7 +2,7 @@ import { useState, useMemo } from "react";
 import { Button } from "@/shared/ui/button";
 import { ErrorBoundary } from "@/shared/ui/error-boundary";
 import { Section } from "@/shared/ui/section";
-import { SectionTitle } from "@/shared/ui/sectionTitle";
+import { SectionTitle } from "@/shared/ui/section-title";
 import { useAppSelector } from "@/shared/lib/hooks";
 import { ProductList, selectCategoryFilter } from "@/entities/product";
 import { CategoryTabs } from "@/features/filter-by-category";
