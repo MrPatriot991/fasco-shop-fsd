@@ -1,27 +1,65 @@
 import { createBrowserRouter } from "react-router-dom";
 import { HomePage } from "@/pages/home";
 import { AuthPage } from "@/pages/auth";
-import { Shop } from "@/pages/shope";
-import { ProductPage } from "@/pages/product";
-import { Cart } from "@/pages/cart";
-import { Checkout, SuccessPage } from "@/pages/checkout";
-import { InfoPage } from "@/pages/info";
 import { AuthLayout, MainLayout } from "@/app/layouts";
-import { Wishlist } from "@/pages/wishlist";
+import { PageSkeleton } from "@/shared/ui/page-skeleton";
 
 export const appRouter = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout />,
+    hydrateFallbackElement: <PageSkeleton />,
     children: [
       { path: "/", element: <HomePage /> },
-      { path: "/shop", element: <Shop /> },
-      { path: "/shop/:id", element: <ProductPage /> },
-      { path: "/cart", element: <Cart /> },
-      { path: "/checkout", element: <Checkout /> },
-      { path: "/checkout/success", element: <SuccessPage /> },
-      { path: "/info", element: <InfoPage /> },
-      { path: "/wishlist", element: <Wishlist /> },
+      {
+        path: "/shop",
+        lazy: async () => {
+          const m = await import("@/pages/shope");
+          return { Component: m.Shop };
+        },
+      },
+      {
+        path: "/shop/:id",
+        lazy: async () => {
+          const m = await import("@/pages/product");
+          return { Component: m.ProductPage };
+        },
+      },
+      {
+        path: "/cart",
+        lazy: async () => {
+          const m = await import("@/pages/cart");
+          return { Component: m.Cart };
+        },
+      },
+      {
+        path: "/checkout",
+        lazy: async () => {
+          const m = await import("@/pages/checkout");
+          return { Component: m.Checkout };
+        },
+      },
+      {
+        path: "/checkout/success",
+        lazy: async () => {
+          const m = await import("@/pages/checkout");
+          return { Component: m.SuccessPage };
+        },
+      },
+      {
+        path: "/info",
+        lazy: async () => {
+          const m = await import("@/pages/info");
+          return { Component: m.InfoPage };
+        },
+      },
+      {
+        path: "/wishlist",
+        lazy: async () => {
+          const m = await import("@/pages/wishlist");
+          return { Component: m.Wishlist };
+        },
+      },
     ],
   },
   {
