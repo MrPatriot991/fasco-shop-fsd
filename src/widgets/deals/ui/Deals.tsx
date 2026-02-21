@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { AppSlider } from "@/shared/ui/appSlider";
+import { AppSlider } from "@/shared/ui/app-slider";
 import { Button } from "@/shared/ui/button";
 import { ErrorBoundary } from "@/shared/ui/errorBoundary";
 import { Section } from "@/shared/ui/section";
@@ -66,4 +66,3 @@ export const Deals = () => {
     </Section>
   );
 };
-
