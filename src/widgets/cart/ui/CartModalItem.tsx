@@ -1,5 +1,5 @@
 import { CartItem } from "@/shared/ui/cart-item";
-import { ErrorBoundary } from "@/shared/ui/errorBoundary";
+import { ErrorBoundary } from "@/shared/ui/error-boundary";
 import type { Color, Sizes } from "@/shared/lib/constants";
 
 interface CartModalItemProps {

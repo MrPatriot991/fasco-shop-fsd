@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { AppSlider } from "@/shared/ui/app-slider";
 import { Button } from "@/shared/ui/button";
-import { ErrorBoundary } from "@/shared/ui/errorBoundary";
+import { ErrorBoundary } from "@/shared/ui/error-boundary";
 import { Section } from "@/shared/ui/section";
 import { SectionTitle } from "@/shared/ui/sectionTitle";
 import { TimerDisplay } from "@/shared/ui/timer";

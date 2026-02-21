@@ -4,7 +4,7 @@ import { SlidersHorizontal } from "lucide-react";
 import { useAppSelector, useLockBodyScroll, usePagination } from "@/shared/lib/hooks";
 import { Button } from "@/shared/ui/button";
 import { EmptyState } from "@/shared/ui/empty-state";
-import { ErrorBoundary } from "@/shared/ui/errorBoundary";
+import { ErrorBoundary } from "@/shared/ui/error-boundary";
 import { Pagination } from "@/shared/ui/pagination";
 import { ProductCard, ProductList, selectProductStatus } from "@/entities/product";
 import { FilterSidebar, selectFilteredProducts } from "@/features/filter-products";

@@ -1,6 +1,6 @@
 import { useState, useMemo } from "react";
 import { Button } from "@/shared/ui/button";
-import { ErrorBoundary } from "@/shared/ui/errorBoundary";
+import { ErrorBoundary } from "@/shared/ui/error-boundary";
 import { Section } from "@/shared/ui/section";
 import { SectionTitle } from "@/shared/ui/sectionTitle";
 import { useAppSelector } from "@/shared/lib/hooks";
@@ -54,4 +54,3 @@ export const NewArrivals = () => {
     </Section>
   );
 };
-
