@@ -1,5 +1,5 @@
 import { Button } from "@/shared/ui/button";
-import { QuantityPicker } from "@/shared/ui/quantityPicker";
+import { QuantityPicker } from "@/shared/ui/quantity-picker";
 import { formatCurrency } from "@/shared/lib/format";
 import { cn } from "@/shared/lib/utils";
 import type { Color, Sizes } from "@/shared/lib/constants";

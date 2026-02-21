@@ -31,4 +31,3 @@ export const QuantityPicker = ({ value, onChange, min = 1 }: QuantityPickerProps
     </div>
   );
 };
-
