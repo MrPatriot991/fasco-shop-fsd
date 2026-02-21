@@ -16,7 +16,7 @@ export const loadCartFromLocalStorage = (): CartStorage => {
     const parsed = JSON.parse(data);
     return {
       items: parsed ? z.array(cartItemSchema).parse(parsed.items ?? []) : [],
-      isGlobalGiftWrap: parsed.isCartModalOpen === true,
+      isGlobalGiftWrap: parsed.isGlobalGiftWrap === true,
     };
   } catch {
     return {
