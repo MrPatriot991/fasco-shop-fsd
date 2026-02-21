@@ -1,4 +1,3 @@
-// widgets/cart/ui/CartModalFooter.tsx
 import { Link } from "react-router-dom";
 import { Button } from "@/shared/ui/button";
 import { CartSummaryBlock } from "@/shared/ui/cartSummaryBlock";
@@ -15,7 +14,7 @@ export const CartModalFooter = ({ subtotal, onClose }: CartModalFooterProps) => 
       <CartSummaryBlock subtotal={subtotal} variant="modal" />
 
       <CartCheckoutButtons
-        onCheckout={onClose}
+        onClose={onClose}
         viewCartButton={
           <Button asChild variant="linkPlain" size="none" onClick={onClose}>
             <Link
@@ -30,4 +29,3 @@ export const CartModalFooter = ({ subtotal, onClose }: CartModalFooterProps) => 
     </div>
   );
 };
-
