@@ -19,4 +19,5 @@ export {
   selectCartItemCount,
   selectCartDetails,
 } from "./model/cartSelector";
+export type { CartDetailsItem } from "./model/cartTypes";
 export { FreeShippingMessage } from "./ui/FreeShippingMessage";

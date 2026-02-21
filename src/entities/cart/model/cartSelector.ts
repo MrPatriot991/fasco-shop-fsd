@@ -1,5 +1,6 @@
 import { createSelector } from "@reduxjs/toolkit";
 import type { RootState } from "@/app/providers";
+import type { CartDetailsItem } from "./cartTypes";
 
 export const selectCartItems = (state: RootState) => state.cart.items;
 export const selectLastAddedId = (state: RootState) => state.cart.lastAddedId;
@@ -8,16 +9,15 @@ export const selectIsGiftWrapEnabled = (state: RootState) => state.cart.isGlobal
 
 export const selectCartDetails = createSelector(
   [selectCartItems, (state: RootState) => state.products.entities],
-  (cartItems, products) => {
+  (cartItems, products): CartDetailsItem[] => {
     if (!products) return [];
     return cartItems.map((item) => {
       const product = products[item.productId];
-      const price = product?.price || 0;
 
       return {
         ...item,
-        title: product?.title || "Unknown Product",
-        price,
+        title: product?.title ?? "Unknown Product",
+        price: product?.price ?? 0,
         image: product?.image,
       };
     });

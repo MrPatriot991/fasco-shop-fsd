@@ -11,3 +11,9 @@ export interface CartState {
   isCartModalOpen: boolean;
   isGlobalGiftWrap: boolean;
 }
+
+export type CartDetailsItem = CartItem & {
+  title: string;
+  price: number;
+  image?: string;
+};
