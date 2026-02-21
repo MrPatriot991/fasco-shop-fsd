@@ -1,5 +1,3 @@
-export { CheckoutPageContent } from "./ui/CheckoutPageContent";
-export { CheckoutOrderSummary } from "./ui/CheckoutOrderSummary";
-export { CheckoutContact } from "./ui/CheckoutContact";
-export { CheckoutDelivery } from "./ui/CheckoutDelivery";
-export { CheckoutPayment } from "./ui/CheckoutPayment";
+export { CheckoutHeader } from "./ui/CheckoutHeader";
+export { CheckoutFormSection } from "./ui/CheckoutFormSection";
+export { CheckoutSummarySection } from "./ui/CheckoutSummarySection";
