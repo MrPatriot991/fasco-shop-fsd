@@ -1,16 +1,15 @@
 import { Button } from "@/shared/ui/button";
 import { cn } from "@/shared/lib/utils";
 import type { Color } from "@/shared/lib/constants";
-import { ToggleWishlistButton } from "@/features/wishlist";
 
 interface ProductGalleryProps {
-  id: string;
   colors: Color[];
   image: string;
   title: string;
+  actionsSlot: React.ReactNode;
 }
 
-export const ProductGallery = ({ id, colors, image, title }: ProductGalleryProps) => {
+export const ProductGallery = ({ colors, image, title, actionsSlot }: ProductGalleryProps) => {
   return (
     <div className="flex gap-4 flex-1 flex-col-reverse lg:flex-row">
       <div className="flex lg:flex-col gap-3">
@@ -25,14 +24,8 @@ export const ProductGallery = ({ id, colors, image, title }: ProductGalleryProps
           </Button>
         ))}
       </div>
-      <div className="relative flex-1 rounded-lg overflow-hidden w-full lg:max-w-lg max-h-[654px]">
-        <div className="absolute flex top-5 right-5 lg:hidden">
-          <ToggleWishlistButton
-            productId={id}
-            colorStar="text-black"
-            className="active:bg-transparent"
-          />
-        </div>
+      <div className="relative flex-1 rounded-lg overflow-hidden w-full lg:max-w-lg max-h-163.5">
+        <div className="absolute flex top-5 right-5 lg:hidden">{actionsSlot}</div>
         <img
           src={image}
           alt={title}
@@ -47,4 +40,3 @@ export const ProductGallery = ({ id, colors, image, title }: ProductGalleryProps
     </div>
   );
 };
-

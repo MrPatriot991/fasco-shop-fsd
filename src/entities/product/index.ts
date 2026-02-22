@@ -8,8 +8,8 @@ export {
   selectOnlyDeals,
   selectProductByID,
   selectCategoryFilter,
-} from "./model/productSelector";
-export { fetchProducts, productSlice, setCategory } from "./model/productSlice";
+} from "./model/productSelectors";
+export { productSlice, setCategory } from "./model/productSlice";
 export { rawProductSchema, productSchema } from "./model/productSchema";
 export type { RawProduct, Product } from "./model/productSchema";
 export type { Status, ProductStatus } from "./model/productTypes";

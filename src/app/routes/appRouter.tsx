@@ -1,6 +1,4 @@
 import { createBrowserRouter } from "react-router-dom";
-import { HomePage } from "@/pages/home";
-import { AuthPage } from "@/pages/auth";
 import { AuthLayout, MainLayout } from "@/app/layouts";
 import { PageSkeleton } from "@/shared/ui/page-skeleton";
 
@@ -10,7 +8,13 @@ export const appRouter = createBrowserRouter([
     element: <MainLayout />,
     hydrateFallbackElement: <PageSkeleton />,
     children: [
-      { path: "/", element: <HomePage /> },
+      {
+        index: true,
+        lazy: async () => {
+          const m = await import("@/pages/home");
+          return { Component: m.HomePage };
+        },
+      },
       {
         path: "/shop",
         lazy: async () => {
@@ -22,7 +26,7 @@ export const appRouter = createBrowserRouter([
         path: "/shop/:id",
         lazy: async () => {
           const m = await import("@/pages/product");
-          return { Component: m.ProductPage };
+          return { Component: m.Product };
         },
       },
       {
@@ -64,10 +68,29 @@ export const appRouter = createBrowserRouter([
   },
   {
     element: <AuthLayout />,
+    hydrateFallbackElement: <PageSkeleton />,
     children: [
-      { path: "/sign-in", element: <AuthPage /> },
-      { path: "/sign-up", element: <AuthPage /> },
-      { path: "/forgot-password", element: <AuthPage /> },
+      {
+        path: "/sign-in",
+        lazy: async () => {
+          const m = await import("@/pages/auth");
+          return { Component: m.AuthPage };
+        },
+      },
+      {
+        path: "/sign-up",
+        lazy: async () => {
+          const m = await import("@/pages/auth");
+          return { Component: m.AuthPage };
+        },
+      },
+      {
+        path: "/forgot-password",
+        lazy: async () => {
+          const m = await import("@/pages/auth");
+          return { Component: m.AuthPage };
+        },
+      },
     ],
   },
 ]);

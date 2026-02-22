@@ -1,1 +1,10 @@
-export { ProductDetails } from "./ui/ProductDetails";
+export { ProductActions } from "./ui/ProductActions";
+export { ProductDeliveryInfo } from "./ui/ProductDeliveryInfo";
+export { ProductGallery } from "./ui/ProductGallery";
+export { ProductGuarantees } from "./ui/ProductGuarantees";
+export { ProductHeader } from "./ui/ProductHeader";
+export { ProductPrice } from "./ui/ProductPrice";
+export { ProductStock } from "./ui/ProductStock";
+export { ProductTimer } from "./ui/ProductTimer";
+export { ProductVariants } from "./ui/ProductVariants";
+export { ProductViewers } from "./ui/ProductViewers";

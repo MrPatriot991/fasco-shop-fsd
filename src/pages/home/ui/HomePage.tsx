@@ -7,8 +7,11 @@ import { Reviews } from "@/widgets/reviews";
 import { NewsLetter } from "@/widgets/news-latter";
 import { Footer } from "@/widgets/footer";
 import { NewArrivals } from "@/widgets/new-arrivals";
+import { useEnsureProducts } from "@/entities/product/model/useEnsureProducts";
 
 export const HomePage = () => {
+  useEnsureProducts();
+
   return (
     <>
       <Hero />
