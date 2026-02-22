@@ -1,14 +1,24 @@
-import { useState } from "react";
+import { lazy, Suspense, useState } from "react";
 import { Menu, X, Search } from "lucide-react";
 import { useAppSelector } from "@/shared/lib/hooks";
 import { selectIsAuthenticated } from "@/features/auth/model";
 import { cn } from "@/shared/lib/utils";
-import { MobileMenu } from "./MobileMenu";
 import { Button } from "@/shared/ui/button";
 import { Container } from "@/shared/ui/container";
-import { SearchInput } from "@/features/search";
 import { DesktopNav } from "./DesktopNav";
 import { DesktopActions } from "./DesktopActions";
+
+const MobileMenu = lazy(() =>
+  import("./MobileMenu").then((module) => ({
+    default: module.MobileMenu,
+  }))
+);
+
+const SearchInput = lazy(() =>
+  import("@/features/search/ui/SearchInput").then((module) => ({
+    default: module.SearchInput,
+  }))
+);
 
 export const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -29,7 +39,13 @@ export const Header = () => {
               isSearchOpen ? "justify-end" : "justify-center"
             )}
           >
-            {isSearchOpen ? <SearchInput onClose={() => setIsSearchOpen(false)} /> : <DesktopNav />}
+            {isSearchOpen ? (
+              <Suspense fallback={<div className="h-10 w-full max-w-md" />}>
+                <SearchInput onClose={() => setIsSearchOpen(false)} />
+              </Suspense>
+            ) : (
+              <DesktopNav />
+            )}
           </div>
 
           {/* Actions */}
@@ -55,9 +71,12 @@ export const Header = () => {
         </div>
 
         {/* Mobile Menu Overlay */}
-        {isOpen && <MobileMenu onClose={handleClose} isOpen={isOpen} />}
+        {isOpen && (
+          <Suspense fallback={null}>
+            <MobileMenu onClose={handleClose} isOpen={isOpen} />
+          </Suspense>
+        )}
       </Container>
     </header>
   );
 };
-

@@ -6,7 +6,7 @@ import { useDebounce, useAppSelector } from "@/shared/lib/hooks";
 import { Button } from "@/shared/ui/button";
 import { Input } from "@/shared/ui/input";
 import { selectAllProducts } from "@/entities/product";
-import { QuickResults } from "@/features/search";
+import { QuickResults } from "./QuickResults";
 
 interface SearchInputProps {
   variant?: "header" | "mobile";
@@ -71,4 +71,3 @@ export const SearchInput = ({ variant = "header", onClose }: SearchInputProps) =
     </div>
   );
 };
-

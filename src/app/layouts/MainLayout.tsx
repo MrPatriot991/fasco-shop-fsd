@@ -1,22 +1,26 @@
-import { useEffect } from "react";
+import { lazy, Suspense } from "react";
 import { Outlet } from "react-router-dom";
-import { useAppDispatch, useAppSelector, useScrollToTop } from "@/shared/lib/hooks";
-import { fetchProducts, selectProductStatus } from "@/entities/product";
+import { useScrollToTop } from "@/shared/lib/hooks";
 import { ScrollToTopButton } from "@/features/scroll-to-top";
-import { FloatingCartButton } from "@/widgets/cart";
 import { Header } from "@/widgets/header";
-import { CartModal } from "@/widgets/cart";
+import { useEnsureProducts } from "@/entities/product/model/useEnsureProducts";
+
+const FloatingCartButton = lazy(() =>
+  import("@/widgets/cart/ui/FloatingCartButton").then((module) => ({
+    default: module.FloatingCartButton,
+  }))
+);
+
+const CartModal = lazy(() =>
+  import("@/widgets/cart/ui/CartModal").then((module) => ({
+    default: module.CartModal,
+  }))
+);
 
 export const MainLayout = () => {
-  const dispatch = useAppDispatch();
-  const status = useAppSelector(selectProductStatus);
   useScrollToTop();
 
-  useEffect(() => {
-    if (status === "idle") {
-      dispatch(fetchProducts());
-    }
-  }, [dispatch, status]);
+  useEnsureProducts();
 
   return (
     <>
@@ -26,10 +30,14 @@ export const MainLayout = () => {
         <main>
           <Outlet />
         </main>
-        <FloatingCartButton />
+        <Suspense fallback={null}>
+          <FloatingCartButton />
+        </Suspense>
         <ScrollToTopButton />
       </div>
-      <CartModal />
+      <Suspense fallback={null}>
+        <CartModal />
+      </Suspense>
     </>
   );
 };

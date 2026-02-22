@@ -4,7 +4,7 @@ import { Button } from "@/shared/ui/button";
 import { useAppSelector, useLockBodyScroll } from "@/shared/lib/hooks";
 import { selectCartItemCount } from "@/entities/cart";
 import { selectIsAuthenticated } from "@/features/auth/model";
-import { SearchInput } from "@/features/search";
+import { SearchInput } from "@/features/search/ui/SearchInput";
 import { NavList } from "./NavList";
 
 interface MobileMenuProps {
@@ -77,4 +77,3 @@ export const MobileMenu = ({ onClose, isOpen }: MobileMenuProps) => {
     </div>
   );
 };
-
