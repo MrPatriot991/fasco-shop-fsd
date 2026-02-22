@@ -2,7 +2,7 @@ import { CheckboxGiftWrap } from "@/shared/ui/checkbox-gift-wrap";
 import { CartSummaryBlock } from "@/shared/ui/cart-summary-block";
 import { CartCheckoutButtons } from "@/shared/ui/cart-checkout-buttons";
 import { formatCurrency } from "@/shared/lib/format";
-import { FreeShippingMessage } from "@/entities/cart";
+import { FreeShippingMessage } from "@/entities/cart/ui/FreeShippingMessage";
 
 interface CartSummarySectionProps {
   isGiftWrap: boolean;

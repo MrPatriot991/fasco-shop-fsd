@@ -6,7 +6,9 @@ import { Button } from "@/shared/ui/button";
 import { EmptyState } from "@/shared/ui/empty-state";
 import { ErrorBoundary } from "@/shared/ui/error-boundary";
 import { Pagination } from "@/shared/ui/pagination";
-import { ProductCard, ProductList, selectProductStatus } from "@/entities/product";
+import { ProductList, selectProductStatus } from "@/entities/product";
+import { ProductCard } from "@/entities/product/ui/product-card/ProductCard";
+import { ToggleWishlistButton } from "@/features/wishlist";
 import { FilterSidebar, selectFilteredProducts } from "@/features/filter-products";
 import { SearchFilterStatus } from "@/features/search-filter-status";
 import { Benefits } from "@/widgets/benefits";
@@ -102,7 +104,17 @@ export const Shop = () => {
               cols={cols}
               skeletonCount={9}
               renderItem={(product) => (
-                <ProductCard product={product} variant={cols === 1 ? "list" : "grid"} />
+                <ProductCard
+                  product={product}
+                  variant={cols === 1 ? "list" : "grid"}
+                  topRightSlot={
+                    <ToggleWishlistButton
+                      productId={String(product.id)}
+                      colorStar="text-black"
+                      className="rounded-full bg-white/90 backdrop-blur-sm active:bg-white"
+                    />
+                  }
+                />
               )}
               footer={
                 <Pagination

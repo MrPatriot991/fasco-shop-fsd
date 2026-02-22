@@ -2,16 +2,15 @@ import { Link } from "react-router-dom";
 import { cn, getDiscountData } from "@/shared/lib/utils";
 import { formatCurrency } from "@/shared/lib/format";
 import { StarRating } from "@/shared/ui/star-rating";
-import { ToggleWishlistButton } from "@/features/wishlist";
 import type { Product } from "@/entities/product/model/productSchema";
 
-export const ProductCard = ({
-  product,
-  variant,
-}: {
+interface ProductCardProps {
   product: Product;
   variant: "list" | "grid";
-}) => {
+  topRightSlot?: React.ReactNode;
+}
+
+export const ProductCard = ({ product, variant, topRightSlot }: ProductCardProps) => {
   const {
     id,
     title,
@@ -25,8 +24,6 @@ export const ProductCard = ({
     salePercent,
   } = product;
   const { currentPrice, oldPrice, percent, hasDiscount } = getDiscountData(price, salePercent);
-  const productId = String(id);
-
   return (
     <Link to={`/shop/${id}`} className="group block h-full focus-visible:outline-none">
       <article
@@ -51,13 +48,9 @@ export const ProductCard = ({
                 : "object-cover object-top"
             )}
           />
-          <div className="absolute flex top-5 right-5 z-25">
-            <ToggleWishlistButton
-              productId={productId}
-              colorStar="text-black"
-              className="rounded-full bg-white/90 backdrop-blur-sm active:bg-white"
-            />
-          </div>
+          {topRightSlot ? (
+            <div className="absolute flex top-5 right-5 z-25">{topRightSlot}</div>
+          ) : null}
           {isDiscount && hasDiscount && (
             <div className="absolute top-4 left-4 z-10">
               <span className="bg-brand-dark text-white px-3 py-1 rounded-full text-sm font-bold shadow-lg">

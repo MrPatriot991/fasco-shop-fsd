@@ -1,7 +1,7 @@
 import { X } from "lucide-react";
 import { Button } from "@/shared/ui/button";
 import { SectionTitle } from "@/shared/ui/section-title";
-import { FreeShippingMessage } from "@/entities/cart";
+import { FreeShippingMessage } from "@/entities/cart/ui/FreeShippingMessage";
 
 interface CartModalHeaderProps {
   freeShippingThreshold: number;

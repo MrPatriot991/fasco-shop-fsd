@@ -2,8 +2,8 @@ import { Star } from "lucide-react";
 import { cn } from "@/shared/lib/utils";
 import { Button } from "@/shared/ui/button";
 import { useAppDispatch, useAppSelector } from "@/shared/lib/hooks";
-import { toggleWishlist } from "@/entities/wishlist";
-import { selectIsInWishlist } from "@/entities/wishlist";
+import { toggleWishlist } from "@/entities/wishlist/model/wishlistSlice";
+import { selectIsInWishlist } from "@/entities/wishlist/model/wishlistSelectors";
 
 interface ToggleWishlistProps {
   productId: string;
@@ -34,4 +34,3 @@ export const ToggleWishlistButton = ({ productId, colorStar, className }: Toggle
     </div>
   );
 };
-

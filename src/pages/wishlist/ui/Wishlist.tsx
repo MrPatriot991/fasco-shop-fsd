@@ -5,9 +5,14 @@ import { useAppDispatch, useAppSelector, useDebounce } from "@/shared/lib/hooks"
 import { Button } from "@/shared/ui/button";
 import { ConfirmDialog } from "@/shared/ui/confirm-dialog";
 import { EmptyState } from "@/shared/ui/empty-state";
-import { ProductCard } from "@/entities/product";
+import { ProductCard } from "@/entities/product/ui/product-card/ProductCard";
 import { addManyToCart } from "@/entities/cart";
-import { clearWishlist, selectWishlistCount, selectWishlistProducts } from "@/entities/wishlist";
+import { clearWishlist } from "@/entities/wishlist";
+import {
+  selectWishlistCount,
+  selectWishlistProducts,
+} from "@/entities/wishlist/model/wishlistSelectors";
+import { ToggleWishlistButton } from "@/features/wishlist";
 import { WishlistToolbar, type WishlistSortValue } from "@/features/wishlist-toolbar";
 import { WishlistHeader } from "@/widgets/wishlist-header";
 import { WishlistList } from "@/widgets/wishlist-list";
@@ -100,7 +105,19 @@ export const Wishlist = () => {
           <WishlistList
             items={viewItems}
             getKey={(product) => product.id}
-            renderItem={(product) => <ProductCard product={product} variant="grid" />}
+            renderItem={(product) => (
+              <ProductCard
+                product={product}
+                variant="grid"
+                topRightSlot={
+                  <ToggleWishlistButton
+                    productId={String(product.id)}
+                    colorStar="text-black"
+                    className="rounded-full bg-white/90 backdrop-blur-sm active:bg-white"
+                  />
+                }
+              />
+            )}
           />
         }
         emptySlot={
@@ -140,4 +157,3 @@ export const Wishlist = () => {
     </>
   );
 };
-

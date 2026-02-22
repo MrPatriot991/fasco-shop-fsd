@@ -1,7 +1,8 @@
 import { cn } from "@/shared/lib/utils";
 import { Skeleton } from "@/shared/ui/skeleton";
 import { useAppSelector } from "@/shared/lib/hooks";
-import { selectProductStatus, ProductCard } from "@/entities/product";
+import { selectProductStatus } from "@/entities/product/model/productSelectors";
+import { ProductCard } from "@/entities/product/ui/product-card/ProductCard";
 import type { Product } from "@/entities/product/model/productSchema";
 
 interface ProductsListProps {
@@ -53,4 +54,3 @@ export const ProductList = ({
     </div>
   );
 };
-
