@@ -22,14 +22,23 @@ export const ToggleWishlistButton = ({ productId, colorStar, className }: Toggle
   };
 
   return (
-    <div className={"flex items-center justify-center size-12 shadow-lg rounded-full bg-white/70"}>
+    <div
+      className={cn(
+        "flex items-center justify-center rounded-full bg-white/70 shadow-lg",
+        "size-10"
+      )}
+    >
       <Button
         variant="ghost"
         size="none"
         onClick={handleToggle}
-        className={cn("p-3 rounded-full", isFavorite ? "text-yellow-400" : colorStar, className)}
+        className={cn("rounded-full p-2.5", isFavorite ? "text-yellow-400" : colorStar, className)}
       >
-        <Star size={30} fill={isFavorite ? "currentColor" : "none"} strokeWidth={2} />
+        <Star
+          className="size-5 sm:size-6 lg:size-7"
+          fill={isFavorite ? "currentColor" : "none"}
+          strokeWidth={2}
+        />
       </Button>
     </div>
   );

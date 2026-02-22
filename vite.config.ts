@@ -21,11 +21,8 @@ export default defineConfig(({ mode }) => ({
           }
           if (id.includes("react-router")) return "router-vendor";
           if (id.includes("@reduxjs/toolkit") || id.includes("react-redux")) return "redux-vendor";
-          if (
-            id.includes("zod") ||
-            id.includes("react-hook-form") ||
-            id.includes("@hookform/resolvers")
-          ) {
+          if (id.includes("zod")) return "validation-vendor";
+          if (id.includes("react-hook-form") || id.includes("@hookform/resolvers")) {
             return "forms-vendor";
           }
           if (id.includes("axios")) return "http-vendor";

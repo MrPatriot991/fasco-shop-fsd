@@ -29,7 +29,7 @@ export const ShopPage = ({
         </div>
       ) : null}
 
-      <div className="grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-8 mt-0 lg:mt-12">
+      <div className="grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-8 mt-8 lg:mt-12">
         {filterSlot}
 
         <div className="flex flex-col items-center gap-4">

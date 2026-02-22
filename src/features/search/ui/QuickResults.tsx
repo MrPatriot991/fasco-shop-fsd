@@ -26,7 +26,7 @@ export const QuickResults = ({ results, isLoading, onClose, onViewAll }: QuickRe
         {results.map((product) => (
           <li key={product.id}>
             <Link
-              to={`/product/${product.id}`}
+              to={`/shop/${product.id}`}
               className="flex items-center gap-4 p-4 hover:bg-brand-surface/30 transition-colors"
               onClick={onClose}
             >
@@ -54,4 +54,3 @@ export const QuickResults = ({ results, isLoading, onClose, onViewAll }: QuickRe
     </div>
   );
 };
-
