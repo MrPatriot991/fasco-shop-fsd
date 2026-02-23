@@ -39,7 +39,7 @@ export const MobileMenu = ({ onClose, isOpen }: MobileMenuProps) => {
         {isAuth ? (
           <div className="flex justify-between items-center bg-brand-surface/30 p-4 rounded-2xl">
             {/* User data on the left */}
-            <Link to="/user" className="flex items-center gap-3" onClick={onClose}>
+            <Link to="/profile" className="flex items-center gap-3" onClick={onClose}>
               <div className="w-12 h-12 bg-brand-dark rounded-full flex items-center justify-center text-white">
                 <User size={24} />
               </div>

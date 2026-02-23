@@ -64,6 +64,13 @@ export const appRouter = createBrowserRouter([
           return { Component: m.Wishlist };
         },
       },
+      {
+        path: "/profile",
+        lazy: async () => {
+          const m = await import("@/pages/profile");
+          return { Component: m.Profile };
+        },
+      },
     ],
   },
   {
