@@ -5,7 +5,7 @@ import { Container } from "@/shared/ui/container";
 import { Dropdown } from "@/shared/ui/dropdown";
 import { FOOTER_NAV, AUTH_NAV } from "@/shared/config";
 import { useAppSelector } from "@/shared/lib/hooks";
-import { selectIsAuthenticated } from "@/features/auth/model";
+import { selectIsAuthenticated } from "@/features/session";
 
 const SOCIAL_LINKS = [
   { label: "Instagram", href: "https://instagram.com", icon: Instagram },
@@ -89,4 +89,3 @@ export const Footer = () => {
     </footer>
   );
 };
-

@@ -1,61 +1,28 @@
 import { Provider } from "react-redux";
-import { configureStore, createListenerMiddleware, isAnyOf } from "@reduxjs/toolkit";
+import { configureStore } from "@reduxjs/toolkit";
 import { productSlice } from "@/entities/product";
-import { authSlice } from "@/features/auth/model";
 import { filterSlice } from "@/features/filter-products";
+import { sessionSlice } from "@/features/session";
+import { sessionListener } from "./sessionListener";
 import { cartSlice } from "@/entities/cart";
+import { cartListener } from "./cartListener";
 import { wishlistSlice } from "@/entities/wishlist";
-import { checkoutSubmitted } from "@/features/checkout";
-
-const cartListener = createListenerMiddleware();
-
-cartListener.startListening({
-  matcher: isAnyOf(
-    cartSlice.actions.addToCart,
-    cartSlice.actions.addManyToCart,
-    cartSlice.actions.updateCartItem,
-    cartSlice.actions.toggleGiftWrap,
-    cartSlice.actions.removeFromCart,
-    checkoutSubmitted
-  ),
-  effect: (_, listenerApi) => {
-    const state = listenerApi.getState() as RootState;
-    const { items, isGlobalGiftWrap } = state.cart;
-    localStorage.setItem(
-      "cart",
-      JSON.stringify({
-        items,
-        isGlobalGiftWrap,
-      })
-    );
-  },
-});
-
-const wishlistListener = createListenerMiddleware();
-
-wishlistListener.startListening({
-  matcher: isAnyOf(
-    wishlistSlice.actions.toggleWishlist,
-    wishlistSlice.actions.removeFromWishlist,
-    wishlistSlice.actions.clearWishlist
-  ),
-  effect: (_, api) => {
-    const state = api.getState() as RootState;
-    const ids = Object.keys(state.wishlist.ids);
-    localStorage.setItem("wishlist", JSON.stringify(ids));
-  },
-});
+import { wishlistListener } from "./wishlistListener";
 
 const store = configureStore({
   reducer: {
+    [sessionSlice.name]: sessionSlice.reducer,
     [productSlice.name]: productSlice.reducer,
-    [authSlice.name]: authSlice.reducer,
     [filterSlice.name]: filterSlice.reducer,
     [cartSlice.name]: cartSlice.reducer,
     [wishlistSlice.name]: wishlistSlice.reducer,
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().prepend(cartListener.middleware, wishlistListener.middleware),
+    getDefaultMiddleware().prepend(
+      sessionListener.middleware,
+      cartListener.middleware,
+      wishlistListener.middleware
+    ),
 });
 
 export function StoreProvider({ children }: { children: React.ReactNode }) {

@@ -1,7 +1,7 @@
 import { lazy, Suspense, useState } from "react";
 import { Menu, X, Search } from "lucide-react";
 import { useAppSelector } from "@/shared/lib/hooks";
-import { selectIsAuthenticated } from "@/features/auth/model";
+import { selectIsAuthenticated } from "@/features/session";
 import { cn } from "@/shared/lib/utils";
 import { Button } from "@/shared/ui/button";
 import { Container } from "@/shared/ui/container";

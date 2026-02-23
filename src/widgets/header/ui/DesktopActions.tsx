@@ -1,8 +1,8 @@
-import { NavLink, Link } from "react-router-dom";
-import { ShoppingBag, Star, User } from "lucide-react";
+import { NavLink, Link, useNavigate } from "react-router-dom";
+import { LogOut, ShoppingBag, Star, User } from "lucide-react";
 import { Button } from "@/shared/ui/button";
-import { useAppSelector } from "@/shared/lib/hooks";
-import { selectIsAuthenticated } from "@/features/auth/model";
+import { useAppDispatch, useAppSelector } from "@/shared/lib/hooks";
+import { selectIsAuthenticated, sessionCleared } from "@/features/session";
 import { selectCartItemCount } from "@/entities/cart";
 import { AUTH_ACTIONS } from "@/widgets/header/model/headerActions";
 
@@ -10,9 +10,12 @@ const iconMap = {
   profile: User,
   favorites: Star,
   cart: ShoppingBag,
+  logout: LogOut,
 };
 
 export const DesktopActions = () => {
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   const isAuth = useAppSelector(selectIsAuthenticated);
   const cartCount = useAppSelector(selectCartItemCount);
 
@@ -34,6 +37,23 @@ export const DesktopActions = () => {
       {AUTH_ACTIONS.map(({ to, id }) => {
         const Icon = iconMap[id];
         const isCart = id === "cart";
+        const isLogout = id === "logout";
+
+        if (isLogout) {
+          return (
+            <Button
+              key={id}
+              size="icon"
+              variant="ghost"
+              onClick={() => {
+                dispatch(sessionCleared());
+                navigate(to);
+              }}
+            >
+              <Icon />
+            </Button>
+          );
+        }
 
         return (
           <Button key={id} asChild size="icon" variant="ghost" className="relative">
@@ -51,4 +71,3 @@ export const DesktopActions = () => {
     </div>
   );
 };
-

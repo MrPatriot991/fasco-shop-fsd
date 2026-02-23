@@ -4,7 +4,7 @@ import { Button } from "@/shared/ui/button";
 import { Dropdown } from "@/shared/ui/dropdown";
 import { useAppSelector } from "@/shared/lib/hooks";
 import { LANDING_NAV, AUTH_NAV, FOOTER_NAV } from "@/shared/config";
-import { selectIsAuthenticated } from "@/features/auth/model";
+import { selectIsAuthenticated } from "@/features/session";
 
 type NavListProps = {
   variant: "desktop" | "mobile";
@@ -67,4 +67,3 @@ export const NavList = ({ variant, onItemClick }: NavListProps) => {
     </ul>
   );
 };
-

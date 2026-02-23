@@ -2,10 +2,10 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useAppDispatch } from "@/shared/lib/hooks";
-import { loginSchema, type LoginSchema } from "@/features/auth/login/model/loginSchema";
 import { Button } from "@/shared/ui/button";
 import { Input } from "@/shared/ui/input";
-import { setCredentials } from "../../model/authSlice";
+import { sessionEstablished } from "@/features/session";
+import { loginSchema, type LoginSchema } from "@/features/auth/login/model/loginSchema";
 
 export const LoginForm = () => {
   const {
@@ -20,7 +20,8 @@ export const LoginForm = () => {
 
   const onSubmit = (data: LoginSchema) => {
     console.log("Dfta sending", data);
-    dispatch(setCredentials());
+
+    dispatch(sessionEstablished(data.email));
     navigate("/shop");
   };
 
@@ -58,4 +59,3 @@ export const LoginForm = () => {
     </form>
   );
 };
-

@@ -1,9 +1,9 @@
-import { Link } from "react-router-dom";
-import { User, Star, ShoppingBag } from "lucide-react";
+import { Link, useNavigate } from "react-router-dom";
+import { User, Star, ShoppingBag, LogOut } from "lucide-react";
 import { Button } from "@/shared/ui/button";
-import { useAppSelector, useLockBodyScroll } from "@/shared/lib/hooks";
+import { useAppDispatch, useAppSelector, useLockBodyScroll } from "@/shared/lib/hooks";
 import { selectCartItemCount } from "@/entities/cart";
-import { selectIsAuthenticated } from "@/features/auth/model";
+import { selectIsAuthenticated, sessionCleared } from "@/features/session";
 import { SearchInput } from "@/features/search/ui/SearchInput";
 import { NavList } from "./NavList";
 
@@ -13,10 +13,17 @@ interface MobileMenuProps {
 }
 
 export const MobileMenu = ({ onClose, isOpen }: MobileMenuProps) => {
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   const isAuth = useAppSelector(selectIsAuthenticated);
   const cartCount = useAppSelector(selectCartItemCount);
 
   useLockBodyScroll(isOpen);
+
+  const handleLogout = () => {
+    dispatch(sessionCleared());
+    onClose?.();
+  };
 
   return (
     <div className="fixed inset-x-0 z-50 top-24.25 h-[calc(100dvh-97px)] lg:hidden bg-brand-white flex flex-col p-6">
@@ -56,6 +63,17 @@ export const MobileMenu = ({ onClose, isOpen }: MobileMenuProps) => {
                     </span>
                   )}
                 </Link>
+              </Button>
+              <Button
+                size="icon"
+                variant="ghost"
+                className="relative"
+                onClick={() => {
+                  handleLogout();
+                  navigate("/");
+                }}
+              >
+                <LogOut size={28} />
               </Button>
             </div>
           </div>
