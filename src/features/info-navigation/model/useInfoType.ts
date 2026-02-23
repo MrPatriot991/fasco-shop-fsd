@@ -1,30 +1,15 @@
-import { useCallback } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useEnumSearchParam } from "@/shared/lib/hooks";
 import { isInfoType, DEFAULT_INFO_TYPE, type InfoType } from "@/entities/info";
 
-const parseInfoType = (value: string | null): InfoType => {
-  if (!value) {
-    return DEFAULT_INFO_TYPE;
-  }
-
-  return isInfoType(value) ? value : DEFAULT_INFO_TYPE;
-};
-
 export const useInfoType = () => {
-  const [searchParams, setSearchParams] = useSearchParams();
-  const type = parseInfoType(searchParams.get("type"));
-
-  const setInfoType = useCallback(
-    (nextType: InfoType) => {
-      const nextParams = new URLSearchParams(searchParams);
-      nextParams.set("type", nextType);
-      setSearchParams(nextParams);
-    },
-    [searchParams, setSearchParams]
-  );
+  const { value, setValue } = useEnumSearchParam<InfoType>({
+    paramName: "type",
+    fallback: DEFAULT_INFO_TYPE,
+    isValid: isInfoType,
+  });
 
   return {
-    type,
-    setInfoType,
+    type: value,
+    setInfoType: setValue,
   };
 };
