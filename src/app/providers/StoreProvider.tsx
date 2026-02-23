@@ -2,7 +2,7 @@ import { Provider } from "react-redux";
 import { configureStore } from "@reduxjs/toolkit";
 import { productSlice } from "@/entities/product";
 import { filterSlice } from "@/features/filter-products";
-import { sessionSlice } from "@/features/session";
+import { sessionSlice } from "@/entities/session";
 import { sessionListener } from "./sessionListener";
 import { cartSlice } from "@/entities/cart";
 import { cartListener } from "./cartListener";

@@ -3,7 +3,7 @@ import { User, Star, ShoppingBag, LogOut } from "lucide-react";
 import { Button } from "@/shared/ui/button";
 import { useAppDispatch, useAppSelector, useLockBodyScroll } from "@/shared/lib/hooks";
 import { selectCartItemCount } from "@/entities/cart";
-import { selectIsAuthenticated, sessionCleared } from "@/features/session";
+import { selectIsAuthenticated, sessionCleared } from "@/entities/session";
 import { SearchInput } from "@/features/search/ui/SearchInput";
 import { NavList } from "./NavList";
 

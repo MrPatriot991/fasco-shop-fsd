@@ -2,7 +2,7 @@ import { NavLink, Link, useNavigate } from "react-router-dom";
 import { LogOut, ShoppingBag, Star, User } from "lucide-react";
 import { Button } from "@/shared/ui/button";
 import { useAppDispatch, useAppSelector } from "@/shared/lib/hooks";
-import { selectIsAuthenticated, sessionCleared } from "@/features/session";
+import { selectIsAuthenticated, sessionCleared } from "@/entities/session";
 import { selectCartItemCount } from "@/entities/cart";
 import { AUTH_ACTIONS } from "@/widgets/header/model/headerActions";
 

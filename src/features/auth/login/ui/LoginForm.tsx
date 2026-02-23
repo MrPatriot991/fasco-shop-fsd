@@ -4,7 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useAppDispatch } from "@/shared/lib/hooks";
 import { Button } from "@/shared/ui/button";
 import { Input } from "@/shared/ui/input";
-import { sessionEstablished } from "@/features/session";
+import { sessionEstablished } from "@/entities/session";
 import { loginSchema, type LoginSchema } from "@/features/auth/login/model/loginSchema";
 
 export const LoginForm = () => {

@@ -1,5 +1,5 @@
 import { useAppSelector } from "@/shared/lib/hooks";
-import { selectIsAuthenticated } from "@/features/session";
+import { selectIsAuthenticated } from "@/entities/session";
 import { cn } from "@/shared/lib/utils";
 import { NavList } from "./NavList";
 

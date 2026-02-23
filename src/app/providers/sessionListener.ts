@@ -1,6 +1,6 @@
 import { createListenerMiddleware, isAnyOf } from "@reduxjs/toolkit";
-import { sessionEstablished, sessionCleared } from "@/features/session";
-import { sessionStorageApi } from "@/features/session/lib/storage";
+import { sessionEstablished, sessionCleared } from "@/entities/session";
+import { sessionStorageApi } from "@/entities/session/lib/storage";
 
 export const sessionListener = createListenerMiddleware();
 
