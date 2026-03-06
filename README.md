@@ -104,7 +104,7 @@ src
 Clone the repository:
 
 ```bash
-git clone https://github.com/MrPatriot991/fasco-shop-fsd?tab=readme-ov-file#%EF%B8%8F-security-features
+git clone https://github.com/MrPatriot991/fasco-shop-fsd
 
 Install dependencies:
 
