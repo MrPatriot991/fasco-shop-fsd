@@ -1,49 +1,36 @@
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { HeartOff } from "lucide-react";
-import { useAppDispatch, useAppSelector, useDebounce } from "@/shared/lib/hooks";
+import { useAppDispatch, useAppSelector } from "@/shared/lib/hooks";
 import { Button } from "@/shared/ui/button";
 import { ConfirmDialog } from "@/shared/ui/confirm-dialog";
 import { EmptyState } from "@/shared/ui/empty-state";
 import { ProductCard } from "@/entities/product/ui/product-card/ProductCard";
-import { addManyToCart } from "@/entities/cart";
 import { clearWishlist } from "@/entities/wishlist";
 import {
   selectWishlistCount,
   selectWishlistProducts,
 } from "@/entities/wishlist/model/wishlistSelectors";
 import { ToggleWishlistButton } from "@/features/wishlist";
-import { WishlistToolbar, type WishlistSortValue } from "@/features/wishlist-toolbar";
+import { WishlistToolbar } from "@/features/wishlist-toolbar";
+import { useWishlistView } from "@/features/wishlist-toolbar";
+import { moveAllToCart } from "@/features/wishlist-move-all-to-cart";
 import { WishlistHeader } from "@/widgets/wishlist-header";
 import { WishlistList } from "@/widgets/wishlist-list";
 import { WishlistPage } from "./WishlistPage";
 
 export const Wishlist = () => {
   const dispatch = useAppDispatch();
-
   const products = useAppSelector(selectWishlistProducts);
   const count = useAppSelector(selectWishlistCount);
-
-  const [search, setSearch] = useState("");
-  const [sort, setSort] = useState<WishlistSortValue>("default");
   const [confirmOpen, setConfirmOpen] = useState(false);
-  const debounceQuery = useDebounce(search, 300);
-
-  const viewItems = useMemo(() => {
-    const q = debounceQuery.trim().toLowerCase();
-
-    let list = q ? products.filter((p) => p.title.toLowerCase().includes(q)) : products;
-
-    if (sort === "price-low") list = [...list].sort((a, b) => a.price - b.price);
-    if (sort === "price-high") list = [...list].sort((a, b) => b.price - a.price);
-
-    return list;
-  }, [products, debounceQuery, sort]);
 
   const onClear = () => {
     if (count === 0) return;
     setConfirmOpen(true);
   };
+
+  const { sort, search, viewItems, setSort, setSearch } = useWishlistView(products);
 
   const confirmClear = () => {
     dispatch(clearWishlist());
@@ -52,26 +39,7 @@ export const Wishlist = () => {
 
   const onMoveAllToCart = () => {
     if (count === 0) return;
-
-    const items = products
-      .filter((p) => p.sizes?.length && p.colors?.length)
-      .map((p) => {
-        const size = p.sizes[0];
-        const color = p.colors[0];
-
-        return {
-          id: `${p.id}-${size}-${color}`,
-          productId: Number(p.id),
-          size,
-          color,
-          quantity: 1,
-        };
-      });
-
-    if (items.length === 0) return;
-
-    dispatch(addManyToCart(items));
-    dispatch(clearWishlist());
+    dispatch(moveAllToCart(products));
   };
 
   const isWishlistEmpty = count === 0;

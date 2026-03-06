@@ -1,1 +1,0 @@
-export { WishlistToolbar } from "./WishlistToolbar";
