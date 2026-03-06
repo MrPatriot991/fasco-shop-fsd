@@ -19,8 +19,6 @@ export const LoginForm = () => {
   const navigate = useNavigate();
 
   const onSubmit = (data: LoginSchema) => {
-    console.log("Dfta sending", data);
-
     dispatch(sessionEstablished(data.email));
     navigate("/shop");
   };

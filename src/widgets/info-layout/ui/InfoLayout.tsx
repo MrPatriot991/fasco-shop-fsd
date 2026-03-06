@@ -28,7 +28,7 @@ export const InfoLayout = ({
   supportCardText = "Our team replies within 24 hours on business days.",
 }: InfoLayoutProps) => {
   return (
-    <div className={cn("min-h-screen bg-slate-50", className)}>
+    <div className={cn("min-h-screen bg-white", className)}>
       <div className="mx-auto flex max-w-7xl flex-col gap-12 px-4 py-12 md:flex-row">
         <aside className="shrink-0 md:w-1/4">
           <div className="sticky top-6">
@@ -80,4 +80,3 @@ export const InfoLayout = ({
     </div>
   );
 };
-

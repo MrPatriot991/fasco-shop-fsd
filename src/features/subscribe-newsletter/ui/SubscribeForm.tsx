@@ -13,8 +13,8 @@ export const SubscribeForm = () => {
     resolver: zodResolver(subscribeSchema),
   });
 
-  const onSubmit = (data: SubscribeSchema) => {
-    console.log("Subscribe email:", data.email);
+  const onSubmit = () => {
+    console.log("Subscribe email");
   };
 
   return (
@@ -32,4 +32,3 @@ export const SubscribeForm = () => {
     </form>
   );
 };
-

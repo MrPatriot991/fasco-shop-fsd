@@ -1,6 +1,8 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { sessionEstablished } from "@/entities/session";
+import { useAppDispatch } from "@/shared/lib/hooks";
 import { Button } from "@/shared/ui/button";
 import { Input } from "@/shared/ui/input";
 import { registerSchema, type RegisterSchema } from "../model/registerSchema";
@@ -13,9 +15,12 @@ export const RegisterForm = () => {
   } = useForm({
     resolver: zodResolver(registerSchema),
   });
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   const onSubmit = (data: RegisterSchema) => {
-    console.log("Register data:", data);
+    dispatch(sessionEstablished(data.email));
+    navigate("/shop");
   };
 
   return (
@@ -79,4 +84,3 @@ export const RegisterForm = () => {
     </form>
   );
 };
-

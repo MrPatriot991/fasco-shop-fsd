@@ -3,6 +3,7 @@ export type ForgotPasswordData = {
   lastName: string;
   email: string;
   phone: string;
-  code?: string;
-  password?: string;
+  code: string;
+  password: string;
+  confirmPassword: string;
 };

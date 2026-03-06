@@ -16,9 +16,13 @@ export const ForgotPasswordForm = () => {
   };
 
   const handleFinalSubmit = (finalData: Partial<ForgotPasswordData>) => {
-    const fullData = { ...allData, ...finalData };
+    const { password, confirmPassword } = finalData;
 
-    console.log("Sending to server via RTK:", fullData);
+    console.log("Sending to server via RTK:", {
+      ...allData,
+      password: "********" + password?.slice(-1),
+      confirmPassword: "********" + confirmPassword?.slice(-1),
+    });
     navigate("/sign-in");
   };
 
