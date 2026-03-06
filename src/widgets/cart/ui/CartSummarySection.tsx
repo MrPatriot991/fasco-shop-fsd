@@ -1,3 +1,5 @@
+import { selectIsAuthenticated } from "@/entities/session";
+import { useAppSelector } from "@/shared/lib/hooks";
 import { CheckboxGiftWrap } from "@/shared/ui/checkbox-gift-wrap";
 import { CartSummaryBlock } from "@/shared/ui/cart-summary-block";
 import { CartCheckoutButtons } from "@/shared/ui/cart-checkout-buttons";
@@ -15,6 +17,8 @@ export const CartSummarySection = ({
   subtotal,
   onToggleGiftWrap,
 }: CartSummarySectionProps) => {
+  const isAuthenticated = useAppSelector(selectIsAuthenticated);
+
   return (
     <div className="flex flex-col w-full md:max-w-1/2">
       <CheckboxGiftWrap
@@ -30,7 +34,11 @@ export const CartSummarySection = ({
       />
 
       <CartSummaryBlock subtotal={subtotal} className="w-full md:w-auto mb-6" />
-      <CartCheckoutButtons />
+      <CartCheckoutButtons
+        checkoutLabel="Checkout"
+        checkoutPath={isAuthenticated ? "/checkout" : "/sign-in"}
+        state={!isAuthenticated ? { from: "/checkout" } : undefined}
+      />
       <FreeShippingMessage className="mt-2" />
     </div>
   );
